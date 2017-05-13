@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-11T11:30:15.000Z</updated>
+  <updated>2017-05-13T09:28:49.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,22 +20,28 @@
     <link href="https://lzm420241.github.io/2017/05/11/hello-world/"/>
     <id>https://lzm420241.github.io/2017/05/11/hello-world/</id>
     <published>2017-05-11T03:26:01.000Z</published>
-    <updated>2017-05-11T11:30:15.000Z</updated>
+    <updated>2017-05-13T09:28:49.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。</p>
+<h3 id="搭建github"><a href="#搭建github" class="headerlink" title="搭建github"></a>搭建github</h3><ol>
+<li><a href="https://github.com/" target="_blank" rel="external">官网</a>中申请账号</li>
+<li><a href="https://segmentfault.com/a/1190000002533334" target="_blank" rel="external">本地配置github</a></li>
+</ol>
+<h3 id="安装hexo，上传资源文件至github"><a href="#安装hexo，上传资源文件至github" class="headerlink" title="安装hexo，上传资源文件至github"></a>安装hexo，上传资源文件至github</h3><p>1.<strong>安装hexo</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<p>2.<strong>通过hexo生成blog基本文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure></p>
+<p>3.<strong>配置blog中根目录的配置文件_config.yml及添加一些hexo的基本工具</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">修改_config.yml的配置文件  </div><div class="line">    修改site，导入个人基本信息</div><div class="line">    通过添加theme来使用其它主题的blog，并且在配置文件中修改theme</div><div class="line">    在theme中设置使用哪种评论工具&lt;em&gt;目前duoshuo已经停止使用</div><div class="line">添加hexo的基本工具</div><div class="line">    hexo-deployer-git 向远程仓库导入文件的工具</div><div class="line">    hexo-generator-json-content 配置blog标题的基本信息</div><div class="line">    hexo-generator-sitemap  添加sitemap，使得搜索引擎快速找到blog</div><div class="line">    hexo-generator-feed  添加rss</div></pre></td></tr></table></figure></p>
+<p>4.<strong>生成blog资源文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
+<p>5.<strong>上传到github</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
+<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
+<p>2.<strong>本地测试blog项目</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<p>3.<strong>发布草稿</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] title</div></pre></td></tr></table></figure></p>
+<p>4.<strong>更多关于hexo的使用，请点击<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">详情页</a></strong></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。&lt;/p&gt;
+&lt;h3 id=&quot;搭建github&quot;&gt;&lt;a href=&quot;#搭建github&quot; class=&quot;headerlink&quot; title=&quot;搭建github
     
     </summary>
     
