@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-15T13:44:40.000Z</updated>
+  <updated>2017-05-15T15:14:21.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2017/05/15/page-design/"/>
     <id>https://lzm420241.github.io/2017/05/15/page-design/</id>
     <published>2017-05-15T13:18:05.000Z</published>
-    <updated>2017-05-15T13:44:40.000Z</updated>
+    <updated>2017-05-15T15:14:21.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="网页设计四条原则"><a href="#网页设计四条原则" class="headerlink" title="网页设计四条原则"></a>网页设计四条原则</h3><p><strong>原则一：设计之对比色原则</strong></p>
 <pre><code>主要目的是突出重点，将内容区分出来
@@ -29,7 +29,7 @@
 </code></pre><p><strong>原则三：设计之重复性原则</strong>    </p>
 <pre><code>主要目的是保持整个页面统一的风格，各个页面的风格不会互相冲突
 </code></pre><p><strong>原则四：设计之相似性原则</strong>    </p>
-<pre><code>&gt;主要是将相似的元素放倒一起，这样使用户易于查找    
+<pre><code>主要是将相似的元素放倒一起，这样使用户易于查找    
 </code></pre><p><strong>附带</strong><a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">页面选色在线网站</a></p>
 ]]></content>
     
