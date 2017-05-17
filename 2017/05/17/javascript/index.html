@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
-  <title>Tag: github | 前端那点事</title>
+  <title>你不知道javascript（上卷）知识点总结 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="前端那点事">
-<meta property="og:url" content="https://lzm420241.github.io/tags/github/index.html">
+  <meta name="description" content="作用域和闭包作用域 编译的三步骤：分词／词法分析，解析／语法分析，代码生成 javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值 编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询 当一个块或函数嵌套在另一个块或函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你不知道javascript（上卷）知识点总结">
+<meta property="og:url" content="https://lzm420241.github.io/2017/05/17/javascript/index.html">
 <meta property="og:site_name" content="前端那点事">
+<meta property="og:description" content="作用域和闭包作用域 编译的三步骤：分词／词法分析，解析／语法分析，代码生成 javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值 编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询 当一个块或函数嵌套在另一个块或函数">
+<meta property="og:updated_time" content="2017-05-17T12:40:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端那点事">
+<meta name="twitter:title" content="你不知道javascript（上卷）知识点总结">
+<meta name="twitter:description" content="作用域和闭包作用域 编译的三步骤：分词／词法分析，解析／语法分析，代码生成 javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值 编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询 当一个块或函数嵌套在另一个块或函数">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -159,76 +163,152 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-javascript" class="article article-type-post " itemscope itemprop="blogPost">
   
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-11T03:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/hello-world/">Hexo 博客创建记录</a>
+    <h1 class="article-title" itemprop="name">
+      你不知道javascript（上卷）知识点总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        <a href="/2017/05/17/javascript/" class="archive-article-date">
+  	<time datetime="2017-05-17T11:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域和闭包"><span class="toc-text">作用域和闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#词法作用域"><span class="toc-text">词法作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数作用域和块作用域"><span class="toc-text">函数作用域和块作用域</span></a></li></ol></li></ol>
+          <hr/>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        <h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
+<li>编译的三步骤：分词／词法分析，解析／语法分析，代码生成</li>
+<li>javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
+<li>编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询</li>
+<li>当一个块或函数嵌套在另一个块或函数时，就发生了作用域的嵌套，因此，在当前作用域中无法找到某个变量时，引擎会在外层作用域中查找，直到找到该变量，或抵达最外层作用域停止</li>
+<li>在非严格模式下，如果通过RHS查询无法查询到变量，但是通过LHS查询时如果不存在这个变量会自动声明这个变量，在严格模式下两者查询模式都是不行的 </li>
+</ol>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ol>
+<li>作用域共有两种工作模型：1.词法作用域；2.动态作用域</li>
+<li>词法作用域就是定义在词法阶段的作用域</li>
+<li><p>欺骗词法的两种机制(非常影响性能):<br>1.eval函数可以接受一个字符串为参数，并将其中的内容视为好像在书写时就存在于程序中这个位置的代码，严格模式的声明是无法修改所在的作用域    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>)</span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str);  <span class="comment">//欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a, b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">//1,3</span></div></pre></td></tr></table></figure>
+<p>2.with关键字通常被当作重复引用同一个对象中的多个属性的快捷方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">c</span>: <span class="number">3</span></div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">2</span>;</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.c = <span class="number">4</span>;</div><div class="line"><span class="comment">//简单的快捷方式</span></div><div class="line"><span class="keyword">with</span>(obj)&#123;</div><div class="line">    a = <span class="number">3</span>;</div><div class="line">    b = <span class="number">4</span>;</div><div class="line">    c = <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" class="headerlink" title="函数作用域和块作用域"></a>函数作用域和块作用域</h4><ol>
+<li>函数会被当作函数表达式而不是一个标准的函数声明来处理</li>
+<li>width，try／catch中的catch都是块作用域中例子</li>
+</ol>
+<p>3.4.3</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2017/05/17/javascript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/17/ps-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          图像的基本编辑方法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/05/17/building-basic-task-for-photoshop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.ps基本操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
 
           </div>
         </div>
@@ -250,9 +330,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

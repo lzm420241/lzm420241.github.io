@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-16T16:05:55.000Z</updated>
+  <updated>2017-05-17T16:22:20.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -16,11 +16,128 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ps基本操作</title>
+    <title>图像的基本编辑方法</title>
+    <link href="https://lzm420241.github.io/2017/05/17/ps-2/"/>
+    <id>https://lzm420241.github.io/2017/05/17/ps-2/</id>
+    <published>2017-05-17T14:37:31.000Z</published>
+    <updated>2017-05-17T16:22:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><ol>
+<li>Ctrl+N快速新建文件  文件➡新建</li>
+<li>Ctrl+O打开文件</li>
+<li>图层➡图层样式➡外发光可以调节光晕</li>
+<li>文件➡导入可以导入视频帧和WIA等内容</li>
+<li>Ctrl+S可以保存文件</li>
+<li>Ctrl+W可以关闭文件</li>
+</ol>
+<h3 id="在图像中添加版权信息"><a href="#在图像中添加版权信息" class="headerlink" title="在图像中添加版权信息"></a>在图像中添加版权信息</h3><ol>
+<li>文件➡文件简介可以添加版权信息</li>
+<li>使用“嵌入水印”滤镜也可以在图像中加入版权信息</li>
+</ol>
+<h3 id="修改像素尺寸和画布大小"><a href="#修改像素尺寸和画布大小" class="headerlink" title="修改像素尺寸和画布大小"></a>修改像素尺寸和画布大小</h3><ol>
+<li>图像➡图像大小 命令可以设置图像大小</li>
+<li>图像大小弹出窗中可以设置文档大小，当缩小图像时会减少像素数量，但是画质不变，但是增大图像时，画质会下降</li>
+<li>图像➡画布大小 调整画布的大小</li>
+<li>图像➡图像旋转 旋转画布</li>
+<li>图像➡复制 复制文档</li>
+<li>编辑➡拷贝 拷贝文档 快捷键：Ctrl+C</li>
+<li>编辑➡剪切 剪切文档</li>
+<li>编辑➡粘贴 粘贴文档 快捷键：Ctrl+V</li>
+<li>编辑➡选择性粘贴</li>
+<li>编辑➡清楚 清楚选中的图像</li>
+<li>编辑➡还原 撤销最后一次修改 快捷键：Ctrl+Z</li>
+<li>编辑➡后退一步 可以后退上一步，编辑➡重做 可还原初始 快捷键：Shift+Ctrl+Z</li>
+<li>文件➡恢复 直接将文件恢复到最后一次保存状态</li>
+<li>tips—图像➡调整以及滤镜菜单中的滤镜，当我们修改参数时，若要还原默认值可以按住Alt键，对话框中的取消会变成复位</li>
+</ol>
+<h3 id="用历史记录面板进行还原操作"><a href="#用历史记录面板进行还原操作" class="headerlink" title="用历史记录面板进行还原操作"></a>用历史记录面板进行还原操作</h3><ol>
+<li>窗口➡历史记录 可查看操作的历史记录</li>
+<li>历史记录只能保存20步的操作步骤</li>
+<li>若要增加步数可在 编辑➡首选项➡性能对话框中增加历史记录的保存步数，但是这样会占用很多内存</li>
+<li>另外一种方式是绘制完重要的效果之后可在历史记录面板中点击快照按钮，将画面的当前状态保存为一个快照，按住Alt键然后点击快照按钮即可创建快照</li>
+<li>删除快照–将快照移入删除按钮中</li>
+<li>编辑➡清理 将菜单中的历史记录和全部命令会清除ps打开的所有文档</li>
+</ol>
+<h3 id="图像的变换和变形操作"><a href="#图像的变换和变形操作" class="headerlink" title="图像的变换和变形操作"></a>图像的变换和变形操作</h3><ol>
+<li>编辑➡变换 可以对涂层，路径，矢量形状，以及选中的图像进行变换操作</li>
+<li>移动工具选项栏中可以点击显示变换控件，即可变形图像</li>
+<li>移动工具快速调入变换状态快捷键：Ctrl+T，变换图像，且复制出新的图像内容快捷键：Alt+Shfit+Ctrl+T</li>
+<li>复制图层快捷键：Ctrl+J</li>
+</ol>
+<h3 id="内容识别比例缩放"><a href="#内容识别比例缩放" class="headerlink" title="内容识别比例缩放"></a>内容识别比例缩放</h3><ol>
+<li>将背景图层转换普通图层快捷键：安装ALt然后双击图层</li>
+<li>编辑➡内容识别比例</li>
+<li>取消选取快捷键：Ctrl+D</li>
+<li>用Alpha通道保护图像–在使用内容缩放时容易导致图像变形，为了保护部分地方不变形，选择受保护选取然后点击通道的蒙版，将选取保存为Alpha通道</li>
+</ol>
+<h3 id="操控变形"><a href="#操控变形" class="headerlink" title="操控变形"></a>操控变形</h3><ol>
+<li>编辑➡操控变形 可以操控变形</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;新建文件&quot;&gt;&lt;a href=&quot;#新建文件&quot; class=&quot;headerlink&quot; title=&quot;新建文件&quot;&gt;&lt;/a&gt;新建文件&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Ctrl+N快速新建文件  文件➡新建&lt;/li&gt;
+&lt;li&gt;Ctrl+O打开文件&lt;/li&gt;
+&lt;li&gt;图层➡图层样式
+    
+    </summary>
+    
+      <category term="设计知识点记录" scheme="https://lzm420241.github.io/categories/%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="design" scheme="https://lzm420241.github.io/tags/design/"/>
+    
+      <category term="photoshop" scheme="https://lzm420241.github.io/tags/photoshop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你不知道javascript（上卷）知识点总结</title>
+    <link href="https://lzm420241.github.io/2017/05/17/javascript/"/>
+    <id>https://lzm420241.github.io/2017/05/17/javascript/</id>
+    <published>2017-05-17T11:24:32.000Z</published>
+    <updated>2017-05-17T12:40:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
+<li>编译的三步骤：分词／词法分析，解析／语法分析，代码生成</li>
+<li>javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
+<li>编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询</li>
+<li>当一个块或函数嵌套在另一个块或函数时，就发生了作用域的嵌套，因此，在当前作用域中无法找到某个变量时，引擎会在外层作用域中查找，直到找到该变量，或抵达最外层作用域停止</li>
+<li>在非严格模式下，如果通过RHS查询无法查询到变量，但是通过LHS查询时如果不存在这个变量会自动声明这个变量，在严格模式下两者查询模式都是不行的 </li>
+</ol>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ol>
+<li>作用域共有两种工作模型：1.词法作用域；2.动态作用域</li>
+<li>词法作用域就是定义在词法阶段的作用域</li>
+<li><p>欺骗词法的两种机制(非常影响性能):<br>1.eval函数可以接受一个字符串为参数，并将其中的内容视为好像在书写时就存在于程序中这个位置的代码，严格模式的声明是无法修改所在的作用域    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>)</span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str);  <span class="comment">//欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a, b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">//1,3</span></div></pre></td></tr></table></figure>
+<p>2.with关键字通常被当作重复引用同一个对象中的多个属性的快捷方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">c</span>: <span class="number">3</span></div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">2</span>;</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.c = <span class="number">4</span>;</div><div class="line"><span class="comment">//简单的快捷方式</span></div><div class="line"><span class="keyword">with</span>(obj)&#123;</div><div class="line">    a = <span class="number">3</span>;</div><div class="line">    b = <span class="number">4</span>;</div><div class="line">    c = <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" class="headerlink" title="函数作用域和块作用域"></a>函数作用域和块作用域</h4><ol>
+<li>函数会被当作函数表达式而不是一个标准的函数声明来处理</li>
+<li>width，try／catch中的catch都是块作用域中例子</li>
+</ol>
+<p>3.4.3</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;作用域和闭包&quot;&gt;&lt;a href=&quot;#作用域和闭包&quot; class=&quot;headerlink&quot; title=&quot;作用域和闭包&quot;&gt;&lt;/a&gt;作用域和闭包&lt;/h3&gt;&lt;h4 id=&quot;作用域&quot;&gt;&lt;a href=&quot;#作用域&quot; class=&quot;headerlink&quot; title=&quot;作用域
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>1.ps基本操作</title>
     <link href="https://lzm420241.github.io/2017/05/17/building-basic-task-for-photoshop/"/>
     <id>https://lzm420241.github.io/2017/05/17/building-basic-task-for-photoshop/</id>
     <published>2017-05-16T16:04:10.000Z</published>
-    <updated>2017-05-16T16:05:55.000Z</updated>
+    <updated>2017-05-17T14:37:12.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="ps基本工作界面"><a href="#ps基本工作界面" class="headerlink" title="ps基本工作界面"></a>ps基本工作界面</h3><ol>
 <li>界面分为菜单栏，工具选项栏，工具箱，选项卡，文档窗口，面板这几部分</li>
