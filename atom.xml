@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-17T16:23:48.000Z</updated>
+  <updated>2017-05-18T16:28:11.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -16,11 +16,75 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>3.选取</title>
+    <link href="https://lzm420241.github.io/2017/05/18/ps-3/"/>
+    <id>https://lzm420241.github.io/2017/05/18/ps-3/</id>
+    <published>2017-05-18T15:25:13.000Z</published>
+    <updated>2017-05-18T16:28:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="认识选取"><a href="#认识选取" class="headerlink" title="认识选取"></a>认识选取</h3><ol>
+<li>选取分为两种:普通选区和羽化的选区</li>
+<li>选择和抠图的几种方法：1.基本形状选择法；2.色调差异选择法；3.快速蒙版选择法；4.简单选区细化法；5.钢笔工具选择法；6.通道选择法；7.插件选择法；</li>
+</ol>
+<h3 id="选取的基本操作"><a href="#选取的基本操作" class="headerlink" title="选取的基本操作"></a>选取的基本操作</h3><ol>
+<li>全选与反选 选择➡全部或Ctrl+A可以选择当前文件全部图像</li>
+<li>复制选取 快捷键Ctrl+C可复制整个图像 如果文档中有多个图层可按下Shift+Ctrl+C</li>
+<li>反选 选择➡反向或Shift+Ctrl+I可执行反选</li>
+<li>取消选择分区 选择➡取消选择或Ctrl+D可以取消选择，如果要重新选择可以执行选择➡重新选择</li>
+<li>选取运算 在工具选项栏中有：新选区，与选区交叉，添加到选取，从选区中减去，与选区这四种运算</li>
+<li>如果当前有选取可以使用选框，套索，魔棒工具继续选区，按住Shift可以在当前选区添加选区，等同上</li>
+<li>移动选区 隐藏与显示选区 执行视图➡显示➡选区边缘或Ctrl+H可以隐藏选区</li>
+<li>选取工具：矩形选区，椭圆选区，单行选区工具，单列选区工具，套索工具，多边形套索工具，磁性套索工具</li>
+</ol>
+<h3 id="魔棒与快速选择工具"><a href="#魔棒与快速选择工具" class="headerlink" title="魔棒与快速选择工具"></a>魔棒与快速选择工具</h3><ol>
+<li>魔棒工具和快速选择工具是基于色调和颜色差异来构建选区的工具</li>
+<li>魔棒工具和快速选择工具的工具选项栏</li>
+</ol>
+<h3 id="“色彩范围”命令"><a href="#“色彩范围”命令" class="headerlink" title="“色彩范围”命令"></a>“色彩范围”命令</h3><ol>
+<li>选择➡色彩范围 对话框中有选区预览图，选择-取样颜色，选取预览，检测人脸，反相等。</li>
+</ol>
+<h3 id="快速蒙版"><a href="#快速蒙版" class="headerlink" title="快速蒙版"></a>快速蒙版</h3><ol>
+<li>快速蒙版是一种选取的转换工具，他能将选取转换为一种临时的蒙版图像，这样能通过画笔，滤镜，钢笔等工具编辑蒙版，之后再将蒙版图像转换选取</li>
+<li>选择➡在快速蒙版模式下编辑 工具栏底部有快速蒙版编辑工具</li>
+</ol>
+<h3 id="细化选取"><a href="#细化选取" class="headerlink" title="细化选取"></a>细化选取</h3><ol>
+<li>选择➡调整边缘</li>
+</ol>
+<h3 id="选取的编辑操作"><a href="#选取的编辑操作" class="headerlink" title="选取的编辑操作"></a>选取的编辑操作</h3><ol>
+<li>选择➡修改➡边界 可以将选取的边界向内部和外部扩展</li>
+<li>选择➡修改➡平滑 让选取更加平滑</li>
+<li>选择➡修改➡扩展／收缩 扩展／收缩选区范围</li>
+<li>选择➡修改➡羽化 选取羽化，且控制羽化范围</li>
+<li>选择➡变换选取 对选取应用进行变换</li>
+<li>存储选区–单机通道面板底部将选取存储为通道按钮，将选区保存在Alpha通道中</li>
+<li>选择➡存储选取 也可以存储选取</li>
+<li>选择➡载入选区 即可载入选取，或者按住Ctrl单击通道缩览图</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;认识选取&quot;&gt;&lt;a href=&quot;#认识选取&quot; class=&quot;headerlink&quot; title=&quot;认识选取&quot;&gt;&lt;/a&gt;认识选取&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;选取分为两种:普通选区和羽化的选区&lt;/li&gt;
+&lt;li&gt;选择和抠图的几种方法：1.基本形状选择法；2.色调差异选择
+    
+    </summary>
+    
+      <category term="设计知识点记录" scheme="https://lzm420241.github.io/categories/%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="design" scheme="https://lzm420241.github.io/tags/design/"/>
+    
+      <category term="[object Object]" scheme="https://lzm420241.github.io/tags/object-Object/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2.图像的基本编辑方法</title>
     <link href="https://lzm420241.github.io/2017/05/17/ps-2/"/>
     <id>https://lzm420241.github.io/2017/05/17/ps-2/</id>
     <published>2017-05-17T14:37:31.000Z</published>
-    <updated>2017-05-17T16:23:48.000Z</updated>
+    <updated>2017-05-18T15:26:42.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><ol>
 <li>Ctrl+N快速新建文件  文件➡新建</li>
@@ -40,13 +104,13 @@
 <li>图像➡画布大小 调整画布的大小</li>
 <li>图像➡图像旋转 旋转画布</li>
 <li>图像➡复制 复制文档</li>
-<li>编辑➡拷贝 拷贝文档 快捷键：Ctrl+C</li>
+<li>编辑➡拷贝 拷贝文档 快捷键:Ctrl+C</li>
 <li>编辑➡剪切 剪切文档</li>
-<li>编辑➡粘贴 粘贴文档 快捷键：Ctrl+V</li>
+<li>编辑➡粘贴 粘贴文档 快捷键:Ctrl+V</li>
 <li>编辑➡选择性粘贴</li>
 <li>编辑➡清楚 清楚选中的图像</li>
-<li>编辑➡还原 撤销最后一次修改 快捷键：Ctrl+Z</li>
-<li>编辑➡后退一步 可以后退上一步，编辑➡重做 可还原初始 快捷键：Shift+Ctrl+Z</li>
+<li>编辑➡还原 撤销最后一次修改 快捷键:Ctrl+Z</li>
+<li>编辑➡后退一步 可以后退上一步，编辑➡重做 可还原初始 快捷键:Shift+Ctrl+Z</li>
 <li>文件➡恢复 直接将文件恢复到最后一次保存状态</li>
 <li>tips—图像➡调整以及滤镜菜单中的滤镜，当我们修改参数时，若要还原默认值可以按住Alt键，对话框中的取消会变成复位</li>
 </ol>
@@ -61,13 +125,13 @@
 <h3 id="图像的变换和变形操作"><a href="#图像的变换和变形操作" class="headerlink" title="图像的变换和变形操作"></a>图像的变换和变形操作</h3><ol>
 <li>编辑➡变换 可以对涂层，路径，矢量形状，以及选中的图像进行变换操作</li>
 <li>移动工具选项栏中可以点击显示变换控件，即可变形图像</li>
-<li>移动工具快速调入变换状态快捷键：Ctrl+T，变换图像，且复制出新的图像内容快捷键：Alt+Shfit+Ctrl+T</li>
-<li>复制图层快捷键：Ctrl+J</li>
+<li>移动工具快速调入变换状态快捷键:Ctrl+T，变换图像，且复制出新的图像内容快捷键:Alt+Shfit+Ctrl+T</li>
+<li>复制图层快捷键:Ctrl+J</li>
 </ol>
 <h3 id="内容识别比例缩放"><a href="#内容识别比例缩放" class="headerlink" title="内容识别比例缩放"></a>内容识别比例缩放</h3><ol>
-<li>将背景图层转换普通图层快捷键：安装ALt然后双击图层</li>
+<li>将背景图层转换普通图层快捷键:安装ALt然后双击图层</li>
 <li>编辑➡内容识别比例</li>
-<li>取消选取快捷键：Ctrl+D</li>
+<li>取消选取快捷键:Ctrl+D</li>
 <li>用Alpha通道保护图像–在使用内容缩放时容易导致图像变形，为了保护部分地方不变形，选择受保护选取然后点击通道的蒙版，将选取保存为Alpha通道</li>
 </ol>
 <h3 id="操控变形"><a href="#操控变形" class="headerlink" title="操控变形"></a>操控变形</h3><ol>
@@ -98,17 +162,17 @@
     <link href="https://lzm420241.github.io/2017/05/17/javascript/"/>
     <id>https://lzm420241.github.io/2017/05/17/javascript/</id>
     <published>2017-05-17T11:24:32.000Z</published>
-    <updated>2017-05-18T12:37:51.000Z</updated>
+    <updated>2017-05-18T15:27:16.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
-<li>编译的三步骤：分词／词法分析，解析／语法分析，代码生成</li>
-<li>javascript编译器工作过程：1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
+<li>编译的三步骤:分词／词法分析，解析／语法分析，代码生成</li>
+<li>javascript编译器工作过程:1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
 <li>编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询</li>
 <li>当一个块或函数嵌套在另一个块或函数时，就发生了作用域的嵌套，因此，在当前作用域中无法找到某个变量时，引擎会在外层作用域中查找，直到找到该变量，或抵达最外层作用域停止</li>
 <li>在非严格模式下，如果通过RHS查询无法查询到变量，但是通过LHS查询时如果不存在这个变量会自动声明这个变量，在严格模式下两者查询模式都是不行的 </li>
 </ol>
 <h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ol>
-<li>作用域共有两种工作模型：1.词法作用域；2.动态作用域</li>
+<li>作用域共有两种工作模型:1.词法作用域；2.动态作用域</li>
 <li>词法作用域就是定义在词法阶段的作用域</li>
 <li><p>欺骗词法的两种机制(非常影响性能):<br>1.eval函数可以接受一个字符串为参数，并将其中的内容视为好像在书写时就存在于程序中这个位置的代码，严格模式的声明是无法修改所在的作用域    </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>)</span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str);  <span class="comment">//欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a, b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">//1,3</span></div></pre></td></tr></table></figure>
@@ -125,7 +189,7 @@
 <li>只有声明本身会被提升，而赋值或其他运行逻辑会留在原地。如果提升该拜年了代码的顺序，会造成严重的破坏</li>
 <li>函数声明会被提升，但是函数表达式却不会被提升</li>
 <li>函数会首先被提升，然后才是变量</li>
-<li>代码执行会经过两个阶段任务：1.编译阶段的人物；2.执行阶段任务</li>
+<li>代码执行会经过两个阶段任务:1.编译阶段的人物；2.执行阶段任务</li>
 </ol>
 <h4 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h4><ol>
 <li>无论通过任何手段将内部函数传递到所在的词法作用域以外，他都会持有对原始定义作用域的引用，无论在何处执行这个函数都是使用闭包</li>
@@ -140,17 +204,17 @@
 <li>this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用</li>
 </ol>
 <h4 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h4><ol>
-<li>调用位置：函数在代码中被调用的位置，而不是声明的位置</li>
-<li>查看绑定规则：1.默认绑定；2.隐式绑定；3.显式绑定（call和apply）；4.new绑定</li>
-<li>四种绑定的优先级：new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定</li>
+<li>调用位置:函数在代码中被调用的位置，而不是声明的位置</li>
+<li>查看绑定规则:1.默认绑定；2.隐式绑定；3.显式绑定（call和apply）；4.new绑定</li>
+<li>四种绑定的优先级:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定</li>
 <li>将null和undefined通过call或apply传入函数实际等价于默认绑定</li>
 <li>软绑定➡如果给默认绑定指定一个全局对象和undefined以外的值，那就可以和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力</li>
 <li></li>
 </ol>
 <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ol>
 <li>对象可以通过声明形式和构造形式定义</li>
-<li>六种类型：string，number，boolean，null，undefined，object</li>
-<li>对象子类型：String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
+<li>六种类型:string，number，boolean，null，undefined，object</li>
+<li>对象子类型:String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
 <li>在对象中属性名永远都是字符串，如果使用了string以外的值，那么它首先会转化为字符串</li>
 </ol>
 <p>3.3.2</p>
@@ -170,11 +234,11 @@
     <link href="https://lzm420241.github.io/2017/05/17/building-basic-task-for-photoshop/"/>
     <id>https://lzm420241.github.io/2017/05/17/building-basic-task-for-photoshop/</id>
     <published>2017-05-16T16:04:10.000Z</published>
-    <updated>2017-05-17T14:37:12.000Z</updated>
+    <updated>2017-05-18T15:26:55.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="ps基本工作界面"><a href="#ps基本工作界面" class="headerlink" title="ps基本工作界面"></a>ps基本工作界面</h3><ol>
 <li>界面分为菜单栏，工具选项栏，工具箱，选项卡，文档窗口，面板这几部分</li>
-<li>文档窗口：<strong>ctrl+Tab快捷键可切换界面</strong></li>
+<li>文档窗口:<strong>ctrl+Tab快捷键可切换界面</strong></li>
 <li>工具箱分为选择工具，裁剪和切片，测量工具，修饰工具，绘画工具，导航工具等几种类别工具</li>
 </ol>
 <h3 id="查看图像"><a href="#查看图像" class="headerlink" title="查看图像"></a>查看图像</h3><ol>
@@ -193,7 +257,7 @@
 <li>在<strong>视图&gt;显示&gt;网格</strong>中使用网格</li>
 <li>在工具栏中使用注释工具可在图像中添加注释</li>
 </ol>
-<h3 id="附几个快捷键："><a href="#附几个快捷键：" class="headerlink" title="附几个快捷键："></a>附几个快捷键：</h3><ol>
+<h3 id="附几个快捷键"><a href="#附几个快捷键" class="headerlink" title="附几个快捷键:"></a>附几个快捷键:</h3><ol>
 <li>Ctrl+o可以快速打开文件</li>
 <li>Ctrl++可以放大图片，Ctrl+-可以缩小图片</li>
 <li>Ctrl+R可以打开标尺，再使用一次关闭标尺</li>
@@ -222,22 +286,22 @@
     <link href="https://lzm420241.github.io/2017/05/15/page-design/"/>
     <id>https://lzm420241.github.io/2017/05/15/page-design/</id>
     <published>2017-05-15T13:18:05.000Z</published>
-    <updated>2017-05-15T15:14:21.000Z</updated>
+    <updated>2017-05-18T15:26:59.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="网页设计四条原则"><a href="#网页设计四条原则" class="headerlink" title="网页设计四条原则"></a>网页设计四条原则</h3><p><strong>原则一：设计之对比色原则</strong></p>
+    <content type="html"><![CDATA[<h3 id="网页设计四条原则"><a href="#网页设计四条原则" class="headerlink" title="网页设计四条原则"></a>网页设计四条原则</h3><p><strong>原则一:设计之对比色原则</strong></p>
 <pre><code>主要目的是突出重点，将内容区分出来
-</code></pre><p><strong>原则二：设计之对奇原则</strong>     </p>
+</code></pre><p><strong>原则二:设计之对奇原则</strong>     </p>
 <pre><code>主要是更好地展示网页信息，样式清晰,所有设计元素和页面上其他元素要有视觉上的练习
-</code></pre><p><strong>原则三：设计之重复性原则</strong>    </p>
+</code></pre><p><strong>原则三:设计之重复性原则</strong>    </p>
 <pre><code>主要目的是保持整个页面统一的风格，各个页面的风格不会互相冲突
-</code></pre><p><strong>原则四：设计之相似性原则</strong>    </p>
+</code></pre><p><strong>原则四:设计之相似性原则</strong>    </p>
 <pre><code>主要是将相似的元素放倒一起，这样使用户易于查找    
 </code></pre><p><strong>附带</strong><a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">页面选色在线网站</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;网页设计四条原则&quot;&gt;&lt;a href=&quot;#网页设计四条原则&quot; class=&quot;headerlink&quot; title=&quot;网页设计四条原则&quot;&gt;&lt;/a&gt;网页设计四条原则&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;原则一：设计之对比色原则&lt;/strong&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;网页设计四条原则&quot;&gt;&lt;a href=&quot;#网页设计四条原则&quot; class=&quot;headerlink&quot; title=&quot;网页设计四条原则&quot;&gt;&lt;/a&gt;网页设计四条原则&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;原则一:设计之对比色原则&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
     
     </summary>
