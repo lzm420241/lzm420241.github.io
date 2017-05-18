@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-17T16:22:20.000Z</updated>
+  <updated>2017-05-17T16:23:48.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图像的基本编辑方法</title>
+    <title>2.图像的基本编辑方法</title>
     <link href="https://lzm420241.github.io/2017/05/17/ps-2/"/>
     <id>https://lzm420241.github.io/2017/05/17/ps-2/</id>
     <published>2017-05-17T14:37:31.000Z</published>
-    <updated>2017-05-17T16:22:20.000Z</updated>
+    <updated>2017-05-17T16:23:48.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><ol>
 <li>Ctrl+N快速新建文件  文件➡新建</li>
@@ -98,7 +98,7 @@
     <link href="https://lzm420241.github.io/2017/05/17/javascript/"/>
     <id>https://lzm420241.github.io/2017/05/17/javascript/</id>
     <published>2017-05-17T11:24:32.000Z</published>
-    <updated>2017-05-17T12:40:45.000Z</updated>
+    <updated>2017-05-18T12:37:51.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
 <li>编译的三步骤：分词／词法分析，解析／语法分析，代码生成</li>
@@ -120,7 +120,40 @@
 <li>函数会被当作函数表达式而不是一个标准的函数声明来处理</li>
 <li>width，try／catch中的catch都是块作用域中例子</li>
 </ol>
-<p>3.4.3</p>
+<h4 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h4><ol>
+<li>包含变量和函数在内的所有声明都会在任何代码被执行前首先被处理</li>
+<li>只有声明本身会被提升，而赋值或其他运行逻辑会留在原地。如果提升该拜年了代码的顺序，会造成严重的破坏</li>
+<li>函数声明会被提升，但是函数表达式却不会被提升</li>
+<li>函数会首先被提升，然后才是变量</li>
+<li>代码执行会经过两个阶段任务：1.编译阶段的人物；2.执行阶段任务</li>
+</ol>
+<h4 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h4><ol>
+<li>无论通过任何手段将内部函数传递到所在的词法作用域以外，他都会持有对原始定义作用域的引用，无论在何处执行这个函数都是使用闭包</li>
+<li>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包</li>
+</ol>
+<h4 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h4><ol>
+<li>词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定的，词法作用域关注函数在何处声明，动态作用域关注函数从何处调用</li>
+</ol>
+<h3 id="this和对象原型"><a href="#this和对象原型" class="headerlink" title="this和对象原型"></a>this和对象原型</h3><h4 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h4><ol>
+<li>arguments.callee目前唯一一种从匿名函数对象内部引用自身的方法</li>
+<li>this是在运行时调用的，并不是在编写时绑定的。这个记录会包含函数在哪里被调用，函数的调用方法，传入参数等信息。this就是记录的其中一个属性，会在函数执行的过程中用到</li>
+<li>this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用</li>
+</ol>
+<h4 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h4><ol>
+<li>调用位置：函数在代码中被调用的位置，而不是声明的位置</li>
+<li>查看绑定规则：1.默认绑定；2.隐式绑定；3.显式绑定（call和apply）；4.new绑定</li>
+<li>四种绑定的优先级：new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定</li>
+<li>将null和undefined通过call或apply传入函数实际等价于默认绑定</li>
+<li>软绑定➡如果给默认绑定指定一个全局对象和undefined以外的值，那就可以和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力</li>
+<li></li>
+</ol>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ol>
+<li>对象可以通过声明形式和构造形式定义</li>
+<li>六种类型：string，number，boolean，null，undefined，object</li>
+<li>对象子类型：String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
+<li>在对象中属性名永远都是字符串，如果使用了string以外的值，那么它首先会转化为字符串</li>
+</ol>
+<p>3.3.2</p>
 ]]></content>
     
     <summary type="html">
