@@ -607,8 +607,58 @@
 <li>六种类型:string，number，boolean，null，undefined，object</li>
 <li>对象子类型:String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
 <li>在对象中属性名永远都是字符串，如果使用了string以外的值，那么它首先会转化为字符串</li>
+<li>函数和方法本质是等价的，唯一不同的是方法里面使用的this会隐式指向对象</li>
+<li>浅复制即对值的引用，深复制会复制其相关联的元素</li>
+<li>object.assign实现浅复制</li>
+<li><p>通过object.defineProperty来添加一个新属性或者修改一个已有的属性，并对特性进行设置     </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObj = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(myObj, <span class="string">"a"</span>, &#123;</div><div class="line">    <span class="attr">value</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>禁用扩展 Object.preventExtensions</p>
+</li>
+<li>密封 Object.seal 不可重新配置也不可删除任何现有属性</li>
+<li>冻结 Object.freeze 对象上最高级别的不可用性</li>
+<li>Object.hasOwnProperty检查属性是否存在对象中</li>
+<li>Object.propertyIsEnumerable检查给定属性名是否直接存在于对象中，Object.keys返回可枚举属性的数组，Object.getOwnPropertyNames 返回一个数组，包含所有属性</li>
+<li>forEach遍历数组的所有值，并忽略回调函数的返回值</li>
+<li>every（）和some（）中特殊的返回值类似for里面的break</li>
+<li>for…of..会寻找内置或者自定义的@@iterator对象并调用它的next（）方法来遍历数据值</li>
 </ol>
-<p>3.3.2</p>
+<h4 id="混合对象“类”"><a href="#混合对象“类”" class="headerlink" title="混合对象“类”"></a>混合对象“类”</h4><ol>
+<li>面向类的设计模式：实例化，继承，多台</li>
+<li>多态是说父类的通用行为可以被子类更特殊的行为重写</li>
+<li><p>类实例由一个特殊的方法构造，成为构造函数，这个方法的任务就是初始化实例需要的所有信息  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
+</li>
+<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
+</li>
+<li>模拟类的复制：显示和隐式</li>
+<li><p>显示混入实现类似于extend </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params"> sourceObj, targetObj</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> sourceObj)&#123;</div><div class="line">        <span class="keyword">if</span>(!(key <span class="keyword">in</span> targetObj))&#123;</div><div class="line">            targetObj[key] = sourceObj[key];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Vehicle = &#123;</div><div class="line">    <span class="attr">engine</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">ignition</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Turning on my engine"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.ignition();</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Steering and moving forward"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Car = mixin(Vehicle, &#123;</div><div class="line">    <span class="attr">wheels</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        Vehicle.drive.call(<span class="keyword">this</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Rolling on all"</span> + <span class="keyword">this</span>.wheels + <span class="string">"whells"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>隐式混入    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
+</li>
+<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
+</li>
+<li>模拟类的复制：显示和隐式</li>
+<li><p>显示混入实现类似于extend </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Something = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.greeting = <span class="string">"hello, world"</span>;</div><div class="line">        <span class="keyword">this</span>.count = <span class="keyword">this</span>.count?<span class="keyword">this</span>.count+<span class="number">1</span>:<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Something.cool();</div><div class="line">Something.greeting;</div><div class="line">Something.count;</div><div class="line"><span class="keyword">var</span> Another = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        Something.cool.call(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Another.cool();</div><div class="line">Another.greeting;</div><div class="line">Another.count;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类意味着复制</p>
+</li>
+</ol>
+<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><ol>
+<li>javascript中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用</li>
+<li>所有的普通[[prototype]]链都会指向内置的object.prototype</li>
+<li>所有的函数类默认都会拥有一个名为prototype的公有并且不可枚举的属性，它指向另一个对象</li>
+<li>javascript不能创建一个类的多个实例，只能创建多个对象，他们关联到同一个对象</li>
+<li>new会劫持所有普通函数并且用构造对象的形式来调用它</li>
+</ol>
+<h4 id="行为委托"><a href="#行为委托" class="headerlink" title="行为委托"></a>行为委托</h4><ol>
+<li>如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在关联的对象上进行查找，如果后者还是没找到则会继续查找他的prototype，这一系列对象的链接称为“原型链”</li>
+<li>委托行为意味着某些对象在找不到属性或者方法引用时会把这个请求委托给另一个对象</li>
+<li>无法在两个或者两个以上相互为多的对象之间创建循环委托</li>
+</ol>
 
       
     </div>
@@ -986,19 +1036,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
