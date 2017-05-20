@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2017/05/17/javascript/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="作用域和闭包作用域 编译的三步骤:分词／词法分析，解析／语法分析，代码生成 javascript编译器工作过程:1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值 编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询 当一个块或函数嵌套在另一个块或函数">
-<meta property="og:updated_time" content="2017-05-20T06:21:11.000Z">
+<meta property="og:updated_time" content="2017-05-20T06:22:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道javascript（上卷）知识点总结">
 <meta name="twitter:description" content="作用域和闭包作用域 编译的三步骤:分词／词法分析，解析／语法分析，代码生成 javascript编译器工作过程:1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值 编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询 当一个块或函数嵌套在另一个块或函数">
@@ -293,6 +293,7 @@
 <li>如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在关联的对象上进行查找，如果后者还是没找到则会继续查找他的prototype，这一系列对象的链接称为“原型链”</li>
 <li>委托行为意味着某些对象在找不到属性或者方法引用时会把这个请求委托给另一个对象</li>
 <li>无法在两个或者两个以上相互为多的对象之间创建循环委托</li>
+<li>Object.create()方法使用指定的原型对象和其属性创建了一个新的对象</li>
 </ol>
 
       
@@ -482,19 +483,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
               </li>
             
             <div class="clearfix"></div>
