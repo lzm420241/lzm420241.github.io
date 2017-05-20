@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2017-05-20T04:03:11.000Z</updated>
+  <updated>2017-05-20T15:21:15.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>5.图层的高级操作</title>
+    <link href="https://lzm420241.github.io/2017/05/20/ps-5/"/>
+    <id>https://lzm420241.github.io/2017/05/20/ps-5/</id>
+    <published>2017-05-20T14:53:47.000Z</published>
+    <updated>2017-05-20T15:21:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="图层的设置"><a href="#图层的设置" class="headerlink" title="图层的设置"></a>图层的设置</h3><ol>
+<li>图层控制面板中可以设置不透明度</li>
+<li>混合模式用来控制当前图层中的像素与它下面图层中的像素如何混合，除背景图层外，其他图层都支持混合，另外用于混合通道</li>
+</ol>
+<h3 id="填充图层"><a href="#填充图层" class="headerlink" title="填充图层"></a>填充图层</h3><ol>
+<li>图层➡新建填充图层➡纯色 或单机图层面板中创建新的填充或调整图层按钮，选择纯色</li>
+<li>渐变填充图层 图层➡新建填充图层➡渐变或者创建新的填充或调整图层按钮，选择渐变</li>
+</ol>
+<h3 id="调整图层"><a href="#调整图层" class="headerlink" title="调整图层"></a>调整图层</h3><ol>
+<li>图层➡调整 调整命令直接修改所选图层中的像素数据，但调整图层中国年可以达到同样的调整效果但不会修改像素</li>
+<li>图层➡新建调整图层 可在图层面板中创建调整图层</li>
+</ol>
+<h3 id="中性色涂层"><a href="#中性色涂层" class="headerlink" title="中性色涂层"></a>中性色涂层</h3><ol>
+<li>使用色阶或曲线校正偏色的照片，通过定义灰色来校正色偏</li>
+</ol>
+<h3 id="智能对象"><a href="#智能对象" class="headerlink" title="智能对象"></a>智能对象</h3><ol>
+<li>智能对象是一个嵌入到当前文档中的文件，它可以包含图像，也可以包含矢量图形</li>
+<li>文件➡打开为智能对象 创建智能对象，文件➡置入 将另外一个文件作为智能对象置入到当前文档中</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;图层的设置&quot;&gt;&lt;a href=&quot;#图层的设置&quot; class=&quot;headerlink&quot; title=&quot;图层的设置&quot;&gt;&lt;/a&gt;图层的设置&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;图层控制面板中可以设置不透明度&lt;/li&gt;
+&lt;li&gt;混合模式用来控制当前图层中的像素与它下面图层中的像素如
+    
+    </summary>
+    
+      <category term="设计知识点记录" scheme="https://lzm420241.github.io/categories/%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="design" scheme="https://lzm420241.github.io/tags/design/"/>
+    
+      <category term="photoshop" scheme="https://lzm420241.github.io/tags/photoshop/"/>
+    
+  </entry>
   
   <entry>
     <title>4.图层</title>
