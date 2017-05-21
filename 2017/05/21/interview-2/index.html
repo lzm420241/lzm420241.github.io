@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
-  <title>Archives: 2017/5 | 前端那点事</title>
+  <title>前端常见面试题归纳(二) | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="前端那点事">
-<meta property="og:url" content="https://lzm420241.github.io/archives/2017/05/index.html">
+  <meta name="description" content="Q:从 URL 输入到页面展现发生了什么123456789101112131415161.将URL输入到浏览器中2.浏览器根据域名查找IP地址    DNS查找过程如下：        Browser cache(浏览器缓存)—浏览器会缓存DNS记录一段时间。有趣的是，操作系统并没有告诉浏览器每一个DNS记录缓存的存活时间，所以浏览器自己会缓存它们固定的一段时间（不同的浏览器存在差异，一般是2-3">
+<meta name="keywords" content="前端面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端常见面试题归纳(二)">
+<meta property="og:url" content="https://lzm420241.github.io/2017/05/21/interview-2/index.html">
 <meta property="og:site_name" content="前端那点事">
+<meta property="og:description" content="Q:从 URL 输入到页面展现发生了什么123456789101112131415161.将URL输入到浏览器中2.浏览器根据域名查找IP地址    DNS查找过程如下：        Browser cache(浏览器缓存)—浏览器会缓存DNS记录一段时间。有趣的是，操作系统并没有告诉浏览器每一个DNS记录缓存的存活时间，所以浏览器自己会缓存它们固定的一段时间（不同的浏览器存在差异，一般是2-3">
+<meta property="og:updated_time" content="2017-05-21T05:24:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端那点事">
+<meta name="twitter:title" content="前端常见面试题归纳(二)">
+<meta name="twitter:description" content="Q:从 URL 输入到页面展现发生了什么123456789101112131415161.将URL输入到浏览器中2.浏览器根据域名查找IP地址    DNS查找过程如下：        Browser cache(浏览器缓存)—浏览器会缓存DNS记录一段时间。有趣的是，操作系统并没有告诉浏览器每一个DNS记录缓存的存活时间，所以浏览器自己会缓存它们固定的一段时间（不同的浏览器存在差异，一般是2-3">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -165,36 +170,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-interview-2" class="article article-type-post " itemscope itemprop="blogPost">
   
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/21/interview-2/" class="archive-article-date">
+    <h1 class="article-title" itemprop="name">
+      前端常见面试题归纳(二)
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/interview-2/" class="archive-article-date">
   	<time datetime="2017-05-21T03:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q-从-URL-输入到页面展现发生了什么"><span class="toc-text">Q:从 URL 输入到页面展现发生了什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q-JS-引用类型笔试题"><span class="toc-text">Q:JS 引用类型笔试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q-JS-字符串操作面试题"><span class="toc-text">Q:JS 字符串操作面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q-JS-运算符优先级相关题目"><span class="toc-text">Q:JS 运算符优先级相关题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q-JS-类型判断相关问题"><span class="toc-text">Q:JS 类型判断相关问题</span></a></li></ol>
+          <hr/>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/21/interview-2/">前端常见面试题归纳(二)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+        
+        <h3 id="Q-从-URL-输入到页面展现发生了什么"><a href="#Q-从-URL-输入到页面展现发生了什么" class="headerlink" title="Q:从 URL 输入到页面展现发生了什么"></a>Q:从 URL 输入到页面展现发生了什么</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.将URL输入到浏览器中</div><div class="line">2.浏览器根据域名查找IP地址</div><div class="line">    DNS查找过程如下：</div><div class="line">        Browser cache(浏览器缓存)—浏览器会缓存DNS记录一段时间。有趣的是，操作系统并没有告诉浏览器每一个DNS记录缓存的存活时间，所以浏览器自己会缓存它们固定的一段时间（不同的浏览器存在差异，一般是2-30分钟）。</div><div class="line">        OS cache（操作系统缓存）—如果浏览器缓存中没有找到对应的记录，浏览器就会做一次系统请求（Windows系统中就是根据名称从host文件中获得IP地址）。操作系统有它自己的缓存。</div><div class="line">        Router cache（路由缓存）—请求会在你的路由器上继续进行，路由一般都会有自己的DNS缓存。</div><div class="line">        ISP DNS cache(ISP DNS缓存)—下一个地方就是查找ISP<span class="string">'s DNS服务器了，当然，它也会有一份缓存。</span></div><div class="line">        Recursive search(递归查找)—你的ISP's DNS服务从根域名开始循环查找，根据.com查找顶级域名服务器，然后再到 Facebook 的域名服务器。通常来说，DNS服务器都会有.com域名服务器的缓存，所以根域名服务器不是必须的</div><div class="line">3.浏览器发送一个HTTP请求到浏览器</div><div class="line">4.服务器通过重定向进行响应</div><div class="line">5.浏览器重定向</div><div class="line">6.服务器处理请求</div><div class="line">7.服务器返回HTML响应</div><div class="line">8.浏览器开始渲染HTML</div><div class="line">9.浏览器为嵌入的对象发送请求 （例如：图片等）</div><div class="line">10.浏览器发送AJAX请求</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-引用类型笔试题"><a href="#Q-JS-引用类型笔试题" class="headerlink" title="Q:JS 引用类型笔试题"></a>Q:JS 引用类型笔试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//红宝书 ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">x, y</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> temp = x;</div><div class="line">  x = y;</div><div class="line">  y = temp;  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span></div><div class="line">swap(a, b)</div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">//输出什么</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">//输出什么</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">'jirengu'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">age</span>: <span class="number">2</span>&#125;</div><div class="line">swap(obj1, obj2)</div><div class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">//输出什么</span></div><div class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">//输出什么</span></div><div class="line"></div><div class="line">A:</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line">&#123;<span class="attr">name</span>: <span class="string">'jirengu'</span>&#125;</div><div class="line">&#123;<span class="attr">age</span>: <span class="number">2</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-字符串操作面试题"><a href="#Q-JS-字符串操作面试题" class="headerlink" title="Q:JS 字符串操作面试题"></a>Q:JS 字符串操作面试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 请用JavaScript 实现一个方法，该方法能够判断两个字符串是否匹配</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isMatch</span>(<span class="params">str1, str2</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">isMatch(<span class="string">'something'</span>, <span class="string">'ginhtemos'</span>)  <span class="comment">// true</span></div><div class="line">isMatch(<span class="string">'aaa'</span>, <span class="string">'aa'</span>)  <span class="comment">//false</span></div><div class="line">isMatch(<span class="string">'abb'</span>, <span class="string">'baa'</span>)  <span class="comment">//false</span></div><div class="line">isMatch(<span class="string">'hello'</span>, <span class="string">'olelh'</span>)  <span class="comment">//true</span></div><div class="line"></div><div class="line"><span class="comment">//A:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isMatch</span>(<span class="params">str1, str2</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> str1.split(<span class="string">''</span>).sort().join(<span class="string">''</span>) === str2.split(<span class="string">''</span>).sort().join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-运算符优先级相关题目"><a href="#Q-JS-运算符优先级相关题目" class="headerlink" title="Q:JS 运算符优先级相关题目"></a>Q:JS 运算符优先级相关题目</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Q:</span></div><div class="line"><span class="comment">// object1和object2 都是对象，所以运算的时候会调用valueOf方法</span></div><div class="line">(<span class="number">2</span> &gt; <span class="number">1</span> + -<span class="number">-1</span>) + <span class="literal">true</span>)</div><div class="line"><span class="comment">// 布尔值在运算时会自动转为数字 true -&gt; 1 false -&gt; 0</span></div><div class="line">(<span class="number">1</span>+ <span class="number">0</span>) + <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-类型判断相关问题"><a href="#Q-JS-类型判断相关问题" class="headerlink" title="Q:JS 类型判断相关问题"></a>Q:JS 类型判断相关问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.写一个函数 isEmptyObject，判断一个对象是不是空对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="comment">// todo...</span></div><div class="line">&#125;</div><div class="line">isEmptyObject( &#123;&#125; ); <span class="comment">//true</span></div><div class="line">isEmptyObject( &#123;<span class="attr">a</span>:<span class="number">1</span>&#125; ) ; <span class="comment">//false</span></div><div class="line"><span class="comment">// 2.如果可以用 ES5，那么你会如何写这个函数？</span></div><div class="line"></div><div class="line"><span class="comment">// Q:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>( <span class="built_in">arguments</span>[<span class="number">0</span>] &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">arguments</span>[<span class="number">0</span>] === <span class="string">"object"</span> ) &#123;</div><div class="line">    <span class="keyword">for</span> ( <span class="keyword">var</span> key <span class="keyword">in</span> <span class="built_in">arguments</span>[<span class="number">0</span>] ) &#123;</div><div class="line">    　<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  　&#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">throw</span> <span class="string">"obj need to be an object"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).length === <span class="number">0</span> &amp;&amp; obj.constructor === <span class="built_in">Object</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 循环/闭包/setTimeout/Promise 综合</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0..4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;, <span class="number">1000</span> * i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;, i * <span class="number">1000</span>);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//0..4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;, i * <span class="number">1000</span>);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout((<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;)(i), i * <span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5  **0..4**</span></div><div class="line"><span class="comment">// setTimeout(undefined, i*1000);</span></div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">executor</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">  <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10000</span> ; i++ ) &#123;</div><div class="line">    i == <span class="number">9999</span> &amp;&amp; resolve();</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</div><div class="line"><span class="comment">//2 3 5 4 1</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,7 +218,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -219,487 +231,87 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2017/05/21/interview-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/21/interview/" class="archive-article-date">
-  	<time datetime="2017-05-21T01:54:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/21/interview/">前端常见面试题归纳(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/20/ps-5/" class="archive-article-date">
-  	<time datetime="2017-05-20T14:53:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/20/ps-5/">5.图层的高级操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/19/ps-4/" class="archive-article-date">
-  	<time datetime="2017-05-19T14:21:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/19/ps-4/">4.图层</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/18/ps-3/" class="archive-article-date">
-  	<time datetime="2017-05-18T15:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/18/ps-3/">3.选区</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/ps-2/" class="archive-article-date">
-  	<time datetime="2017-05-17T14:37:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/ps-2/">2.图像的基本编辑方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/javascript/" class="archive-article-date">
-  	<time datetime="2017-05-17T11:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/javascript/">你不知道javascript（上卷）知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">你不知道的javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/building-basic-task-for-photoshop/" class="archive-article-date">
-  	<time datetime="2017-05-16T16:04:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/building-basic-task-for-photoshop/">1.ps基本操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/15/page-design/" class="archive-article-date">
-  	<time datetime="2017-05-15T13:18:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/15/page-design/">页面设计的四条原则</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/11/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-11T03:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/11/hello-world/">Hexo 博客创建记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/05/21/interview/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端常见面试题归纳(一)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
 
           </div>
         </div>
@@ -721,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
