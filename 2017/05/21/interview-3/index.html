@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>前端常见面试题归纳(三) | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="前端面试题">
+  <meta name="description" content="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？12345行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白解决方案：1.浮动li中float：left2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px3.li之间不换行，且不留空格 如果需要手动写动画，你认为最小时间间隔是多久，为什么？1多数显示器默认频率是">
+<meta name="keywords" content="前端面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端常见面试题归纳(三)">
 <meta property="og:url" content="https://lzm420241.github.io/2017/05/21/interview-3/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:updated_time" content="2017-05-21T05:36:39.000Z">
+<meta property="og:description" content="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？12345行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白解决方案：1.浮动li中float：left2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px3.li之间不换行，且不留空格 如果需要手动写动画，你认为最小时间间隔是多久，为什么？1多数显示器默认频率是">
+<meta property="og:updated_time" content="2017-05-21T15:06:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常见面试题归纳(三)">
+<meta name="twitter:description" content="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？12345行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白解决方案：1.浮动li中float：left2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px3.li之间不换行，且不留空格 如果需要手动写动画，你认为最小时间间隔是多久，为什么？1多数显示器默认频率是">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -190,11 +193,22 @@
       
         
         <div id="toc" class="article-toc">
-          
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><span class="toc-text">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><span class="toc-text">如果需要手动写动画，你认为最小时间间隔是多久，为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么叫做优雅降级和渐进增强"><span class="toc-text">什么叫做优雅降级和渐进增强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何解决跨域"><span class="toc-text">如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于javascript中apply-和call-方法的区别"><span class="toc-text">关于javascript中apply()和call()方法的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS和CSRF原理"><span class="toc-text">XSS和CSRF原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个标签页之间的通信"><span class="toc-text">多个标签页之间的通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><span class="toc-text">什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null和undefined的区别"><span class="toc-text">null和undefined的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD规范与CMD规范的区别"><span class="toc-text">AMD规范与CMD规范的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript-对象的深度克隆"><span class="toc-text">JavaScript 对象的深度克隆</span></a></li></ol>
           <hr/>
         </div>
         
-        
+        <h3 id="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><a href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？" class="headerlink" title="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"></a>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白</div><div class="line">解决方案：</div><div class="line">1.浮动li中<span class="built_in">float</span>：left</div><div class="line">2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px</div><div class="line">3.li之间不换行，且不留空格</div></pre></td></tr></table></figure>
+<h3 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</div></pre></td></tr></table></figure>
+<h3 id="什么叫做优雅降级和渐进增强"><a href="#什么叫做优雅降级和渐进增强" class="headerlink" title="什么叫做优雅降级和渐进增强"></a>什么叫做优雅降级和渐进增强</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</div><div class="line">优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览</div></pre></td></tr></table></figure>
+<h3 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">跨域资源共享</div><div class="line">    基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败</div><div class="line">jsonp跨域</div><div class="line">    JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON</div><div class="line">通过修改document.domain来跨子域</div><div class="line">使用HTML5的window.postMessage方法跨域</div></pre></td></tr></table></figure>
+<h3 id="关于javascript中apply-和call-方法的区别"><a href="#关于javascript中apply-和call-方法的区别" class="headerlink" title="关于javascript中apply()和call()方法的区别"></a>关于javascript中apply()和call()方法的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">方法传递的参数不同 apply是数组传递，call是单个值传递</div></pre></td></tr></table></figure>
+<h3 id="XSS和CSRF原理"><a href="#XSS和CSRF原理" class="headerlink" title="XSS和CSRF原理"></a>XSS和CSRF原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XSS 全称(Cross Site Scripting) 跨站脚本攻击，是Web程序中最常见的漏洞。指攻击者在网页中嵌入客户端脚本(例如JavaScript),当用户浏览此网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的.  比如获取用户的Cookie，导航到恶意网站,携带木马等</div><div class="line">CSRF攻击(Cross Site Request Forgery) 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</div></pre></td></tr></table></figure>
+<h3 id="多个标签页之间的通信"><a href="#多个标签页之间的通信" class="headerlink" title="多个标签页之间的通信"></a>多个标签页之间的通信</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">通过localstorage实现 当localstorage里面发生改变就会出发storage事件</div><div class="line">通过WebSocket实现</div></pre></td></tr></table></figure>
+<h3 id="什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><a href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？" class="headerlink" title="什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？"></a>什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">FOUC即文档样式短暂失效，也就是HTML代码加载成功时它的CSS文件还没有加载，导致出现的网页内容没有样式，一般有这几种情况会导致FOUC：</div><div class="line">    1、使用import方法导入样式表</div><div class="line">    2、HTML代码在前，CSS样式表在后</div><div class="line">解决方法也很简单:</div><div class="line">    1、尽量减少使用import方法导入样式表</div><div class="line">    2、CSS样式表全部放到HEAD里</div></pre></td></tr></table></figure>
+<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">undefined表示<span class="string">"缺少值"</span>，就是此处应该有一个值，但是还没有定义</div></pre></td></tr></table></figure>
+<h3 id="AMD规范与CMD规范的区别"><a href="#AMD规范与CMD规范的区别" class="headerlink" title="AMD规范与CMD规范的区别"></a>AMD规范与CMD规范的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.对于依赖的模块，AMD 是提前执行，CMD 是延迟执行</div><div class="line">2.CMD 推崇依赖就近，AMD 推崇依赖前置</div><div class="line">3.AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一</div></pre></td></tr></table></figure>
+<h3 id="JavaScript-对象的深度克隆"><a href="#JavaScript-对象的深度克隆" class="headerlink" title="JavaScript 对象的深度克隆"></a>JavaScript 对象的深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浅度克隆 ：基本类型为值传递，对象仍为引用传递</div><div class="line">深度克隆 ：所有元素或属性均完全克隆，并于原引用类型完全独立，即，在后面修改对象的属性的时候，原对象不会被修改</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;  </div><div class="line">&#125;</div><div class="line"><span class="comment">// 深度克隆</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;  </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> obj;        <span class="comment">//原始类型直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o = isArray(obj) ? [] : &#123;&#125;; </div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> obj) &#123;  </div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))&#123; </div><div class="line">            o[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">"object"</span> ? deepClone(obj[i]) : obj[i]; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <div class="article-info article-info-index">
@@ -395,6 +409,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -404,14 +426,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
