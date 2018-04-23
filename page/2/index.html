@@ -64,6 +64,8 @@
 	        
 				<li><a href="/categories/算法/">算法</a></li>
 	        
+				<li><a href="/categories/生活/">生活</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -128,6 +130,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -148,15 +152,17 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/知识点入门学习/">知识点入门学习</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/知识点入门学习/">知识点入门学习</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/设计知识点记录/">设计知识点记录</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/设计知识点记录/">设计知识点记录</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/前端知识点总结/">前端知识点总结</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/前端知识点总结/">前端知识点总结</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/算法/">算法</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/算法/">算法</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/生活/">生活</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,7 +179,7 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-interview/interview-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -181,12 +187,702 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/javascript/">你不知道javascript（上卷）知识点总结</a>
+      <a class="article-title" href="/2017/05/21/interview/interview-3/">前端常见面试题归纳(三)</a>
     </h1>
   
 
         
-        <a href="/2017/05/17/javascript/" class="archive-article-date">
+        <a href="/2017/05/21/interview/interview-3/" class="archive-article-date">
+  	<time datetime="2017-05-21T05:35:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><a href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？" class="headerlink" title="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"></a>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白</div><div class="line">解决方案：</div><div class="line">1.浮动li中<span class="built_in">float</span>：left</div><div class="line">2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px</div><div class="line">3.li之间不换行，且不留空格</div></pre></td></tr></table></figure>
+<h3 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</div></pre></td></tr></table></figure>
+<h3 id="什么叫做优雅降级和渐进增强"><a href="#什么叫做优雅降级和渐进增强" class="headerlink" title="什么叫做优雅降级和渐进增强"></a>什么叫做优雅降级和渐进增强</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</div><div class="line">优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览</div></pre></td></tr></table></figure>
+<h3 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">跨域资源共享</div><div class="line">    基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败</div><div class="line">jsonp跨域</div><div class="line">    JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON</div><div class="line">通过修改document.domain来跨子域</div><div class="line">使用HTML5的window.postMessage方法跨域</div></pre></td></tr></table></figure>
+<h3 id="关于javascript中apply-和call-方法的区别"><a href="#关于javascript中apply-和call-方法的区别" class="headerlink" title="关于javascript中apply()和call()方法的区别"></a>关于javascript中apply()和call()方法的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">方法传递的参数不同 apply是数组传递，call是单个值传递</div></pre></td></tr></table></figure>
+<h3 id="XSS和CSRF原理"><a href="#XSS和CSRF原理" class="headerlink" title="XSS和CSRF原理"></a>XSS和CSRF原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XSS 全称(Cross Site Scripting) 跨站脚本攻击，是Web程序中最常见的漏洞。指攻击者在网页中嵌入客户端脚本(例如JavaScript),当用户浏览此网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的.  比如获取用户的Cookie，导航到恶意网站,携带木马等</div><div class="line">CSRF攻击(Cross Site Request Forgery) 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</div></pre></td></tr></table></figure>
+<h3 id="多个标签页之间的通信"><a href="#多个标签页之间的通信" class="headerlink" title="多个标签页之间的通信"></a>多个标签页之间的通信</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">通过localstorage实现 当localstorage里面发生改变就会出发storage事件</div><div class="line">通过WebSocket实现</div></pre></td></tr></table></figure>
+<h3 id="什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><a href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？" class="headerlink" title="什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？"></a>什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">FOUC即文档样式短暂失效，也就是HTML代码加载成功时它的CSS文件还没有加载，导致出现的网页内容没有样式，一般有这几种情况会导致FOUC：</div><div class="line">    1、使用import方法导入样式表</div><div class="line">    2、HTML代码在前，CSS样式表在后</div><div class="line">解决方法也很简单:</div><div class="line">    1、尽量减少使用import方法导入样式表</div><div class="line">    2、CSS样式表全部放到HEAD里</div></pre></td></tr></table></figure>
+<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">undefined表示<span class="string">"缺少值"</span>，就是此处应该有一个值，但是还没有定义</div></pre></td></tr></table></figure>
+<h3 id="AMD规范与CMD规范的区别"><a href="#AMD规范与CMD规范的区别" class="headerlink" title="AMD规范与CMD规范的区别"></a>AMD规范与CMD规范的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.对于依赖的模块，AMD 是提前执行，CMD 是延迟执行</div><div class="line">2.CMD 推崇依赖就近，AMD 推崇依赖前置</div><div class="line">3.AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一</div></pre></td></tr></table></figure>
+<h3 id="JavaScript-对象的深度克隆"><a href="#JavaScript-对象的深度克隆" class="headerlink" title="JavaScript 对象的深度克隆"></a>JavaScript 对象的深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浅度克隆 ：基本类型为值传递，对象仍为引用传递</div><div class="line">深度克隆 ：所有元素或属性均完全克隆，并于原引用类型完全独立，即，在后面修改对象的属性的时候，原对象不会被修改</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;  </div><div class="line">&#125;</div><div class="line"><span class="comment">// 深度克隆</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;  </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> obj;        <span class="comment">//原始类型直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o = isArray(obj) ? [] : &#123;&#125;; </div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> obj) &#123;  </div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))&#123; </div><div class="line">            o[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">"object"</span> ? deepClone(obj[i]) : obj[i]; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/interview/interview-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-interview/interview-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/interview/interview-2/">前端常见面试题归纳(二)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/interview/interview-2/" class="archive-article-date">
+  	<time datetime="2017-05-21T03:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="Q-从-URL-输入到页面展现发生了什么"><a href="#Q-从-URL-输入到页面展现发生了什么" class="headerlink" title="Q:从 URL 输入到页面展现发生了什么"></a>Q:从 URL 输入到页面展现发生了什么</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.将URL输入到浏览器中</div><div class="line">2.浏览器根据域名查找IP地址</div><div class="line">    DNS查找过程如下：</div><div class="line">        Browser cache(浏览器缓存)—浏览器会缓存DNS记录一段时间。有趣的是，操作系统并没有告诉浏览器每一个DNS记录缓存的存活时间，所以浏览器自己会缓存它们固定的一段时间（不同的浏览器存在差异，一般是2-30分钟）。</div><div class="line">        OS cache（操作系统缓存）—如果浏览器缓存中没有找到对应的记录，浏览器就会做一次系统请求（Windows系统中就是根据名称从host文件中获得IP地址）。操作系统有它自己的缓存。</div><div class="line">        Router cache（路由缓存）—请求会在你的路由器上继续进行，路由一般都会有自己的DNS缓存。</div><div class="line">        ISP DNS cache(ISP DNS缓存)—下一个地方就是查找ISP<span class="string">'s DNS服务器了，当然，它也会有一份缓存。</span></div><div class="line">        Recursive search(递归查找)—你的ISP's DNS服务从根域名开始循环查找，根据.com查找顶级域名服务器，然后再到 Facebook 的域名服务器。通常来说，DNS服务器都会有.com域名服务器的缓存，所以根域名服务器不是必须的</div><div class="line">3.浏览器发送一个HTTP请求到浏览器</div><div class="line">4.服务器通过重定向进行响应</div><div class="line">5.浏览器重定向</div><div class="line">6.服务器处理请求</div><div class="line">7.服务器返回HTML响应</div><div class="line">8.浏览器开始渲染HTML</div><div class="line">9.浏览器为嵌入的对象发送请求 （例如：图片等）</div><div class="line">10.浏览器发送AJAX请求</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-引用类型笔试题"><a href="#Q-JS-引用类型笔试题" class="headerlink" title="Q:JS 引用类型笔试题"></a>Q:JS 引用类型笔试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//红宝书 ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">x, y</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> temp = x;</div><div class="line">  x = y;</div><div class="line">  y = temp;  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span></div><div class="line">swap(a, b)</div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">//输出什么</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">//输出什么</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">'jirengu'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">age</span>: <span class="number">2</span>&#125;</div><div class="line">swap(obj1, obj2)</div><div class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">//输出什么</span></div><div class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">//输出什么</span></div><div class="line"></div><div class="line">A:</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line">&#123;<span class="attr">name</span>: <span class="string">'jirengu'</span>&#125;</div><div class="line">&#123;<span class="attr">age</span>: <span class="number">2</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-字符串操作面试题"><a href="#Q-JS-字符串操作面试题" class="headerlink" title="Q:JS 字符串操作面试题"></a>Q:JS 字符串操作面试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 请用JavaScript 实现一个方法，该方法能够判断两个字符串是否匹配</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isMatch</span>(<span class="params">str1, str2</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">isMatch(<span class="string">'something'</span>, <span class="string">'ginhtemos'</span>)  <span class="comment">// true</span></div><div class="line">isMatch(<span class="string">'aaa'</span>, <span class="string">'aa'</span>)  <span class="comment">//false</span></div><div class="line">isMatch(<span class="string">'abb'</span>, <span class="string">'baa'</span>)  <span class="comment">//false</span></div><div class="line">isMatch(<span class="string">'hello'</span>, <span class="string">'olelh'</span>)  <span class="comment">//true</span></div><div class="line"></div><div class="line"><span class="comment">//A:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isMatch</span>(<span class="params">str1, str2</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> str1.split(<span class="string">''</span>).sort().join(<span class="string">''</span>) === str2.split(<span class="string">''</span>).sort().join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-运算符优先级相关题目"><a href="#Q-JS-运算符优先级相关题目" class="headerlink" title="Q:JS 运算符优先级相关题目"></a>Q:JS 运算符优先级相关题目</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Q:</span></div><div class="line"><span class="comment">// object1和object2 都是对象，所以运算的时候会调用valueOf方法</span></div><div class="line">(<span class="number">2</span> &gt; <span class="number">1</span> + -<span class="number">-1</span>) + <span class="literal">true</span>)</div><div class="line"><span class="comment">// 布尔值在运算时会自动转为数字 true -&gt; 1 false -&gt; 0</span></div><div class="line">(<span class="number">1</span>+ <span class="number">0</span>) + <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h3 id="Q-JS-类型判断相关问题"><a href="#Q-JS-类型判断相关问题" class="headerlink" title="Q:JS 类型判断相关问题"></a>Q:JS 类型判断相关问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.写一个函数 isEmptyObject，判断一个对象是不是空对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="comment">// todo...</span></div><div class="line">&#125;</div><div class="line">isEmptyObject( &#123;&#125; ); <span class="comment">//true</span></div><div class="line">isEmptyObject( &#123;<span class="attr">a</span>:<span class="number">1</span>&#125; ) ; <span class="comment">//false</span></div><div class="line"><span class="comment">// 2.如果可以用 ES5，那么你会如何写这个函数？</span></div><div class="line"></div><div class="line"><span class="comment">// Q:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>( <span class="built_in">arguments</span>[<span class="number">0</span>] &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">arguments</span>[<span class="number">0</span>] === <span class="string">"object"</span> ) &#123;</div><div class="line">    <span class="keyword">for</span> ( <span class="keyword">var</span> key <span class="keyword">in</span> <span class="built_in">arguments</span>[<span class="number">0</span>] ) &#123;</div><div class="line">    　<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  　&#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">throw</span> <span class="string">"obj need to be an object"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).length === <span class="number">0</span> &amp;&amp; obj.constructor === <span class="built_in">Object</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 循环/闭包/setTimeout/Promise 综合</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0..4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;, <span class="number">1000</span> * i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;, i * <span class="number">1000</span>);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//0..4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;, i * <span class="number">1000</span>);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout((<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;)(i), i * <span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//5..5  **0..4**</span></div><div class="line"><span class="comment">// setTimeout(undefined, i*1000);</span></div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">executor</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">  <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10000</span> ; i++ ) &#123;</div><div class="line">    i == <span class="number">9999</span> &amp;&amp; resolve();</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</div><div class="line"><span class="comment">//2 3 5 4 1</span></div></pre></td></tr></table></figure>
+<h3 id="什么闭包-闭包有什么用"><a href="#什么闭包-闭包有什么用" class="headerlink" title="什么闭包,闭包有什么用"></a>什么闭包,闭包有什么用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">闭包是在某个作用域内定义的函数，它可以访问这个作用域内的所有变量</div><div class="line">闭包作用域链通常包括三个部分：</div><div class="line">    函数本身作用域</div><div class="line">    闭包定义时的作用域</div><div class="line">    全局作用域</div><div class="line">闭包常见用途：</div><div class="line">    创建特权方法用于访问控制</div><div class="line">    事件处理程序及回调</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/interview/interview-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-interview/interview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/interview/interview/">前端常见面试题归纳(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/interview/interview/" class="archive-article-date">
+  	<time datetime="2017-05-21T01:54:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>1.<strong>DOM操作</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">createElement 通过传入指定的一个标签名来创建一个元素，如果传入的标签名是一个未知的，则会创建一个自定义的标签</div><div class="line">createTextNode createTextNode用来创建一个文本节点</div><div class="line"><span class="built_in">clone</span>Node <span class="built_in">clone</span>Node是用来返回调用方法的节点的一个副本，它接收一个bool参数，用来表示是否复制子元素</div><div class="line">createDocumentFragment createDocumentFragment方法用来创建一个DocumentFragment</div><div class="line">appendChild 将指定的节点添加到调用该方法的节点的子元素的末尾</div><div class="line">insertBefore insertBefore用来添加一个节点到一个参照节点之前</div><div class="line">removeChild 删除指定的子节点并返回</div><div class="line">replaceChild replaceChild用于使用一个节点替换另一个节点</div><div class="line">document.getElementById 根据元素id返回元素，返回值是Element类型，如果不存在该元素，则返回null</div><div class="line">document.getElementsByTagName 这个接口根据元素标签名获取元素，返回一个即时的HTMLCollection类型</div><div class="line">document.getElementsByName getElementsByName主要是通过指定的name属性来获取元素，它返回一个即时的NodeList对象</div><div class="line">document.getElementsByClassName 这个API是根据元素的class返回一个即时的HTMLCollection</div><div class="line">document.querySelector和document.querySelectorAll 通过css选择器来查找元素</div><div class="line">节点关系型api parentNode parentElement previousSibling previousElementSibling nextSibling nextElementSibling childNodes children firstNode lastNode hasChildNodes</div><div class="line">元素属性型api <span class="built_in">set</span>Attribute getAttribute</div><div class="line">元素样式型api </div><div class="line">window.getComputedStyle 用来获取应用到元素后的样式</div><div class="line">getBoundingClientRect 用来返回元素的大小以及相对于浏览器可视窗口的位置</div></pre></td></tr></table></figure></p>
+<p>2.<strong>如何使用事件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTML内连属性</div><div class="line">DOM属性绑定</div><div class="line">事件监听函数 addEventListener</div><div class="line">移除事件监听 removeEventListener</div><div class="line">模拟触发事件 dispatchEvent</div><div class="line">自定义事件 Event、CustomEvent 和 dispatchEvent</div><div class="line">事件顺序 捕获阶段-&gt;达到元素后-&gt;进入事件冒泡阶段</div><div class="line">事件Event对象几个属性：<span class="built_in">type</span>(string)，target(node)，currentTarget(node)，bubbles(boolean),preventDefault (<span class="keyword">function</span>),stopPropagation (<span class="keyword">function</span>),stopImmediatePropagation (<span class="keyword">function</span>),cancelable (boolean),eventPhase (number)</div></pre></td></tr></table></figure></p>
+<p>3.<strong>XMLHttpRequest详解</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//XMLHttpRequest发送的ajax请求代码：</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendAjax</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//构造表单数据</span></div><div class="line">  <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</div><div class="line">  formData.append(<span class="string">'username'</span>, <span class="string">'johndoe'</span>);</div><div class="line">  formData.append(<span class="string">'id'</span>, <span class="number">123456</span>);</div><div class="line">  <span class="comment">//创建xhr对象 </span></div><div class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  <span class="comment">//设置xhr请求的超时时间</span></div><div class="line">  xhr.timeout = <span class="number">3000</span>;</div><div class="line">  <span class="comment">//设置响应返回的数据格式</span></div><div class="line">  xhr.responseType = <span class="string">"text"</span>;</div><div class="line">  <span class="comment">//创建一个 post 请求，采用异步</span></div><div class="line">  xhr.open(<span class="string">'POST'</span>, <span class="string">'/server'</span>, <span class="literal">true</span>);</div><div class="line">  <span class="comment">//注册相关事件回调处理函数</span></div><div class="line">  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>||<span class="keyword">this</span>.status == <span class="number">304</span>)&#123;</div><div class="line">        alert(<span class="keyword">this</span>.responseText);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  xhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  </div><div class="line">  <span class="comment">//发送数据</span></div><div class="line">  xhr.send(formData);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">XHR 对象的属性和方法</div><div class="line">属性:</div><div class="line">    readyState：HTTP 请求的状态</div><div class="line">    responseText：响应体（不包括头部）</div><div class="line">    responseXML：对请求的响应，解析为 XML 并作为 Document 对象返回</div><div class="line">    status：由服务器返回的 HTTP 状态代码，如 200 表示成功</div><div class="line">    statusText：这个属性用名称而不是数字指定了请求的 HTTP 的状态代码。也就是说，当状态为 200 的时候它是 <span class="string">"OK"</span>，当状态为 404 的时候它是 <span class="string">"Not Found"</span></div><div class="line">    responseType：返回的我们设置的数据类型（text，document，json，blob，arrayBuffer）</div><div class="line">    timeout：设置请求的超时时间</div><div class="line">方法:</div><div class="line">    loadstart(): 调用xhr.send()方法后立即触发</div><div class="line">    progress(): xhr.upload.onprogress在上传阶段(即xhr.send()之后，xhr.readystate=2之前)触发，每50ms触发一次；xhr.onprogress在下载阶段（即xhr.readystate=3时）触发，每50ms触发一次</div><div class="line">    timeout: xhr.timeout不等于0，由请求开始即onloadstart开始算起，当到达xhr.timeout所设置时间请求还未结束即onloadend，则触发此事件</div><div class="line">    load: 当请求成功完成时触发，此时xhr.readystate=4</div><div class="line">    loadend: 当请求结束（包括请求成功和请求失败）时触发</div><div class="line">    abort() : 取消当前响应，关闭连接并且结束任何未决的网络活动</div><div class="line">    getAllResponseHeaders()：把 HTTP 响应头部作为未解析的字符串返回</div><div class="line">    getResponseHeader()：返回指定的 HTTP 响应头部的值</div><div class="line">    open(method,url[,async = <span class="literal">true</span>[,username = null, [,password = null]])：初始化 HTTP 请求参数，例如 URL 和 HTTP 方法，但是并不发送请求</div><div class="line">    send()：发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求体</div><div class="line">    <span class="built_in">set</span>RequestHeader()：向一个打开但未发送的请求设置或添加一个 HTTP 请求</div><div class="line">    overrideMimeType()：返回的我们设置的数据类型</div><div class="line"></div><div class="line">xhr事件：onreadystatechange 监听xhr返回时的事件</div><div class="line">获取上传、下载的进度: onprogress事件</div><div class="line">    上传触发的是xhr.upload对象的 onprogress事件</div><div class="line">    下载触发的是xhr对象的onprogress事件</div><div class="line">事件出发顺序：</div><div class="line">    1.触发xhr.onreadystatechange(之后每次readyState变化时，都会触发一次)</div><div class="line">    2.触发xhr.onloadstart</div><div class="line">    //上传阶段开始：</div><div class="line">    3.触发xhr.upload.onloadstart</div><div class="line">    4.触发xhr.upload.onprogress</div><div class="line">    5.触发xhr.upload.onload</div><div class="line">    6.触发xhr.upload.onloadend</div><div class="line">    //上传结束，下载阶段开始：</div><div class="line">    7.触发xhr.onprogress</div><div class="line">    8.触发xhr.onload</div><div class="line">    9.触发xhr.onloadend</div></pre></td></tr></table></figure>
+<p>4.<strong>如何使用浮动元素，以及带来的问题和解决方案</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">浮动定义：浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘，通过设置<span class="built_in">float</span>属性实现</div><div class="line">现象：正是因为浮动的这种特性，导致本属于普通流中的元素浮动之后，包含框内部由于不存在其他普通流元素了，也就表现出高度为0（高度塌陷）。在实际布局中，往往这并不是我们所希望的，所以需要闭合浮动元素，使其包含框表现出正常的高度</div><div class="line">如何清除浮动：</div><div class="line">    清除浮动：清除对应的单词是 clear，对应CSS中的属性是 clear：left | right | both | none</div><div class="line">    闭合浮动：更确切的含义是使浮动元素闭合，从而减少浮动带来的影响</div><div class="line">BFC的特性</div><div class="line">    块级格式化上下文会阻止外边距叠加</div><div class="line">    当两个相邻的块框在同一个块级格式化上下文中时，它们之间垂直方向的外边距会发生叠加。换句话说，如果这两个相邻的块框不属于同一个块级格式化上下文，那么它们的外边距就不会叠加。</div><div class="line">    块级格式化上下文不会重叠浮动元素</div><div class="line">    根据规定，一个块级格式化上下文的边框不能和它里面的元素的外边距重叠。这就意味着浏览器将会给块级格式化上下文创建隐式的外边距来阻止它和浮动元素的外边距叠加。由于这个原因，当给一个挨着浮动的块级格式化上下文添加负的外边距时将会不起作用（Webkit和IE6在这点上有一个问题——可以看这个测试用例）。</div><div class="line">    块级格式化上下文通常可以包含浮动</div><div class="line">如何触发BFC?</div><div class="line">    <span class="built_in">float</span> 除了none以外的值</div><div class="line">    overflow 除了visible 以外的值（hidden，auto，scroll ）</div><div class="line">    display (table-cell，table-caption，inline-block)</div><div class="line">    position（absolute，fixed）</div><div class="line">    fieldset元素</div><div class="line">BFC的几个用途</div><div class="line">    1、BFC可以阻止垂直边距叠加问题</div><div class="line">    2、BFC可以包含内部元素的浮动</div><div class="line">    3、BFC可以阻止元素被浮动覆盖</div><div class="line">    4、BFC可以决定清除浮动的范围</div></pre></td></tr></table></figure></p>
+<p>5.<strong>HTMLXHTML区别，如何选择</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xhtml:</div><div class="line">    1.所有的标记都都要闭合 </div><div class="line">    2.所有标签的元素和属性的名字都必须使用小写 </div><div class="line">    3.所有的XML标记都必须合理嵌套 </div><div class="line">    4.所有的属性必须用引号（单或双）包括在HTML中，你可以不需要给属性值加引号，但是在XHTML中，它们必须被加引号</div><div class="line">    5.把所有&lt;和&amp;特殊符号用编码表示任何小于号（&lt;），不是标签的一部分，都必须被编码为&amp; l t ; 任何大于号（&gt;），不是标签的一部分，都必须被编码为&amp; g t ; 任何与号（&amp;），不是实体的一部分的，都必须被编码为&amp; a m p</div><div class="line">    6.给所有属性赋一个值 </div><div class="line">    7.不要在注释内容中使<span class="string">"- -"</span> </div><div class="line">    8.图片必须有说明文字 每个图片标签都必须有ALT说明文字</div></pre></td></tr></table></figure></p>
+<p>6.<strong>JSON作用，用途，设计结构</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">JSON API 是数据交互规范，用以定义客户端如何获取与修改资源，以及服务器如何响应对应请求</div><div class="line">JSON API设计用来最小化请求的数量，以及客户端与服务器间传输的数据量。在高效实现的同时，无需牺牲可读性、灵活性和可发现性</div><div class="line">JSON API需要使用JSON API媒体类型(application/vnd.api+json) 进行数据交互</div><div class="line">JSON API服务器支持通过GET方法获取资源。而且必须独立实现HTTP POST, PUT和DELETE方法的请求响应，以支持资源的创建、更新和删除</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/interview/interview/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-design/ps-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/20/design/ps-5/">5.图层的高级操作</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/20/design/ps-5/" class="archive-article-date">
+  	<time datetime="2017-05-20T14:53:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="图层的设置"><a href="#图层的设置" class="headerlink" title="图层的设置"></a>图层的设置</h3><ol>
+<li>图层控制面板中可以设置不透明度</li>
+<li>混合模式用来控制当前图层中的像素与它下面图层中的像素如何混合，除背景图层外，其他图层都支持混合，另外用于混合通道</li>
+</ol>
+<h3 id="填充图层"><a href="#填充图层" class="headerlink" title="填充图层"></a>填充图层</h3><ol>
+<li>图层➡新建填充图层➡纯色 或单机图层面板中创建新的填充或调整图层按钮，选择纯色</li>
+<li>渐变填充图层 图层➡新建填充图层➡渐变或者创建新的填充或调整图层按钮，选择渐变</li>
+</ol>
+<h3 id="调整图层"><a href="#调整图层" class="headerlink" title="调整图层"></a>调整图层</h3><ol>
+<li>图层➡调整 调整命令直接修改所选图层中的像素数据，但调整图层中国年可以达到同样的调整效果但不会修改像素</li>
+<li>图层➡新建调整图层 可在图层面板中创建调整图层</li>
+</ol>
+<h3 id="中性色涂层"><a href="#中性色涂层" class="headerlink" title="中性色涂层"></a>中性色涂层</h3><ol>
+<li>使用色阶或曲线校正偏色的照片，通过定义灰色来校正色偏</li>
+</ol>
+<h3 id="智能对象"><a href="#智能对象" class="headerlink" title="智能对象"></a>智能对象</h3><ol>
+<li>智能对象是一个嵌入到当前文档中的文件，它可以包含图像，也可以包含矢量图形</li>
+<li>文件➡打开为智能对象 创建智能对象，文件➡置入 将另外一个文件作为智能对象置入到当前文档中</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/20/design/ps-5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-design/ps-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/19/design/ps-4/">4.图层</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/19/design/ps-4/" class="archive-article-date">
+  	<time datetime="2017-05-19T14:21:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="什么是图层"><a href="#什么是图层" class="headerlink" title="什么是图层"></a>什么是图层</h3><ol>
+<li>图层就如同堆叠在一起的透明纸，每一张纸上都保存着不同的图像。我们可以透过上面图层的透明区域看到下面层的图像</li>
+<li>图层面板含有：选取图层类型，打开／关闭图层过滤，设置图层的混合模式，设置图层的不透明度，设置填充不透明度，图层锁定按钮，图层链接图标</li>
+</ol>
+<h3 id="新建图层"><a href="#新建图层" class="headerlink" title="新建图层"></a>新建图层</h3><ol>
+<li>点击图层面板中心间图层按钮即在当前图层上面新建一个图层，按住Ctrl键然后点击图层即可在当前图层下面新建图层–图层➡新建➡图层</li>
+<li>如果在图像中创建了选区，通过图层➡新建➡通过拷贝的图层或按下Ctrl+J的方式将选区的图层拷贝到当前图层上面，剪切为Shift+Ctrl+J</li>
+<li>如果没有背景图层，那么通过图层➡新建➡背景图层来将选中图层转为背景图层</li>
+</ol>
+<h3 id="编辑图层"><a href="#编辑图层" class="headerlink" title="编辑图层"></a>编辑图层</h3><ol>
+<li>选择所有图层-选择➡所有图层，选择链接图层-图层➡选择链接图层，取消选择图层-选择➡取消选择图层</li>
+<li>图层➡重命名图层</li>
+<li>锁定图层：锁定透明度像素，锁定图像像素，锁定位置，锁定全部</li>
+<li>查找图层：选择➡查找图层</li>
+<li>删除图层：图层➡删除</li>
+<li>栅格化图层内容-如果要使用绘画工具和滤镜编辑文字图层，形状图层，矢量蒙版，让图层内容转化为光栅图像，才能进行编辑 图层➡栅格化</li>
+<li>清除图像的杂边 图层➡修边</li>
+</ol>
+<h3 id="排列与分布图层"><a href="#排列与分布图层" class="headerlink" title="排列与分布图层"></a>排列与分布图层</h3><ol>
+<li>图层➡排列 置为顶层，前移一层／后移一层，置为底层，反向</li>
+<li>图层➡对齐，图层➡对齐➡顶边</li>
+<li>分布图层：图层➡分布➡水平居中</li>
+<li>将图层与选区对齐：图层➡将图层与选区对齐</li>
+</ol>
+<h3 id="合并与盖印图层"><a href="#合并与盖印图层" class="headerlink" title="合并与盖印图层"></a>合并与盖印图层</h3><ol>
+<li>合并图层：图层➡合并图层，图层➡向下合并，快捷键Ctrl+E，图层➡合并可见图层，快捷键Shift+Ctrl+E</li>
+<li>将图层合并到背景中：图层➡拼合图像</li>
+<li>盖印是将多个图层中图像合并到一个新的图层中，同时保持其他图层完好无损，向下盖印快捷键Ctrl+ALt+E，盖印多个图层-选择多个图层，按下Ctrl+Alt+E，盖印可见图层，盖印图层组</li>
+</ol>
+<h3 id="用图层组管理图层"><a href="#用图层组管理图层" class="headerlink" title="用图层组管理图层"></a>用图层组管理图层</h3><ol>
+<li>创建图层组：点击图层面板中的文件夹图标或图层➡新建➡组</li>
+<li>从所选图层中创建图层组：图层➡图层编组或Ctrl+G</li>
+<li>取消图层组，但保留图层可选择该图层组，执行图层➡取消图层编组或Shift+Ctrl+G，如果要删除整个图层组将其移入图层面板的删除图标</li>
+</ol>
+<h3 id="图层样式"><a href="#图层样式" class="headerlink" title="图层样式"></a>图层样式</h3><ol>
+<li>添加图层样式：1.图层➡图层样式 选择一个有效的命令；2.可以在图层面板中点击图层样式按钮</li>
+<li>图层样式对话框中的效果名称前面的复选框如果选中则可以停用该效果，但保留效果参数</li>
+<li>斜面和浮雕：对图层添加高光和阴影的各种组合，使图层呈现立体的浮雕效果</li>
+<li>描边：可以使用颜色，渐变或图案描画对象的轮廓，它对于硬边形状，如文字特别有用</li>
+<li>内阴影：在紧靠图层内容的边缘内添加阴影，使图层内容产生凹陷效果</li>
+<li>内发光：沿图层内容的边缘向内创建发光效果</li>
+<li>光泽： 应用光滑光泽的内部阴影，通常用来创建金属表面的光泽外观</li>
+<li>颜色叠加：在图层上叠加指定的颜色，通过设置颜色的混合模式和不透明度，可以控制叠加效果</li>
+<li>渐变叠加：在图层上叠加指定的渐变颜色</li>
+<li>图案叠加：在图层上叠加指定的图案并且可以缩放图案，设置图案的不透明度和混合模式</li>
+<li>外发光：沿图层内容的边缘向外创建发光效果</li>
+<li>投影：为图层内容添加阴影</li>
+</ol>
+<h3 id="编辑图层样式"><a href="#编辑图层样式" class="headerlink" title="编辑图层样式"></a>编辑图层样式</h3><ol>
+<li>显示与隐藏-图层面板中点击眼睛图标可以显示或者隐藏图层</li>
+<li>修改效果-双击图层一个效果名称可以打开图层样式对话框，并且可以修改样式参数</li>
+<li>复制，粘贴与清除效果-图层➡图层样式➡拷贝图层样式 复制图层样式，粘贴图层样式-图层➡图层样式➡粘贴图层样式</li>
+<li>移动图层样式-按住Alt键，然后将图层fx移动到另外一个图层达到移动效果</li>
+<li>如果要删除图层样式，将其移动到图层面板中的垃圾桶图标</li>
+<li>使用全局光-在图层样式中，投影，内阴影，斜面和浮雕都包含全局光，选择此选项后，以上效果都会使用相同角度的光源</li>
+<li>使用等高线-投影，内阴影，内发光，外发光，斜面和浮雕，光泽都包含等高线设置选项，等高线可以选择一个预设的等高线样式</li>
+</ol>
+<h3 id="使用样式面板"><a href="#使用样式面板" class="headerlink" title="使用样式面板"></a>使用样式面板</h3><ol>
+<li>选择一个图层，点击样式面板中一个样式，既可为其添加样式</li>
+<li>创建样式，删除样式 样式面板底部有创建样式和删除样式的图标</li>
+<li>存储样式库，载入样式库</li>
+</ol>
+<h3 id="图层复合"><a href="#图层复合" class="headerlink" title="图层复合"></a>图层复合</h3><ol>
+<li>图层复合面板用来创建，编辑，显示和删除图层复合</li>
+<li>窗口➡图层复合 打开图层复合窗口</li>
+<li>图层复合时面板状态的快照，它记录当前文档图层的可见性，位置和外观，通过图层复合可以快速在文档中切换不同版面的显示状态，比较适合多种设计方案</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/19/design/ps-4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-design/ps-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/18/design/ps-3/">3.选区</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/18/design/ps-3/" class="archive-article-date">
+  	<time datetime="2017-05-18T15:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="认识选区"><a href="#认识选区" class="headerlink" title="认识选区"></a>认识选区</h3><ol>
+<li>选区分为两种:普通选区和羽化的选区</li>
+<li>选择和抠图的几种方法：1.基本形状选择法；2.色调差异选择法；3.快速蒙版选择法；4.简单选区细化法；5.钢笔工具选择法；6.通道选择法；7.插件选择法；</li>
+</ol>
+<h3 id="选区的基本操作"><a href="#选区的基本操作" class="headerlink" title="选区的基本操作"></a>选区的基本操作</h3><ol>
+<li>全选与反选 选择➡全部或Ctrl+A可以选择当前文件全部图像</li>
+<li>复制选区 快捷键Ctrl+C可复制整个图像 如果文档中有多个图层可按下Shift+Ctrl+C</li>
+<li>反选 选择➡反向或Shift+Ctrl+I可执行反选</li>
+<li>取消选择分区 选择➡取消选择或Ctrl+D可以取消选择，如果要重新选择可以执行选择➡重新选择</li>
+<li>选区运算 在工具选项栏中有：新选区，与选区交叉，添加到选区，从选区中减去，与选区这四种运算</li>
+<li>如果当前有选区可以使用选框，套索，魔棒工具继续选区，按住Shift可以在当前选区添加选区，等同上</li>
+<li>移动选区 隐藏与显示选区 执行视图➡显示➡选区边缘或Ctrl+H可以隐藏选区</li>
+<li>选区工具：矩形选区，椭圆选区，单行选区工具，单列选区工具，套索工具，多边形套索工具，磁性套索工具</li>
+</ol>
+<h3 id="魔棒与快速选择工具"><a href="#魔棒与快速选择工具" class="headerlink" title="魔棒与快速选择工具"></a>魔棒与快速选择工具</h3><ol>
+<li>魔棒工具和快速选择工具是基于色调和颜色差异来构建选区的工具</li>
+<li>魔棒工具和快速选择工具的工具选项栏</li>
+</ol>
+<h3 id="“色彩范围”命令"><a href="#“色彩范围”命令" class="headerlink" title="“色彩范围”命令"></a>“色彩范围”命令</h3><ol>
+<li>选择➡色彩范围 对话框中有选区预览图，选择-取样颜色，选区预览，检测人脸，反相等。</li>
+</ol>
+<h3 id="快速蒙版"><a href="#快速蒙版" class="headerlink" title="快速蒙版"></a>快速蒙版</h3><ol>
+<li>快速蒙版是一种选区的转换工具，他能将选区转换为一种临时的蒙版图像，这样能通过画笔，滤镜，钢笔等工具编辑蒙版，之后再将蒙版图像转换选区</li>
+<li>选择➡在快速蒙版模式下编辑 工具栏底部有快速蒙版编辑工具</li>
+</ol>
+<h3 id="细化选区"><a href="#细化选区" class="headerlink" title="细化选区"></a>细化选区</h3><ol>
+<li>选择➡调整边缘</li>
+</ol>
+<h3 id="选区的编辑操作"><a href="#选区的编辑操作" class="headerlink" title="选区的编辑操作"></a>选区的编辑操作</h3><ol>
+<li>选择➡修改➡边界 可以将选区的边界向内部和外部扩展</li>
+<li>选择➡修改➡平滑 让选区更加平滑</li>
+<li>选择➡修改➡扩展／收缩 扩展／收缩选区范围</li>
+<li>选择➡修改➡羽化 选区羽化，且控制羽化范围</li>
+<li>选择➡变换选区 对选区应用进行变换</li>
+<li>存储选区–单机通道面板底部将选区存储为通道按钮，将选区保存在Alpha通道中</li>
+<li>选择➡存储选区 也可以存储选区</li>
+<li>选择➡载入选区 即可载入选区，或者按住Ctrl单击通道缩览图</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/18/design/ps-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-design/ps-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/design/ps-2/">2.图像的基本编辑方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/17/design/ps-2/" class="archive-article-date">
+  	<time datetime="2017-05-17T14:37:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><ol>
+<li>Ctrl+N快速新建文件  文件➡新建</li>
+<li>Ctrl+O打开文件</li>
+<li>图层➡图层样式➡外发光可以调节光晕</li>
+<li>文件➡导入可以导入视频帧和WIA等内容</li>
+<li>Ctrl+S可以保存文件</li>
+<li>Ctrl+W可以关闭文件</li>
+</ol>
+<h3 id="在图像中添加版权信息"><a href="#在图像中添加版权信息" class="headerlink" title="在图像中添加版权信息"></a>在图像中添加版权信息</h3><ol>
+<li>文件➡文件简介可以添加版权信息</li>
+<li>使用“嵌入水印”滤镜也可以在图像中加入版权信息</li>
+</ol>
+<h3 id="修改像素尺寸和画布大小"><a href="#修改像素尺寸和画布大小" class="headerlink" title="修改像素尺寸和画布大小"></a>修改像素尺寸和画布大小</h3><ol>
+<li>图像➡图像大小 命令可以设置图像大小</li>
+<li>图像大小弹出窗中可以设置文档大小，当缩小图像时会减少像素数量，但是画质不变，但是增大图像时，画质会下降</li>
+<li>图像➡画布大小 调整画布的大小</li>
+<li>图像➡图像旋转 旋转画布</li>
+<li>图像➡复制 复制文档</li>
+<li>编辑➡拷贝 拷贝文档 快捷键:Ctrl+C</li>
+<li>编辑➡剪切 剪切文档</li>
+<li>编辑➡粘贴 粘贴文档 快捷键:Ctrl+V</li>
+<li>编辑➡选择性粘贴</li>
+<li>编辑➡清楚 清楚选中的图像</li>
+<li>编辑➡还原 撤销最后一次修改 快捷键:Ctrl+Z</li>
+<li>编辑➡后退一步 可以后退上一步，编辑➡重做 可还原初始 快捷键:Shift+Ctrl+Z</li>
+<li>文件➡恢复 直接将文件恢复到最后一次保存状态</li>
+<li>tips—图像➡调整以及滤镜菜单中的滤镜，当我们修改参数时，若要还原默认值可以按住Alt键，对话框中的取消会变成复位</li>
+</ol>
+<h3 id="用历史记录面板进行还原操作"><a href="#用历史记录面板进行还原操作" class="headerlink" title="用历史记录面板进行还原操作"></a>用历史记录面板进行还原操作</h3><ol>
+<li>窗口➡历史记录 可查看操作的历史记录</li>
+<li>历史记录只能保存20步的操作步骤</li>
+<li>若要增加步数可在 编辑➡首选项➡性能对话框中增加历史记录的保存步数，但是这样会占用很多内存</li>
+<li>另外一种方式是绘制完重要的效果之后可在历史记录面板中点击快照按钮，将画面的当前状态保存为一个快照，按住Alt键然后点击快照按钮即可创建快照</li>
+<li>删除快照–将快照移入删除按钮中</li>
+<li>编辑➡清理 将菜单中的历史记录和全部命令会清除ps打开的所有文档</li>
+</ol>
+<h3 id="图像的变换和变形操作"><a href="#图像的变换和变形操作" class="headerlink" title="图像的变换和变形操作"></a>图像的变换和变形操作</h3><ol>
+<li>编辑➡变换 可以对涂层，路径，矢量形状，以及选中的图像进行变换操作</li>
+<li>移动工具选项栏中可以点击显示变换控件，即可变形图像</li>
+<li>移动工具快速调入变换状态快捷键:Ctrl+T，变换图像，且复制出新的图像内容快捷键:Alt+Shfit+Ctrl+T</li>
+<li>复制图层快捷键:Ctrl+J</li>
+</ol>
+<h3 id="内容识别比例缩放"><a href="#内容识别比例缩放" class="headerlink" title="内容识别比例缩放"></a>内容识别比例缩放</h3><ol>
+<li>将背景图层转换普通图层快捷键:安装ALt然后双击图层</li>
+<li>编辑➡内容识别比例</li>
+<li>取消选取快捷键:Ctrl+D</li>
+<li>用Alpha通道保护图像–在使用内容缩放时容易导致图像变形，为了保护部分地方不变形，选择受保护选取然后点击通道的蒙版，将选取保存为Alpha通道</li>
+</ol>
+<h3 id="操控变形"><a href="#操控变形" class="headerlink" title="操控变形"></a>操控变形</h3><ol>
+<li>编辑➡操控变形 可以操控变形</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/17/design/ps-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-javascript/javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/javascript/javascript/">你不知道javascript（上卷）知识点总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/17/javascript/javascript/" class="archive-article-date">
   	<time datetime="2017-05-17T11:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
 </a>
         
@@ -311,11 +1007,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">你不知道的javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">你不知道的javascript</a>
         		</li>
       		
 		</ul>
@@ -336,7 +1032,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/javascript/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/17/javascript/javascript/">展开全文 >></a>
         </p>
       
 
@@ -350,7 +1046,7 @@
 
 
   
-    <article id="post-building-basic-task-for-photoshop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-design/building-basic-task-for-photoshop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -358,12 +1054,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/building-basic-task-for-photoshop/">1.ps基本操作</a>
+      <a class="article-title" href="/2017/05/17/design/building-basic-task-for-photoshop/">1.ps基本操作</a>
     </h1>
   
 
         
-        <a href="/2017/05/17/building-basic-task-for-photoshop/" class="archive-article-date">
+        <a href="/2017/05/17/design/building-basic-task-for-photoshop/" class="archive-article-date">
   	<time datetime="2017-05-16T16:04:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
 </a>
         
@@ -409,11 +1105,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">design</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">photoshop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
         		</li>
       		
 		</ul>
@@ -434,7 +1130,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/building-basic-task-for-photoshop/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/17/design/building-basic-task-for-photoshop/">展开全文 >></a>
         </p>
       
 
@@ -448,7 +1144,7 @@
 
 
   
-    <article id="post-page-design" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-design/page-design" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -456,12 +1152,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/page-design/">页面设计的四条原则</a>
+      <a class="article-title" href="/2017/05/15/design/page-design/">页面设计的四条原则</a>
     </h1>
   
 
         
-        <a href="/2017/05/15/page-design/" class="archive-article-date">
+        <a href="/2017/05/15/design/page-design/" class="archive-article-date">
   	<time datetime="2017-05-15T13:18:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
 </a>
         
@@ -511,93 +1207,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/page-design/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/hello-world/">Hexo 博客创建记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/11/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-11T03:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p>通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。</p>
-<h3 id="搭建github"><a href="#搭建github" class="headerlink" title="搭建github"></a>搭建github</h3><ol>
-<li><a href="https://github.com/" target="_blank" rel="external">官网</a>中申请账号</li>
-<li><a href="https://segmentfault.com/a/1190000002533334" target="_blank" rel="external">本地配置github</a></li>
-</ol>
-<h3 id="安装hexo，上传资源文件至github"><a href="#安装hexo，上传资源文件至github" class="headerlink" title="安装hexo，上传资源文件至github"></a>安装hexo，上传资源文件至github</h3><p>1.<strong>安装hexo</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<p>2.<strong>通过hexo生成blog基本文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure></p>
-<p>3.<strong>配置blog中根目录的配置文件_config.yml及添加一些hexo的基本工具</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">修改_config.yml的配置文件  </div><div class="line">    修改site，导入个人基本信息</div><div class="line">    通过添加theme来使用其它主题的blog，并且在配置文件中修改theme</div><div class="line">    在theme中设置使用哪种评论工具目前duoshuo已经停止使用</div><div class="line">添加hexo的基本工具</div><div class="line">    hexo-deployer-git 向远程仓库导入文件的工具</div><div class="line">    hexo-generator-json-content 配置blog标题的基本信息</div><div class="line">    hexo-generator-sitemap  添加sitemap，使得搜索引擎快速找到blog</div><div class="line">    hexo-generator-feed  添加rss</div></pre></td></tr></table></figure></p>
-<p>4.<strong>生成blog资源文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
-<p>5.<strong>上传到github</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
-<p>2.<strong>本地测试blog项目</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>3.<strong>发布草稿</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] title</div></pre></td></tr></table></figure></p>
-<p>4.<strong>更多关于hexo的使用，请点击<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">详情页</a></strong></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/15/design/page-design/">展开全文 >></a>
         </p>
       
 
@@ -613,7 +1223,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -704,6 +1314,14 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
               </li>
              
@@ -720,22 +1338,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
@@ -745,6 +1347,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
