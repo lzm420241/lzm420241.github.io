@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
-  <title>前端那点事</title>
+  <title>Category: 算法 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="前端那点事">
-<meta property="og:url" content="https://lzm420241.github.io/page/2/index.html">
+<meta property="og:url" content="https://lzm420241.github.io/categories/算法/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端那点事">
@@ -173,449 +173,73 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/22/algorithm-1/" class="archive-article-date">
+  	<time datetime="2017-05-22T14:40:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/javascript/">你不知道javascript（上卷）知识点总结</a>
+      <a class="archive-article-title" href="/2017/05/22/algorithm-1/">堆栈存储区别及常用算法总结</a>
     </h1>
   
 
-        
-        <a href="/2017/05/17/javascript/" class="archive-article-date">
-  	<time datetime="2017-05-17T11:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
-<li>编译的三步骤:分词／词法分析，解析／语法分析，代码生成</li>
-<li>javascript编译器工作过程:1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
-<li>编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询</li>
-<li>当一个块或函数嵌套在另一个块或函数时，就发生了作用域的嵌套，因此，在当前作用域中无法找到某个变量时，引擎会在外层作用域中查找，直到找到该变量，或抵达最外层作用域停止</li>
-<li>在非严格模式下，如果通过RHS查询无法查询到变量，但是通过LHS查询时如果不存在这个变量会自动声明这个变量，在严格模式下两者查询模式都是不行的 </li>
-</ol>
-<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ol>
-<li>作用域共有两种工作模型:1.词法作用域；2.动态作用域</li>
-<li>词法作用域就是定义在词法阶段的作用域</li>
-<li><p>欺骗词法的两种机制(非常影响性能):<br>1.eval函数可以接受一个字符串为参数，并将其中的内容视为好像在书写时就存在于程序中这个位置的代码，严格模式的声明是无法修改所在的作用域    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>)</span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str);  <span class="comment">//欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a, b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">//1,3</span></div></pre></td></tr></table></figure>
-<p>2.with关键字通常被当作重复引用同一个对象中的多个属性的快捷方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">c</span>: <span class="number">3</span></div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">2</span>;</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.c = <span class="number">4</span>;</div><div class="line"><span class="comment">//简单的快捷方式</span></div><div class="line"><span class="keyword">with</span>(obj)&#123;</div><div class="line">    a = <span class="number">3</span>;</div><div class="line">    b = <span class="number">4</span>;</div><div class="line">    c = <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" class="headerlink" title="函数作用域和块作用域"></a>函数作用域和块作用域</h4><ol>
-<li>函数会被当作函数表达式而不是一个标准的函数声明来处理</li>
-<li>width，try／catch中的catch都是块作用域中例子</li>
-</ol>
-<h4 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h4><ol>
-<li>包含变量和函数在内的所有声明都会在任何代码被执行前首先被处理</li>
-<li>只有声明本身会被提升，而赋值或其他运行逻辑会留在原地。如果提升该拜年了代码的顺序，会造成严重的破坏</li>
-<li>函数声明会被提升，但是函数表达式却不会被提升</li>
-<li>函数会首先被提升，然后才是变量</li>
-<li>代码执行会经过两个阶段任务:1.编译阶段的人物；2.执行阶段任务</li>
-</ol>
-<h4 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h4><ol>
-<li>无论通过任何手段将内部函数传递到所在的词法作用域以外，他都会持有对原始定义作用域的引用，无论在何处执行这个函数都是使用闭包</li>
-<li>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包</li>
-</ol>
-<h4 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h4><ol>
-<li>词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定的，词法作用域关注函数在何处声明，动态作用域关注函数从何处调用</li>
-</ol>
-<h3 id="this和对象原型"><a href="#this和对象原型" class="headerlink" title="this和对象原型"></a>this和对象原型</h3><h4 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h4><ol>
-<li>arguments.callee目前唯一一种从匿名函数对象内部引用自身的方法</li>
-<li>this是在运行时调用的，并不是在编写时绑定的。这个记录会包含函数在哪里被调用，函数的调用方法，传入参数等信息。this就是记录的其中一个属性，会在函数执行的过程中用到</li>
-<li>this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用</li>
-</ol>
-<h4 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h4><ol>
-<li>调用位置:函数在代码中被调用的位置，而不是声明的位置</li>
-<li>查看绑定规则:1.默认绑定；2.隐式绑定；3.显式绑定（call和apply）；4.new绑定</li>
-<li>四种绑定的优先级:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定</li>
-<li>将null和undefined通过call或apply传入函数实际等价于默认绑定</li>
-<li>软绑定➡如果给默认绑定指定一个全局对象和undefined以外的值，那就可以和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力</li>
-<li></li>
-</ol>
-<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ol>
-<li>对象可以通过声明形式和构造形式定义</li>
-<li>六种类型:string，number，boolean，null，undefined，object</li>
-<li>对象子类型:String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
-<li>在对象中属性名永远都是字符串，如果使用了string以外的值，那么它首先会转化为字符串</li>
-<li>函数和方法本质是等价的，唯一不同的是方法里面使用的this会隐式指向对象</li>
-<li>浅复制即对值的引用，深复制会复制其相关联的元素</li>
-<li>object.assign实现浅复制</li>
-<li><p>通过object.defineProperty来添加一个新属性或者修改一个已有的属性，并对特性进行设置     </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObj = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(myObj, <span class="string">"a"</span>, &#123;</div><div class="line">    <span class="attr">value</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>禁用扩展 Object.preventExtensions</p>
-</li>
-<li>密封 Object.seal 不可重新配置也不可删除任何现有属性</li>
-<li>冻结 Object.freeze 对象上最高级别的不可用性</li>
-<li>Object.hasOwnProperty检查属性是否存在对象中</li>
-<li>Object.propertyIsEnumerable检查给定属性名是否直接存在于对象中，Object.keys返回可枚举属性的数组，Object.getOwnPropertyNames 返回一个数组，包含所有属性</li>
-<li>forEach遍历数组的所有值，并忽略回调函数的返回值</li>
-<li>every（）和some（）中特殊的返回值类似for里面的break</li>
-<li>for…of..会寻找内置或者自定义的@@iterator对象并调用它的next（）方法来遍历数据值</li>
-</ol>
-<h4 id="混合对象“类”"><a href="#混合对象“类”" class="headerlink" title="混合对象“类”"></a>混合对象“类”</h4><ol>
-<li>面向类的设计模式：实例化，继承，多台</li>
-<li>多态是说父类的通用行为可以被子类更特殊的行为重写</li>
-<li><p>类实例由一个特殊的方法构造，成为构造函数，这个方法的任务就是初始化实例需要的所有信息  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
-</li>
-<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
-</li>
-<li>模拟类的复制：显示和隐式</li>
-<li><p>显示混入实现类似于extend </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params"> sourceObj, targetObj</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> sourceObj)&#123;</div><div class="line">        <span class="keyword">if</span>(!(key <span class="keyword">in</span> targetObj))&#123;</div><div class="line">            targetObj[key] = sourceObj[key];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Vehicle = &#123;</div><div class="line">    <span class="attr">engine</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">ignition</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Turning on my engine"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.ignition();</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Steering and moving forward"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Car = mixin(Vehicle, &#123;</div><div class="line">    <span class="attr">wheels</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        Vehicle.drive.call(<span class="keyword">this</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Rolling on all"</span> + <span class="keyword">this</span>.wheels + <span class="string">"whells"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>隐式混入    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
-</li>
-<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
-</li>
-<li>模拟类的复制：显示和隐式</li>
-<li><p>显示混入实现类似于extend </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Something = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.greeting = <span class="string">"hello, world"</span>;</div><div class="line">        <span class="keyword">this</span>.count = <span class="keyword">this</span>.count?<span class="keyword">this</span>.count+<span class="number">1</span>:<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Something.cool();</div><div class="line">Something.greeting;</div><div class="line">Something.count;</div><div class="line"><span class="keyword">var</span> Another = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        Something.cool.call(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Another.cool();</div><div class="line">Another.greeting;</div><div class="line">Another.count;</div></pre></td></tr></table></figure>
-</li>
-<li><p>类意味着复制</p>
-</li>
-</ol>
-<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><ol>
-<li>javascript中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用</li>
-<li>所有的普通[[prototype]]链都会指向内置的object.prototype</li>
-<li>所有的函数类默认都会拥有一个名为prototype的公有并且不可枚举的属性，它指向另一个对象</li>
-<li>javascript不能创建一个类的多个实例，只能创建多个对象，他们关联到同一个对象</li>
-<li>new会劫持所有普通函数并且用构造对象的形式来调用它</li>
-</ol>
-<h4 id="行为委托"><a href="#行为委托" class="headerlink" title="行为委托"></a>行为委托</h4><ol>
-<li>如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在关联的对象上进行查找，如果后者还是没找到则会继续查找他的prototype，这一系列对象的链接称为“原型链”</li>
-<li>委托行为意味着某些对象在找不到属性或者方法引用时会把这个请求委托给另一个对象</li>
-<li>无法在两个或者两个以上相互为多的对象之间创建循环委托</li>
-<li>Object.create()方法使用指定的原型对象和其属性创建了一个新的对象</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">stack heap</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">你不知道的javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP DFS BFS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/javascript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
   
-    <article id="post-building-basic-task-for-photoshop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
-  <div class="article-inner">
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/building-basic-task-for-photoshop/">1.ps基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/17/building-basic-task-for-photoshop/" class="archive-article-date">
-  	<time datetime="2017-05-16T16:04:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="ps基本工作界面"><a href="#ps基本工作界面" class="headerlink" title="ps基本工作界面"></a>ps基本工作界面</h3><ol>
-<li>界面分为菜单栏，工具选项栏，工具箱，选项卡，文档窗口，面板这几部分</li>
-<li>文档窗口:<strong>ctrl+Tab快捷键可切换界面</strong></li>
-<li>工具箱分为选择工具，裁剪和切片，测量工具，修饰工具，绘画工具，导航工具等几种类别工具</li>
-</ol>
-<h3 id="查看图像"><a href="#查看图像" class="headerlink" title="查看图像"></a>查看图像</h3><ol>
-<li>工具箱底部的屏幕模式按钮可查看标准屏幕，全屏模式，菜单栏的全屏模式</li>
-<li>在多个窗口查看图像可在<strong>窗口&gt;排列</strong>中选择哪种展示方式</li>
-<li>旋转视图工具可旋转画布<strong>在工具栏中使用旋转工具</strong></li>
-<li>在工具栏中使用缩放工具来调整窗口比例<strong>按住Alt键可缩小窗口</strong></li>
-<li>在工具栏中用抓手工具移动画面<strong>Alt键缩小窗口，command键放大窗口，按住H键然后单击鼠标会显示全部图像，并且出现一个矩形框，放开H键和鼠标可移动到某块区域</strong></li>
-<li>在<strong>窗口&gt;导航器</strong>中查看图像，<strong>通过扩大和缩小来查看图片，右键点击图像以外的暂存区可选择背景颜色</strong></li>
-<li>在<strong>窗口&gt;工作区</strong>使用预设工作区</li>
-<li>在菜单栏中的<strong>编辑&gt;菜单</strong>中打开键盘快捷键合菜单，<strong>点击菜单tab可定义菜单中各种颜色，在键盘快捷键中可自定义快捷键</strong></li>
-</ol>
-<h3 id="使用辅助工具"><a href="#使用辅助工具" class="headerlink" title="使用辅助工具"></a>使用辅助工具</h3><ol>
-<li>在<strong>视图&gt;标尺</strong>中使用标尺，在窗口左上角向右下方拉可以设置坐标原点</li>
-<li>在标尺中可以拉出参考线，如果要删除参考线则拉到标尺里面就删除了</li>
-<li>在<strong>视图&gt;显示&gt;网格</strong>中使用网格</li>
-<li>在工具栏中使用注释工具可在图像中添加注释</li>
-</ol>
-<h3 id="附几个快捷键"><a href="#附几个快捷键" class="headerlink" title="附几个快捷键:"></a>附几个快捷键:</h3><ol>
-<li>Ctrl+o可以快速打开文件</li>
-<li>Ctrl++可以放大图片，Ctrl+-可以缩小图片</li>
-<li>Ctrl+R可以打开标尺，再使用一次关闭标尺</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/building-basic-task-for-photoshop/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-page-design" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/page-design/">页面设计的四条原则</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/15/page-design/" class="archive-article-date">
-  	<time datetime="2017-05-15T13:18:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="网页设计四条原则"><a href="#网页设计四条原则" class="headerlink" title="网页设计四条原则"></a>网页设计四条原则</h3><p><strong>原则一:设计之对比色原则</strong></p>
-<pre><code>主要目的是突出重点，将内容区分出来
-</code></pre><p><strong>原则二:设计之对奇原则</strong>     </p>
-<pre><code>主要是更好地展示网页信息，样式清晰,所有设计元素和页面上其他元素要有视觉上的练习
-</code></pre><p><strong>原则三:设计之重复性原则</strong>    </p>
-<pre><code>主要目的是保持整个页面统一的风格，各个页面的风格不会互相冲突
-</code></pre><p><strong>原则四:设计之相似性原则</strong>    </p>
-<pre><code>主要是将相似的元素放倒一起，这样使用户易于查找    
-</code></pre><p><strong>附带</strong><a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">页面选色在线网站</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/page-design/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/hello-world/">Hexo 博客创建记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/11/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-11T03:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p>通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。</p>
-<h3 id="搭建github"><a href="#搭建github" class="headerlink" title="搭建github"></a>搭建github</h3><ol>
-<li><a href="https://github.com/" target="_blank" rel="external">官网</a>中申请账号</li>
-<li><a href="https://segmentfault.com/a/1190000002533334" target="_blank" rel="external">本地配置github</a></li>
-</ol>
-<h3 id="安装hexo，上传资源文件至github"><a href="#安装hexo，上传资源文件至github" class="headerlink" title="安装hexo，上传资源文件至github"></a>安装hexo，上传资源文件至github</h3><p>1.<strong>安装hexo</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<p>2.<strong>通过hexo生成blog基本文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure></p>
-<p>3.<strong>配置blog中根目录的配置文件_config.yml及添加一些hexo的基本工具</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">修改_config.yml的配置文件  </div><div class="line">    修改site，导入个人基本信息</div><div class="line">    通过添加theme来使用其它主题的blog，并且在配置文件中修改theme</div><div class="line">    在theme中设置使用哪种评论工具目前duoshuo已经停止使用</div><div class="line">添加hexo的基本工具</div><div class="line">    hexo-deployer-git 向远程仓库导入文件的工具</div><div class="line">    hexo-generator-json-content 配置blog标题的基本信息</div><div class="line">    hexo-generator-sitemap  添加sitemap，使得搜索引擎快速找到blog</div><div class="line">    hexo-generator-feed  添加rss</div></pre></td></tr></table></figure></p>
-<p>4.<strong>生成blog资源文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
-<p>5.<strong>上传到github</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
-<p>2.<strong>本地测试blog项目</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>3.<strong>发布草稿</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] title</div></pre></td></tr></table></figure></p>
-<p>4.<strong>更多关于hexo的使用，请点击<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">详情页</a></strong></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -637,11 +261,11 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
