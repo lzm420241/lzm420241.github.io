@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-05-09T06:04:47.000Z</updated>
+  <updated>2018-05-09T06:12:49.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,40 +20,20 @@
     <link href="https://lzm420241.github.io/2018/05/08/svn/"/>
     <id>https://lzm420241.github.io/2018/05/08/svn/</id>
     <published>2018-05-08T11:23:58.000Z</published>
-    <updated>2018-05-09T06:04:47.000Z</updated>
+    <updated>2018-05-09T06:12:49.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><ol>
-<li><p>将文件checkout到本地目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>往版本库添加新文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure>
-</li>
-<li><p>将改动的文件提交到版本库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure>
-</li>
-<li><p>加锁／解锁</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure>
-</li>
-<li><p>更新到某个版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m path 简写：svn up</div></pre></td></tr></table></figure>
-</li>
-<li><p>查看文件或者目录状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status [-v (查看文件及子目录状态)] path  简写：svn st</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">	svn delete path -m <span class="string">"message"</span> 简写：svn (del, remove, rm)</div><div class="line">	``` </div><div class="line">8.  查看日志</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn <span class="built_in">log</span> path</div><div class="line">	``` </div><div class="line">9.  查看文件详细信息</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn info path</div><div class="line">	``` </div><div class="line">10. 比较差异</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn diff path   简写：svn di</div><div class="line">	``` </div><div class="line">11. 将两个版本之间的差异合并到当前文件</div><div class="line"></div><div class="line">   ``` bash</div><div class="line">	svn merge -r m:n path</div><div class="line">	``` </div><div class="line">12. svn帮助</div><div class="line">  ``` bash</div><div class="line">	svn <span class="built_in">log</span> path</div><div class="line">	``` </div><div class="line">	</div><div class="line"><span class="comment">### svn基本原理</span></div><div class="line">1. svn里面三个概念：</div><div class="line"></div><div class="line">``` bash</div><div class="line">1.工作拷贝：一个SVN的工作拷贝是用户机器的一个本地目录，保存着一些文件和目录，你可以任意编辑其中的文件，在你提交之前你所做的编辑不会上传到SVN与他人所作的修改进行合并。</div><div class="line"></div><div class="line">2.基准版本：SVN会在每个工作拷贝的一个特定位置保存该工作拷贝最后一次提交时的文件及目录情况，这些文件及目录就称为<span class="string">"基准版本"</span>。</div><div class="line"></div><div class="line">3.Head版本：SVN服务器中的最新版本</div><div class="line"></div><div class="line">注意：如果Head版本比你所编辑的本地工作拷贝版本（指的是基准版本）新的话，而且如果你做了修改，当你Commit的时候会提示有冲突产生，这时你update的时候会将冲突显示出来。如果没有做修改，Commit之后会提示你版本低，需要update成最新版本，此时本地工作拷贝会变成update后的最新的版本。</div></pre></td></tr></table></figure>
-</li>
-</ol>
+    <content type="html"><![CDATA[<h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><p>1.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
+<p>2.<strong>往版本库添加新文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure></p>
+<p>3.<strong>将改动的文件提交到版本库</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure></p>
+<p>4.<strong>加锁／解锁</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure></p>
+<p>5.<strong>更新到某个版本</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m path 简写：svn up</div></pre></td></tr></table></figure></p>
+<p>6.<strong>查看文件或者目录状态</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status [-v (查看文件及子目录状态)] path  简写：svn st</div></pre></td></tr></table></figure></p>
+<p>7.<strong>删除文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">	svn delete path -m <span class="string">"message"</span> 简写：svn (del, remove, rm)</div><div class="line">	``` </div><div class="line">8.**查看日志**</div><div class="line">	``` bash</div><div class="line">	svn <span class="built_in">log</span> path</div><div class="line">	``` </div><div class="line">9.**查看文件详细信息**</div><div class="line">	``` bash</div><div class="line">	svn info path</div><div class="line">	``` </div><div class="line">10.**比较差异**</div><div class="line">	``` bash</div><div class="line">	svn diff path   简写：svn di</div><div class="line">	``` </div><div class="line">11.**将两个版本之间的差异合并到当前文件**</div><div class="line">   ``` bash</div><div class="line">	svn merge -r m:n path</div><div class="line">	``` </div><div class="line">12.**svn帮助**</div><div class="line">  ``` bash</div><div class="line">  svn <span class="built_in">log</span> path</div><div class="line">  ``` </div><div class="line">	</div><div class="line"><span class="comment">### svn基本原理</span></div><div class="line">1.**svn里面三个概念：**</div><div class="line"></div><div class="line">``` bash</div><div class="line">1.工作拷贝：一个SVN的工作拷贝是用户机器的一个本地目录，保存着一些文件和目录，你可以任意编辑其中的文件，在你提交之前你所做的编辑不会上传到SVN与他人所作的修改进行合并。</div><div class="line"></div><div class="line">2.基准版本：SVN会在每个工作拷贝的一个特定位置保存该工作拷贝最后一次提交时的文件及目录情况，这些文件及目录就称为<span class="string">"基准版本"</span>。</div><div class="line"></div><div class="line">3.Head版本：SVN服务器中的最新版本</div><div class="line"></div><div class="line">注意：如果Head版本比你所编辑的本地工作拷贝版本（指的是基准版本）新的话，而且如果你做了修改，当你Commit的时候会提示有冲突产生，这时你update的时候会将冲突显示出来。如果没有做修改，Commit之后会提示你版本低，需要update成最新版本，此时本地工作拷贝会变成update后的最新的版本。</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;svn常用命令&quot;&gt;&lt;a href=&quot;#svn常用命令&quot; class=&quot;headerlink&quot; title=&quot;svn常用命令&quot;&gt;&lt;/a&gt;svn常用命令&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;将文件checkout到本地目录&lt;/p&gt;
-&lt;figure class=&quot;highl
+      &lt;h3 id=&quot;svn常用命令&quot;&gt;&lt;a href=&quot;#svn常用命令&quot; class=&quot;headerlink&quot; title=&quot;svn常用命令&quot;&gt;&lt;/a&gt;svn常用命令&lt;/h3&gt;&lt;p&gt;1.&lt;strong&gt;将文件checkout到本地目录&lt;/strong&gt;&lt;br&gt;    &lt;figure
     
     </summary>
     
