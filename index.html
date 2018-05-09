@@ -179,6 +179,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-svn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/svn/">svn命令基本使用及原理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/svn/" class="archive-article-date">
+  	<time datetime="2018-05-08T11:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><ol>
+<li><p>将文件checkout到本地目录</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    svn checkout path (path是服务器上的目录) 简写：svn co path</div><div class="line">    </div><div class="line">    </div><div class="line">2.  往版本库添加新文件</div><div class="line">   </div><div class="line">	``` bash</div><div class="line">	svn add file</div></pre></td></tr></table></figure>
+</li>
+<li><p>将改动的文件提交到版本库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure>
+</li>
+<li><p>加锁／解锁</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新到某个版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m path 简写：svn up</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件或者目录状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status [-v (查看文件及子目录状态)] path  简写：svn st</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">	svn delete path -m <span class="string">"message"</span> 简写：svn (del, remove, rm)</div><div class="line">	``` </div><div class="line">8.  查看日志</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn <span class="built_in">log</span> path</div><div class="line">	``` </div><div class="line">9.  查看文件详细信息</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn info path</div><div class="line">	``` </div><div class="line">10. 比较差异</div><div class="line"></div><div class="line">	``` bash</div><div class="line">	svn diff path   简写：svn di</div><div class="line">	``` </div><div class="line">11. 将两个版本之间的差异合并到当前文件</div><div class="line"></div><div class="line">   ``` bash</div><div class="line">	svn merge -r m:n path</div><div class="line">	``` </div><div class="line">12. svn帮助</div><div class="line">  ``` bash</div><div class="line">	svn <span class="built_in">log</span> path</div><div class="line">	``` </div><div class="line">	</div><div class="line"><span class="comment">### svn基本原理</span></div><div class="line">1. svn里面三个概念：</div><div class="line"></div><div class="line">``` bash</div><div class="line">1.工作拷贝：一个SVN的工作拷贝是用户机器的一个本地目录，保存着一些文件和目录，你可以任意编辑其中的文件，在你提交之前你所做的编辑不会上传到SVN与他人所作的修改进行合并。</div><div class="line"></div><div class="line">2.基准版本：SVN会在每个工作拷贝的一个特定位置保存该工作拷贝最后一次提交时的文件及目录情况，这些文件及目录就称为<span class="string">"基准版本"</span>。</div><div class="line"></div><div class="line">3.Head版本：SVN服务器中的最新版本</div><div class="line"></div><div class="line">注意：如果Head版本比你所编辑的本地工作拷贝版本（指的是基准版本）新的话，而且如果你做了修改，当你Commit的时候会提示有冲突产生，这时你update的时候会将冲突显示出来。如果没有做修改，Commit之后会提示你版本低，需要update成最新版本，此时本地工作拷贝会变成update后的最新的版本。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/08/svn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-life/2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -894,97 +982,6 @@
 
 
   
-    <article id="post-design/ps-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/design/ps-5/">5.图层的高级操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/20/design/ps-5/" class="archive-article-date">
-  	<time datetime="2017-05-20T14:53:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="图层的设置"><a href="#图层的设置" class="headerlink" title="图层的设置"></a>图层的设置</h3><ol>
-<li>图层控制面板中可以设置不透明度</li>
-<li>混合模式用来控制当前图层中的像素与它下面图层中的像素如何混合，除背景图层外，其他图层都支持混合，另外用于混合通道</li>
-</ol>
-<h3 id="填充图层"><a href="#填充图层" class="headerlink" title="填充图层"></a>填充图层</h3><ol>
-<li>图层➡新建填充图层➡纯色 或单机图层面板中创建新的填充或调整图层按钮，选择纯色</li>
-<li>渐变填充图层 图层➡新建填充图层➡渐变或者创建新的填充或调整图层按钮，选择渐变</li>
-</ol>
-<h3 id="调整图层"><a href="#调整图层" class="headerlink" title="调整图层"></a>调整图层</h3><ol>
-<li>图层➡调整 调整命令直接修改所选图层中的像素数据，但调整图层中国年可以达到同样的调整效果但不会修改像素</li>
-<li>图层➡新建调整图层 可在图层面板中创建调整图层</li>
-</ol>
-<h3 id="中性色涂层"><a href="#中性色涂层" class="headerlink" title="中性色涂层"></a>中性色涂层</h3><ol>
-<li>使用色阶或曲线校正偏色的照片，通过定义灰色来校正色偏</li>
-</ol>
-<h3 id="智能对象"><a href="#智能对象" class="headerlink" title="智能对象"></a>智能对象</h3><ol>
-<li>智能对象是一个嵌入到当前文档中的文件，它可以包含图像，也可以包含矢量图形</li>
-<li>文件➡打开为智能对象 创建智能对象，文件➡置入 将另外一个文件作为智能对象置入到当前文档中</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/20/design/ps-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1086,6 +1083,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1106,19 +1107,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
