@@ -203,7 +203,12 @@
         
         <h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><ol>
 <li><p>将文件checkout到本地目录</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    svn checkout path (path是服务器上的目录) 简写：svn co path</div><div class="line">    </div><div class="line">    </div><div class="line">2.  往版本库添加新文件</div><div class="line">   </div><div class="line">	``` bash</div><div class="line">	svn add file</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>往版本库添加新文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure>
 </li>
 <li><p>将改动的文件提交到版本库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure>
