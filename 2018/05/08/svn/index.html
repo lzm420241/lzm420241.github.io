@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>svn命令基本使用及原理 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm">
+  <meta name="description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.切换分支    1svn switch path (path是服务器上的目录) 简写：svn sw path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm commit -m &quot;me">
 <meta name="keywords" content="svn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="svn命令基本使用及原理">
 <meta property="og:url" content="https://lzm420241.github.io/2018/05/08/svn/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm">
-<meta property="og:updated_time" content="2018-05-28T08:37:06.000Z">
+<meta property="og:description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.切换分支    1svn switch path (path是服务器上的目录) 简写：svn sw path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm commit -m &quot;me">
+<meta property="og:updated_time" content="2018-05-28T08:39:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="svn命令基本使用及原理">
-<meta name="twitter:description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm">
+<meta name="twitter:description" content="svn常用命令1.将文件checkout到本地目录    1svn checkout path (path是服务器上的目录) 简写：svn co path 2.切换分支    1svn switch path (path是服务器上的目录) 简写：svn sw path 3.往版本库添加新文件    1svn add file 4.将改动的文件提交到版本库    1svm commit -m &quot;me">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -210,7 +210,7 @@
         </div>
         
         <h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><p>1.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
-<p>2.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
+<p>2.<strong>切换分支</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn switch path (path是服务器上的目录) 简写：svn sw path</div></pre></td></tr></table></figure></p>
 <p>3.<strong>往版本库添加新文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure></p>
 <p>4.<strong>将改动的文件提交到版本库</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure></p>
 <p>5.<strong>加锁／解锁</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure></p>
