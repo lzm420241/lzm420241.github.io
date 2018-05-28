@@ -8,12 +8,18 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Babel 插件手册这篇文档涵盖了如何创建 Babel 插件等方面的内容。.  这本手册提供了多种语言的版本，查看 自述文件 里的完整列表。 目录 介绍 基础  抽象语法树（ASTs） Babel 的处理步骤 解析  词法分析 语法分析   转换 生成 遍历 Visitors（访问者） Paths（路径）  Paths in Visitors（存在于访问者中的路径）   State（状态） Sco">
+<meta property="og:type" content="article">
 <meta property="og:title" content="前端那点事">
-<meta property="og:url" content="https://lzm420241.github.io/index.html">
+<meta property="og:url" content="https://lzm420241.github.io/2018/05/21/Babel 插件手册/index.html">
 <meta property="og:site_name" content="前端那点事">
+<meta property="og:description" content="Babel 插件手册这篇文档涵盖了如何创建 Babel 插件等方面的内容。.  这本手册提供了多种语言的版本，查看 自述文件 里的完整列表。 目录 介绍 基础  抽象语法树（ASTs） Babel 的处理步骤 解析  词法分析 语法分析   转换 生成 遍历 Visitors（访问者） Paths（路径）  Paths in Visitors（存在于访问者中的路径）   State（状态） Sco">
+<meta property="og:image" content="https://licensebuttons.net/l/by/4.0/80x15.png">
+<meta property="og:updated_time" content="2018-05-21T06:35:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端那点事">
+<meta name="twitter:description" content="Babel 插件手册这篇文档涵盖了如何创建 Babel 插件等方面的内容。.  这本手册提供了多种语言的版本，查看 自述文件 里的完整列表。 目录 介绍 基础  抽象语法树（ASTs） Babel 的处理步骤 解析  词法分析 语法分析   转换 生成 遍历 Visitors（访问者） Paths（路径）  Paths in Visitors（存在于访问者中的路径）   State（状态） Sco">
+<meta name="twitter:image" content="https://licensebuttons.net/l/by/4.0/80x15.png">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -177,371 +183,17 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Babel 用户手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Babel 插件手册" class="article article-type-post " itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h1 id="Babel-用户手册"><a href="#Babel-用户手册" class="headerlink" title="Babel 用户手册"></a>Babel 用户手册</h1><p>这本手册涵盖了关于 <a href="https://babeljs.io" target="_blank" rel="external">Babel</a> 的使用及其相关工具的内容。</p>
-<p><a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external"><img src="https://licensebuttons.net/l/by/4.0/80x15.png" alt="cc-by-4.0"></a></p>
-<p>这本手册提供了多种语言的版本，查看 <a href="/README.md">自述文件</a> 里的完整列表。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="#toc-introduction">介绍</a></li>
-<li><a href="#toc-setting-up-babel">安装 Babel</a> <ul>
-<li><a href="#toc-babel-cli"><code>babel-cli</code></a></li>
-<li><a href="#toc-running-babel-cli-from-within-a-project">在项目内运行 Babel CLI</a></li>
-<li><a href="#toc-babel-register"><code>babel-register</code></a></li>
-<li><a href="#toc-babel-node"><code>babel-node</code></a></li>
-<li><a href="#toc-babel-core"><code>babel-core</code></a></li>
-</ul>
-</li>
-<li><a href="#toc-configuring-babel">配置 Babel</a> <ul>
-<li><a href="#toc-babelrc"><code>.babelrc</code></a></li>
-<li><a href="#toc-babel-preset-es2015"><code>babel-preset-es2015</code></a></li>
-<li><a href="#toc-babel-preset-react"><code>babel-preset-react</code></a></li>
-<li><a href="#toc-babel-preset-stage-x"><code>babel-preset-stage-x</code></a></li>
-</ul>
-</li>
-<li><a href="#toc-executing-babel-generated-code">执行 Babel 生成的代码</a> <ul>
-<li><a href="#toc-babel-polyfill"><code>babel-polyfill</code></a></li>
-<li><a href="#toc-babel-runtime"><code>babel-runtime</code></a></li>
-</ul>
-</li>
-<li><a href="#toc-configuring-babel-advanced">配置 Babel（进阶）</a> <ul>
-<li><a href="#toc-manually-specifying-plugins">手动指定插件</a></li>
-<li><a href="#toc-plugin-options">插件选项</a></li>
-<li><a href="#toc-customizing-babel-based-on-environment">基于环境自定义 Babel</a></li>
-<li><a href="#toc-making-your-own-preset">制作你自己的预设（preset）</a></li>
-</ul>
-</li>
-<li><a href="#toc-babel-and-other-tools">Babel 和其他工具</a> <ul>
-<li><a href="#toc-static-analysis-tools">静态分析工具</a></li>
-<li><a href="#toc-linting">语法检查（Linting）</a></li>
-<li><a href="#toc-code-style">代码风格</a></li>
-<li><a href="#toc-documentation">文档</a></li>
-<li><a href="#toc-frameworks">框架</a></li>
-<li><a href="#toc-react">React</a></li>
-<li><a href="#toc-text-editors-and-ides">文本编辑器和 IDEs（集成开发环境）</a></li>
-</ul>
-</li>
-<li><a href="#toc-babel-support">Babel 支持</a> <ul>
-<li><a href="#toc-babel-forum">Babel 论坛</a></li>
-<li><a href="#toc-babel-chat">Babel 聊天</a></li>
-<li><a href="#toc-babel-issues">Babel 问题</a></li>
-<li><a href="#toc-creating-an-awesome-babel-bug-report">创建漂亮的 Babel 错误报告</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a><a id="toc-introduction"></a>介绍</h1><p>Babel 是一个通用的多用途 JavaScript 编译器。通过 Babel 你可以使用（并创建）下一代的 JavaScript，以及下一代的 JavaScript 工具。</p>
-<p>作为一种语言，JavaScript 在不断发展，新的标准／提案和新的特性层出不穷。 在得到广泛普及之前，Babel 能够让你提前（甚至数年）使用它们。</p>
-<p>Babel 把用最新标准编写的 JavaScript 代码向下编译成可以在今天随处可用的版本。 这一过程叫做“源码到源码”编译， 也被称为转换编译（transpiling，是一个自造合成词，即转换＋编译。以下也简称为转译）。</p>
-<p>例如，Babel 能够将新的 ES2015 箭头函数语法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> square = <span class="function"><span class="params">n</span> =&gt;</span> n * n;</div></pre></td></tr></table></figure>
-<p>转译为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> n * n;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>不过 Babel 的用途并不止于此，它支持语法扩展，能支持像 React 所用的 JSX 语法，同时还支持用于静态类型检查的流式语法（Flow Syntax）。</p>
-<p>更重要的是，Babel 的一切都是简单的插件，谁都可以创建自己的插件，利用 Babel 的全部威力去做任何事情。</p>
-<p><em>再进一步</em>，Babel 自身被分解成了数个核心模块，任何人都可以利用它们来创建下一代的 JavaScript 工具。</p>
-<p>已经有很多人都这样做了，围绕着 Babel 涌现出了非常大规模和多样化的生态系统。 在这本手册中，我将介绍如何使用 Babel 的内建工具以及一些来自于社区的非常有用的东西。</p>
-<blockquote>
-<p><strong><em>在 Twitter 上关注 <a href="https://twitter.com/thejameskyle" target="_blank" rel="external">@thejameskyle</a>，第一时间获取更新。</em></strong></p>
-</blockquote>
-<hr>
-<h1 id="安装-Babel"><a href="#安装-Babel" class="headerlink" title="安装 Babel"></a><a id="toc-setting-up-babel"></a>安装 Babel</h1><p>由于 JavaScript 社区没有统一的构建工具、框架、平台等等，因此 Babel 正式集成了对所有主流工具的支持。 从 Gulp 到 Browserify，从 Ember 到 Meteor，不管你的环境设置如何，Babel 都有正式的集成支持。</p>
-<p>本手册的目的主要是介绍 Babel 内建方式的安装，不过你可以访问交互式的<a href="http://babeljs.io/docs/setup" target="_blank" rel="external">安装页面</a>来查看其它的整合方式。</p>
-<blockquote>
-<p><strong>注意：</strong> 本手册将涉及到一些命令行工具如 <code>node</code> 和 <code>npm</code>。在继续阅读之前请确保你已经熟悉这些工具了。</p>
-</blockquote>
-<h2 id="babel-cli"><a href="#babel-cli" class="headerlink" title="babel-cli"></a><a id="toc-babel-cli"></a><code>babel-cli</code></h2><p>Babel 的 CLI 是一种在命令行下使用 Babel 编译文件的简单方法。</p>
-<p>让我们先全局安装它来学习基础知识。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global babel-cli</div></pre></td></tr></table></figure>
-<p>我们可以这样来编译我们的第一个文件：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ babel my-file.js</div></pre></td></tr></table></figure>
-<p>这将把编译后的结果直接输出至终端。使用 <code>--out-file</code> 或着 <code>-o</code> 可以将结果写入到指定的文件。.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ babel example.js --out-file compiled.js</div><div class="line"><span class="comment"># 或</span></div><div class="line">$ babel example.js -o compiled.js</div></pre></td></tr></table></figure>
-<p>如果我们想要把一个目录整个编译成一个新的目录，可以使用 <code>--out-dir</code> 或者 <code>-d</code>。.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ babel src --out-dir lib</div><div class="line"><span class="comment"># 或</span></div><div class="line">$ babel src <span class="_">-d</span> lib</div></pre></td></tr></table></figure>
-<h3 id="在项目内运行-Babel-CLI"><a href="#在项目内运行-Babel-CLI" class="headerlink" title="在项目内运行 Babel CLI"></a><a id="toc-running-babel-cli-from-within-a-project"></a>在项目内运行 Babel CLI</h3><p>尽管你<em>可以</em>把 Babel CLI 全局安装在你的机器上，但是按项目逐个安装在<strong>本地</strong>会更好。</p>
-<p>有两个主要的原因。</p>
-<ol>
-<li>在同一台机器上的不同项目或许会依赖不同版本的 Babel 并允许你有选择的更新。</li>
-<li>这意味着你对工作环境没有隐式依赖，这让你的项目有很好的可移植性并且易于安装。</li>
-</ol>
-<p>要在（项目）本地安装 Babel CLI 可以运行：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-cli</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意：</strong>因为全局运行 Babel 通常不是什么好习惯所以如果你想要卸载全局安装的 Babel 的话，可以运行：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall --global babel-cli</div></pre></td></tr></table></figure>
-</blockquote>
-<p>安装完成后，你的 <code>package.json</code> 应该如下所示：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"my-project"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"babel-cli"</span>: <span class="string">"^6.0.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在，我们不直接从命令行运行 Babel 了，取而代之我们将把运行命令写在 <strong>npm scripts</strong> 里，这样可以使用 Babel 的本地版本。</p>
-<p>只需将 <code>&quot;scripts&quot;</code> 字段添加到你的 <code>package.json</code> 文件内并且把 babel 命令写成 <code>build</code> 字段。.</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "name": "my-project",</div><div class="line">    "version": "1.0.0",</div><div class="line"><span class="addition">+   "scripts": &#123;</span></div><div class="line"><span class="addition">+     "build": "babel src -d lib"</span></div><div class="line"><span class="addition">+   &#125;,</span></div><div class="line">    "devDependencies": &#123;</div><div class="line">      "babel-cli": "^6.0.0"</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>现在可以在终端里运行：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
-<p>这将以与之前同样的方式运行 Babel，但这一次我们使用的是本地副本。</p>
-<h2 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a><a id="toc-babel-register"></a><code>babel-register</code></h2><p>下一个常用的运行 Babel 的方法是通过 <code>babel-register</code>。这种方法只需要引入文件就可以运行 Babel，或许能更好地融入你的项目设置。</p>
-<p>但请注意这种方法并不适合正式产品环境使用。 直接部署用此方式编译的代码不是好的做法。 在部署之前预先编译会更好。 不过用在构建脚本或是其他本地运行的脚本中是非常合适的。</p>
-<p>让我们先在项目中创建 <code>index.js</code> 文件。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"Hello world!"</span>);</div></pre></td></tr></table></figure>
-<p>如果我们用 <code>node index.js</code> 来运行它是不会使用 Babel 来编译的。所以我们需要设置 <code>babel-register</code>。.</p>
-<p>首先安装 <code>babel-register</code>。.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-register</div></pre></td></tr></table></figure>
-<p>接着，在项目中创建 <code>register.js</code> 文件并添加如下代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"babel-register"</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">"./index.js"</span>);</div></pre></td></tr></table></figure>
-<p>这样做可以把 Babel <em>注册</em>到 Node 的模块系统中并开始编译其中 <code>require</code> 的所有文件。</p>
-<p>现在我们可以使用 <code>register.js</code> 来代替 <code>node index.js</code> 来运行了。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node register.js</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意：</strong>你不能在你要编译的文件内同时注册 Babel，因为 node 会在 Babel 编译它之前就将它执行了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"babel-register"</span>);</div><div class="line"><span class="comment">// 未编译的：</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Hello world!"</span>);</div></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="babel-node"><a href="#babel-node" class="headerlink" title="babel-node"></a><a id="toc-babel-node"></a><code>babel-node</code></h2><p>如果你要用 <code>node</code> CLI 来运行代码，那么整合 Babel 最简单的方式就是使用 <code>babel-node</code> CLI，它是 <code>node</code> CLI 的替代品。</p>
-<p>但请注意这种方法并不适合正式产品环境使用。 直接部署用此方式编译的代码不是好的做法。 在部署之前预先编译会更好。 不过用在构建脚本或是其他本地运行的脚本中是非常合适的。</p>
-<p>首先确保 <code>babel-cli</code> 已经安装了。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-cli</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意:</strong> 如果您想知道我们为什么要在本地安装，请阅读 上面<a href="#toc-running-babel-cli-from-within-a-project">在项目内运行Babel CLI</a>的部分。</p>
-</blockquote>
-<p>然后用 <code>babel-node</code> 来替代 <code>node</code> 运行所有的代码 。.</p>
-<p>如果用 npm <code>scripts</code> 的话只需要这样做：</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "scripts": &#123;</div><div class="line"><span class="deletion">-     "script-name": "node script.js"</span></div><div class="line"><span class="addition">+     "script-name": "babel-node script.js"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>要不然的话你需要写全 <code>babel-node</code> 的路径。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">- node script.js</span></div><div class="line"><span class="addition">+ ./node_modules/.bin/babel-node script.js</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>提示：你可以使用 <a href="https://www.npmjs.com/package/npm-run" target="_blank" rel="external"><code>npm-run</code></a>。.</p>
-</blockquote>
-<h2 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a><a id="toc-babel-core"></a><code>babel-core</code></h2><p>如果你需要以编程的方式来使用 Babel，可以使用 <code>babel-core</code> 这个包。</p>
-<p>首先安装 <code>babel-core</code>。.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install babel-core</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> babel = <span class="built_in">require</span>(<span class="string">"babel-core"</span>);</div></pre></td></tr></table></figure>
-<p>字符串形式的 JavaScript 代码可以直接使用 <code>babel.transform</code> 来编译。.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">babel.transform(<span class="string">"code();"</span>, options);</div><div class="line"><span class="comment">// =&gt; &#123; code, map, ast &#125;</span></div></pre></td></tr></table></figure>
-<p>如果是文件的话，可以使用异步 api：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">babel.transformFile(<span class="string">"filename.js"</span>, options, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">  result; <span class="comment">// =&gt; &#123; code, map, ast &#125;</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>或者是同步 api：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">babel.transformFileSync(<span class="string">"filename.js"</span>, options);</div><div class="line"><span class="comment">// =&gt; &#123; code, map, ast &#125;</span></div></pre></td></tr></table></figure>
-<p>要是已经有一个 Babel AST（抽象语法树）了就可以直接从 AST 进行转换。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">babel.transformFromAst(ast, code, options);</div><div class="line"><span class="comment">// =&gt; &#123; code, map, ast &#125;</span></div></pre></td></tr></table></figure>
-<p>对于上述所有方法，<code>options</code> 指的都是 <a href="http://babeljs.io/docs/usage/options/" target="_blank" rel="external">http://babeljs.io/docs/usage/options/</a></p>
-<hr>
-<h1 id="配置-Babel"><a href="#配置-Babel" class="headerlink" title="配置 Babel"></a><a id="toc-configuring-babel"></a>配置 Babel</h1><p>你或许已经注意到了，目前为止通过运行 Babel 自己我们并没能“翻译”代码，而仅仅是把代码从一处拷贝到了另一处。</p>
-<p>这是因为我们还没告诉 Babel 要做什么。</p>
-<blockquote>
-<p>由于 Babel 是一个可以用各种花样去使用的通用编译器，因此默认情况下它反而什么都不做。你必须明确地告诉 Babel 应该要做什么。</p>
-</blockquote>
-<p>你可以通过安装<strong>插件（plugins）</strong>或<strong>预设（presets，也就是一组插件）</strong>来指示 Babel 去做什么事情。</p>
-<h2 id="babelrc"><a href="#babelrc" class="headerlink" title=".babelrc"></a><a id="toc-babelrc"></a><code>.babelrc</code></h2><p>在我们告诉 Babel 该做什么之前，我们需要创建一个配置文件。你需要做的就是在项目的根路径下创建 <code>.babelrc</code> 文件。然后输入以下内容作为开始：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"presets"</span>: [],</div><div class="line">  <span class="string">"plugins"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个文件就是用来让 Babel 做你要它做的事情的配置文件。</p>
-<blockquote>
-<p><strong>注意：</strong>尽管你也可以用其他方式给 Babel 传递选项，但 <code>.babelrc</code> 文件是约定也是最好的方式。</p>
-</blockquote>
-<h2 id="babel-preset-es2015"><a href="#babel-preset-es2015" class="headerlink" title="babel-preset-es2015"></a><a id="toc-babel-preset-es2015"></a><code>babel-preset-es2015</code></h2><p>我们先从让 Babel 把 ES2015（最新版本的 JavaScript 标准，也叫做 ES6）编译成 ES5（现今在大多数 JavaScript 环境下可用的版本）开始吧。</p>
-<p>我们需要安装 “es2015” Babel 预设：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-preset-es2015</div></pre></td></tr></table></figure>
-<p>我们修改 <code>.babelrc</code> 来包含这个预设。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "presets": [</div><div class="line"><span class="addition">+     "es2015"</span></div><div class="line">    ],</div><div class="line">    "plugins": []</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="babel-preset-react"><a href="#babel-preset-react" class="headerlink" title="babel-preset-react"></a><a id="toc-babel-preset-react"></a><code>babel-preset-react</code></h2><p>设置 React 一样容易。只需要安装这个预设：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-preset-react</div></pre></td></tr></table></figure>
-<p>然后在 <code>.babelrc</code> 文件里补充：</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "presets": [</div><div class="line">      "es2015",</div><div class="line"><span class="addition">+     "react"</span></div><div class="line">    ],</div><div class="line">    "plugins": []</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="babel-preset-stage-x"><a href="#babel-preset-stage-x" class="headerlink" title="babel-preset-stage-x"></a><a id="toc-babel-preset-stage-x"></a><code>babel-preset-stage-x</code></h2><p>JavaScript 还有一些提案，正在积极通过 TC39（ECMAScript 标准背后的技术委员会）的流程成为标准的一部分。</p>
-<p>这个流程分为 5（0－4）个阶段。 随着提案得到越多的关注就越有可能被标准采纳，于是他们就继续通过各个阶段，最终在阶段 4 被标准正式采纳。</p>
-<p>以下是4 个不同阶段的（打包的）预设：</p>
-<ul>
-<li><code>babel-preset-stage-0</code></li>
-<li><code>babel-preset-stage-1</code></li>
-<li><code>babel-preset-stage-2</code></li>
-<li><code>babel-preset-stage-3</code></li>
-</ul>
-<blockquote>
-<p>注意 stage-4 预设是不存在的因为它就是上面的 <code>es2015</code> 预设。</p>
-</blockquote>
-<p>以上每种预设都依赖于紧随的后期阶段预设。例如，<code>babel-preset-stage-1</code> 依赖 <code>babel-preset-stage-2</code>，后者又依赖 <code>babel-preset-stage-3</code>。.</p>
-<p>使用的时候只需要安装你想要的阶段就可以了：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-preset-stage-2</div></pre></td></tr></table></figure>
-<p>然后添加进你的 <code>.babelrc</code> 配置文件。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "presets": [</div><div class="line">      "es2015",</div><div class="line">      "react",</div><div class="line"><span class="addition">+     "stage-2"</span></div><div class="line">    ],</div><div class="line">    "plugins": []</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="执行-Babel-生成的代码"><a href="#执行-Babel-生成的代码" class="headerlink" title="执行 Babel 生成的代码"></a><a id="toc-executing-babel-generated-code"></a>执行 Babel 生成的代码</h1><p>即便你已经用 Babel 编译了你的代码，但这还不算完。</p>
-<h2 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a><a id="toc-babel-polyfill"></a><code>babel-polyfill</code></h2><p>Babel 几乎可以编译所有时新的 JavaScript 语法，但对于 APIs 来说却并非如此。</p>
-<p>比方说，下列含有箭头函数的需要编译的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>).reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最终会变成这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>).reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然而，它依然无法随处可用因为不是所有的 JavaScript 环境都支持 <code>Array.from</code>。</p>
-<pre><code>Uncaught TypeError: Array.from is not a function
-</code></pre><p>为了解决这个问题，我们使用一种叫做 <a href="https://remysharp.com/2010/10/08/what-is-a-polyfill" target="_blank" rel="external">Polyfill（代码填充，也可译作兼容性补丁）</a> 的技术。 简单地说，polyfill 即是在当前运行环境中用来复制（意指模拟性的复制，而不是拷贝）尚不存在的原生 api 的代码。 能让你提前使用还不可用的 APIs，<code>Array.from</code> 就是一个例子。</p>
-<p>Babel 用了优秀的 <a href="https://github.com/zloirock/core-js" target="_blank" rel="external">core-js</a> 用作 polyfill，并且还有定制化的 <a href="https://github.com/facebook/regenerator" target="_blank" rel="external">regenerator</a> 来让 generators（生成器）和 async functions（异步函数）正常工作。</p>
-<p>要使用 Babel polyfill，首先用 npm 安装它：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save babel-polyfill</div></pre></td></tr></table></figure>
-<p>然后只需要在文件顶部导入 polyfill 就可以了：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"babel-polyfill"</span>;</div></pre></td></tr></table></figure>
-<h2 id="babel-runtime"><a href="#babel-runtime" class="headerlink" title="babel-runtime"></a><a id="toc-babel-runtime"></a><code>babel-runtime</code></h2><p>为了实现 ECMAScript 规范的细节，Babel 会使用“助手”方法来保持生成代码的整洁。</p>
-<p>由于这些助手方法可能会特别长并且会被添加到每一个文件的顶部，因此你可以把它们统一移动到一个单一的“运行时（runtime）”中去。</p>
-<p>通过安装 <code>babel-plugin-transform-runtime</code> 和 <code>babel-runtime</code> 来开始。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-plugin-transform-runtime</div><div class="line">$ npm install --save babel-runtime</div></pre></td></tr></table></figure>
-<p>然后更新 <code>.babelrc</code>：</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "plugins": [</div><div class="line"><span class="addition">+     "transform-runtime",</span></div><div class="line">      "transform-es2015-classes"</div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>现在，Babel 会把这样的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</div><div class="line">  method() &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>编译成：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> _classCallCheck <span class="keyword">from</span> <span class="string">"babel-runtime/helpers/classCallCheck"</span>;</div><div class="line"><span class="keyword">import</span> _createClass <span class="keyword">from</span> <span class="string">"babel-runtime/helpers/createClass"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> Foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    _classCallCheck(<span class="keyword">this</span>, Foo);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  _createClass(Foo, [&#123;</div><div class="line">    <span class="attr">key</span>: <span class="string">"method"</span>,</div><div class="line">    <span class="attr">value</span>: <span class="function"><span class="keyword">function</span> <span class="title">method</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">  &#125;]);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> Foo;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
-<p>这样就不需要把 <code>_classCallCheck</code> 和 <code>_createClass</code> 这两个助手方法放进每一个需要的文件里去了。</p>
-<hr>
-<h1 id="配置-Babel（进阶）"><a href="#配置-Babel（进阶）" class="headerlink" title="配置 Babel（进阶）"></a><a id="toc-configuring-babel-advanced"></a>配置 Babel（进阶）</h1><p>大多数人使用 Babel 的内建预设就足够了，不过 Babel 提供了更多更细粒度的能力。</p>
-<h2 id="手动指定插件"><a href="#手动指定插件" class="headerlink" title="手动指定插件"></a><a id="toc-manually-specifying-plugins"></a>手动指定插件</h2><p>Babel 预设就是一些预先配置好的插件的集合，如果你想要做一些不一样的事情你会手动去设定插件，这和使用预设几乎完全相同。</p>
-<p>首先安装插件：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-plugin-transform-es2015-classes</div></pre></td></tr></table></figure>
-<p>然后往 <code>.babelrc</code> 文件添加 <code>plugins</code> 字段。.</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line"><span class="addition">+   "plugins": [</span></div><div class="line"><span class="addition">+     "transform-es2015-classes"</span></div><div class="line"><span class="addition">+   ]</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>这能让你对正在使用的转换器进行更细致的控制。</p>
-<p>完整的官方插件列表请见 <a href="http://babeljs.io/docs/plugins/" target="_blank" rel="external">Babel 插件页面</a>。.</p>
-<p>同时也别忘了看看<a href="https://www.npmjs.com/search?q=babel-plugin" target="_blank" rel="external">由社区构建的其他插件</a>。 如果你想学习如何编写自己的插件可以阅读 <a href="plugin-handbook.md">Babel 插件手册</a>。.</p>
-<h2 id="插件选项"><a href="#插件选项" class="headerlink" title="插件选项"></a><a id="toc-plugin-options"></a>插件选项</h2><p>很多插件也有选项用于配置他们自身的行为。 例如，很多转换器都有“宽松”模式，通过放弃一些标准中的行为来生成更简化且性能更好的代码。</p>
-<p>要为插件添加选项，只需要做出以下更改：</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "plugins": [</div><div class="line"><span class="deletion">-     "transform-es2015-classes"</span></div><div class="line"><span class="addition">+     ["transform-es2015-classes", &#123; "loose": true &#125;]</span></div><div class="line">    ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>接下来几周内我会更新插件文档来详细介绍每一个选项。<a href="https://twitter.com/thejameskyle" target="_blank" rel="external">关注我以获知更新</a>。.</p>
-</blockquote>
-<h2 id="基于环境自定义-Babel"><a href="#基于环境自定义-Babel" class="headerlink" title="基于环境自定义 Babel"></a><a id="toc-customizing-babel-based-on-environment"></a>基于环境自定义 Babel</h2><p>Babel 插件解决许多不同的问题。 其中大多数是开发工具，可以帮助你调试代码或是与工具集成。 也有大量的插件用于在生产环境中优化你的代码。</p>
-<p>因此，想要基于环境来配置 Babel 是很常见的。你可以轻松的使用 <code>.babelrc</code> 文件来达成目的。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "presets": ["es2015"],</div><div class="line">    "plugins": [],</div><div class="line"><span class="addition">+   "env": &#123;</span></div><div class="line"><span class="addition">+     "development": &#123;</span></div><div class="line"><span class="addition">+       "plugins": [...]</span></div><div class="line"><span class="addition">+     &#125;,</span></div><div class="line"><span class="addition">+     "production": &#123;</span></div><div class="line"><span class="addition">+       "plugins": [...]</span></div><div class="line"><span class="addition">+     &#125;</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>Babel 将根据当前环境来开启 <code>env</code> 下的配置。</p>
-<p>当前环境可以使用 <code>process.env.BABEL_ENV</code> 来获得。 如果 <code>BABEL_ENV</code> 不可用，将会替换成 <code>NODE_ENV</code>，并且如果后者也没有设置，那么缺省值是<code>&quot;development&quot;</code>。.</p>
-<p><strong>Unix</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ BABEL_ENV=production [COMMAND]</div><div class="line">$ NODE_ENV=production [COMMAND]</div></pre></td></tr></table></figure>
-<p><strong>Windows</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ SET BABEL_ENV=production</div><div class="line">$ [COMMAND]</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意：</strong><code>[COMMAND]</code> 指的是任意一个用来运行 Babel 的命令（如：<code>babel</code>，<code>babel-node</code>，或是 <code>node</code>，如果你使用了 register 钩子的话）。</p>
-<p><strong>提示：</strong>如果你想要让命令能够跨 unix 和 windows 平台运行的话，可以使用 <a href="https://www.npmjs.com/package/cross-env" target="_blank" rel="external"><code>cross-env</code></a>。.</p>
-</blockquote>
-<h2 id="制作你自己的预设（preset）"><a href="#制作你自己的预设（preset）" class="headerlink" title="制作你自己的预设（preset）"></a><a id="toc-making-your-own-preset"></a>制作你自己的预设（preset）</h2><p>手动指定插件？插件选项？环境特定设置？所有这些配置都会在你的项目里产生大量的重复工作。</p>
-<p>为此，我们鼓励社区创建自己的预设。 这可能是一个针对特定 <a href="https://github.com/leebenson/babel-preset-node5" target="_blank" rel="external">node 版本</a>的预设，或是适用于你<a href="https://github.com/cloudflare/babel-preset-cf" target="_blank" rel="external">整个</a><a href="https://github.com/airbnb/babel-preset-airbnb" target="_blank" rel="external">公司</a>的预设。.</p>
-<p>创建预设非常容易。比方说你这样一个 <code>.babelrc</code> 文件：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"presets"</span>: [</div><div class="line">    <span class="string">"es2015"</span>,</div><div class="line">    <span class="string">"react"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"plugins"</span>: [</div><div class="line">    <span class="string">"transform-flow-strip-types"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你要做的就是依循命名约定 <code>babel-preset-*</code> 来创建一个新项目（请务必对这个命名约定保持责任心，也就是说不要滥用这个命名空间），然后创建两个文件。</p>
-<p>首先，创建一个 <code>package.json</code>，包括针对预设所必要的 <code>dependencies</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"babel-preset-my-awesome-preset"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"James Kyle &lt;me@thejameskyle.com&gt;"</span>,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"babel-preset-es2015"</span>: <span class="string">"^6.3.13"</span>,</div><div class="line">    <span class="string">"babel-preset-react"</span>: <span class="string">"^6.3.13"</span>,</div><div class="line">    <span class="string">"babel-plugin-transform-flow-strip-types"</span>: <span class="string">"^6.3.15"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后创建 <code>index.js</code> 文件用于导出 <code>.babelrc</code> 的内容，使用对应的 <code>require</code> 调用来替换 plugins／presets 字符串。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">presets</span>: [</div><div class="line">    <span class="built_in">require</span>(<span class="string">"babel-preset-es2015"</span>),</div><div class="line">    <span class="built_in">require</span>(<span class="string">"babel-preset-react"</span>)</div><div class="line">  ],</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="built_in">require</span>(<span class="string">"babel-plugin-transform-flow-strip-types"</span>)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>然后只需要发布到 npm 于是你就可以像其它预设一样来使用你的预设了。</p>
-<hr>
-<h1 id="Babel-和其他工具"><a href="#Babel-和其他工具" class="headerlink" title="Babel 和其他工具"></a><a id="toc-babel-and-other-tools"></a>Babel 和其他工具</h1><p>一旦你掌握的窍门，安装 Babel 还是十分简明的，不过和其他工具搭配在一起就会变得困难多了。 不过我们一直在与其他项目密切合作以确保这种体验尽可能简单。</p>
-<h2 id="静态分析工具"><a href="#静态分析工具" class="headerlink" title="静态分析工具"></a><a id="toc-static-analysis-tools"></a>静态分析工具</h2><p>新标准为语言带来了许多新的语法，静态分析工具正在将此利用起来。</p>
-<h3 id="语法检查（Linting）"><a href="#语法检查（Linting）" class="headerlink" title="语法检查（Linting）"></a><a id="toc-linting"></a>语法检查（Linting）</h3><p><a href="http://eslint.org" target="_blank" rel="external">ESLint</a> 是最流行的语法检查工具之一，因此我们维护了一个官方的 <a href="https://github.com/babel/babel-eslint" target="_blank" rel="external"><code>babel-eslint</code></a> 整合软件包。</p>
-<p>首先安装 <code>eslint</code> 和 <code>babel-eslint</code>。.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev eslint babel-eslint</div></pre></td></tr></table></figure>
-<p>然后创建或使用项目现有的 <code>.eslintrc</code> 文件并设置 <code>parser</code> 为 <code>babel-eslint</code>。.</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line"><span class="addition">+   "parser": "babel-eslint",</span></div><div class="line">    "rules": &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>现在添加一个 <code>lint</code> 任务到 npm 的 <code>package.json</code> 脚本中：</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "name": "my-module",</div><div class="line">    "scripts": &#123;</div><div class="line"><span class="addition">+     "lint": "eslint my-files.js"</span></div><div class="line">    &#125;,</div><div class="line">    "devDependencies": &#123;</div><div class="line">      "babel-eslint": "...",</div><div class="line">      "eslint": "..."</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>接着只需要运行这个任务就一切就绪了。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm run lint</div></pre></td></tr></table></figure>
-<p>详细信息请咨询 <a href="https://github.com/babel/babel-eslint" target="_blank" rel="external"><code>babel-eslint</code></a> 或者 <a href="http://eslint.org" target="_blank" rel="external"><code>eslint</code></a> 的文档。</p>
-<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a><a id="toc-code-style"></a>代码风格</h3><blockquote>
-<p>JSCS已经和ESLint合并，所以请查看ESLint的代码风格。</p>
-</blockquote>
-<p>JSCS 是一个极受欢迎的工具，在语法检查的基础上更进一步检查代码自身的风格。 Babel 和 JSCS 项目的核心维护者之一（<a href="https://github.com/hzoo" target="_blank" rel="external">@hzoo</a>）维护着 JSCS 的官方集成。</p>
-<p>更妙的是，JSCS 自己通过 <code>--esnext</code> 选项实现了这种集成，于是和 Babel 的集成就简化成了直接在命令行运行：</p>
-<pre><code>$ jscs . --esnext
-</code></pre><p>或者在 <code>.jscsrc</code> 文件里添加 <code>esnext</code> 选项。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  &#123;</div><div class="line">    "preset": "airbnb",</div><div class="line"><span class="addition">+   "esnext": true</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>详细信息请咨询 <a href="https://github.com/jscs-dev/babel-jscs" target="_blank" rel="external"><code>babel-jscs</code></a> 或是 <a href="http://jscs.info" target="_blank" rel="external"><code>jscs</code></a> 的文档。</p>
-<!--
-### Code Coverage
-
-> [WIP]
--->
-<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a><a id="toc-documentation"></a>文档</h3><p>使用 Babel，ES2015，还有 Flow 你可以对你的代码进行大量的推断。使用 <a href="http://documentation.js.org" target="_blank" rel="external">documentation.js</a> 可以非常简便地生成详细的 API 文档。</p>
-<p>Documentation.js 使用 Babel 来支持所有最新的语法，包括用于在你的代码中声明类型所用的 Flow 注解在内，</p>
-<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a><a id="toc-frameworks"></a>框架</h2><p>所有主流的 JavaScript 框架都正在努力调整他们的 APIs 向这门语言的未来看齐。有鉴于此，配套工具方面已经做出了大量的工作。</p>
-<p>除了使用 Babel 以外，框架更有条件去扩展 Babel 来帮助他们提升用户体验。</p>
-<h3 id="React"><a href="#React" class="headerlink" title="React"></a><a id="toc-react"></a>React</h3><p>React 已经大幅改变了他们的 API 以适应 ES2015 的类语法（<a href="https://babeljs.io/blog/2015/06/07/react-on-es6-plus" target="_blank" rel="external">此处了解更新的 API</a>）。 特别是 React 现在依赖 Babel 编译它的 JSX 语法且弃用了它原有的自定义工具。 你可以按照<a href="#babel-preset-react">上述说明</a>安装 <code>babel-preset-react</code> 包来开始。.</p>
-<p>React 社区采用 Babel 并围绕它来运行，现在社区已经创建了<a href="https://www.npmjs.com/search?q=babel-plugin+react" target="_blank" rel="external">大量的转换器（transforms）</a>。.</p>
-<p>最令人瞩目的是 <a href="https://github.com/gaearon/babel-plugin-react-transform" target="_blank" rel="external"><code>babel-plugin-react-transform</code></a> 插件，它集成了大量 <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="external">React 专用转换器</a>可以启用诸如 <em>热模块重载</em>等其他调试工具。</p>
-<!--
-### Ember
-
-> [WIP]
--->
-<h2 id="文本编辑器和-IDEs（集成开发环境）"><a href="#文本编辑器和-IDEs（集成开发环境）" class="headerlink" title="文本编辑器和 IDEs（集成开发环境）"></a><a id="toc-text-editors-and-ides"></a>文本编辑器和 IDEs（集成开发环境）</h2><p>通过 Babel 引入 ES2015，JSX，和流式语法固然是大有裨益，可如果你的文本编辑不支持那可就糟糕透了。 因此，别忘了为你的文本编辑器或是 IDE 安装 Babel 插件。</p>
-<ul>
-<li><a href="https://github.com/babel/babel-sublime" target="_blank" rel="external">Sublime Text</a></li>
-<li><a href="https://atom.io/packages/language-babel" target="_blank" rel="external">Atom</a></li>
-<li><a href="https://github.com/jbgutierrez/vim-babel" target="_blank" rel="external">Vim</a></li>
-<li><a href="https://babeljs.io/docs/setup/#webstorm" target="_blank" rel="external">WebStorm</a></li>
-</ul>
-<!--
-# Debugging Babel
-
-> [WIP]
--->
-<hr>
-<h1 id="Babel-支持"><a href="#Babel-支持" class="headerlink" title="Babel 支持"></a><a id="toc-babel-support"></a>Babel 支持</h1><p>Babel 的社区非常庞大并且增长速度很快，伴随着我们成长的同时我们希望保证人们总能获取他们需要的所有资源。 所以我们提供了数种途径来提供支持。</p>
-<p>谨记在所有的这些沟通渠道里我们都共同遵守一套<a href="https://github.com/babel/babel/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="external">行为准则</a>。 破坏准则的行为会被处理。 所以请阅读它并在与他人互动时注意自己的行为。</p>
-<p>同时我们也在寻求发展一个自我支持式的社区，为那些始终热诚奉献的人们。 如果别人问的问题你恰好知道答案，请不吝花费几分钟帮帮他们。 在此过程中也请尽力保持友善与相互理解。</p>
-<h2 id="Babel-论坛"><a href="#Babel-论坛" class="headerlink" title="Babel 论坛"></a><a id="toc-babel-forum"></a>Babel 论坛</h2><p><a href="http://www.discourse.org" target="_blank" rel="external">Discourse</a> 免费为我们提供了一个托管版本的论坛（我们爱死他们了！）。 如果你是个论坛控请不要错过 <a href="https://discuss.babeljs.io" target="_blank" rel="external">discuss.babeljs.io</a>。.</p>
-<h2 id="Babel-聊天"><a href="#Babel-聊天" class="headerlink" title="Babel 聊天"></a><a id="toc-babel-chat"></a>Babel 聊天</h2><p>无人不爱 <a href="https://slack.com" target="_blank" rel="external">Slack</a>。如果你正在寻求来自社区的即时支持，那就来 <a href="https://slack.babeljs.io" target="_blank" rel="external">slack.babeljs.io</a> 和我们聊天吧。.</p>
-<!--
-## Babel Stack Overflow
-
-> [WIP]
--->
-<h2 id="Babel-问题"><a href="#Babel-问题" class="headerlink" title="Babel 问题"></a><a id="toc-babel-issues"></a>Babel 问题</h2><p>Babel使用<a href="http://github.com" target="_blank" rel="external">Github</a>提供的问题跟踪器。.</p>
-<p>您可以在<a href="https://github.com/babel/babel/issues" target="_blank" rel="external">Github</a>上看到所有的开放和封闭的问题.</p>
-<p>如果你想要打开一个新的问题：</p>
-<ul>
-<li><a href="https://github.com/babel/babel/issues" target="_blank" rel="external">先搜搜看有没有现存的类似问题</a></li>
-<li><p>创建一个新的错误报告&lt;/&gt; 或请求新功能&lt;/&gt;</p></li> </ul> <p></p>
-<h3 id="创建漂亮的-Babel-错误报告"><a href="#创建漂亮的-Babel-错误报告" class="headerlink" title="创建漂亮的 Babel 错误报告"></a><a id="toc-creating-an-awesome-babel-bug-report"></a>创建漂亮的 Babel 错误报告</h3><p>Babel 的问题有时候很难远程调试，所以我们希望能获取尽可能详细的信息来帮助我们解决问题。 花点时间去撰写一份好的错误报告会让你的问题更快得到解决。</p>
-<p>首先，尝试隔离问题。 并非设置过程的每一步都是导致问题的原因。 如果你的问题是一段输入代码，试着尽可能把与问题不相关的代码都删除掉。</p>
-<blockquote>
-<p>[WIP]</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><strong><em>在 Twitter 上关注 <a href="https://twitter.com/thejameskyle" target="_blank" rel="external">@thejameskyle</a>，第一时间获取更新。</em></strong></p>
-</blockquote>
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/21/Babel 用户手册/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-Babel 插件手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Babel-插件手册"><span class="toc-text">Babel 插件手册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象语法树（ASTs）"><span class="toc-text">抽象语法树（ASTs）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel-的处理步骤"><span class="toc-text">Babel 的处理步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析"><span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#词法分析"><span class="toc-text">词法分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#语法分析"><span class="toc-text">语法分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换"><span class="toc-text">转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成"><span class="toc-text">生成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Visitors（访问者）"><span class="toc-text">Visitors（访问者）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paths（路径）"><span class="toc-text">Paths（路径）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Paths-in-Visitors（存在于访问者中的路径）"><span class="toc-text">Paths in Visitors（存在于访问者中的路径）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#State（状态）"><span class="toc-text">State（状态）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scopes（作用域）"><span class="toc-text">Scopes（作用域）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Bindings（绑定）"><span class="toc-text">Bindings（绑定）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#babylon"><span class="toc-text">babylon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-traverse"><span class="toc-text">babel-traverse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-types"><span class="toc-text">babel-types</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definitions（定义）"><span class="toc-text">Definitions（定义）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Builders（构建器）"><span class="toc-text">Builders（构建器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Validators（验证器）"><span class="toc-text">Validators（验证器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Converters（变换器）"><span class="toc-text">Converters（变换器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-generator"><span class="toc-text">babel-generator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-template"><span class="toc-text">babel-template</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编写你的第一个-Babel-插件"><span class="toc-text">编写你的第一个 Babel 插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#转换操作"><span class="toc-text">转换操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#访问"><span class="toc-text">访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取子节点的Path"><span class="toc-text">获取子节点的Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查节点的类型"><span class="toc-text">检查节点的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查路径（Path）类型"><span class="toc-text">检查路径（Path）类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查标识符（Identifier）是否被引用"><span class="toc-text">检查标识符（Identifier）是否被引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找到特定的父路径"><span class="toc-text">找到特定的父路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取同级路径"><span class="toc-text">获取同级路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停止遍历"><span class="toc-text">停止遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理"><span class="toc-text">处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#替换一个节点"><span class="toc-text">替换一个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用多节点替换单节点"><span class="toc-text">用多节点替换单节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用字符串源码替换节点"><span class="toc-text">用字符串源码替换节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入兄弟节点"><span class="toc-text">插入兄弟节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入到容器（container）中"><span class="toc-text">插入到容器（container）中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除一个节点"><span class="toc-text">删除一个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换父节点"><span class="toc-text">替换父节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除父节点"><span class="toc-text">删除父节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope（作用域）"><span class="toc-text">Scope（作用域）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检查本地变量是否被绑定"><span class="toc-text">检查本地变量是否被绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个-UID"><span class="toc-text">创建一个 UID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提升变量声明至父级作用域"><span class="toc-text">提升变量声明至父级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重命名绑定及其引用"><span class="toc-text">重命名绑定及其引用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件选项"><span class="toc-text">插件选项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件的准备和收尾工作"><span class="toc-text"> 插件的准备和收尾工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在插件中启用其他语法"><span class="toc-text"> 在插件中启用其他语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抛出一个语法错误"><span class="toc-text"> 抛出一个语法错误</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建节点"><span class="toc-text">构建节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#留意嵌套结构"><span class="toc-text">留意嵌套结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快照测试"><span class="toc-text">快照测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">AST 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exec-Tests"><span class="toc-text">Exec Tests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babel-plugin-tester"><span class="toc-text">babel-plugin-tester</span></a></li></ol></li></ol></li></ol>
+          <hr/>
+        </div>
         
         <h1 id="Babel-插件手册"><a href="#Babel-插件手册" class="headerlink" title="Babel 插件手册"></a>Babel 插件手册</h1><p>这篇文档涵盖了如何创建 <a href="https://babeljs.io" target="_blank" rel="external">Babel</a> <a href="https://babeljs.io/docs/advanced/plugins/" target="_blank" rel="external">插件</a>等方面的内容。.</p>
 <p><a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external"><img src="https://licensebuttons.net/l/by/4.0/80x15.png" alt="cc-by-4.0"></a></p>
@@ -1239,677 +891,95 @@ if (bar) console.log(bar);"
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/21/Babel 插件手册/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2018/05/21/Babel 插件手册/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
   
-    <article id="post-svn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<nav id="article-nav">
   
-  <div class="article-inner">
-    
-      <header class="article-header">
+    <a href="/2018/05/21/Babel 用户手册/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/svn/">svn命令基本使用及原理</a>
-    </h1>
-  
-
+          (no title)
         
-        <a href="/2018/05/08/svn/" class="archive-article-date">
-  	<time datetime="2018-05-08T11:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><p>1.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
-<p>2.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
-<p>3.<strong>往版本库添加新文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure></p>
-<p>4.<strong>将改动的文件提交到版本库</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure></p>
-<p>5.<strong>加锁／解锁</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure></p>
-<p>6.<strong>更新到某个版本</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m path 简写：svn up</div></pre></td></tr></table></figure></p>
-<p>7.<strong>查看文件或者目录状态</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status [-v (查看文件及子目录状态)] path  简写：svn st</div></pre></td></tr></table></figure></p>
-<p>8.<strong>删除文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn delete path -m <span class="string">"message"</span> 简写：svn (del, remove, rm)</div></pre></td></tr></table></figure></p>
-<p>9.<strong>查看日志</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ svn <span class="built_in">log</span> path</div></pre></td></tr></table></figure></p>
-<p>10.<strong>查看文件详细信息</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ svn info path</div></pre></td></tr></table></figure></p>
-<p>11.<strong>比较差异</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn diff path   简写：svn di</div></pre></td></tr></table></figure></p>
-<p>12.<strong>将两个版本之间的差异合并到当前文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn merge -r m:n path</div></pre></td></tr></table></figure></p>
-<p>13.<strong>svn帮助</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">log</span> path</div></pre></td></tr></table></figure></p>
-<h3 id="svn基本原理"><a href="#svn基本原理" class="headerlink" title="svn基本原理"></a>svn基本原理</h3><p>1.<strong>svn里面三个概念：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.工作拷贝：一个SVN的工作拷贝是用户机器的一个本地目录，保存着一些文件和目录，你可以任意编辑其中的文件，在你提交之前你所做的编辑不会上传到SVN与他人所作的修改进行合并。</div><div class="line"></div><div class="line">2.基准版本：SVN会在每个工作拷贝的一个特定位置保存该工作拷贝最后一次提交时的文件及目录情况，这些文件及目录就称为<span class="string">"基准版本"</span>。</div><div class="line"></div><div class="line">3.Head版本：SVN服务器中的最新版本</div><div class="line"></div><div class="line">注意：如果Head版本比你所编辑的本地工作拷贝版本（指的是基准版本）新的话，而且如果你做了修改，当你Commit的时候会提示有冲突产生，这时你update的时候会将冲突显示出来。如果没有做修改，Commit之后会提示你版本低，需要update成最新版本，此时本地工作拷贝会变成update后的最新的版本。</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/08/svn/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
+      </div>
+    </a>
   
-    <article id="post-life/2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    <a href="/2018/05/08/svn/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">svn命令基本使用及原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/life/2/">未来6个月的规划</a>
-    </h1>
-  
+</nav>
 
-        
-        <a href="/2018/04/23/life/2/" class="archive-article-date">
-  	<time datetime="2018-04-23T07:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="2018-Q2-Q3总体规划"><a href="#2018-Q2-Q3总体规划" class="headerlink" title="2018 Q2-Q3总体规划"></a>2018 Q2-Q3总体规划</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.用户极致体验</div><div class="line">	要求：</div><div class="line">		1.[页面的流畅性](http://ask.dcloud.net.cn/article/25)</div><div class="line">		2.页面的美观度</div><div class="line">		3.页面的加载性能</div><div class="line">2.前端工具化及工程化</div><div class="line">	发展：</div><div class="line">		1.原始阶段：在原始api方面扩充，将会催生大量的tools</div><div class="line">		2.发展阶段：随着做的东西复杂化，这些需要更多的组织，引入大量设计模式，此时会催生出大量的frameworks</div><div class="line">		3.工程化阶段：随着团队的扩充，就会进入工程化的阶段，各类mvc，mvp，mvvm等设计，可视化开发，自动化测试，团队协作系统等。</div><div class="line">	标准：根据模块化、组件化、规范化、自动化四个来思考，软件工程化关注的是性能、稳定性、可用性、可维护性等方面，一切以这些为目标的工作都是<span class="string">"前端工程化"</span></div><div class="line">	目标：以尽可能快的速度实现可信赖的产品。尽可能短的时间包括开发速度、部署速度与重构速度，而可信赖又在于产品的可测试性、可变性以及Bug的重现与定位</div><div class="line">3.横向发展</div><div class="line">	了解业务发展 -- 了解一些后端的设计</div><div class="line">	了解页面设计原理 --- UI</div><div class="line">	人工智能 -- 前端应用</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/life/2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-life/1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/life/1/">如何避免感冒及如何处理感冒问题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/23/life/1/" class="archive-article-date">
-  	<time datetime="2018-04-23T06:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="如何预防感冒"><a href="#如何预防感冒" class="headerlink" title="如何预防感冒"></a>如何预防感冒</h3><h4 id="感冒的定义"><a href="#感冒的定义" class="headerlink" title="感冒的定义"></a>感冒的定义</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">伤风，又称普通感冒（common cold），医学上还称为急性上呼吸道感染或急性鼻咽炎，是一种上呼吸道的病毒性感染，主要原发于鼻腔，但也可能进犯喉咙以及鼻窦。症状一般于暴露病原后两天内开始出现，包含咳嗽、喉咙痛、流鼻水、打喷嚏、头痛、发烧等。大部分症状通常在七到十天内会缓解，但某些症状可能会持续三个星期以上。有其他健康问题者患感冒时可能会并发肺炎</div></pre></td></tr></table></figure>
-<h4 id="如何预防"><a href="#如何预防" class="headerlink" title="如何预防"></a>如何预防</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.勤洗手</div><div class="line">2.勤通风</div><div class="line">3.增强体质</div><div class="line">4.流感疫苗</div></pre></td></tr></table></figure>
-<h3 id="如何处理感冒问题"><a href="#如何处理感冒问题" class="headerlink" title="如何处理感冒问题"></a>如何处理感冒问题</h3><h4 id="感冒类型"><a href="#感冒类型" class="headerlink" title="感冒类型"></a>感冒类型</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.风寒型感冒：病人除了有鼻塞、喷嚏、咳嗽、头痛等一般症状外，还有畏寒、低热、无汗、流清涕、吐稀薄白色痰等特点。这种感冒与病人感受风寒有关。治疗应以辛温解表为原则。病人可选用伤风感冒冲剂、感冒清热冲剂、九味羌活丸、通宣理肺丸、午时茶颗粒等药物治疗。若病人兼有内热便秘的症状，可服用防风通圣丸治疗。风寒型感冒病人忌用桑菊感冒片、银翘解毒片、羚翘解毒片、复方感冒片等药物。</div><div class="line">2.风热型感冒：病人除了有鼻塞、流涕、咳嗽、头痛等感冒的一般症状外，还有发热重、痰液粘稠呈黄色等特点。治疗应以辛凉解表为原则。病人可选用感冒退热冲剂、板蓝根冲剂、银翘解毒丸、羚羊解毒丸等药物治疗。风热型感冒病人忌用九味羌活丸、理肺丸等药物。</div><div class="line">3.暑湿型感冒：病人表现为畏寒、发热、口淡无味、头痛、头胀、腹痛、腹泻等症状。此类型感冒多发生在夏季。治疗应以清暑、祛湿、解表为主。病人可选用藿香正气水、银翘解毒丸等药物治疗。如果病人胃肠道症状较重，不宜选用保和丸、山楂丸、香砂养胃丸等药物。</div><div class="line">4.时行感冒：病人的症状与风热感冒的症状相似。但时行感冒病人较风热感冒病人的症状重。病人可表现为突然畏寒、高热、头痛、怕冷、寒战、头痛剧烈、全身酸痛、疲乏无力、鼻塞、流涕、干咳、胸痛、恶心、食欲不振，婴幼儿或老年人可能并发肺炎或心力衰竭等症状。治疗应以清热解毒、疏风透表为主</div></pre></td></tr></table></figure>
-<h4 id="感冒过程"><a href="#感冒过程" class="headerlink" title="感冒过程"></a>感冒过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.初始症状是头晕，浑身无力，全身酸痛等。</div><div class="line">2.以上症状持续几天之后开始喉咙发炎，头痛加重。。。</div><div class="line">3.由发炎引起其他地方发炎，且一些症状加重，流鼻涕，咳嗽等。</div><div class="line">4.病情严重</div></pre></td></tr></table></figure>
-<h4 id="感冒可采取一些的药物"><a href="#感冒可采取一些的药物" class="headerlink" title="感冒可采取一些的药物"></a>感冒可采取一些的药物</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.发烧、头痛。这时候就需要解热镇痛成分——对乙酰氨基酚、阿司匹林、双氯芬酸</div><div class="line">2.鼻塞，为什么会鼻塞呢？主要是鼻腔充血，我们需要一些减轻鼻腔充血的药物，比如——伪麻黄碱</div></pre></td></tr></table></figure>
-<h4 id="感冒一些经验"><a href="#感冒一些经验" class="headerlink" title="感冒一些经验"></a>感冒一些经验</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.感冒时初始症状无法抑制时，感冒会有一个上升期，且感冒不断加重</div><div class="line">2.当感冒到达一个高峰期时，此时一些感冒药能够起到一个很大作用</div><div class="line">3.如果有发烧，切记需要吃退烧药</div><div class="line">4.尽量不要打抗生素，对身体危害太大</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">感冒</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">预防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/life/1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/javascript-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/javascript/javascript-2/">javascript提升之道</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/javascript/javascript-2/" class="archive-article-date">
-  	<time datetime="2017-05-22T15:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="不同等级的前端工程师如何解决问题"><a href="#不同等级的前端工程师如何解决问题" class="headerlink" title="不同等级的前端工程师如何解决问题"></a>不同等级的前端工程师如何解决问题</h3><h4 id="初级前端工程师"><a href="#初级前端工程师" class="headerlink" title="初级前端工程师"></a>初级前端工程师</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.了解问题，通过google或者baidu查找到答案，然后直接将代码copy到页面中，运行发现问题，直ls接push git</div><div class="line">2.</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/javascript/javascript-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/css-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/javascript/css-1/">CSS 常见布局总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/javascript/css-1/" class="archive-article-date">
-  	<time datetime="2017-05-22T14:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="三栏式布局"><a href="#三栏式布局" class="headerlink" title="三栏式布局"></a>三栏式布局</h3><h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想:通过margin-left和margin-right来将left和right两栏移到center这一栏中,然后利用position:static的方式来左右平移实现三栏式布局</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span>#header<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"center"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#center<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"left"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"right"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer"</span>&gt;</span>#footer<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">min-width</span>: <span class="number">550px</span>;      <span class="comment">/* 2x LC width + RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#container</span> &#123;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">200px</span>;   <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">padding-right</span>: <span class="number">150px</span>;  <span class="comment">/* RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#container</span> <span class="selector-class">.column</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#center</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#e9e9e9</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#left</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;          <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">right</span>: <span class="number">200px</span>;          <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#right</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;          <span class="comment">/* RC width */</span></div><div class="line">  <span class="attribute">margin-right</span>: -<span class="number">150px</span>;  <span class="comment">/* RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#footer</span> &#123;</div><div class="line">  <span class="attribute">clear</span>: both;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#header</span>, </div><div class="line"><span class="selector-id">#footer</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#c9c9c9</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*** IE6 Fix ***/</span></div><div class="line">* <span class="selector-tag">html</span> <span class="selector-id">#left</span> &#123;</div><div class="line">  <span class="attribute">left</span>: <span class="number">150px</span>;           <span class="comment">/* RC width */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 将center的div设置width100%,然后内置div利用margin-left和margin-right撑开空间供sub和extra使用,同时内置div和sub,extra刚好布满三栏</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>header<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-inner"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">h4</span>&gt;</span>main<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sub"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>sub<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"extra"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>extra<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>footer<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">        <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">        <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-tag">body</span> &#123;</div><div class="line">        <span class="attribute">min-width</span>: <span class="number">700px</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.header</span>,</div><div class="line">    <span class="selector-class">.footer</span> &#123;</div><div class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</div><div class="line">        <span class="attribute">background</span>: <span class="number">#aaa</span>;</div><div class="line">        <span class="attribute">text-align</span>: center;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.sub</span>,</div><div class="line">    <span class="selector-class">.main</span>,</div><div class="line">    <span class="selector-class">.extra</span> &#123;</div><div class="line">        <span class="attribute">float</span>: left;</div><div class="line">        <span class="attribute">min-height</span>: <span class="number">130px</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.sub</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">        <span class="attribute">background</span>: red;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.extra</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">220px</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">220px</span>;</div><div class="line">        <span class="attribute">background</span>: blue;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.main</span> &#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.main-inner</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: <span class="number">200px</span>;</div><div class="line">        <span class="attribute">margin-right</span>: <span class="number">220px</span>;</div><div class="line">        <span class="attribute">min-height</span>: <span class="number">130px</span>;</div><div class="line">        <span class="attribute">background</span>: green;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.footer</span> &#123;</div><div class="line">        <span class="attribute">clear</span>: both;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h4 id="浮动布局"><a href="#浮动布局" class="headerlink" title="浮动布局"></a>浮动布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 利用<span class="built_in">float</span>的方式将left和right的div撑上,然后设置center的div margin-left和margin-right来实现三栏布局</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"left"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"right"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"center"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#center<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#left</span>&#123;</div><div class="line">	<span class="attribute">float</span>: left;</div><div class="line">	<span class="attribute">background-color</span>: green;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.column</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#right</span>&#123;</div><div class="line">	<span class="attribute">float</span>: right;</div><div class="line">	<span class="attribute">background-color</span>: red;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: yellow;</div><div class="line">	<span class="attribute">margin</span>: auto <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h3><h4 id="已知高度宽度元素的水平垂直居中"><a href="#已知高度宽度元素的水平垂直居中" class="headerlink" title="已知高度宽度元素的水平垂直居中"></a>已知高度宽度元素的水平垂直居中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(一): 绝对定位与负边距实现</div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">margin</span>:-<span class="number">50px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(二): 绝对定位与margin</div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">margin</span>:auto;</div><div class="line">    <span class="attribute">top</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="未知高度和宽度元素的水平垂直居中"><a href="#未知高度和宽度元素的水平垂直居中" class="headerlink" title="未知高度和宽度元素的水平垂直居中"></a>未知高度和宽度元素的水平垂直居中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(一): 当要被居中的元素是inline或者inline-block元素可以巧妙的将父级容器设置为display:table-cell，配合text-align:center和vertical-align:middle即可以实现水平垂直居中</div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:table-cell;</div><div class="line">    <span class="attribute">text-align</span>:center;</div><div class="line">    <span class="attribute">vertical-align</span>:middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(二): 利用Css3的transform，可以轻松的在未知元素的高宽的情况下实现元素的垂直居中</div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(三): 使用flex布局，无需绝对定位等改变布局的操作，可以轻松实现元素的水平垂直居中</div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:flex;</div><div class="line">    <span class="attribute">justify-content</span>:center;</div><div class="line">    <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">css layout</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/javascript/css-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/javascript-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/javascript/javascript-1/">MVVM模式及与MVP和MVC的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/javascript/javascript-1/" class="archive-article-date">
-  	<time datetime="2017-05-22T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="三种模式的思想"><a href="#三种模式的思想" class="headerlink" title="三种模式的思想"></a>三种模式的思想</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ol>
-<li>View 传送指令到 Controller</li>
-<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
-<li>Model 将新的数据发送到 View，用户得到反馈</li>
-</ol>
-<h4 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h4><ol>
-<li>各部分之间的通信，都是双向的。</li>
-<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
-<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
-</ol>
-<h4 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h4><ol>
-<li>将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致</li>
-<li>唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel</li>
-</ol>
-<h4 id="三者之间的逻辑图"><a href="#三者之间的逻辑图" class="headerlink" title="三者之间的逻辑图"></a>三者之间的逻辑图</h4><p><img src="http://okzxxeq9y.bkt.clouddn.com/mvc_mvp_mvvm.jpg" alt="Alt text"></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/javascript/javascript-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-algorithm/algorithm-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/algorithm/algorithm-1/">堆栈存储区别及常用算法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/algorithm/algorithm-1/" class="archive-article-date">
-  	<time datetime="2017-05-22T14:40:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="堆栈之间的区别"><a href="#堆栈之间的区别" class="headerlink" title="堆栈之间的区别"></a>堆栈之间的区别</h3><ol>
-<li>栈区（stack）由编译器自动分配释放，存放函数的参数值，局部变量的值等 其操作方式类似于数据结构中的栈</li>
-<li>堆区（heap） 一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收 注意它与数据结构中的堆是两回事，分配方式倒是类似于链表</li>
-<li>申请后系统的响应: 只要栈的剩余空间大于所申·请空间，系统将为程序提供内存，否则将报异常提示栈溢出;首先应该知道操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时,会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序，另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样，代码中的delete语句才能正确的释放本内存空间。另外，由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中</li>
-<li>申请大小的限制 : 栈获得的空间较小,堆获得的空间比较灵活，也比较大</li>
-<li>申请效率的比较: 栈由系统自动分配，速度较快,但程序员是无法控制的;堆是由new分配的内存，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便;</li>
-<li>堆和栈中的存储内容 : 在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数;一般是在堆的头部用一个字节存放堆的大小。堆中的具体内容由程序员安排;</li>
-<li>存取效率的比较: 在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快</li>
-</ol>
-<h3 id="DP算法-Dynamic-programming"><a href="#DP算法-Dynamic-programming" class="headerlink" title="DP算法(Dynamic programming)"></a>DP算法(Dynamic programming)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.动态规划的本质，是对问题状态的定义和状态转移方程的定义</div><div class="line">2.将问题发展到各个阶段时所处于的各种客观情况用不同的状态,而且状态的选择要满足无后效性,即对后面的状态无任何影响</div><div class="line">3.上述状态定义好之后，状态和状态之间的关系式，就叫做状态转移方程</div><div class="line">4.典型例子: 01背包问题,装配线调度</div></pre></td></tr></table></figure>
-<h3 id="DFS算法-Depth-First-Search"><a href="#DFS算法-Depth-First-Search" class="headerlink" title="DFS算法(Depth-First-Search)"></a>DFS算法(Depth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">深度优先搜索在搜索过程中访问某个顶点后，需要递归地访问此顶点的所有未访问过的相邻顶点。</div><div class="line">初始条件下所有节点为白色，选择一个作为起始顶点，按照如下步骤遍历：</div><div class="line">a. 选择起始顶点涂成灰色，表示还未访问</div><div class="line">b. 从该顶点的邻接顶点中选择一个，继续这个过程（即再寻找邻接结点的邻接结点），一直深入下去，直到一个顶点没有邻接结点了，涂黑它，表示访问过了</div><div class="line">c. 回溯到这个涂黑顶点的上一层顶点，再找这个上一层顶点的其余邻接结点，继续如上操作，如果所有邻接结点往下都访问过了，就把自己涂黑，再回溯到更上一层。</div><div class="line">d. 上一层继续做如上操作，知道所有顶点都访问过。</div><div class="line"></div><div class="line">核心是通过栈的方式实现</div></pre></td></tr></table></figure>
-<h3 id="BFS算法-Breadth-First-Search"><a href="#BFS算法-Breadth-First-Search" class="headerlink" title="BFS算法(Breadth-First-Search)"></a>BFS算法(Breadth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">广度优先搜索在进一步遍历图中顶点之前，先访问当前顶点的所有邻接结点。</div><div class="line">a .首先选择一个顶点作为起始结点，并将其染成灰色，其余结点为白色。</div><div class="line">b. 将起始结点放入队列中。</div><div class="line">c. 从队列首部选出一个顶点，并找出所有与之邻接的结点，将找到的邻接结点放入队列尾部，将已访问过结点涂成黑色，没访问过的结点是白色。如果顶点的颜色是灰色，表示已经发现并且放入了队列，如果顶点的颜色是白色，表示还没有发现</div><div class="line">d. 按照同样的方法处理队列中的下一个结点。</div><div class="line">基本就是出队的顶点变成黑色，在队列里的是灰色，还没入队的是白色</div><div class="line"></div><div class="line">核心是通过队列的方式实现</div></pre></td></tr></table></figure>
-<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并</div></pre></td></tr></table></figure>
-<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索算法）</div></pre></td></tr></table></figure>
-<h3 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索</div></pre></td></tr></table></figure>
-<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解</div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack heap</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DP DFS BFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/algorithm/algorithm-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-interview/interview-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/21/interview/interview-3/">前端常见面试题归纳(三)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/21/interview/interview-3/" class="archive-article-date">
-  	<time datetime="2017-05-21T05:35:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><a href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？" class="headerlink" title="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"></a>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白</div><div class="line">解决方案：</div><div class="line">1.浮动li中<span class="built_in">float</span>：left</div><div class="line">2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px</div><div class="line">3.li之间不换行，且不留空格</div></pre></td></tr></table></figure>
-<h3 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</div></pre></td></tr></table></figure>
-<h3 id="什么叫做优雅降级和渐进增强"><a href="#什么叫做优雅降级和渐进增强" class="headerlink" title="什么叫做优雅降级和渐进增强"></a>什么叫做优雅降级和渐进增强</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</div><div class="line">优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览</div></pre></td></tr></table></figure>
-<h3 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">跨域资源共享</div><div class="line">    基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败</div><div class="line">jsonp跨域</div><div class="line">    JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON</div><div class="line">通过修改document.domain来跨子域</div><div class="line">使用HTML5的window.postMessage方法跨域</div></pre></td></tr></table></figure>
-<h3 id="关于javascript中apply-和call-方法的区别"><a href="#关于javascript中apply-和call-方法的区别" class="headerlink" title="关于javascript中apply()和call()方法的区别"></a>关于javascript中apply()和call()方法的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">方法传递的参数不同 apply是数组传递，call是单个值传递</div></pre></td></tr></table></figure>
-<h3 id="XSS和CSRF原理"><a href="#XSS和CSRF原理" class="headerlink" title="XSS和CSRF原理"></a>XSS和CSRF原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XSS 全称(Cross Site Scripting) 跨站脚本攻击，是Web程序中最常见的漏洞。指攻击者在网页中嵌入客户端脚本(例如JavaScript),当用户浏览此网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的.  比如获取用户的Cookie，导航到恶意网站,携带木马等</div><div class="line">CSRF攻击(Cross Site Request Forgery) 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</div></pre></td></tr></table></figure>
-<h3 id="多个标签页之间的通信"><a href="#多个标签页之间的通信" class="headerlink" title="多个标签页之间的通信"></a>多个标签页之间的通信</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">通过localstorage实现 当localstorage里面发生改变就会出发storage事件</div><div class="line">通过WebSocket实现</div></pre></td></tr></table></figure>
-<h3 id="什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><a href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？" class="headerlink" title="什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？"></a>什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">FOUC即文档样式短暂失效，也就是HTML代码加载成功时它的CSS文件还没有加载，导致出现的网页内容没有样式，一般有这几种情况会导致FOUC：</div><div class="line">    1、使用import方法导入样式表</div><div class="line">    2、HTML代码在前，CSS样式表在后</div><div class="line">解决方法也很简单:</div><div class="line">    1、尽量减少使用import方法导入样式表</div><div class="line">    2、CSS样式表全部放到HEAD里</div></pre></td></tr></table></figure>
-<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">undefined表示<span class="string">"缺少值"</span>，就是此处应该有一个值，但是还没有定义</div></pre></td></tr></table></figure>
-<h3 id="AMD规范与CMD规范的区别"><a href="#AMD规范与CMD规范的区别" class="headerlink" title="AMD规范与CMD规范的区别"></a>AMD规范与CMD规范的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.对于依赖的模块，AMD 是提前执行，CMD 是延迟执行</div><div class="line">2.CMD 推崇依赖就近，AMD 推崇依赖前置</div><div class="line">3.AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一</div></pre></td></tr></table></figure>
-<h3 id="JavaScript-对象的深度克隆"><a href="#JavaScript-对象的深度克隆" class="headerlink" title="JavaScript 对象的深度克隆"></a>JavaScript 对象的深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浅度克隆 ：基本类型为值传递，对象仍为引用传递</div><div class="line">深度克隆 ：所有元素或属性均完全克隆，并于原引用类型完全独立，即，在后面修改对象的属性的时候，原对象不会被修改</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;  </div><div class="line">&#125;</div><div class="line"><span class="comment">// 深度克隆</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;  </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> obj;        <span class="comment">//原始类型直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o = isArray(obj) ? [] : &#123;&#125;; </div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> obj) &#123;  </div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))&#123; </div><div class="line">            o[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">"object"</span> ? deepClone(obj[i]) : obj[i]; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/21/interview/interview-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 
 
 
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
   
 
+  
+
+  
 
           </div>
         </div>
@@ -1930,8 +1000,8 @@ if (bar) console.log(bar);"
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
