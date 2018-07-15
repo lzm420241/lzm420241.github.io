@@ -66,7 +66,7 @@
 	        
 				<li><a href="/categories/生活/">生活</a></li>
 	        
-				<li><a href="/AI/">AI</a></li>
+				<li><a href="/categories/AI/">AI</a></li>
 	        
 			</ul>
 		</nav>
@@ -168,7 +168,7 @@
 		        
 					<li style="width: 14.285714285714286%"><a href="/categories/生活/">生活</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/AI/">AI</a></li>
+					<li style="width: 14.285714285714286%"><a href="/categories/AI/">AI</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,6 +184,85 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-interview/interview-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/interview/interview-3/">前端常见面试题归纳(三)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/interview/interview-3/" class="archive-article-date">
+  	<time datetime="2017-05-21T05:35:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><a href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？" class="headerlink" title="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"></a>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白</div><div class="line">解决方案：</div><div class="line">1.浮动li中<span class="built_in">float</span>：left</div><div class="line">2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px</div><div class="line">3.li之间不换行，且不留空格</div></pre></td></tr></table></figure>
+<h3 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</div></pre></td></tr></table></figure>
+<h3 id="什么叫做优雅降级和渐进增强"><a href="#什么叫做优雅降级和渐进增强" class="headerlink" title="什么叫做优雅降级和渐进增强"></a>什么叫做优雅降级和渐进增强</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</div><div class="line">优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览</div></pre></td></tr></table></figure>
+<h3 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">跨域资源共享</div><div class="line">    基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败</div><div class="line">jsonp跨域</div><div class="line">    JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON</div><div class="line">通过修改document.domain来跨子域</div><div class="line">使用HTML5的window.postMessage方法跨域</div></pre></td></tr></table></figure>
+<h3 id="关于javascript中apply-和call-方法的区别"><a href="#关于javascript中apply-和call-方法的区别" class="headerlink" title="关于javascript中apply()和call()方法的区别"></a>关于javascript中apply()和call()方法的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">方法传递的参数不同 apply是数组传递，call是单个值传递</div></pre></td></tr></table></figure>
+<h3 id="XSS和CSRF原理"><a href="#XSS和CSRF原理" class="headerlink" title="XSS和CSRF原理"></a>XSS和CSRF原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XSS 全称(Cross Site Scripting) 跨站脚本攻击，是Web程序中最常见的漏洞。指攻击者在网页中嵌入客户端脚本(例如JavaScript),当用户浏览此网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的.  比如获取用户的Cookie，导航到恶意网站,携带木马等</div><div class="line">CSRF攻击(Cross Site Request Forgery) 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</div></pre></td></tr></table></figure>
+<h3 id="多个标签页之间的通信"><a href="#多个标签页之间的通信" class="headerlink" title="多个标签页之间的通信"></a>多个标签页之间的通信</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">通过localstorage实现 当localstorage里面发生改变就会出发storage事件</div><div class="line">通过WebSocket实现</div></pre></td></tr></table></figure>
+<h3 id="什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><a href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？" class="headerlink" title="什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？"></a>什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">FOUC即文档样式短暂失效，也就是HTML代码加载成功时它的CSS文件还没有加载，导致出现的网页内容没有样式，一般有这几种情况会导致FOUC：</div><div class="line">    1、使用import方法导入样式表</div><div class="line">    2、HTML代码在前，CSS样式表在后</div><div class="line">解决方法也很简单:</div><div class="line">    1、尽量减少使用import方法导入样式表</div><div class="line">    2、CSS样式表全部放到HEAD里</div></pre></td></tr></table></figure>
+<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">undefined表示<span class="string">"缺少值"</span>，就是此处应该有一个值，但是还没有定义</div></pre></td></tr></table></figure>
+<h3 id="AMD规范与CMD规范的区别"><a href="#AMD规范与CMD规范的区别" class="headerlink" title="AMD规范与CMD规范的区别"></a>AMD规范与CMD规范的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.对于依赖的模块，AMD 是提前执行，CMD 是延迟执行</div><div class="line">2.CMD 推崇依赖就近，AMD 推崇依赖前置</div><div class="line">3.AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一</div></pre></td></tr></table></figure>
+<h3 id="JavaScript-对象的深度克隆"><a href="#JavaScript-对象的深度克隆" class="headerlink" title="JavaScript 对象的深度克隆"></a>JavaScript 对象的深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浅度克隆 ：基本类型为值传递，对象仍为引用传递</div><div class="line">深度克隆 ：所有元素或属性均完全克隆，并于原引用类型完全独立，即，在后面修改对象的属性的时候，原对象不会被修改</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;  </div><div class="line">&#125;</div><div class="line"><span class="comment">// 深度克隆</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;  </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> obj;        <span class="comment">//原始类型直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o = isArray(obj) ? [] : &#123;&#125;; </div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> obj) &#123;  </div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))&#123; </div><div class="line">            o[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">"object"</span> ? deepClone(obj[i]) : obj[i]; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/interview/interview-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
   
     <article id="post-interview/interview-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
@@ -1148,96 +1227,9 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/hello-world/">Hexo 博客创建记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/11/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-11T03:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p>通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。</p>
-<h3 id="搭建github"><a href="#搭建github" class="headerlink" title="搭建github"></a>搭建github</h3><ol>
-<li><a href="https://github.com/" target="_blank" rel="external">官网</a>中申请账号</li>
-<li><a href="https://segmentfault.com/a/1190000002533334" target="_blank" rel="external">本地配置github</a></li>
-</ol>
-<h3 id="安装hexo，上传资源文件至github"><a href="#安装hexo，上传资源文件至github" class="headerlink" title="安装hexo，上传资源文件至github"></a>安装hexo，上传资源文件至github</h3><p>1.<strong>安装hexo</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<p>2.<strong>通过hexo生成blog基本文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure></p>
-<p>3.<strong>配置blog中根目录的配置文件_config.yml及添加一些hexo的基本工具</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">修改_config.yml的配置文件  </div><div class="line">    修改site，导入个人基本信息</div><div class="line">    通过添加theme来使用其它主题的blog，并且在配置文件中修改theme</div><div class="line">    在theme中设置使用哪种评论工具目前duoshuo已经停止使用</div><div class="line">添加hexo的基本工具</div><div class="line">    hexo-deployer-git 向远程仓库导入文件的工具</div><div class="line">    hexo-generator-json-content 配置blog标题的基本信息</div><div class="line">    hexo-generator-sitemap  添加sitemap，使得搜索引擎快速找到blog</div><div class="line">    hexo-generator-feed  添加rss</div></pre></td></tr></table></figure></p>
-<p>4.<strong>生成blog资源文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
-<p>5.<strong>上传到github</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div><div class="line">$ hexo new page <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
-<p>2.<strong>本地测试blog项目</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>3.<strong>发布草稿</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] title</div></pre></td></tr></table></figure></p>
-<p>4.<strong>规范</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将相应的文章放入对应的目录中，禁止采用自动生成文件的方式使用，但是目录采用自动生成</div><div class="line">目前采用hexo new aticle 实则生成一个目录和一个md文件，将写好文章放入目录里面</div></pre></td></tr></table></figure></p>
-<p>5.<strong>更多关于hexo的使用，请点击<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">详情页</a></strong></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1340,14 +1332,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1356,15 +1340,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1376,10 +1360,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
@@ -1388,11 +1368,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
             
             <div class="clearfix"></div>
