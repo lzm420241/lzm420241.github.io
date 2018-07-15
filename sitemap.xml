@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lzm420241.github.io/2018/07/15/tensorflow%E5%AE%89%E8%A3%85/tensorflow%E5%AE%89%E8%A3%85/</loc>
+    <loc>https://lzm420241.github.io/2018/07/15/AI/tensorflow%E5%AE%89%E8%A3%85/</loc>
     
-    <lastmod>2018-07-15T01:14:30.000Z</lastmod>
+    <lastmod>2018-07-15T01:18:26.000Z</lastmod>
     
   </url>
   
@@ -72,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://lzm420241.github.io/2017/05/18/design/ps-3/</loc>
-    
-    <lastmod>2018-04-23T06:04:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lzm420241.github.io/2017/05/19/design/ps-4/</loc>
     
     <lastmod>2018-04-23T06:04:49.000Z</lastmod>
@@ -86,7 +79,7 @@
   </url>
   
   <url>
-    <loc>https://lzm420241.github.io/2017/05/15/design/page-design/</loc>
+    <loc>https://lzm420241.github.io/2017/05/20/design/ps-5/</loc>
     
     <lastmod>2018-04-23T06:04:49.000Z</lastmod>
     
@@ -100,7 +93,14 @@
   </url>
   
   <url>
-    <loc>https://lzm420241.github.io/2017/05/20/design/ps-5/</loc>
+    <loc>https://lzm420241.github.io/2017/05/15/design/page-design/</loc>
+    
+    <lastmod>2018-04-23T06:04:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lzm420241.github.io/2017/05/18/design/ps-3/</loc>
     
     <lastmod>2018-04-23T06:04:49.000Z</lastmod>
     

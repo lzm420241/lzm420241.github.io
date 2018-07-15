@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-15T01:14:30.000Z</updated>
+  <updated>2018-07-15T01:18:26.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -17,15 +17,29 @@
   
   <entry>
     <title>tensorflow安装</title>
-    <link href="https://lzm420241.github.io/2018/07/15/tensorflow%E5%AE%89%E8%A3%85/tensorflow%E5%AE%89%E8%A3%85/"/>
-    <id>https://lzm420241.github.io/2018/07/15/tensorflow安装/tensorflow安装/</id>
+    <link href="https://lzm420241.github.io/2018/07/15/AI/tensorflow%E5%AE%89%E8%A3%85/"/>
+    <id>https://lzm420241.github.io/2018/07/15/AI/tensorflow安装/</id>
     <published>2018-07-15T01:13:29.000Z</published>
-    <updated>2018-07-15T01:14:30.000Z</updated>
+    <updated>2018-07-15T01:18:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3>]]></content>
     
     <summary type="html">
     
+      &lt;h3 id=&quot;安装python&quot;&gt;&lt;a href=&quot;#安装python&quot; class=&quot;headerlink&quot; title=&quot;安装python&quot;&gt;&lt;/a&gt;安装python&lt;/h3&gt;&lt;h3 id=&quot;安装tensorflow&quot;&gt;&lt;a href=&quot;#安装tensorflow&quot; cla
+    
     </summary>
     
+      <category term="AI" scheme="https://lzm420241.github.io/categories/AI/"/>
+    
+    
+      <category term="tensorflow" scheme="https://lzm420241.github.io/tags/tensorflow/"/>
+    
+      <category term="python" scheme="https://lzm420241.github.io/tags/python/"/>
+    
+      <category term="Mac 环境" scheme="https://lzm420241.github.io/tags/Mac-%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="docker" scheme="https://lzm420241.github.io/tags/docker/"/>
     
   </entry>
   
