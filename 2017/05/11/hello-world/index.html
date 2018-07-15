@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2017/05/11/hello-world/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。 搭建github 官网中申请账号 本地配置github  安装hexo，上传资源文件至github1.安装hexo    1$ npm install -g hexo-cli 2.通过hexo生成blog基本文件    1$ hexo init username.github.">
-<meta property="og:updated_time" content="2018-04-23T06:11:54.000Z">
+<meta property="og:updated_time" content="2018-07-15T00:48:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 博客创建记录">
 <meta name="twitter:description" content="通过hexo工具可以在github中搭建一个静态blog。本节中主要记录第一次如何在github中搭建整个静态blog。 搭建github 官网中申请账号 本地配置github  安装hexo，上传资源文件至github1.安装hexo    1$ npm install -g hexo-cli 2.通过hexo生成blog基本文件    1$ hexo init username.github.">
@@ -219,7 +219,7 @@
 <p>3.<strong>配置blog中根目录的配置文件_config.yml及添加一些hexo的基本工具</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">修改_config.yml的配置文件  </div><div class="line">    修改site，导入个人基本信息</div><div class="line">    通过添加theme来使用其它主题的blog，并且在配置文件中修改theme</div><div class="line">    在theme中设置使用哪种评论工具目前duoshuo已经停止使用</div><div class="line">添加hexo的基本工具</div><div class="line">    hexo-deployer-git 向远程仓库导入文件的工具</div><div class="line">    hexo-generator-json-content 配置blog标题的基本信息</div><div class="line">    hexo-generator-sitemap  添加sitemap，使得搜索引擎快速找到blog</div><div class="line">    hexo-generator-feed  添加rss</div></pre></td></tr></table></figure></p>
 <p>4.<strong>生成blog资源文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
 <p>5.<strong>上传到github</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
+<h3 id="hexo基本命令的使用"><a href="#hexo基本命令的使用" class="headerlink" title="hexo基本命令的使用"></a>hexo基本命令的使用</h3><p>1.<strong>新建文章</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div><div class="line">$ hexo new page <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
 <p>2.<strong>本地测试blog项目</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 <p>3.<strong>发布草稿</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] title</div></pre></td></tr></table></figure></p>
 <p>4.<strong>规范</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将相应的文章放入对应的目录中，禁止采用自动生成文件的方式使用，但是目录采用自动生成</div><div class="line">目前采用hexo new aticle 实则生成一个目录和一个md文件，将写好文章放入目录里面</div></pre></td></tr></table></figure></p>
@@ -458,7 +458,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,14 +471,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,6 +483,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
