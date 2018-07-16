@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>php基本环境搭建（mac环境） | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装mysql1. 下载mysql：http://dev.mysql.com/downloads/mysql/  2. 配置Mysql的环境变量     12          $ export MYSQL_HOME=/usr/local/mysql/ ·  3. 设置mysql登陆密码     1$ sudo mysqladmin -uroot -p password &quot;password&quot;">
+  <meta name="description" content="安装mysql 下载mysql：http://dev.mysql.com/downloads/mysql/  配置Mysql的环境变量 1$ export MYSQL_HOME=/usr/local/mysql/  设置mysql登陆密码 1$ sudo mysqladmin -uroot -p password &quot;password&quot;  进入Mysql 1$ mysql -u root -p">
 <meta name="keywords" content="php,apache,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php基本环境搭建（mac环境）">
 <meta property="og:url" content="https://lzm420241.github.io/2018/07/16/php入门/php入门/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:description" content="安装mysql1. 下载mysql：http://dev.mysql.com/downloads/mysql/  2. 配置Mysql的环境变量     12          $ export MYSQL_HOME=/usr/local/mysql/ ·  3. 设置mysql登陆密码     1$ sudo mysqladmin -uroot -p password &quot;password&quot;">
-<meta property="og:updated_time" content="2018-07-16T02:40:52.000Z">
+<meta property="og:description" content="安装mysql 下载mysql：http://dev.mysql.com/downloads/mysql/  配置Mysql的环境变量 1$ export MYSQL_HOME=/usr/local/mysql/  设置mysql登陆密码 1$ sudo mysqladmin -uroot -p password &quot;password&quot;  进入Mysql 1$ mysql -u root -p">
+<meta property="og:updated_time" content="2018-07-16T02:44:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php基本环境搭建（mac环境）">
-<meta name="twitter:description" content="安装mysql1. 下载mysql：http://dev.mysql.com/downloads/mysql/  2. 配置Mysql的环境变量     12          $ export MYSQL_HOME=/usr/local/mysql/ ·  3. 设置mysql登陆密码     1$ sudo mysqladmin -uroot -p password &quot;password&quot;">
+<meta name="twitter:description" content="安装mysql 下载mysql：http://dev.mysql.com/downloads/mysql/  配置Mysql的环境变量 1$ export MYSQL_HOME=/usr/local/mysql/  设置mysql登陆密码 1$ sudo mysqladmin -uroot -p password &quot;password&quot;  进入Mysql 1$ mysql -u root -p">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -221,22 +221,28 @@
           <hr/>
         </div>
         
-        <h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><pre><code>1. 下载mysql：http://dev.mysql.com/downloads/mysql/ 
-2. 配置Mysql的环境变量
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">          $ <span class="built_in">export</span> MYSQL_HOME=/usr/<span class="built_in">local</span>/mysql/ </div><div class="line">·</div></pre></td></tr></table></figure>
-
-3. 设置mysql登陆密码
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mysqladmin -uroot -p password <span class="string">"password"</span></div></pre></td></tr></table></figure>
-
-4. 进入Mysql
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div></pre></td></tr></table></figure>
-</code></pre><h3 id="配置apache文件"><a href="#配置apache文件" class="headerlink" title="配置apache文件"></a>配置apache文件</h3><pre><code>1. 配置文件的路径
-    * 默认apache配置路径：/etc/apache2/
-    * 系统路径配置文件：httpd.conf
-    * 用户路径配置文件：extra/httpd-vhosts.conf
-2. 默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure>
-</code></pre><h3 id="测试php文件"><a href="#测试php文件" class="headerlink" title="测试php文件"></a>测试php文件</h3><ol>
+        <h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><ol>
+<li>下载mysql：<a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a> </li>
+<li><p>配置Mysql的环境变量<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> MYSQL_HOME=/usr/<span class="built_in">local</span>/mysql/</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置mysql登陆密码<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mysqladmin -uroot -p password <span class="string">"password"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>进入Mysql<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="配置apache文件"><a href="#配置apache文件" class="headerlink" title="配置apache文件"></a>配置apache文件</h3><ol>
+<li>配置文件的路径<ul>
+<li>默认apache配置路径：/etc/apache2/</li>
+<li>系统路径配置文件：httpd.conf</li>
+<li>用户路径配置文件：extra/httpd-vhosts.conf<br>2. 默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="测试php文件"><a href="#测试php文件" class="headerlink" title="测试php文件"></a>测试php文件</h3><ol>
 <li>apache启动，关闭<ul>
 <li>sudo apachectl-k start  启动apache服务</li>
 <li>sudo apachectl -k restart  重新启动apache服务</li>
@@ -483,14 +489,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
               </li>
              
@@ -499,7 +497,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,11 +525,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,26 +554,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
             
             <div class="clearfix"></div>
