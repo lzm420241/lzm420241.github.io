@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>tensorflow安装 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装python1.mac默认安装了Python（2.7）2.如果要安装Python3，可以采用pip    12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py 安装tensorflow1234567* 当前采用docker安装（其他方式都安装失败了，坑有点多）* 安装docker，启动doc">
+  <meta name="description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
 <meta name="keywords" content="tensorflow,python,Mac 环境,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow安装">
 <meta property="og:url" content="https://lzm420241.github.io/2018/07/15/AI/tensorflow安装/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:description" content="安装python1.mac默认安装了Python（2.7）2.如果要安装Python3，可以采用pip    12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py 安装tensorflow1234567* 当前采用docker安装（其他方式都安装失败了，坑有点多）* 安装docker，启动doc">
-<meta property="og:updated_time" content="2018-07-15T02:06:56.000Z">
+<meta property="og:description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
+<meta property="og:updated_time" content="2018-07-16T02:59:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow安装">
-<meta name="twitter:description" content="安装python1.mac默认安装了Python（2.7）2.如果要安装Python3，可以采用pip    12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py 安装tensorflow1234567* 当前采用docker安装（其他方式都安装失败了，坑有点多）* 安装docker，启动doc">
+<meta name="twitter:description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -221,8 +221,22 @@
           <hr/>
         </div>
         
-        <h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><p>1.mac默认安装了Python（2.7）<br>2.如果要安装Python3，可以采用pip<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</div><div class="line">$ python get-pip.py</div></pre></td></tr></table></figure></p>
-<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">* 当前采用docker安装（其他方式都安装失败了，坑有点多）</div><div class="line">* 安装docker，启动docker</div><div class="line">* docker login 登陆账号（bash里面如果采用命令行需要登陆docker账号，而不是邮箱）</div><div class="line">* docker pull tensorflow/tensorflow:latest</div><div class="line">* 启动tensorflow服务&lt;br/&gt;</div><div class="line">  1. docker run --name <span class="built_in">test</span> -it -p 8888:8888 tensorflow/tensorflow -- 注：此时启动了服务，输入里面的链接在页面中，可以在输入的页面开发Python程序，里面已有TensorFlow框架</div><div class="line">  2.docker run --name <span class="built_in">test</span> -it tensorflow/tensorflow /bin/bash  -- 注：如果你不想在网页里面开发，那么可以在bash里面开发</div></pre></td></tr></table></figure>
+        <h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><ol>
+<li>mac默认安装了Python（2.7）</li>
+<li>如果要安装Python3，可以采用pip <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</div><div class="line">$ python get-pip.py</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><ul>
+<li>当前采用docker安装（其他方式都安装失败了，坑有点多）</li>
+<li>安装docker，启动docker</li>
+<li>docker login 登陆账号（bash里面如果采用命令行需要登陆docker账号，而不是邮箱）</li>
+<li>docker pull tensorflow/tensorflow:latest</li>
+<li>启动tensorflow服务<br><ol>
+<li>docker run –name test -it -p 8888:8888 tensorflow/tensorflow – 注：此时启动了服务，输入里面的链接在页面中，可以在输入的页面开发Python程序，里面已有TensorFlow框架</li>
+<li>docker run –name test -it tensorflow/tensorflow /bin/bash  – 注：如果你不想在网页里面开发，那么可以在bash里面开发<br>```</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
