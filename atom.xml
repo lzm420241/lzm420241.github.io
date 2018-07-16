@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-16T03:12:51.000Z</updated>
+  <updated>2018-07-16T03:13:58.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/07/16/php%E5%85%A5%E9%97%A8/php%E5%85%A5%E9%97%A8/"/>
     <id>https://lzm420241.github.io/2018/07/16/php入门/php入门/</id>
     <published>2018-07-16T02:03:08.000Z</published>
-    <updated>2018-07-16T03:12:51.000Z</updated>
+    <updated>2018-07-16T03:13:58.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p> 1.<strong>下载mysql：<a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a></strong><br> 2.<strong>配置Mysql的环境变量</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> MYSQL_HOME=/usr/<span class="built_in">local</span>/mysql/</div></pre></td></tr></table></figure></p>
 <p> 3.<strong>设置mysql登陆密码</strong><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mysqladmin -uroot -p password <span class="string">"password"</span></div></pre></td></tr></table></figure></p>
@@ -31,7 +31,7 @@
 <li>系统路径配置文件：httpd.conf</li>
 <li>用户路径配置文件：extra/httpd-vhosts.conf</li>
 </ul>
-<p>2.默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：<br><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure></p>
+<p>2.默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure></p>
 <h3 id="测试php文件"><a href="#测试php文件" class="headerlink" title="测试php文件"></a>测试php文件</h3><ol>
 <li>apache启动，关闭<ul>
 <li>sudo apachectl-k start  启动apache服务</li>
