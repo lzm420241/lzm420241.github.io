@@ -214,19 +214,15 @@
       
         
         <h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><ol>
-<li><p>下载mysql：<a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a></p>
-</li>
-<li><p>配置Mysql的环境变量</p>
+<li>下载mysql：<a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a><br></li>
+<li><p>配置Mysql的环境变量<br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> MYSQL_HOME=/usr/<span class="built_in">local</span>/mysql/</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
-<li><p>设置mysql登陆密码</p>
+<li><p>设置mysql登陆密码<br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mysqladmin -uroot -p password <span class="string">"password"</span></div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
-<li>进入Mysql<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div></pre></td></tr></table></figure>
+<li><p>进入Mysql<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="配置apache文件"><a href="#配置apache文件" class="headerlink" title="配置apache文件"></a>配置apache文件</h3><p>1.配置文件的路径</p>
@@ -235,7 +231,7 @@
 <li>系统路径配置文件：httpd.conf</li>
 <li>用户路径配置文件：extra/httpd-vhosts.conf</li>
 </ul>
-<p>2.默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：<br><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure></p>
+<p>2.默认采用系统路径的配置文件，如果想配置用户的配置文件，可以在httpd.conf中去掉注释：<br><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="comment">#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></div></pre></td></tr></table></figure></p>
 <h3 id="测试php文件"><a href="#测试php文件" class="headerlink" title="测试php文件"></a>测试php文件</h3><ol>
 <li>apache启动，关闭<ul>
 <li>sudo apachectl-k start  启动apache服务</li>
@@ -1207,15 +1203,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
