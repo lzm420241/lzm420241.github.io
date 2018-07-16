@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
-  <title>tensorflow安装 | 前端那点事</title>
+  <title>php基本使用及文件读写 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
-<meta name="keywords" content="tensorflow,python,Mac 环境,docker">
+  <meta name="description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
+<meta name="keywords" content="php,apache,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow安装">
-<meta property="og:url" content="https://lzm420241.github.io/2018/07/15/AI/tensorflow安装/index.html">
+<meta property="og:title" content="php基本使用及文件读写">
+<meta property="og:url" content="https://lzm420241.github.io/2018/07/17/php入门/php基本使用及文件读写/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
-<meta property="og:updated_time" content="2018-07-16T02:59:28.000Z">
+<meta property="og:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
+<meta property="og:updated_time" content="2018-07-16T16:10:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow安装">
-<meta name="twitter:description" content="安装python mac默认安装了Python（2.7） 如果要安装Python3，可以采用pip 12$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py$ python get-pip.py   安装tensorflow 当前采用docker安装（其他方式都安装失败了，坑有点多） 安装docker，启动docker docker l">
+<meta name="twitter:title" content="php基本使用及文件读写">
+<meta name="twitter:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -194,7 +194,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="ai-AI/tensorflow安装" class="article article-type-ai " itemscope itemprop="blogPost">
+            <article id="backend-php入门/php基本使用及文件读写" class="article article-type-backend " itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -202,13 +202,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tensorflow安装
+      php基本使用及文件读写
     </h1>
   
 
         
-        <a href="/2018/07/15/AI/tensorflow安装/" class="archive-article-date">
-  	<time datetime="2018-07-15T01:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+        <a href="/2018/07/17/php入门/php基本使用及文件读写/" class="archive-article-date">
+  	<time datetime="2018-07-16T16:07:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
 </a>
         
       </header>
@@ -217,27 +217,16 @@
       
         
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装python"><span class="toc-text">安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装tensorflow"><span class="toc-text">安装tensorflow</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#php基本使用"><span class="toc-text">php基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件读写API"><span class="toc-text">文件读写API</span></a></li></ol>
           <hr/>
         </div>
         
-        <h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><ol>
-<li>mac默认安装了Python（2.7）</li>
-<li>如果要安装Python3，可以采用pip <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</div><div class="line">$ python get-pip.py</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><ul>
-<li>当前采用docker安装（其他方式都安装失败了，坑有点多）</li>
-<li>安装docker，启动docker</li>
-<li>docker login 登陆账号（bash里面如果采用命令行需要登陆docker账号，而不是邮箱）</li>
-<li>docker pull tensorflow/tensorflow:latest</li>
-<li>启动tensorflow服务<br><ol>
-<li>docker run –name test -it -p 8888:8888 tensorflow/tensorflow – 注：此时启动了服务，输入里面的链接在页面中，可以在输入的页面开发Python程序，里面已有TensorFlow框架</li>
-<li>docker run –name test -it tensorflow/tensorflow /bin/bash  – 注：如果你不想在网页里面开发，那么可以在bash里面开发<br>```</li>
-</ol>
-</li>
+        <h3 id="php基本使用"><a href="#php基本使用" class="headerlink" title="php基本使用"></a>php基本使用</h3><ul>
+<li>echo 输出打印信息</li>
+<li>.    连接变量和其他字符的符号</li>
+<li></li>
 </ul>
-
+<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3>
       
     </div>
     <div class="article-info article-info-index">
@@ -248,19 +237,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tensorflow</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Mac 环境</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -272,7 +257,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/AI/" class="article-tag-list-link color3">AI</a>
+        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
         		</li>
       		
 		</ul>
@@ -327,7 +312,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2018/07/15/AI/tensorflow安装/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2018/07/17/php入门/php基本使用及文件读写/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -341,18 +326,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/16/php入门/php入门/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          php基本环境搭建（mac环境）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/08/svn/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">svn命令基本使用及原理</div>
+    <a href="/2018/07/16/php入门/php入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">php基本环境搭建（mac环境）</div>
       <i class="icon-circle-right"></i>
     </a>
   
