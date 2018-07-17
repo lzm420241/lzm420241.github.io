@@ -216,9 +216,46 @@
         <h3 id="php基本使用"><a href="#php基本使用" class="headerlink" title="php基本使用"></a>php基本使用</h3><ul>
 <li>echo 输出打印信息</li>
 <li>.    连接变量和其他字符的符号</li>
-<li></li>
+<li>define 宏定义</li>
+<li>$+名称  变量名</li>
+<li>全局变量(全都是数组)<ol>
+<li>$_POST  收集表单数据–post</li>
+<li>$_GET   收集表单数据 – get</li>
+<li>$GLOBALS 超级全局变量数组</li>
+<li>$_SERVER 包含诸如头信息，路径，脚本为止等信息的数组</li>
+<li>$_FILES</li>
+<li>$_ENV</li>
+<li>$_COOKIE</li>
+<li>$_SESSION </li>
+<li>$_REQUEST 收集HTML表单提交的数据</li>
+</ol>
+</li>
+<li>php内置API<ol>
+<li>date() 格式化本地日期和时间</li>
+</ol>
+</li>
 </ul>
-<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3>
+<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3><ol>
+<li>fopen() 无法打开则为false</li>
+<li>fwrite()</li>
+<li>flock()</li>
+<li>fclose() 用于关闭文件</li>
+<li>feof() 检测是否达到文件末尾</li>
+<li>fgets() 从文件中逐步读取文件-注：在调用该函数之后，文件指针会移动到下一行</li>
+<li>fgetc() 从文件中逐字符地读取文件-注：在调用该函数之后，文件指针会移动到下一个字符</li>
+<li>读写模式<ul>
+<li>r 只读</li>
+<li>r+ 读／写</li>
+<li>w 只写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
+<li>w+ 读／写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
+<li>a 追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</li>
+<li>a+ 读/追加。通过向文件末尾写内容，来保持文件内容。</li>
+<li>x 只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
+<li>x+ 读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -1144,6 +1181,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1157,10 +1198,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,6 +1233,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -1205,10 +1246,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">

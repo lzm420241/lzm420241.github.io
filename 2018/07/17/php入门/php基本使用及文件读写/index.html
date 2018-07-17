@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
   <title>php基本使用及文件读写 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
+  <meta name="description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号 define 宏定义 $+名称  变量名 全局变量(全都是数组) $_POST  收集表单数据–post $_GET   收集表单数据 – get $GLOBALS 超级全局变量数组 $_SERVER 包含诸如头信息，路径，脚本为止等信息的数组 $_FILES $_ENV $_COOKIE $_SESSION  $_RE">
 <meta name="keywords" content="php,apache,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php基本使用及文件读写">
 <meta property="og:url" content="https://lzm420241.github.io/2018/07/17/php入门/php基本使用及文件读写/index.html">
 <meta property="og:site_name" content="前端那点事">
-<meta property="og:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
-<meta property="og:updated_time" content="2018-07-16T16:10:28.000Z">
+<meta property="og:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号 define 宏定义 $+名称  变量名 全局变量(全都是数组) $_POST  收集表单数据–post $_GET   收集表单数据 – get $GLOBALS 超级全局变量数组 $_SERVER 包含诸如头信息，路径，脚本为止等信息的数组 $_FILES $_ENV $_COOKIE $_SESSION  $_RE">
+<meta property="og:updated_time" content="2018-07-17T00:52:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php基本使用及文件读写">
-<meta name="twitter:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号   文件读写API">
+<meta name="twitter:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号 define 宏定义 $+名称  变量名 全局变量(全都是数组) $_POST  收集表单数据–post $_GET   收集表单数据 – get $GLOBALS 超级全局变量数组 $_SERVER 包含诸如头信息，路径，脚本为止等信息的数组 $_FILES $_ENV $_COOKIE $_SESSION  $_RE">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -224,9 +224,46 @@
         <h3 id="php基本使用"><a href="#php基本使用" class="headerlink" title="php基本使用"></a>php基本使用</h3><ul>
 <li>echo 输出打印信息</li>
 <li>.    连接变量和其他字符的符号</li>
-<li></li>
+<li>define 宏定义</li>
+<li>$+名称  变量名</li>
+<li>全局变量(全都是数组)<ol>
+<li>$_POST  收集表单数据–post</li>
+<li>$_GET   收集表单数据 – get</li>
+<li>$GLOBALS 超级全局变量数组</li>
+<li>$_SERVER 包含诸如头信息，路径，脚本为止等信息的数组</li>
+<li>$_FILES</li>
+<li>$_ENV</li>
+<li>$_COOKIE</li>
+<li>$_SESSION </li>
+<li>$_REQUEST 收集HTML表单提交的数据</li>
+</ol>
+</li>
+<li>php内置API<ol>
+<li>date() 格式化本地日期和时间</li>
+</ol>
+</li>
 </ul>
-<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3>
+<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3><ol>
+<li>fopen() 无法打开则为false</li>
+<li>fwrite()</li>
+<li>flock()</li>
+<li>fclose() 用于关闭文件</li>
+<li>feof() 检测是否达到文件末尾</li>
+<li>fgets() 从文件中逐步读取文件-注：在调用该函数之后，文件指针会移动到下一行</li>
+<li>fgetc() 从文件中逐字符地读取文件-注：在调用该函数之后，文件指针会移动到下一个字符</li>
+<li>读写模式<ul>
+<li>r 只读</li>
+<li>r+ 读／写</li>
+<li>w 只写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
+<li>w+ 读／写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
+<li>a 追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</li>
+<li>a+ 读/追加。通过向文件末尾写内容，来保持文件内容。</li>
+<li>x 只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
+<li>x+ 读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -444,6 +481,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -457,10 +498,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +533,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -505,10 +546,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
