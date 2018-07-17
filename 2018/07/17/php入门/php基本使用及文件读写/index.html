@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/07/17/php入门/php基本使用及文件读写/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号 define 宏定义 $+名称  变量名 全局变量(全都是数组) $_POST  收集表单数据–post $_GET   收集表单数据 – get $GLOBALS 超级全局变量数组 $_SERVER 包含诸如头信息，路径，脚本为止等信息的数组 $_FILES $_ENV $_COOKIE $_SESSION  $_RE">
-<meta property="og:updated_time" content="2018-07-17T00:52:40.000Z">
+<meta property="og:updated_time" content="2018-07-17T00:55:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php基本使用及文件读写">
 <meta name="twitter:description" content="php基本使用 echo 输出打印信息 .    连接变量和其他字符的符号 define 宏定义 $+名称  变量名 全局变量(全都是数组) $_POST  收集表单数据–post $_GET   收集表单数据 – get $GLOBALS 超级全局变量数组 $_SERVER 包含诸如头信息，路径，脚本为止等信息的数组 $_FILES $_ENV $_COOKIE $_SESSION  $_RE">
@@ -252,8 +252,8 @@
 <li>fgets() 从文件中逐步读取文件-注：在调用该函数之后，文件指针会移动到下一行</li>
 <li>fgetc() 从文件中逐字符地读取文件-注：在调用该函数之后，文件指针会移动到下一个字符</li>
 <li>读写模式<ul>
-<li>r 只读</li>
-<li>r+ 读／写</li>
+<li>r 只读。在文件的开头开始。</li>
+<li>r+ 读／写。在文件的开头开始。</li>
 <li>w 只写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
 <li>w+ 读／写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
 <li>a 追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</li>
@@ -481,10 +481,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -501,15 +497,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,18 +537,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
@@ -562,6 +550,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
