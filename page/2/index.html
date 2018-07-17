@@ -191,6 +191,180 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/javascript-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/javascript/javascript-1/">MVVM模式及与MVP和MVC的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/javascript/javascript-1/" class="archive-article-date">
+  	<time datetime="2017-05-22T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="三种模式的思想"><a href="#三种模式的思想" class="headerlink" title="三种模式的思想"></a>三种模式的思想</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈</li>
+</ol>
+<h4 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h4><ol>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
+</ol>
+<h4 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h4><ol>
+<li>将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致</li>
+<li>唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel</li>
+</ol>
+<h4 id="三者之间的逻辑图"><a href="#三者之间的逻辑图" class="headerlink" title="三者之间的逻辑图"></a>三者之间的逻辑图</h4><p><img src="http://okzxxeq9y.bkt.clouddn.com/mvc_mvp_mvvm.jpg" alt="Alt text"></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/javascript/javascript-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-algorithm/algorithm-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/algorithm/algorithm-1/">堆栈存储区别及常用算法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/algorithm/algorithm-1/" class="archive-article-date">
+  	<time datetime="2017-05-22T14:40:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="堆栈之间的区别"><a href="#堆栈之间的区别" class="headerlink" title="堆栈之间的区别"></a>堆栈之间的区别</h3><ol>
+<li>栈区（stack）由编译器自动分配释放，存放函数的参数值，局部变量的值等 其操作方式类似于数据结构中的栈</li>
+<li>堆区（heap） 一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收 注意它与数据结构中的堆是两回事，分配方式倒是类似于链表</li>
+<li>申请后系统的响应: 只要栈的剩余空间大于所申·请空间，系统将为程序提供内存，否则将报异常提示栈溢出;首先应该知道操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时,会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序，另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样，代码中的delete语句才能正确的释放本内存空间。另外，由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中</li>
+<li>申请大小的限制 : 栈获得的空间较小,堆获得的空间比较灵活，也比较大</li>
+<li>申请效率的比较: 栈由系统自动分配，速度较快,但程序员是无法控制的;堆是由new分配的内存，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便;</li>
+<li>堆和栈中的存储内容 : 在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数;一般是在堆的头部用一个字节存放堆的大小。堆中的具体内容由程序员安排;</li>
+<li>存取效率的比较: 在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快</li>
+</ol>
+<h3 id="DP算法-Dynamic-programming"><a href="#DP算法-Dynamic-programming" class="headerlink" title="DP算法(Dynamic programming)"></a>DP算法(Dynamic programming)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.动态规划的本质，是对问题状态的定义和状态转移方程的定义</div><div class="line">2.将问题发展到各个阶段时所处于的各种客观情况用不同的状态,而且状态的选择要满足无后效性,即对后面的状态无任何影响</div><div class="line">3.上述状态定义好之后，状态和状态之间的关系式，就叫做状态转移方程</div><div class="line">4.典型例子: 01背包问题,装配线调度</div></pre></td></tr></table></figure>
+<h3 id="DFS算法-Depth-First-Search"><a href="#DFS算法-Depth-First-Search" class="headerlink" title="DFS算法(Depth-First-Search)"></a>DFS算法(Depth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">深度优先搜索在搜索过程中访问某个顶点后，需要递归地访问此顶点的所有未访问过的相邻顶点。</div><div class="line">初始条件下所有节点为白色，选择一个作为起始顶点，按照如下步骤遍历：</div><div class="line">a. 选择起始顶点涂成灰色，表示还未访问</div><div class="line">b. 从该顶点的邻接顶点中选择一个，继续这个过程（即再寻找邻接结点的邻接结点），一直深入下去，直到一个顶点没有邻接结点了，涂黑它，表示访问过了</div><div class="line">c. 回溯到这个涂黑顶点的上一层顶点，再找这个上一层顶点的其余邻接结点，继续如上操作，如果所有邻接结点往下都访问过了，就把自己涂黑，再回溯到更上一层。</div><div class="line">d. 上一层继续做如上操作，知道所有顶点都访问过。</div><div class="line"></div><div class="line">核心是通过栈的方式实现</div></pre></td></tr></table></figure>
+<h3 id="BFS算法-Breadth-First-Search"><a href="#BFS算法-Breadth-First-Search" class="headerlink" title="BFS算法(Breadth-First-Search)"></a>BFS算法(Breadth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">广度优先搜索在进一步遍历图中顶点之前，先访问当前顶点的所有邻接结点。</div><div class="line">a .首先选择一个顶点作为起始结点，并将其染成灰色，其余结点为白色。</div><div class="line">b. 将起始结点放入队列中。</div><div class="line">c. 从队列首部选出一个顶点，并找出所有与之邻接的结点，将找到的邻接结点放入队列尾部，将已访问过结点涂成黑色，没访问过的结点是白色。如果顶点的颜色是灰色，表示已经发现并且放入了队列，如果顶点的颜色是白色，表示还没有发现</div><div class="line">d. 按照同样的方法处理队列中的下一个结点。</div><div class="line">基本就是出队的顶点变成黑色，在队列里的是灰色，还没入队的是白色</div><div class="line"></div><div class="line">核心是通过队列的方式实现</div></pre></td></tr></table></figure>
+<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并</div></pre></td></tr></table></figure>
+<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索算法）</div></pre></td></tr></table></figure>
+<h3 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索</div></pre></td></tr></table></figure>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack heap</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DP DFS BFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/algorithm/algorithm-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-interview/interview-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1058,181 +1232,6 @@
 
 
   
-    <article id="post-design/building-basic-task-for-photoshop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/design/building-basic-task-for-photoshop/">1.ps基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/17/design/building-basic-task-for-photoshop/" class="archive-article-date">
-  	<time datetime="2017-05-16T16:04:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="ps基本工作界面"><a href="#ps基本工作界面" class="headerlink" title="ps基本工作界面"></a>ps基本工作界面</h3><ol>
-<li>界面分为菜单栏，工具选项栏，工具箱，选项卡，文档窗口，面板这几部分</li>
-<li>文档窗口:<strong>ctrl+Tab快捷键可切换界面</strong></li>
-<li>工具箱分为选择工具，裁剪和切片，测量工具，修饰工具，绘画工具，导航工具等几种类别工具</li>
-</ol>
-<h3 id="查看图像"><a href="#查看图像" class="headerlink" title="查看图像"></a>查看图像</h3><ol>
-<li>工具箱底部的屏幕模式按钮可查看标准屏幕，全屏模式，菜单栏的全屏模式</li>
-<li>在多个窗口查看图像可在<strong>窗口&gt;排列</strong>中选择哪种展示方式</li>
-<li>旋转视图工具可旋转画布<strong>在工具栏中使用旋转工具</strong></li>
-<li>在工具栏中使用缩放工具来调整窗口比例<strong>按住Alt键可缩小窗口</strong></li>
-<li>在工具栏中用抓手工具移动画面<strong>Alt键缩小窗口，command键放大窗口，按住H键然后单击鼠标会显示全部图像，并且出现一个矩形框，放开H键和鼠标可移动到某块区域</strong></li>
-<li>在<strong>窗口&gt;导航器</strong>中查看图像，<strong>通过扩大和缩小来查看图片，右键点击图像以外的暂存区可选择背景颜色</strong></li>
-<li>在<strong>窗口&gt;工作区</strong>使用预设工作区</li>
-<li>在菜单栏中的<strong>编辑&gt;菜单</strong>中打开键盘快捷键合菜单，<strong>点击菜单tab可定义菜单中各种颜色，在键盘快捷键中可自定义快捷键</strong></li>
-</ol>
-<h3 id="使用辅助工具"><a href="#使用辅助工具" class="headerlink" title="使用辅助工具"></a>使用辅助工具</h3><ol>
-<li>在<strong>视图&gt;标尺</strong>中使用标尺，在窗口左上角向右下方拉可以设置坐标原点</li>
-<li>在标尺中可以拉出参考线，如果要删除参考线则拉到标尺里面就删除了</li>
-<li>在<strong>视图&gt;显示&gt;网格</strong>中使用网格</li>
-<li>在工具栏中使用注释工具可在图像中添加注释</li>
-</ol>
-<h3 id="附几个快捷键"><a href="#附几个快捷键" class="headerlink" title="附几个快捷键:"></a>附几个快捷键:</h3><ol>
-<li>Ctrl+o可以快速打开文件</li>
-<li>Ctrl++可以放大图片，Ctrl+-可以缩小图片</li>
-<li>Ctrl+R可以打开标尺，再使用一次关闭标尺</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/design/building-basic-task-for-photoshop/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-design/page-design" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/design/page-design/">页面设计的四条原则</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/15/design/page-design/" class="archive-article-date">
-  	<time datetime="2017-05-15T13:18:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="网页设计四条原则"><a href="#网页设计四条原则" class="headerlink" title="网页设计四条原则"></a>网页设计四条原则</h3><p><strong>原则一:设计之对比色原则</strong></p>
-<pre><code>主要目的是突出重点，将内容区分出来
-</code></pre><p><strong>原则二:设计之对奇原则</strong>     </p>
-<pre><code>主要是更好地展示网页信息，样式清晰,所有设计元素和页面上其他元素要有视觉上的练习
-</code></pre><p><strong>原则三:设计之重复性原则</strong>    </p>
-<pre><code>主要目的是保持整个页面统一的风格，各个页面的风格不会互相冲突
-</code></pre><p><strong>原则四:设计之相似性原则</strong>    </p>
-<pre><code>主要是将相似的元素放倒一起，这样使用户易于查找    
-</code></pre><p><strong>附带</strong><a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">页面选色在线网站</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/design/page-design/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1338,6 +1337,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1362,14 +1369,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
@@ -1382,15 +1381,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,11 +1397,27 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目质量</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">风险等级</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">财务损失</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
