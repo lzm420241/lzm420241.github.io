@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-19T01:24:51.000Z</updated>
+  <updated>2018-07-19T01:30:07.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/07/19/php%E5%85%A5%E9%97%A8/perl%E9%A3%8E%E6%A0%BC%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>https://lzm420241.github.io/2018/07/19/php入门/perl风格正则表达式/</id>
     <published>2018-07-19T01:24:08.000Z</published>
-    <updated>2018-07-19T01:24:51.000Z</updated>
+    <updated>2018-07-19T01:30:07.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a>适用情况</h3><ol>
 <li>php</li>
@@ -41,11 +41,9 @@
       <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
+      <category term="正则" scheme="https://lzm420241.github.io/tags/%E6%AD%A3%E5%88%99/"/>
     
-      <category term="apache" scheme="https://lzm420241.github.io/tags/apache/"/>
-    
-      <category term="mysql" scheme="https://lzm420241.github.io/tags/mysql/"/>
+      <category term="回溯算法" scheme="https://lzm420241.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -54,7 +52,7 @@
     <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>https://lzm420241.github.io/2018/07/18/php入门/字符串操作与正则表达式/</id>
     <published>2018-07-18T14:42:08.000Z</published>
-    <updated>2018-07-19T01:19:25.000Z</updated>
+    <updated>2018-07-19T01:32:28.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="php字符串及正则基本使用"><a href="#php字符串及正则基本使用" class="headerlink" title="php字符串及正则基本使用"></a>php字符串及正则基本使用</h3><ul>
 <li>isset() 检查用户是否已经填写了所有要求的表单域</li>
@@ -62,7 +60,7 @@
 <li>chop(string, charlist) 移除字符串右端的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
 <li>ltrim(string, charlist) 移除字符串左侧的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
 <li>trim(string, charlist) 移除字符串两侧的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
-<li>nl2br(string, xhtml) 在字符串中的每个新行（\n）之前插入 HTML 换行符（<br> 或 <br>）- xhtml可选,布尔值，表示是否使用兼容 XHTML 换行</li>
+<li>nl2br(string, xhtml) 在字符串中的每个新行（\n）之前插入 HTML 换行符（&lt;br&gt; 或 &lt;br /&gt;）- xhtml可选,布尔值，表示是否使用兼容 XHTML 换行</li>
 <li>printf(format,arg1,arg2,arg++) 输出格式化的字符串 - 规定字符串以及如何格式化其中的变量</li>
 <li>sprintf(format,arg1,arg2,arg++) 把格式化的字符串写入变量中</li>
 <li>addslashes(string) 返回在预定义字符之前添加反斜杠的字符串 - 默认地，PHP 对所有的 GET、POST 和 COOKIE 数据自动运行 addslashes()。所以您不应对已转义过的字符串使用 addslashes()</li>
