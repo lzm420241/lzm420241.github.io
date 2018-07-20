@@ -267,7 +267,7 @@
 
 
   
-    <article id="backend-php入门/字符串操作与正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
+    <article id="backend-php入门/php字符串操作与正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -275,12 +275,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/18/php入门/字符串操作与正则表达式/">php字符串操作与正则表达式</a>
+      <a class="article-title" href="/2018/07/18/php入门/php字符串操作与正则表达式/">php字符串操作与正则表达式</a>
     </h1>
   
 
         
-        <a href="/2018/07/18/php入门/字符串操作与正则表达式/" class="archive-article-date">
+        <a href="/2018/07/18/php入门/php字符串操作与正则表达式/" class="archive-article-date">
   	<time datetime="2018-07-18T14:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
 </a>
         
@@ -365,7 +365,115 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/18/php入门/字符串操作与正则表达式/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/07/18/php入门/php字符串操作与正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="backend-php入门/php代码重用与函数编写" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/php入门/php代码重用与函数编写/">php代码重用与函数编写</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/18/php入门/php代码重用与函数编写/" class="archive-article-date">
+  	<time datetime="2018-07-18T14:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">代码重用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">函数编写</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/18/php入门/php代码重用与函数编写/">展开全文 >></a>
         </p>
       
 
@@ -1083,79 +1191,6 @@
 
 
   
-    <article id="post-life/2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/life/2/">未来6个月的规划</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/23/life/2/" class="archive-article-date">
-  	<time datetime="2018-04-23T07:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="2018-Q2-Q3总体规划"><a href="#2018-Q2-Q3总体规划" class="headerlink" title="2018 Q2-Q3总体规划"></a>2018 Q2-Q3总体规划</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.用户极致体验</div><div class="line">	要求：</div><div class="line">		1.[页面的流畅性](http://ask.dcloud.net.cn/article/25)</div><div class="line">		2.页面的美观度</div><div class="line">		3.页面的加载性能</div><div class="line">2.前端工具化及工程化</div><div class="line">	发展：</div><div class="line">		1.原始阶段：在原始api方面扩充，将会催生大量的tools</div><div class="line">		2.发展阶段：随着做的东西复杂化，这些需要更多的组织，引入大量设计模式，此时会催生出大量的frameworks</div><div class="line">		3.工程化阶段：随着团队的扩充，就会进入工程化的阶段，各类mvc，mvp，mvvm等设计，可视化开发，自动化测试，团队协作系统等。</div><div class="line">	标准：根据模块化、组件化、规范化、自动化四个来思考，软件工程化关注的是性能、稳定性、可用性、可维护性等方面，一切以这些为目标的工作都是<span class="string">"前端工程化"</span></div><div class="line">	目标：以尽可能快的速度实现可信赖的产品。尽可能短的时间包括开发速度、部署速度与重构速度，而可信赖又在于产品的可测试性、可变性以及Bug的重现与定位</div><div class="line">3.横向发展</div><div class="line">	了解业务发展 -- 了解一些后端的设计</div><div class="line">	了解页面设计原理 --- UI</div><div class="line">	人工智能 -- 前端应用</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/life/2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1297,6 +1332,22 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -1305,23 +1356,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,7 +1376,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -49,10 +49,10 @@
   
   <entry>
     <title>php字符串操作与正则表达式</title>
-    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>https://lzm420241.github.io/2018/07/18/php入门/字符串操作与正则表达式/</id>
+    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://lzm420241.github.io/2018/07/18/php入门/php字符串操作与正则表达式/</id>
     <published>2018-07-18T14:42:08.000Z</published>
-    <updated>2018-07-19T01:32:28.000Z</updated>
+    <updated>2018-07-20T00:40:09.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="php字符串及正则基本使用"><a href="#php字符串及正则基本使用" class="headerlink" title="php字符串及正则基本使用"></a>php字符串及正则基本使用</h3><ul>
 <li>isset() 检查用户是否已经填写了所有要求的表单域</li>
@@ -107,6 +107,66 @@
       <category term="apache" scheme="https://lzm420241.github.io/tags/apache/"/>
     
       <category term="mysql" scheme="https://lzm420241.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php代码重用与函数编写</title>
+    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
+    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
+    <published>2018-07-18T14:42:08.000Z</published>
+    <updated>2018-07-20T00:52:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
+&lt;li&gt;require函数 require 生成一个致命错误
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
+    
+      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
+    
+      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
@@ -531,6 +591,32 @@
   </entry>
   
   <entry>
+    <title>jquery整体架构</title>
+    <link href="https://lzm420241.github.io/2017/07/20/javascript/jquery%E6%BA%90%E7%A0%81%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://lzm420241.github.io/2017/07/20/javascript/jquery源码入门（一）/</id>
+    <published>2017-07-20T00:38:32.000Z</published>
+    <updated>2018-07-20T00:39:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基本架构图&quot;&gt;&lt;a href=&quot;#基本架构图&quot; class=&quot;headerlink&quot; title=&quot;基本架构图&quot;&gt;&lt;/a&gt;基本架构图&lt;/h3&gt;&lt;h3 id=&quot;中心设计解析&quot;&gt;&lt;a href=&quot;#中心设计解析&quot; class=&quot;headerlink&quot; title=&quot;中
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="jquery" scheme="https://lzm420241.github.io/tags/jquery/"/>
+    
+      <category term="源码" scheme="https://lzm420241.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript提升之道</title>
     <link href="https://lzm420241.github.io/2017/05/22/javascript/javascript-2/"/>
     <id>https://lzm420241.github.io/2017/05/22/javascript/javascript-2/</id>
@@ -762,143 +848,6 @@
     
     
       <category term="前端面试题" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5.图层的高级操作</title>
-    <link href="https://lzm420241.github.io/2017/05/20/design/ps-5/"/>
-    <id>https://lzm420241.github.io/2017/05/20/design/ps-5/</id>
-    <published>2017-05-20T14:53:47.000Z</published>
-    <updated>2018-04-23T06:04:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="图层的设置"><a href="#图层的设置" class="headerlink" title="图层的设置"></a>图层的设置</h3><ol>
-<li>图层控制面板中可以设置不透明度</li>
-<li>混合模式用来控制当前图层中的像素与它下面图层中的像素如何混合，除背景图层外，其他图层都支持混合，另外用于混合通道</li>
-</ol>
-<h3 id="填充图层"><a href="#填充图层" class="headerlink" title="填充图层"></a>填充图层</h3><ol>
-<li>图层➡新建填充图层➡纯色 或单机图层面板中创建新的填充或调整图层按钮，选择纯色</li>
-<li>渐变填充图层 图层➡新建填充图层➡渐变或者创建新的填充或调整图层按钮，选择渐变</li>
-</ol>
-<h3 id="调整图层"><a href="#调整图层" class="headerlink" title="调整图层"></a>调整图层</h3><ol>
-<li>图层➡调整 调整命令直接修改所选图层中的像素数据，但调整图层中国年可以达到同样的调整效果但不会修改像素</li>
-<li>图层➡新建调整图层 可在图层面板中创建调整图层</li>
-</ol>
-<h3 id="中性色涂层"><a href="#中性色涂层" class="headerlink" title="中性色涂层"></a>中性色涂层</h3><ol>
-<li>使用色阶或曲线校正偏色的照片，通过定义灰色来校正色偏</li>
-</ol>
-<h3 id="智能对象"><a href="#智能对象" class="headerlink" title="智能对象"></a>智能对象</h3><ol>
-<li>智能对象是一个嵌入到当前文档中的文件，它可以包含图像，也可以包含矢量图形</li>
-<li>文件➡打开为智能对象 创建智能对象，文件➡置入 将另外一个文件作为智能对象置入到当前文档中</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;图层的设置&quot;&gt;&lt;a href=&quot;#图层的设置&quot; class=&quot;headerlink&quot; title=&quot;图层的设置&quot;&gt;&lt;/a&gt;图层的设置&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;图层控制面板中可以设置不透明度&lt;/li&gt;
-&lt;li&gt;混合模式用来控制当前图层中的像素与它下面图层中的像素如
-    
-    </summary>
-    
-      <category term="设计知识点记录" scheme="https://lzm420241.github.io/categories/%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="design" scheme="https://lzm420241.github.io/tags/design/"/>
-    
-      <category term="photoshop" scheme="https://lzm420241.github.io/tags/photoshop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>4.图层</title>
-    <link href="https://lzm420241.github.io/2017/05/19/design/ps-4/"/>
-    <id>https://lzm420241.github.io/2017/05/19/design/ps-4/</id>
-    <published>2017-05-19T14:21:28.000Z</published>
-    <updated>2018-04-23T06:04:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="什么是图层"><a href="#什么是图层" class="headerlink" title="什么是图层"></a>什么是图层</h3><ol>
-<li>图层就如同堆叠在一起的透明纸，每一张纸上都保存着不同的图像。我们可以透过上面图层的透明区域看到下面层的图像</li>
-<li>图层面板含有：选取图层类型，打开／关闭图层过滤，设置图层的混合模式，设置图层的不透明度，设置填充不透明度，图层锁定按钮，图层链接图标</li>
-</ol>
-<h3 id="新建图层"><a href="#新建图层" class="headerlink" title="新建图层"></a>新建图层</h3><ol>
-<li>点击图层面板中心间图层按钮即在当前图层上面新建一个图层，按住Ctrl键然后点击图层即可在当前图层下面新建图层–图层➡新建➡图层</li>
-<li>如果在图像中创建了选区，通过图层➡新建➡通过拷贝的图层或按下Ctrl+J的方式将选区的图层拷贝到当前图层上面，剪切为Shift+Ctrl+J</li>
-<li>如果没有背景图层，那么通过图层➡新建➡背景图层来将选中图层转为背景图层</li>
-</ol>
-<h3 id="编辑图层"><a href="#编辑图层" class="headerlink" title="编辑图层"></a>编辑图层</h3><ol>
-<li>选择所有图层-选择➡所有图层，选择链接图层-图层➡选择链接图层，取消选择图层-选择➡取消选择图层</li>
-<li>图层➡重命名图层</li>
-<li>锁定图层：锁定透明度像素，锁定图像像素，锁定位置，锁定全部</li>
-<li>查找图层：选择➡查找图层</li>
-<li>删除图层：图层➡删除</li>
-<li>栅格化图层内容-如果要使用绘画工具和滤镜编辑文字图层，形状图层，矢量蒙版，让图层内容转化为光栅图像，才能进行编辑 图层➡栅格化</li>
-<li>清除图像的杂边 图层➡修边</li>
-</ol>
-<h3 id="排列与分布图层"><a href="#排列与分布图层" class="headerlink" title="排列与分布图层"></a>排列与分布图层</h3><ol>
-<li>图层➡排列 置为顶层，前移一层／后移一层，置为底层，反向</li>
-<li>图层➡对齐，图层➡对齐➡顶边</li>
-<li>分布图层：图层➡分布➡水平居中</li>
-<li>将图层与选区对齐：图层➡将图层与选区对齐</li>
-</ol>
-<h3 id="合并与盖印图层"><a href="#合并与盖印图层" class="headerlink" title="合并与盖印图层"></a>合并与盖印图层</h3><ol>
-<li>合并图层：图层➡合并图层，图层➡向下合并，快捷键Ctrl+E，图层➡合并可见图层，快捷键Shift+Ctrl+E</li>
-<li>将图层合并到背景中：图层➡拼合图像</li>
-<li>盖印是将多个图层中图像合并到一个新的图层中，同时保持其他图层完好无损，向下盖印快捷键Ctrl+ALt+E，盖印多个图层-选择多个图层，按下Ctrl+Alt+E，盖印可见图层，盖印图层组</li>
-</ol>
-<h3 id="用图层组管理图层"><a href="#用图层组管理图层" class="headerlink" title="用图层组管理图层"></a>用图层组管理图层</h3><ol>
-<li>创建图层组：点击图层面板中的文件夹图标或图层➡新建➡组</li>
-<li>从所选图层中创建图层组：图层➡图层编组或Ctrl+G</li>
-<li>取消图层组，但保留图层可选择该图层组，执行图层➡取消图层编组或Shift+Ctrl+G，如果要删除整个图层组将其移入图层面板的删除图标</li>
-</ol>
-<h3 id="图层样式"><a href="#图层样式" class="headerlink" title="图层样式"></a>图层样式</h3><ol>
-<li>添加图层样式：1.图层➡图层样式 选择一个有效的命令；2.可以在图层面板中点击图层样式按钮</li>
-<li>图层样式对话框中的效果名称前面的复选框如果选中则可以停用该效果，但保留效果参数</li>
-<li>斜面和浮雕：对图层添加高光和阴影的各种组合，使图层呈现立体的浮雕效果</li>
-<li>描边：可以使用颜色，渐变或图案描画对象的轮廓，它对于硬边形状，如文字特别有用</li>
-<li>内阴影：在紧靠图层内容的边缘内添加阴影，使图层内容产生凹陷效果</li>
-<li>内发光：沿图层内容的边缘向内创建发光效果</li>
-<li>光泽： 应用光滑光泽的内部阴影，通常用来创建金属表面的光泽外观</li>
-<li>颜色叠加：在图层上叠加指定的颜色，通过设置颜色的混合模式和不透明度，可以控制叠加效果</li>
-<li>渐变叠加：在图层上叠加指定的渐变颜色</li>
-<li>图案叠加：在图层上叠加指定的图案并且可以缩放图案，设置图案的不透明度和混合模式</li>
-<li>外发光：沿图层内容的边缘向外创建发光效果</li>
-<li>投影：为图层内容添加阴影</li>
-</ol>
-<h3 id="编辑图层样式"><a href="#编辑图层样式" class="headerlink" title="编辑图层样式"></a>编辑图层样式</h3><ol>
-<li>显示与隐藏-图层面板中点击眼睛图标可以显示或者隐藏图层</li>
-<li>修改效果-双击图层一个效果名称可以打开图层样式对话框，并且可以修改样式参数</li>
-<li>复制，粘贴与清除效果-图层➡图层样式➡拷贝图层样式 复制图层样式，粘贴图层样式-图层➡图层样式➡粘贴图层样式</li>
-<li>移动图层样式-按住Alt键，然后将图层fx移动到另外一个图层达到移动效果</li>
-<li>如果要删除图层样式，将其移动到图层面板中的垃圾桶图标</li>
-<li>使用全局光-在图层样式中，投影，内阴影，斜面和浮雕都包含全局光，选择此选项后，以上效果都会使用相同角度的光源</li>
-<li>使用等高线-投影，内阴影，内发光，外发光，斜面和浮雕，光泽都包含等高线设置选项，等高线可以选择一个预设的等高线样式</li>
-</ol>
-<h3 id="使用样式面板"><a href="#使用样式面板" class="headerlink" title="使用样式面板"></a>使用样式面板</h3><ol>
-<li>选择一个图层，点击样式面板中一个样式，既可为其添加样式</li>
-<li>创建样式，删除样式 样式面板底部有创建样式和删除样式的图标</li>
-<li>存储样式库，载入样式库</li>
-</ol>
-<h3 id="图层复合"><a href="#图层复合" class="headerlink" title="图层复合"></a>图层复合</h3><ol>
-<li>图层复合面板用来创建，编辑，显示和删除图层复合</li>
-<li>窗口➡图层复合 打开图层复合窗口</li>
-<li>图层复合时面板状态的快照，它记录当前文档图层的可见性，位置和外观，通过图层复合可以快速在文档中切换不同版面的显示状态，比较适合多种设计方案</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;什么是图层&quot;&gt;&lt;a href=&quot;#什么是图层&quot; class=&quot;headerlink&quot; title=&quot;什么是图层&quot;&gt;&lt;/a&gt;什么是图层&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;图层就如同堆叠在一起的透明纸，每一张纸上都保存着不同的图像。我们可以透过上面图层的透明区域看到下面层的图
-    
-    </summary>
-    
-      <category term="设计知识点记录" scheme="https://lzm420241.github.io/categories/%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="design" scheme="https://lzm420241.github.io/tags/design/"/>
-    
-      <category term="photoshop" scheme="https://lzm420241.github.io/tags/photoshop/"/>
     
   </entry>
   
