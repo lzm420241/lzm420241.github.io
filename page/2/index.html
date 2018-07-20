@@ -191,6 +191,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-svn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/svn/">svn命令基本使用及原理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/svn/" class="archive-article-date">
+  	<time datetime="2018-05-08T11:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="svn常用命令"><a href="#svn常用命令" class="headerlink" title="svn常用命令"></a>svn常用命令</h3><p>1.<strong>将文件checkout到本地目录</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path (path是服务器上的目录) 简写：svn co path</div></pre></td></tr></table></figure></p>
+<p>2.<strong>切换分支</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn switch path (path是服务器上的目录) 简写：svn sw path</div></pre></td></tr></table></figure></p>
+<p>3.<strong>往版本库添加新文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure></p>
+<p>4.<strong>将改动的文件提交到版本库</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svm commit -m <span class="string">"message"</span> [-N][--no-unlock] PATH (如果选择了保持锁，就使用--no-unlock开关) 简写：svn ci -m <span class="string">"message"</span> PATH</div></pre></td></tr></table></figure></p>
+<p>5.<strong>加锁／解锁</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m <span class="string">"lockMessage"</span> [--force] PATH  svn unlock PATH</div></pre></td></tr></table></figure></p>
+<p>6.<strong>更新到某个版本</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m path 简写：svn up</div></pre></td></tr></table></figure></p>
+<p>7.<strong>查看文件或者目录状态</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status [-v (查看文件及子目录状态)] path  简写：svn st</div></pre></td></tr></table></figure></p>
+<p>8.<strong>删除文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn delete path -m <span class="string">"message"</span> 简写：svn (del, remove, rm)</div></pre></td></tr></table></figure></p>
+<p>9.<strong>查看日志</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ svn <span class="built_in">log</span> path</div></pre></td></tr></table></figure></p>
+<p>10.<strong>查看文件详细信息</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ svn info path</div></pre></td></tr></table></figure></p>
+<p>11.<strong>比较差异</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn diff path   简写：svn di</div></pre></td></tr></table></figure></p>
+<p>12.<strong>将两个版本之间的差异合并到当前文件</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn merge -r m:n path</div></pre></td></tr></table></figure></p>
+<p>13.<strong>将未提交的代码会滚</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn revert [-R] path</div></pre></td></tr></table></figure></p>
+<p>14.<strong>svn帮助</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">log</span> path</div></pre></td></tr></table></figure></p>
+<h3 id="svn基本原理"><a href="#svn基本原理" class="headerlink" title="svn基本原理"></a>svn基本原理</h3><p>1.<strong>svn里面三个概念：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.工作拷贝：一个SVN的工作拷贝是用户机器的一个本地目录，保存着一些文件和目录，你可以任意编辑其中的文件，在你提交之前你所做的编辑不会上传到SVN与他人所作的修改进行合并。</div><div class="line"></div><div class="line">2.基准版本：SVN会在每个工作拷贝的一个特定位置保存该工作拷贝最后一次提交时的文件及目录情况，这些文件及目录就称为<span class="string">"基准版本"</span>。</div><div class="line"></div><div class="line">3.Head版本：SVN服务器中的最新版本</div><div class="line"></div><div class="line">注意：如果Head版本比你所编辑的本地工作拷贝版本（指的是基准版本）新的话，而且如果你做了修改，当你Commit的时候会提示有冲突产生，这时你update的时候会将冲突显示出来。如果没有做修改，Commit之后会提示你版本低，需要update成最新版本，此时本地工作拷贝会变成update后的最新的版本。</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点入门学习/" class="article-tag-list-link color3">知识点入门学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/08/svn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-life/2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -329,82 +413,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/23/life/1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/jquery源码入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/20/javascript/jquery源码入门（一）/">jquery整体架构</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/20/javascript/jquery源码入门（一）/" class="archive-article-date">
-  	<time datetime="2017-07-20T00:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/20/javascript/jquery源码入门（一）/">展开全文 >></a>
         </p>
       
 
@@ -1123,7 +1131,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1139,15 +1159,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1164,14 +1180,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
