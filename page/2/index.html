@@ -191,6 +191,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ai-AI/tensorflow安装" class="article article-type-ai  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/15/AI/tensorflow安装/">tensorflow安装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/15/AI/tensorflow安装/" class="archive-article-date">
+  	<time datetime="2018-07-15T01:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><ol>
+<li>mac默认安装了Python（2.7）</li>
+<li>如果要安装Python3，可以采用pip <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</div><div class="line">$ python get-pip.py</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><ul>
+<li>当前采用docker安装（其他方式都安装失败了，坑有点多）</li>
+<li>安装docker，启动docker</li>
+<li>docker login 登陆账号（bash里面如果采用命令行需要登陆docker账号，而不是邮箱）</li>
+<li>docker pull tensorflow/tensorflow:latest</li>
+<li>启动tensorflow服务<br><ol>
+<li>docker run –name test -it -p 8888:8888 tensorflow/tensorflow – 注：此时启动了服务，输入里面的链接在页面中，可以在输入的页面开发Python程序，里面已有TensorFlow框架</li>
+<li>docker run –name test -it tensorflow/tensorflow /bin/bash  – 注：如果你不想在网页里面开发，那么可以在bash里面开发<br>```</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tensorflow</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Mac 环境</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/AI/" class="article-tag-list-link color3">AI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/15/AI/tensorflow安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-svn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -915,81 +1011,6 @@
 
 
   
-    <article id="post-interview/interview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/21/interview/interview/">前端常见面试题归纳(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/21/interview/interview/" class="archive-article-date">
-  	<time datetime="2017-05-21T01:54:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>1.<strong>DOM操作</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">createElement 通过传入指定的一个标签名来创建一个元素，如果传入的标签名是一个未知的，则会创建一个自定义的标签</div><div class="line">createTextNode createTextNode用来创建一个文本节点</div><div class="line"><span class="built_in">clone</span>Node <span class="built_in">clone</span>Node是用来返回调用方法的节点的一个副本，它接收一个bool参数，用来表示是否复制子元素</div><div class="line">createDocumentFragment createDocumentFragment方法用来创建一个DocumentFragment</div><div class="line">appendChild 将指定的节点添加到调用该方法的节点的子元素的末尾</div><div class="line">insertBefore insertBefore用来添加一个节点到一个参照节点之前</div><div class="line">removeChild 删除指定的子节点并返回</div><div class="line">replaceChild replaceChild用于使用一个节点替换另一个节点</div><div class="line">document.getElementById 根据元素id返回元素，返回值是Element类型，如果不存在该元素，则返回null</div><div class="line">document.getElementsByTagName 这个接口根据元素标签名获取元素，返回一个即时的HTMLCollection类型</div><div class="line">document.getElementsByName getElementsByName主要是通过指定的name属性来获取元素，它返回一个即时的NodeList对象</div><div class="line">document.getElementsByClassName 这个API是根据元素的class返回一个即时的HTMLCollection</div><div class="line">document.querySelector和document.querySelectorAll 通过css选择器来查找元素</div><div class="line">节点关系型api parentNode parentElement previousSibling previousElementSibling nextSibling nextElementSibling childNodes children firstNode lastNode hasChildNodes</div><div class="line">元素属性型api <span class="built_in">set</span>Attribute getAttribute</div><div class="line">元素样式型api </div><div class="line">window.getComputedStyle 用来获取应用到元素后的样式</div><div class="line">getBoundingClientRect 用来返回元素的大小以及相对于浏览器可视窗口的位置</div></pre></td></tr></table></figure></p>
-<p>2.<strong>如何使用事件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTML内连属性</div><div class="line">DOM属性绑定</div><div class="line">事件监听函数 addEventListener</div><div class="line">移除事件监听 removeEventListener</div><div class="line">模拟触发事件 dispatchEvent</div><div class="line">自定义事件 Event、CustomEvent 和 dispatchEvent</div><div class="line">事件顺序 捕获阶段-&gt;达到元素后-&gt;进入事件冒泡阶段</div><div class="line">事件Event对象几个属性：<span class="built_in">type</span>(string)，target(node)，currentTarget(node)，bubbles(boolean),preventDefault (<span class="keyword">function</span>),stopPropagation (<span class="keyword">function</span>),stopImmediatePropagation (<span class="keyword">function</span>),cancelable (boolean),eventPhase (number)</div></pre></td></tr></table></figure></p>
-<p>3.<strong>XMLHttpRequest详解</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//XMLHttpRequest发送的ajax请求代码：</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendAjax</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//构造表单数据</span></div><div class="line">  <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</div><div class="line">  formData.append(<span class="string">'username'</span>, <span class="string">'johndoe'</span>);</div><div class="line">  formData.append(<span class="string">'id'</span>, <span class="number">123456</span>);</div><div class="line">  <span class="comment">//创建xhr对象 </span></div><div class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  <span class="comment">//设置xhr请求的超时时间</span></div><div class="line">  xhr.timeout = <span class="number">3000</span>;</div><div class="line">  <span class="comment">//设置响应返回的数据格式</span></div><div class="line">  xhr.responseType = <span class="string">"text"</span>;</div><div class="line">  <span class="comment">//创建一个 post 请求，采用异步</span></div><div class="line">  xhr.open(<span class="string">'POST'</span>, <span class="string">'/server'</span>, <span class="literal">true</span>);</div><div class="line">  <span class="comment">//注册相关事件回调处理函数</span></div><div class="line">  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>||<span class="keyword">this</span>.status == <span class="number">304</span>)&#123;</div><div class="line">        alert(<span class="keyword">this</span>.responseText);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  xhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;;</div><div class="line">  </div><div class="line">  <span class="comment">//发送数据</span></div><div class="line">  xhr.send(formData);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">XHR 对象的属性和方法</div><div class="line">属性:</div><div class="line">    readyState：HTTP 请求的状态</div><div class="line">    responseText：响应体（不包括头部）</div><div class="line">    responseXML：对请求的响应，解析为 XML 并作为 Document 对象返回</div><div class="line">    status：由服务器返回的 HTTP 状态代码，如 200 表示成功</div><div class="line">    statusText：这个属性用名称而不是数字指定了请求的 HTTP 的状态代码。也就是说，当状态为 200 的时候它是 <span class="string">"OK"</span>，当状态为 404 的时候它是 <span class="string">"Not Found"</span></div><div class="line">    responseType：返回的我们设置的数据类型（text，document，json，blob，arrayBuffer）</div><div class="line">    timeout：设置请求的超时时间</div><div class="line">方法:</div><div class="line">    loadstart(): 调用xhr.send()方法后立即触发</div><div class="line">    progress(): xhr.upload.onprogress在上传阶段(即xhr.send()之后，xhr.readystate=2之前)触发，每50ms触发一次；xhr.onprogress在下载阶段（即xhr.readystate=3时）触发，每50ms触发一次</div><div class="line">    timeout: xhr.timeout不等于0，由请求开始即onloadstart开始算起，当到达xhr.timeout所设置时间请求还未结束即onloadend，则触发此事件</div><div class="line">    load: 当请求成功完成时触发，此时xhr.readystate=4</div><div class="line">    loadend: 当请求结束（包括请求成功和请求失败）时触发</div><div class="line">    abort() : 取消当前响应，关闭连接并且结束任何未决的网络活动</div><div class="line">    getAllResponseHeaders()：把 HTTP 响应头部作为未解析的字符串返回</div><div class="line">    getResponseHeader()：返回指定的 HTTP 响应头部的值</div><div class="line">    open(method,url[,async = <span class="literal">true</span>[,username = null, [,password = null]])：初始化 HTTP 请求参数，例如 URL 和 HTTP 方法，但是并不发送请求</div><div class="line">    send()：发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求体</div><div class="line">    <span class="built_in">set</span>RequestHeader()：向一个打开但未发送的请求设置或添加一个 HTTP 请求</div><div class="line">    overrideMimeType()：返回的我们设置的数据类型</div><div class="line"></div><div class="line">xhr事件：onreadystatechange 监听xhr返回时的事件</div><div class="line">获取上传、下载的进度: onprogress事件</div><div class="line">    上传触发的是xhr.upload对象的 onprogress事件</div><div class="line">    下载触发的是xhr对象的onprogress事件</div><div class="line">事件出发顺序：</div><div class="line">    1.触发xhr.onreadystatechange(之后每次readyState变化时，都会触发一次)</div><div class="line">    2.触发xhr.onloadstart</div><div class="line">    //上传阶段开始：</div><div class="line">    3.触发xhr.upload.onloadstart</div><div class="line">    4.触发xhr.upload.onprogress</div><div class="line">    5.触发xhr.upload.onload</div><div class="line">    6.触发xhr.upload.onloadend</div><div class="line">    //上传结束，下载阶段开始：</div><div class="line">    7.触发xhr.onprogress</div><div class="line">    8.触发xhr.onload</div><div class="line">    9.触发xhr.onloadend</div></pre></td></tr></table></figure>
-<p>4.<strong>如何使用浮动元素，以及带来的问题和解决方案</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">浮动定义：浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘，通过设置<span class="built_in">float</span>属性实现</div><div class="line">现象：正是因为浮动的这种特性，导致本属于普通流中的元素浮动之后，包含框内部由于不存在其他普通流元素了，也就表现出高度为0（高度塌陷）。在实际布局中，往往这并不是我们所希望的，所以需要闭合浮动元素，使其包含框表现出正常的高度</div><div class="line">如何清除浮动：</div><div class="line">    清除浮动：清除对应的单词是 clear，对应CSS中的属性是 clear：left | right | both | none</div><div class="line">    闭合浮动：更确切的含义是使浮动元素闭合，从而减少浮动带来的影响</div><div class="line">BFC的特性</div><div class="line">    块级格式化上下文会阻止外边距叠加</div><div class="line">    当两个相邻的块框在同一个块级格式化上下文中时，它们之间垂直方向的外边距会发生叠加。换句话说，如果这两个相邻的块框不属于同一个块级格式化上下文，那么它们的外边距就不会叠加。</div><div class="line">    块级格式化上下文不会重叠浮动元素</div><div class="line">    根据规定，一个块级格式化上下文的边框不能和它里面的元素的外边距重叠。这就意味着浏览器将会给块级格式化上下文创建隐式的外边距来阻止它和浮动元素的外边距叠加。由于这个原因，当给一个挨着浮动的块级格式化上下文添加负的外边距时将会不起作用（Webkit和IE6在这点上有一个问题——可以看这个测试用例）。</div><div class="line">    块级格式化上下文通常可以包含浮动</div><div class="line">如何触发BFC?</div><div class="line">    <span class="built_in">float</span> 除了none以外的值</div><div class="line">    overflow 除了visible 以外的值（hidden，auto，scroll ）</div><div class="line">    display (table-cell，table-caption，inline-block)</div><div class="line">    position（absolute，fixed）</div><div class="line">    fieldset元素</div><div class="line">BFC的几个用途</div><div class="line">    1、BFC可以阻止垂直边距叠加问题</div><div class="line">    2、BFC可以包含内部元素的浮动</div><div class="line">    3、BFC可以阻止元素被浮动覆盖</div><div class="line">    4、BFC可以决定清除浮动的范围</div></pre></td></tr></table></figure></p>
-<p>5.<strong>HTMLXHTML区别，如何选择</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xhtml:</div><div class="line">    1.所有的标记都都要闭合 </div><div class="line">    2.所有标签的元素和属性的名字都必须使用小写 </div><div class="line">    3.所有的XML标记都必须合理嵌套 </div><div class="line">    4.所有的属性必须用引号（单或双）包括在HTML中，你可以不需要给属性值加引号，但是在XHTML中，它们必须被加引号</div><div class="line">    5.把所有&lt;和&amp;特殊符号用编码表示任何小于号（&lt;），不是标签的一部分，都必须被编码为&amp; l t ; 任何大于号（&gt;），不是标签的一部分，都必须被编码为&amp; g t ; 任何与号（&amp;），不是实体的一部分的，都必须被编码为&amp; a m p</div><div class="line">    6.给所有属性赋一个值 </div><div class="line">    7.不要在注释内容中使<span class="string">"- -"</span> </div><div class="line">    8.图片必须有说明文字 每个图片标签都必须有ALT说明文字</div></pre></td></tr></table></figure></p>
-<p>6.<strong>JSON作用，用途，设计结构</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">JSON API 是数据交互规范，用以定义客户端如何获取与修改资源，以及服务器如何响应对应请求</div><div class="line">JSON API设计用来最小化请求的数量，以及客户端与服务器间传输的数据量。在高效实现的同时，无需牺牲可读性、灵活性和可发现性</div><div class="line">JSON API需要使用JSON API媒体类型(application/vnd.api+json) 进行数据交互</div><div class="line">JSON API服务器支持通过GET方法获取资源。而且必须独立实现HTTP POST, PUT和DELETE方法的请求响应，以支持资源的创建、更新和删除</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端面试题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/21/interview/interview/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1156,6 +1177,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">语法树</a>
               </li>
              
               <li class="article-tag-list-item">
