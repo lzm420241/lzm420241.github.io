@@ -46,10 +46,39 @@
     <link href="https://lzm420241.github.io/2018/07/20/javascript/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>https://lzm420241.github.io/2018/07/20/javascript/前端页面渲染与性能优化/</id>
     <published>2018-07-20T00:38:32.000Z</published>
-    <updated>2018-07-20T07:28:04.000Z</updated>
+    <updated>2018-07-24T00:24:54.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="http://git.husor.com/fed/blog/issues/76" target="_blank" rel="external">参考链接</a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><h3 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h3>]]></content>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><h3 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h3><h1 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h1><p>↵在我们公司的业务场景中，有很大一部分用户是使用老款安卓机浏览页面，这些老款安卓机性能较差，如果优化不足，页面的卡顿现象会更加明显，此时页面性能优化的重要性就凸显出现。优化页面的性能，需要对浏览器的渲染过程有深入的了解，针对浏览器的每一步环节进行优化。<br>↵<br>↵页面高性能的判断标准是 <code>60fps</code>。这是因为目前大多数设备的屏幕刷新率为 <strong>60 次/秒</strong>，也就是 <code>60fps</code> , 如果刷新率降低，也就是说出现了掉帧, 对于用户来说，就是出现了卡顿的现象。<br>↵<br>↵这就要求，页面每一帧的渲染时间仅为<strong>16毫秒</strong> (1 秒/ 60 = 16.66 毫秒)。但实际上，浏览器有其他工作要做，因此这一帧所有工作需要在 10毫秒内完成。如果工作没有完成，帧率将下降，并且内容会在屏幕上抖动。 此现象通常称为卡顿，会对用户体验产生负面影响。<br>↵<br>↵<br>↵<br>↵# 浏览器渲染流程<br>↵<br>↵浏览器一开始会从网络层获取请求文档的内容，请求过来的数据是 Bytes，然后浏览器将其编译成HTML的代码。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180705_005723.png" alt=""><br>↵<br>↵但是我们写出来的HTML代码浏览器是看不懂的，所以需要进行解析。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180619_195129.png" alt=""><br>↵<br>↵渲染引擎解析 HTML 文档，将各个dom标签逐个转化成“DOM tree”上的 DOM 节点。同时也会解析内部和外部的css, 解析为<code>CSSOM tree</code>, <code>css tree</code>和<code>dom tree</code>结合在一起生成了<code>render tree</code>。<br>↵<br>↵<code>render tree</code>构建好之后，渲染引擎随后会经历一个<code>layout</code>的阶段: 计算出每一个节点应该出现在屏幕上的确切坐标。<br>↵<br>↵之后的阶段被称为<code>paiting</code>阶段，渲染引擎会遍历<code>render tree</code>, 然后由用户界面后端层将每一个节点绘制出来。<br>↵<br>↵最后一个阶段是 <code>composite</code> 阶段，这个阶段是合并图层。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180619_200256.png" alt="webkit 渲染引擎的主流程"><br>↵<br>↵<br>↵<br>↵## 浏览器内核<br>↵<br>↵浏览器是一个极其复杂庞大的软件。常见的浏览器有chrome, firefox。firefox是完全开源，Chrome不开源，但Chromium项目是部分开源。<br>↵<br>↵&gt; Chromium和Chrome之间的关系类似于尝鲜版和正式版的关系，Chromium会有很多新的不稳定的特性，待成熟稳定后会应用到Chrome。<br>↵<br>↵浏览器功能有很多，包括网络、资源管理、网页浏览、多页面管理、插件和扩展、书签管理、历史记录管理、设置管理、下载管理、账户和同步、安全机制、隐私管理、外观主题、开发者工具等。<br>↵<br>↵因此浏览器内部被划分为不同的模块。其中和页面渲染相关的，是下图中虚线框的部分渲染引擎。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/2018-07-12-025823.png" alt="image-20180712105822858"><br>↵<br>↵渲染引擎的作用是将页面转变成可视化的图像结果。<br>↵<br>↵目前，主流的渲染引擎包括<strong>Trident</strong>、<strong>Gecko</strong>和<strong>WebKit</strong>，它们分别是IE、火狐和Chrome的内核（2013年，Google宣布了Blink内核，它其实是从WebKit复制出去的），其中占有率最高的是 WebKit。<br>↵<br>↵##  WebKit<br>↵<br>↵最早，苹果公司和KDE开源社区产生了分歧，复制出一个开源的项目，就是WebKit。<br>↵<br>↵WebKit被很多浏览器采用作为内核，其中就包括goole的chrome。<br>↵<br>↵后来google公司又和苹果公司产生了分歧，google从webkit中复制出一个blink项目。<br>↵<br>↵因此，blink内核和webkit内核没有特别的不同，因此很多老外会借用 chromium的实现来理解webkit的技术内幕，也是完全可以的。<br>↵<br>↵## 浏览器源码<br>↵<br>↵浏览器的代码非常的庞大，曾经有人尝试阅读Chromium项目的源码，git clone 到本地发现有10个G，光编译时间就3个小时（据说火狐浏览器编译需要更多的时间，大约为6个小时）。因此关于浏览器内部究竟是如何运作的，大部分的分享是浏览器厂商参与研发的内部员工。<br>↵<br>↵国外有个非常有毅力的工程师<a href="https://www.html5rocks.com/profiles/#taligarsiel" target="_blank" rel="external">Tali Garsiel</a> 花费了n年的时间探究了浏览器的内幕，本文关于浏览器内部工作原理的介绍，主要整理自她的博客<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">how browser work</a> , 和其他人的一些分享。<br>↵<br>↵国内关于浏览器技术内幕主要有<a href="https://read.douban.com/ebook/35765513/?dct=Web&amp;type=paid&amp;dcc=35765513&amp;dcm=douban&amp;dcs=updates" target="_blank" rel="external">《WebKit技术内幕》</a><br>↵<br>↵<br>↵<br>↵下面，我们将针对浏览器渲染的环节，深入理解浏览器内核做了哪些事情，逐一的介绍如何去进行前端页面的优化。<br>↵<br>↵<br>↵<br>↵# 浏览器渲染第一步：解析<br>↵<br>↵解析是浏览器渲染引擎中第一个环节。我们先大致了解一下解析到底是怎么一回事。<br>↵<br>↵## 什么是解析<br>↵<br>↵通俗来讲，解析文档是指将<strong>文档转化成为有意义的结构，好让代码去使用他们</strong>。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180704_145218.png" alt=""><br>↵<br>↵以上图为例，右边就是解析好的树状结构，这个结构就可以“喂“给其他的程序, 然后其他的程序就可以利用这个结构，生成一些计算的结果。<br>↵<br>↵解析的过程可以分成两个子过程：<strong>lexical analysis(词法分析)</strong>和<strong>syntax analysis(句法分析)</strong>。<br>↵<br>↵### <strong>lexical analysis(词法分析)</strong><br>↵<br>↵<strong>lexical analysis</strong> 被称为词法分析的过程，有的文章也称为 <strong>tokenization</strong>，其实就是把输入的内容分为不同的<strong>tokens</strong>(标记)，tokens是最小的组成部分，tokens就像是人类语言中的一堆词汇。比如说，我们对一句英文进行lexical analysis——“The quick brown fox jumps”，我们可以拿到以下的token:<br>↵<br>↵- “The”<br>↵- “quick”<br>↵- “brown”<br>↵- “fox”<br>↵- “jumps”<br>↵<br>↵用来做lexical analysis的工具，被称为<strong><code>lexer</code></strong>， 它负责把输入的内容拆分为不同的tokens。不同的浏览器内核会选择不同的lexer , 比如说webkit 是使用Flex （Fast Lexer）作为lexer。<br>↵<br>↵### syntax analysis(句法分析)<br>↵<br>↵<strong>syntax analysis</strong>是应用语言句法中的规则， 简单来说，就是判断一串tokens组成的句子是不是正确的。<br>↵<br>↵如果我说：“我吃饭工作完了”， 这句话是不符合syntax analysis的，虽然里面的每一个token都是正确的，但是不符合语法规范。需要注意的是，符合语法正确 的句子不一定是符合语义正确的。比如说，“一个绿色的梦想沉沉的睡去了”，从语法的角度来讲，形容词 + 主语 + 副词 + 动词没有问题，但是语义上却是什么鬼。<br>↵<br>↵负责<code>syntax analysis</code>工作的是<strong><code>parser</code></strong>，解析是一个不断往返的过程。<br>↵<br>↵如下图所示，<code>parser</code>向<code>lexer</code>要一个新的<code>token</code>，<code>lexer</code>会返回一个<code>token</code>, <code>parser</code>拿到<code>token</code>之后，会尝试将这个<code>token</code>与某条语法规则进行匹配。<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180704_151126.png" alt=""><br>↵<br>↵如果该<code>token</code>匹配上了语法规则，<code>parser</code>会将一个对应的节点添加到 parse tree （解析树，如果是html就是dom tree，如果是css就是 cssom tree）中，然后继续问parser要下一个node。<br>↵<br>↵当然，也有可能该<code>tokens</code>没有匹配上语法规则，<code>parser</code>会将<code>tokens</code>暂时保存，然后继续问<code>lexer</code>要<code>tokens</code>, 直至找到可与所有内部存储的标记匹配的规则。如果找不到任何匹配规则，<code>parser</code>就会引发一个异常。这意味着文档无效，包含语法错误。<br>↵<br>↵<code>syntax analysis</code> 的输出结果是parse tree, parse tree 的结构表示了句法结构。比如说我们输入”John hit the ball”作为一句话，那么 <code>syntax analysis</code> 的结果就是：<br>↵<br>↵<img src="http://p8cyzbt5x.bkt.clouddn.com/UC20180704_165209.png" alt=""><br>↵<br>↵一旦我们拿到了<code>parse tree</code>， 还有最后一步工作没有做，那就是：<code>translation</code>，还有一些博客将这个过程成为 compilation / transpilation / interpretation<br>↵<br>↵### <strong>Lexicons 和 Syntaxes</strong><br>↵<br>↵上面提到了<code>lexer</code> 和 <code>parser</code> 这两个用于解析工具，我们通常不会自己写，而是用现有的工具去生成。我们需要提供一个语言的 <code>lexicon</code> 和 <code>syntaxes</code> ，才可以生成相应的 <code>lexer</code> 和 <code>parser</code> 。<br>↵<br>↵webkit 使用的 lexer 和 parser 是 <strong>Flex</strong>  和 <strong>Bison</strong> 。<br>↵<br>↵1. <code>flex</code> 和<code>css</code> 的 <code>flex</code> 布局没有关系，是 <code>fast-lexer</code> 的简写，用来生成 <code>lexer</code>。 它需要一个<code>lexicon</code>，这个<code>lexicon</code> 是用一堆正则表达式来定义的 。<br>↵2. bison 用来生成<strong>parsers,</strong>  它需要一个符合<strong>BNF范式</strong>的syntax。<br>↵<br>↵#### lexicons<br>↵<br>↵lexicons 是通过正则表达式被定义的，比如说，js中的保留字，就是lexicons 的一部分。<br>↵<br>↵下面就是js中的保留字的正则表达式 的一部分。<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">↵/^(?!(?:do|if|in|for|let|new|try|var|case|else|enum|eval|false|null|this|true|void|with|break|catch|class|const|super|throw|while|yield|delete|export|import|public|return|static|switch|typeof|default|extends|finally|package|private|continue|debugger|function|arguments|interface|protected|implements|instanceof)$)*$/</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵<br>↵#### syntaxes<br>↵<br>↵<code>syntaxes</code> 通常是被一个叫<strong>无上下文语法</strong>所定义，关于<strong>无上下文语法</strong>可以点击这个<a href="https://e…toggle-show-leave {
+↵    transform: translate(0,0" target="_blank" rel="external">链接</a>;<br>↵  }<br>↵<br>↵  .toggle-show-leave-to {<br>↵    transform: translate(-400px,0);<br>↵  }<br>↵<br>↵  .toggle-show-leave-active {<br>↵     color: white;<br>↵  }<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵上面的代码在页面中渲染了 ` 1000 ` 个过渡的元素，这些元素会在1秒的时间内从左侧划入，然后划出。</div><div class="line">↵</div><div class="line">↵此时，我们打开google浏览器的开发者工具，然后在 ` performance ` 一栏中记录分析性能，如下图所示：</div><div class="line">↵</div><div class="line">↵![](http://p8cyzbt5x.bkt.clouddn.com/UC20180620_184927.png)</div><div class="line">↵</div><div class="line">↵可以发现，页面明显掉帧了。在7秒内，总共 ` scripting ` 的阶段为3秒， ` rendering ` 阶段为1956毫秒。</div><div class="line">↵</div><div class="line">↵事实上，这种跑马灯式的重复式效果，通过 ` animation ` 的方式也可以轻松实现。 我们优化上面的代码，改为下面的代码，通过 ` animation ` 动画来控制过渡：</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵    <div v-for="n in testArr"><br>↵      <div class="info-block"></div><br>↵    </div><br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵  export default {<br>↵      data () {<br>↵        return {<br>↵            isShow: false,<br>↵            testArr: 1000<br>↵      }<br>↵    }<br>↵  }<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵.info-block {<br>↵  background-color: red;<br>↵  width: 300px;<br>↵  height: 100px;<br>↵  position: fixed;<br>↵  left: 10px;<br>↵  top: 200px;<br>↵  display: flex;<br>↵  align-items: center;<br>↵  justify-content: center;<br>↵  animation: toggleShow 3s ease 0s infinite normal;<br>↵}<br>↵<br>↵@keyframes toggleShow {<br>↵  0% {<br>↵    transform: translate(-400px);<br>↵  }<br>↵  10% {<br>↵    transform: translate(0,0);<br>↵  }<br>↵  80% {<br>↵    transform: translate(0,0);<br>↵  }<br>↵  100% {<br>↵    transform: translate(-400px);<br>↵  }<br>↵}<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵打开浏览器的开发者工具，可以在 ` performance ` 里面看到，页面性能有了惊人的提升：</div><div class="line">↵</div><div class="line">↵![](http://p8cyzbt5x.bkt.clouddn.com/UC20180620_194504.png)</div><div class="line">↵</div><div class="line">↵为了进一步提升页面的性能，我们给过渡的元素增加一个 ` will-change ` 属性，该元素就会被提升到 ` 合成层 ` 用GPU单独渲染，这样页面性能就会有更大的提升。</div><div class="line">↵</div><div class="line">↵</div><div class="line">↵</div><div class="line">↵## 优化懒加载（需考虑兼容性）</div><div class="line">↵</div><div class="line">↵有一些页面使用了懒加载，懒加载是通过绑定 ` scroll ` 事件一个回调事件，每一次调用一次回调事件，就会测量一次元素的位置，调用 ` getBoundingClientRect() ` 方法，从而计算出是否元素出现在了可视区。</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵// 懒加载库中的代码，判断是否进入了可视区<br>↵const isInView = (el, threshold) =&gt; {<br>↵  const {top, height} = el.getBoundingClientRect()<br>↵  return top &lt; clientHeight + threshold &amp;&amp; top + height &gt; -threshold<br>↵}<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵### ` scroll ` 造成页面性能下降</div><div class="line">↵</div><div class="line">↵ ` scroll ` 事件会被重复的触发，每触发一次就要测量一次元素的尺寸和位置。尽管对 ` scroll ` 的事件进行了节流的处理，但在低端安卓机上仍然会出现滑动不流畅的现象。</div><div class="line">↵</div><div class="line">↵优化的思路是通过新增的api—— ` IntersectionObserver ` 来获取元素是否进入了可视区。</div><div class="line">↵</div><div class="line">↵### 使用` intersection observer `</div><div class="line">↵</div><div class="line">↵ ` intersection observer api ` 可以去测量某一个dom节点和其他节点，甚至是viewport的距离。</div><div class="line">↵</div><div class="line">↵这个是实验性的api，你应该查阅https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Browser_compatibility查看其兼容性</div><div class="line">↵</div><div class="line">↵在过去，检测一个元素是否在可视区内，或者两个元素之间的距离如何，是一个非常艰巨的任务。 但获取这些信息是非常必要的：</div><div class="line">↵</div><div class="line">↵1. 用于懒加载</div><div class="line">↵2. 用于无限加载，就是微博那种刷到底接着请求新数据可以接着刷</div><div class="line">↵3. 检测广告的可见性</div><div class="line">↵</div><div class="line">↵在过去，我们需要不断的调用 ` Element.getBoundingClientRect() ` 方法去获取到我们想拿到的信息，然而这些代码会造成性能问题。</div><div class="line">↵</div><div class="line">↵ ` intersection observer api ` 可以注册回调函数，当我们的目标元素，进入指定区域（比如说viewport，或者其他的元素）时，回调函数会被触发；</div><div class="line">↵</div><div class="line">↵### ` intersectionObserver ` 的语法</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵  var handleFun = function() {}<br>↵  var boxElement = document.getElementById()<br>↵<br>↵  var options = {<br>↵    root: null,<br>↵    rootMargin: “0px”,<br>↵    threshold: 0.01<br>↵  };<br>↵<br>↵  observer = new IntersectionObserver(handleFunc, options);<br>↵  observer.observe(boxElement);<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵### 基于IntersectionObserver的懒加载的库</div><div class="line">↵</div><div class="line">↵于是自己尝试封装了一个基于IntersectionObserver的懒加载的库。</div><div class="line">↵</div><div class="line">↵html</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵<img class="J_lazy-load" data-imgsrc="burger.png"><br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵你也许注意到上面的代码中，图片文件没有 src 属性么。这是因为它使用了称为 data-imgsrc 的 data 属性来指向图片源。我们将使用这来加载图片</div><div class="line">↵</div><div class="line">↵js</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵function lazyLoad(domArr) {<br>↵    if (‘IntersectionObserver’ in window) {<br>↵<br>↵        let createObserver = (dom) =&gt; {<br>↵            var fn = (arr) =&gt; {<br>↵                let target = arr[0].target<br>↵                if (arr[0].isIntersecting) {<br>↵                    let imgsrc = target.dataset.imgsrc<br>↵                    if (imgsrc) {<br>↵                        target.setAttribute(‘src’, imgsrc)<br>↵                    }<br>↵<br>↵                    // 解除绑定观察<br>↵                    observer.unobserve(dom)<br>↵                }<br>↵            }<br>↵<br>↵            var config = {<br>↵                root: null,<br>↵                rootMargin: ‘10px’,<br>↵                threshold: 0.01<br>↵            }<br>↵<br>↵            var observer =  new IntersectionObserver(fn, config)<br>↵            observer.observe(dom)<br>↵        }<br>↵<br>↵        Array.prototype.slice(domArr)<br>↵        domArr.forEach(dom =&gt; {<br>↵            createObserver(dom)<br>↵        })<br>↵    }<br>↵}<br>↵<br>↵<br>↵<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">↵</div><div class="line">↵这个库的使用也非常简单：</div><div class="line">↵</div><div class="line">↵</div></pre></td></tr></table></figure></p>
+<p>↵// 先引入<br>↵import {lazyLoad} from ‘../util/lazyload.js’<br>↵<br>↵// 进行懒加载<br>↵let domArr = document.querySelectorAll(‘.J_lazy-load’)<br>↵lazyLoad(domArr)<br>↵<br>↵<code>``
+↵
+↵然后测试一下，发现可以正常使用：
+↵
+↵![](http://h0.hucdn.com/open/201825/9e5dfa5954ac4545_1604x1300.gif)
+↵
+↵
+↵
+↵### 比较性能
+↵
+↵传统的懒加载 lazy-loder 的页面性能如下：
+↵
+↵![](http://p8cyzbt5x.bkt.clouddn.com/UC20180620_162431.png)
+↵
+↵在12秒内，存在红颜色的掉帧现象，一些地方的帧率偏低（在devtool里面是fps的绿色小山较高的地方），用于</code> scripting <code>阶段的总共有600多ms.
+↵
+↵使用intersetctionObserver之后的懒加载性能如下：
+↵![](http://p8cyzbt5x.bkt.clouddn.com/UC20180620_161051.png)
+↵在12秒内，帧率比较平稳，用于</code> scripting ` 阶段的时间只有60多ms了。<br>↵<br>↵<br>↵<br>↵参考链接：<br>↵<br>↵1. <a href="https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/" target="_blank" rel="external">https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/</a><br>↵2. <a href="https://codeburst.io/how-browsers-work-6350a4234634" target="_blank" rel="external">https://codeburst.io/how-browsers-work-6350a4234634</a><br>↵3. <a href="https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Firefox/Style_System_Overview#Style_data_cached_in_style_context_tree" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Firefox/Style_System_Overview#Style_data_cached_in_style_context_tree</a><br>↵4. <a href="https://www.chromium.org/developers/the-rendering-critical-path#TOC-Browser-Thread-Architecture" target="_blank" rel="external">https://www.chromium.org/developers/the-rendering-critical-path#TOC-Browser-Thread-Architecture</a><br>↵5. <a href="https://www.w3.org/TR/CSS22/visuren.html" target="_blank" rel="external">https://www.w3.org/TR/CSS22/visuren.html</a><br>↵6. <a href="https://benfrain.com/css-performance-revisited-selectors-bloat-expensive-styles/" target="_blank" rel="external">css性能优化</a><br>↵7. <a href="https://mediaspace.msu.edu/media/How+WebKit+Renders+the+Web++Levi+Weintraub/1_p1nvwd0k" target="_blank" rel="external">render tree</a></p>
+]]></content>
     
     <summary type="html">
     
@@ -100,6 +129,66 @@
       <category term="正则" scheme="https://lzm420241.github.io/tags/%E6%AD%A3%E5%88%99/"/>
     
       <category term="回溯算法" scheme="https://lzm420241.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php代码重用与函数编写</title>
+    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
+    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
+    <published>2018-07-18T14:42:08.000Z</published>
+    <updated>2018-07-20T00:52:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
+&lt;li&gt;require函数 require 生成一个致命错误
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
+    
+      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
+    
+      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
@@ -163,66 +252,6 @@
       <category term="apache" scheme="https://lzm420241.github.io/tags/apache/"/>
     
       <category term="mysql" scheme="https://lzm420241.github.io/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php代码重用与函数编写</title>
-    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
-    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
-    <published>2018-07-18T14:42:08.000Z</published>
-    <updated>2018-07-20T00:52:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
-<li>重用更加轻松编写一致性，可靠性，可维护性</li>
-<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
-<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
-<li>require_once 同一文件只会包含一次</li>
-<li>include_once 同一文件只会包含一次</li>
-<li>auto_prepend_file 在页面顶部加载文件</li>
-<li>auto_append_file 在页面底部加载文件</li>
-<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
-<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
-</ul>
-<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
-<li>函数名不区分大小写</li>
-<li>PHP不支持重载</li>
-<li>PHP作用域<ol>
-<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
-<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
-<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
-<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
-<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
-<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
-</ol>
-</li>
-<li>PHP命名空间，类名可以通过三种方式引用<ol>
-<li>非限定名称，或不包含前缀的类名称</li>
-<li>限定名称,或包含前缀的名称</li>
-<li>完全限定名称，或包含了全局前缀操作符的名称</li>
-</ol>
-</li>
-<li>函数的声明是采用function的方式</li>
-<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
-&lt;li&gt;require函数 require 生成一个致命错误
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
-    
-      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
-    
-      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
