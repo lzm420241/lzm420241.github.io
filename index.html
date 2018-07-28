@@ -191,6 +191,230 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/重构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/28/javascript/重构/">重构-改善既有代码设计总结</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/28/javascript/重构/" class="archive-article-date">
+  	<time datetime="2018-07-28T02:43:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>1.<strong>定义</strong></p>
+<p>对软件内部结构的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本。</p>
+<p>2.<strong>重构的目的</strong></p>
+<ul>
+<li>改善软件设计</li>
+<li>使软件更容易理解</li>
+<li>帮忙找到bug</li>
+<li>提高编程速度</li>
+</ul>
+<p>3.<strong>何时重构</strong></p>
+<ul>
+<li>添加功能时重构</li>
+<li>修改错误时重构</li>
+<li>复审代码时重构</li>
+</ul>
+<p>4.<strong>设计差代码的特征</strong></p>
+<ul>
+<li>Duplicated Code - 重复代码</li>
+<li>Long Method - 过长函数</li>
+<li>Large Class - 过大的类</li>
+<li>Long Parameter List - 过长的参数列</li>
+<li>Divergent Chnage - 发散式变化</li>
+<li>Shotgun Surgery - 霰弹式修改</li>
+<li>Feature Envy - 依恋情节</li>
+<li>Data Clumps - 数据泥团</li>
+<li>Primitive Obsession - 基本类型偏执</li>
+<li>Switch Statements - switch 惊悚现身</li>
+<li>Parallel Inheritance Hierarchies - 平行继承体系</li>
+<li>Lazy Class - 冗赘类</li>
+<li>Speculative Generality - 夸夸其谈未来性</li>
+<li>Temporary Field - 令人迷惑的暂时字段</li>
+<li>Message Chains - 过度耦合的消息链</li>
+<li>Middle Man - 中间人</li>
+<li>Inappropriate Intimacy - 狎昵关系</li>
+<li>Alternative Class with Different Interfaces - 异曲同工的类</li>
+<li>Incomplete Library Class - 不完美的库类</li>
+<li>Data Class - 纯稚的数据类</li>
+<li>Refused Bequest - 被拒绝的遗赠</li>
+<li>Comments - 过多的注释</li>
+</ul>
+<p>5.<strong>构建测试体系</strong></p>
+<ul>
+<li>自测</li>
+<li>JUnit测试框架</li>
+</ul>
+<p>6.<strong>重构小块代码方法</strong></p>
+<ul>
+<li><p>重新组织函数</p>
+<ol>
+<li>Extract Method - 提炼函数</li>
+<li>Inline Method - 内联函数</li>
+<li>Inline Temp - 内联临时变量</li>
+<li>Replace Temp with Query - 以查询取代临时变量</li>
+<li>Introduce Explaining Variable - 引入解释性变量</li>
+<li>Split Temporary Variable - 分解临时变量</li>
+<li>Remove Assignments to Parameters - 移除对参数的赋值</li>
+<li>Replace Method with Method Object - 以函数对象取代函数</li>
+<li>Substitute Algorithm - 替换算法</li>
+</ol>
+</li>
+<li><p>在对象之间搬移特征</p>
+<ol>
+<li>Move Method - 搬移函数</li>
+<li>Move Field - 搬移字段</li>
+<li>Extract Class - 提炼类</li>
+<li>Inline Class - 将类内联化</li>
+<li>Hide Delegate - 隐藏“委托关系”</li>
+<li>Remove Middle Man - 移除中间人</li>
+<li>Introduce Foreign Method - 引入外加函数</li>
+<li>Introduce Local Extension - 引入本地扩展</li>
+</ol>
+</li>
+<li><p>重新组织数据</p>
+<ol>
+<li>Self Encapsulate Field - 自封装字段</li>
+<li>Replace Data Value with Object - 以对象取代数据值</li>
+<li>Change Value to Reference - 将值对象改为引用对象</li>
+<li>Change Reference to Value - 将引用对象改为值对象</li>
+<li>Replace Array with Object - 以对象取代数组</li>
+<li>Duplicate Observed Data - 复制“被监听数据”</li>
+<li>Change Unidirectional Associatino to Bidirectional - 将单向关联改为双向关联</li>
+<li>Change Bidirectonal Association to Unidirectional - 将双向关联改为单向关联</li>
+<li>Replace Magic Number with Symbolic Constant - 以字面常量取代魔法数</li>
+<li>Encapsulate Field - 封装字段</li>
+<li>Encapsulate Collection - 封装集合</li>
+<li>Replace Record with Data Class - 以数据类取代记录</li>
+<li>Replace Type Code with Class - 以类取代类型码</li>
+<li>Replace Type Code with Subclassed - 以子类取代类型码</li>
+<li>Replace Type Code with State/Strategy - 以State/Strategy取代类型码</li>
+<li>Replace Subclass with Fields - 以字段取代子类</li>
+</ol>
+</li>
+<li><p>简化条件表达式</p>
+<ol>
+<li>Decompose Conditional - 分解条件表达式</li>
+<li>Consolidate Conditional Expression - 合并条件表达式</li>
+<li>Consolidate Duplicate Conditional Fragments - 合并重复的条件片段</li>
+<li>Remove Control Flag - 移除控制标记</li>
+<li>Replace Nested Conditional with Guard Clauses - 以卫语句取代嵌套条件表达式</li>
+<li>Replace Conditional with Polymorphism - 以多态取代条件表达式</li>
+<li>Introduce Null Object - 引入Null对象</li>
+<li>Introduce Assertion - 引入断言</li>
+</ol>
+</li>
+<li><p>简化函数调用</p>
+<ol>
+<li>Rename Method - 函数改名</li>
+<li>Add Parameter - 添加参数</li>
+<li>Remove Parameter - 移除参数</li>
+<li>Separate Query from Modifier - 将查询函数和修改函数分离</li>
+<li>Parameterize Method - 令函数携带参数</li>
+<li>Replace Parameter with Explicit Methods - 以明确函数取代参数</li>
+<li>Preserve Whole Object - 保持对象完整</li>
+<li>Replace Parameter with Methods - 以函数取代参数</li>
+<li>Preserve Whole Object - 引入参数对象</li>
+<li>Remove Setting Method - 移除设值函数</li>
+<li>Hide Method - 隐藏函数</li>
+<li>Replace Constructor with Factory Method - 以工厂函数取代构造函数</li>
+<li>Encapsulate Downcast - 封装向下转型</li>
+<li>Replace Error Code with Exception - 以异常取代错误码</li>
+<li>Replace Exception with Test - 以测试取代异常</li>
+</ol>
+</li>
+<li><p>处理概括关系</p>
+<ol>
+<li>Pull Up Field - 字段上移</li>
+<li>Pull Up Method - 函数上移</li>
+<li>Pull Up Constructor Body - 构造函数本体上移</li>
+<li>Push Down Method - 函数下移</li>
+<li>Push Down Field - 字段下移</li>
+<li>Extract Subclass  - 提炼子类</li>
+<li>Extract Superclass - 提炼超类</li>
+<li>Extract Interface - 提炼接口</li>
+<li>Collapse Hierarchy - 折叠继承体系</li>
+<li>Form Template Method - 塑造模板函数</li>
+<li>Replace Inheritance with Delegation - 以委托取代继承</li>
+<li>Replace Delagation with Inheritance - 以继承取代委托</li>
+</ol>
+</li>
+</ul>
+<p>7.<strong>大型重构方案</strong></p>
+<ol>
+<li>Tease Apart Inheritance - 梳理并分解继承体系</li>
+<li>Convert Procedural Design to Objects - 将过程化设计转化为对象设计</li>
+<li>Separate Domain from Presentation - 将领域和表述/显示分离</li>
+<li>Extract Hierarchy - 提炼继承体系</li>
+</ol>
+<p>8.<strong>重构工具</strong></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">重构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">工程化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">改善代码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/28/javascript/重构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/前端工程化探索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1053,127 +1277,9 @@
 
 
   
-    <article id="backend-php入门/php基本使用及文件读写" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/php入门/php基本使用及文件读写/">php基本使用及文件读写</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/17/php入门/php基本使用及文件读写/" class="archive-article-date">
-  	<time datetime="2018-07-16T16:07:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="php基本使用"><a href="#php基本使用" class="headerlink" title="php基本使用"></a>php基本使用</h3><ul>
-<li>echo 输出打印信息</li>
-<li>.    连接变量和其他字符的符号</li>
-<li>define 宏定义</li>
-<li>$+名称  变量名</li>
-<li>全局变量(全都是数组)<ol>
-<li>$_POST  收集表单数据–post</li>
-<li>$_GET   收集表单数据 – get</li>
-<li>$GLOBALS 超级全局变量数组</li>
-<li>$_SERVER 包含诸如头信息，路径，脚本为止等信息的数组</li>
-<li>$_FILES</li>
-<li>$_ENV</li>
-<li>$_COOKIE</li>
-<li>$_SESSION </li>
-<li>$_REQUEST 收集HTML表单提交的数据</li>
-</ol>
-</li>
-<li>php内置API<ol>
-<li>date() 格式化本地日期和时间</li>
-</ol>
-</li>
-</ul>
-<h3 id="文件读写API"><a href="#文件读写API" class="headerlink" title="文件读写API"></a>文件读写API</h3><ol>
-<li>fopen() 无法打开则为false</li>
-<li>fwrite()</li>
-<li>flock()</li>
-<li>fclose() 用于关闭文件</li>
-<li>feof() 检测是否达到文件末尾</li>
-<li>fgets() 从文件中逐步读取文件-注：在调用该函数之后，文件指针会移动到下一行</li>
-<li>fgetc() 从文件中逐字符地读取文件-注：在调用该函数之后，文件指针会移动到下一个字符</li>
-<li>读写模式<ul>
-<li>r 只读。在文件的开头开始。</li>
-<li>r+ 读／写。在文件的开头开始。</li>
-<li>w 只写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
-<li>w+ 读／写。打开文件并清空文件的内容；如果文件不存在，则创建新文件</li>
-<li>a 追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</li>
-<li>a+ 读/追加。通过向文件末尾写内容，来保持文件内容。</li>
-<li>x 只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
-<li>x+ 读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/17/php入门/php基本使用及文件读写/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1292,14 +1398,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
               </li>
              
@@ -1308,15 +1406,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,7 +1422,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,15 +1450,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color3">重构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">工程化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">改善代码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,14 +1478,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -1388,11 +1490,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,10 +1523,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">财务损失</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工程化</a>
               </li>
              
               <li class="article-tag-list-item">

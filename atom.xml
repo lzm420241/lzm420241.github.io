@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-27T10:01:50.000Z</updated>
+  <updated>2018-07-28T08:41:16.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -14,6 +14,185 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重构-改善既有代码设计总结</title>
+    <link href="https://lzm420241.github.io/2018/07/28/javascript/%E9%87%8D%E6%9E%84/"/>
+    <id>https://lzm420241.github.io/2018/07/28/javascript/重构/</id>
+    <published>2018-07-28T02:43:32.000Z</published>
+    <updated>2018-07-28T08:41:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.<strong>定义</strong></p>
+<p>对软件内部结构的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本。</p>
+<p>2.<strong>重构的目的</strong></p>
+<ul>
+<li>改善软件设计</li>
+<li>使软件更容易理解</li>
+<li>帮忙找到bug</li>
+<li>提高编程速度</li>
+</ul>
+<p>3.<strong>何时重构</strong></p>
+<ul>
+<li>添加功能时重构</li>
+<li>修改错误时重构</li>
+<li>复审代码时重构</li>
+</ul>
+<p>4.<strong>设计差代码的特征</strong></p>
+<ul>
+<li>Duplicated Code - 重复代码</li>
+<li>Long Method - 过长函数</li>
+<li>Large Class - 过大的类</li>
+<li>Long Parameter List - 过长的参数列</li>
+<li>Divergent Chnage - 发散式变化</li>
+<li>Shotgun Surgery - 霰弹式修改</li>
+<li>Feature Envy - 依恋情节</li>
+<li>Data Clumps - 数据泥团</li>
+<li>Primitive Obsession - 基本类型偏执</li>
+<li>Switch Statements - switch 惊悚现身</li>
+<li>Parallel Inheritance Hierarchies - 平行继承体系</li>
+<li>Lazy Class - 冗赘类</li>
+<li>Speculative Generality - 夸夸其谈未来性</li>
+<li>Temporary Field - 令人迷惑的暂时字段</li>
+<li>Message Chains - 过度耦合的消息链</li>
+<li>Middle Man - 中间人</li>
+<li>Inappropriate Intimacy - 狎昵关系</li>
+<li>Alternative Class with Different Interfaces - 异曲同工的类</li>
+<li>Incomplete Library Class - 不完美的库类</li>
+<li>Data Class - 纯稚的数据类</li>
+<li>Refused Bequest - 被拒绝的遗赠</li>
+<li>Comments - 过多的注释</li>
+</ul>
+<p>5.<strong>构建测试体系</strong></p>
+<ul>
+<li>自测</li>
+<li>JUnit测试框架</li>
+</ul>
+<p>6.<strong>重构小块代码方法</strong></p>
+<ul>
+<li><p>重新组织函数</p>
+<ol>
+<li>Extract Method - 提炼函数</li>
+<li>Inline Method - 内联函数</li>
+<li>Inline Temp - 内联临时变量</li>
+<li>Replace Temp with Query - 以查询取代临时变量</li>
+<li>Introduce Explaining Variable - 引入解释性变量</li>
+<li>Split Temporary Variable - 分解临时变量</li>
+<li>Remove Assignments to Parameters - 移除对参数的赋值</li>
+<li>Replace Method with Method Object - 以函数对象取代函数</li>
+<li>Substitute Algorithm - 替换算法</li>
+</ol>
+</li>
+<li><p>在对象之间搬移特征</p>
+<ol>
+<li>Move Method - 搬移函数</li>
+<li>Move Field - 搬移字段</li>
+<li>Extract Class - 提炼类</li>
+<li>Inline Class - 将类内联化</li>
+<li>Hide Delegate - 隐藏“委托关系”</li>
+<li>Remove Middle Man - 移除中间人</li>
+<li>Introduce Foreign Method - 引入外加函数</li>
+<li>Introduce Local Extension - 引入本地扩展</li>
+</ol>
+</li>
+<li><p>重新组织数据</p>
+<ol>
+<li>Self Encapsulate Field - 自封装字段</li>
+<li>Replace Data Value with Object - 以对象取代数据值</li>
+<li>Change Value to Reference - 将值对象改为引用对象</li>
+<li>Change Reference to Value - 将引用对象改为值对象</li>
+<li>Replace Array with Object - 以对象取代数组</li>
+<li>Duplicate Observed Data - 复制“被监听数据”</li>
+<li>Change Unidirectional Associatino to Bidirectional - 将单向关联改为双向关联</li>
+<li>Change Bidirectonal Association to Unidirectional - 将双向关联改为单向关联</li>
+<li>Replace Magic Number with Symbolic Constant - 以字面常量取代魔法数</li>
+<li>Encapsulate Field - 封装字段</li>
+<li>Encapsulate Collection - 封装集合</li>
+<li>Replace Record with Data Class - 以数据类取代记录</li>
+<li>Replace Type Code with Class - 以类取代类型码</li>
+<li>Replace Type Code with Subclassed - 以子类取代类型码</li>
+<li>Replace Type Code with State/Strategy - 以State/Strategy取代类型码</li>
+<li>Replace Subclass with Fields - 以字段取代子类</li>
+</ol>
+</li>
+<li><p>简化条件表达式</p>
+<ol>
+<li>Decompose Conditional - 分解条件表达式</li>
+<li>Consolidate Conditional Expression - 合并条件表达式</li>
+<li>Consolidate Duplicate Conditional Fragments - 合并重复的条件片段</li>
+<li>Remove Control Flag - 移除控制标记</li>
+<li>Replace Nested Conditional with Guard Clauses - 以卫语句取代嵌套条件表达式</li>
+<li>Replace Conditional with Polymorphism - 以多态取代条件表达式</li>
+<li>Introduce Null Object - 引入Null对象</li>
+<li>Introduce Assertion - 引入断言</li>
+</ol>
+</li>
+<li><p>简化函数调用</p>
+<ol>
+<li>Rename Method - 函数改名</li>
+<li>Add Parameter - 添加参数</li>
+<li>Remove Parameter - 移除参数</li>
+<li>Separate Query from Modifier - 将查询函数和修改函数分离</li>
+<li>Parameterize Method - 令函数携带参数</li>
+<li>Replace Parameter with Explicit Methods - 以明确函数取代参数</li>
+<li>Preserve Whole Object - 保持对象完整</li>
+<li>Replace Parameter with Methods - 以函数取代参数</li>
+<li>Preserve Whole Object - 引入参数对象</li>
+<li>Remove Setting Method - 移除设值函数</li>
+<li>Hide Method - 隐藏函数</li>
+<li>Replace Constructor with Factory Method - 以工厂函数取代构造函数</li>
+<li>Encapsulate Downcast - 封装向下转型</li>
+<li>Replace Error Code with Exception - 以异常取代错误码</li>
+<li>Replace Exception with Test - 以测试取代异常</li>
+</ol>
+</li>
+<li><p>处理概括关系</p>
+<ol>
+<li>Pull Up Field - 字段上移</li>
+<li>Pull Up Method - 函数上移</li>
+<li>Pull Up Constructor Body - 构造函数本体上移</li>
+<li>Push Down Method - 函数下移</li>
+<li>Push Down Field - 字段下移</li>
+<li>Extract Subclass  - 提炼子类</li>
+<li>Extract Superclass - 提炼超类</li>
+<li>Extract Interface - 提炼接口</li>
+<li>Collapse Hierarchy - 折叠继承体系</li>
+<li>Form Template Method - 塑造模板函数</li>
+<li>Replace Inheritance with Delegation - 以委托取代继承</li>
+<li>Replace Delagation with Inheritance - 以继承取代委托</li>
+</ol>
+</li>
+</ul>
+<p>7.<strong>大型重构方案</strong></p>
+<ol>
+<li>Tease Apart Inheritance - 梳理并分解继承体系</li>
+<li>Convert Procedural Design to Objects - 将过程化设计转化为对象设计</li>
+<li>Separate Domain from Presentation - 将领域和表述/显示分离</li>
+<li>Extract Hierarchy - 提炼继承体系</li>
+</ol>
+<p>8.<strong>重构工具</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.&lt;strong&gt;定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对软件内部结构的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本。&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;重构的目的&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;改善软件设计&lt;/li&gt;
+&lt;l
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="重构" scheme="https://lzm420241.github.io/tags/%E9%87%8D%E6%9E%84/"/>
+    
+      <category term="工程化" scheme="https://lzm420241.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+      <category term="改善代码" scheme="https://lzm420241.github.io/tags/%E6%94%B9%E5%96%84%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>前端工程化探索</title>
@@ -841,39 +1020,6 @@
       <category term="stack heap" scheme="https://lzm420241.github.io/tags/stack-heap/"/>
     
       <category term="DP DFS BFS" scheme="https://lzm420241.github.io/tags/DP-DFS-BFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端常见面试题归纳(三)</title>
-    <link href="https://lzm420241.github.io/2017/05/21/interview/interview-3/"/>
-    <id>https://lzm420241.github.io/2017/05/21/interview/interview-3/</id>
-    <published>2017-05-21T05:35:59.000Z</published>
-    <updated>2018-04-23T06:03:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"><a href="#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？" class="headerlink" title="li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？"></a>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">行框的排列会受到代码中间空白（回车\空格）等的影响,当li通过换行后会产生空白</div><div class="line">解决方案：</div><div class="line">1.浮动li中<span class="built_in">float</span>：left</div><div class="line">2.在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px</div><div class="line">3.li之间不换行，且不留空格</div></pre></td></tr></table></figure>
-<h3 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么？" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么？"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</div></pre></td></tr></table></figure>
-<h3 id="什么叫做优雅降级和渐进增强"><a href="#什么叫做优雅降级和渐进增强" class="headerlink" title="什么叫做优雅降级和渐进增强"></a>什么叫做优雅降级和渐进增强</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</div><div class="line">优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览</div></pre></td></tr></table></figure>
-<h3 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">跨域资源共享</div><div class="line">    基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败</div><div class="line">jsonp跨域</div><div class="line">    JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON</div><div class="line">通过修改document.domain来跨子域</div><div class="line">使用HTML5的window.postMessage方法跨域</div></pre></td></tr></table></figure>
-<h3 id="关于javascript中apply-和call-方法的区别"><a href="#关于javascript中apply-和call-方法的区别" class="headerlink" title="关于javascript中apply()和call()方法的区别"></a>关于javascript中apply()和call()方法的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">方法传递的参数不同 apply是数组传递，call是单个值传递</div></pre></td></tr></table></figure>
-<h3 id="XSS和CSRF原理"><a href="#XSS和CSRF原理" class="headerlink" title="XSS和CSRF原理"></a>XSS和CSRF原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XSS 全称(Cross Site Scripting) 跨站脚本攻击，是Web程序中最常见的漏洞。指攻击者在网页中嵌入客户端脚本(例如JavaScript),当用户浏览此网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的.  比如获取用户的Cookie，导航到恶意网站,携带木马等</div><div class="line">CSRF攻击(Cross Site Request Forgery) 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</div></pre></td></tr></table></figure>
-<h3 id="多个标签页之间的通信"><a href="#多个标签页之间的通信" class="headerlink" title="多个标签页之间的通信"></a>多个标签页之间的通信</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">通过localstorage实现 当localstorage里面发生改变就会出发storage事件</div><div class="line">通过WebSocket实现</div></pre></td></tr></table></figure>
-<h3 id="什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？"><a href="#什么是FOUC？如何避免FOUC-Flash-of-Unstyled-Content-？" class="headerlink" title="什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？"></a>什么是FOUC？如何避免FOUC(Flash of Unstyled Content)？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">FOUC即文档样式短暂失效，也就是HTML代码加载成功时它的CSS文件还没有加载，导致出现的网页内容没有样式，一般有这几种情况会导致FOUC：</div><div class="line">    1、使用import方法导入样式表</div><div class="line">    2、HTML代码在前，CSS样式表在后</div><div class="line">解决方法也很简单:</div><div class="line">    1、尽量减少使用import方法导入样式表</div><div class="line">    2、CSS样式表全部放到HEAD里</div></pre></td></tr></table></figure>
-<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">undefined表示<span class="string">"缺少值"</span>，就是此处应该有一个值，但是还没有定义</div></pre></td></tr></table></figure>
-<h3 id="AMD规范与CMD规范的区别"><a href="#AMD规范与CMD规范的区别" class="headerlink" title="AMD规范与CMD规范的区别"></a>AMD规范与CMD规范的区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.对于依赖的模块，AMD 是提前执行，CMD 是延迟执行</div><div class="line">2.CMD 推崇依赖就近，AMD 推崇依赖前置</div><div class="line">3.AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一</div></pre></td></tr></table></figure>
-<h3 id="JavaScript-对象的深度克隆"><a href="#JavaScript-对象的深度克隆" class="headerlink" title="JavaScript 对象的深度克隆"></a>JavaScript 对象的深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浅度克隆 ：基本类型为值传递，对象仍为引用传递</div><div class="line">深度克隆 ：所有元素或属性均完全克隆，并于原引用类型完全独立，即，在后面修改对象的属性的时候，原对象不会被修改</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;  </div><div class="line">&#125;</div><div class="line"><span class="comment">// 深度克隆</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;  </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> obj;        <span class="comment">//原始类型直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o = isArray(obj) ? [] : &#123;&#125;; </div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> obj) &#123;  </div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))&#123; </div><div class="line">            o[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">"object"</span> ? deepClone(obj[i]) : obj[i]; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？&quot;&gt;&lt;a href=&quot;#li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？&quot; class=&quot;headerlink&quot; title=&quot;li与li之间有看不见的空白间隔是什么原因引起的？有
-    
-    </summary>
-    
-      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="前端面试题" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
