@@ -191,6 +191,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/javascript-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/javascript/javascript-1/">MVVM模式及与MVP和MVC的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/javascript/javascript-1/" class="archive-article-date">
+  	<time datetime="2017-05-22T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="三种模式的思想"><a href="#三种模式的思想" class="headerlink" title="三种模式的思想"></a>三种模式的思想</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈</li>
+</ol>
+<h4 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h4><ol>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
+</ol>
+<h4 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h4><ol>
+<li>将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致</li>
+<li>唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel</li>
+</ol>
+<h4 id="三者之间的逻辑图"><a href="#三者之间的逻辑图" class="headerlink" title="三者之间的逻辑图"></a>三者之间的逻辑图</h4><p><img src="http://okzxxeq9y.bkt.clouddn.com/mvc_mvp_mvvm.jpg" alt="Alt text"></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/javascript/javascript-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-algorithm/algorithm-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1145,104 +1232,6 @@
 
 
   
-    <article id="post-design/building-basic-task-for-photoshop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/design/building-basic-task-for-photoshop/">1.ps基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/17/design/building-basic-task-for-photoshop/" class="archive-article-date">
-  	<time datetime="2017-05-16T16:04:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="ps基本工作界面"><a href="#ps基本工作界面" class="headerlink" title="ps基本工作界面"></a>ps基本工作界面</h3><ol>
-<li>界面分为菜单栏，工具选项栏，工具箱，选项卡，文档窗口，面板这几部分</li>
-<li>文档窗口:<strong>ctrl+Tab快捷键可切换界面</strong></li>
-<li>工具箱分为选择工具，裁剪和切片，测量工具，修饰工具，绘画工具，导航工具等几种类别工具</li>
-</ol>
-<h3 id="查看图像"><a href="#查看图像" class="headerlink" title="查看图像"></a>查看图像</h3><ol>
-<li>工具箱底部的屏幕模式按钮可查看标准屏幕，全屏模式，菜单栏的全屏模式</li>
-<li>在多个窗口查看图像可在<strong>窗口&gt;排列</strong>中选择哪种展示方式</li>
-<li>旋转视图工具可旋转画布<strong>在工具栏中使用旋转工具</strong></li>
-<li>在工具栏中使用缩放工具来调整窗口比例<strong>按住Alt键可缩小窗口</strong></li>
-<li>在工具栏中用抓手工具移动画面<strong>Alt键缩小窗口，command键放大窗口，按住H键然后单击鼠标会显示全部图像，并且出现一个矩形框，放开H键和鼠标可移动到某块区域</strong></li>
-<li>在<strong>窗口&gt;导航器</strong>中查看图像，<strong>通过扩大和缩小来查看图片，右键点击图像以外的暂存区可选择背景颜色</strong></li>
-<li>在<strong>窗口&gt;工作区</strong>使用预设工作区</li>
-<li>在菜单栏中的<strong>编辑&gt;菜单</strong>中打开键盘快捷键合菜单，<strong>点击菜单tab可定义菜单中各种颜色，在键盘快捷键中可自定义快捷键</strong></li>
-</ol>
-<h3 id="使用辅助工具"><a href="#使用辅助工具" class="headerlink" title="使用辅助工具"></a>使用辅助工具</h3><ol>
-<li>在<strong>视图&gt;标尺</strong>中使用标尺，在窗口左上角向右下方拉可以设置坐标原点</li>
-<li>在标尺中可以拉出参考线，如果要删除参考线则拉到标尺里面就删除了</li>
-<li>在<strong>视图&gt;显示&gt;网格</strong>中使用网格</li>
-<li>在工具栏中使用注释工具可在图像中添加注释</li>
-</ol>
-<h3 id="附几个快捷键"><a href="#附几个快捷键" class="headerlink" title="附几个快捷键:"></a>附几个快捷键:</h3><ol>
-<li>Ctrl+o可以快速打开文件</li>
-<li>Ctrl++可以放大图片，Ctrl+-可以缩小图片</li>
-<li>Ctrl+R可以打开标尺，再使用一次关闭标尺</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">design</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">photoshop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计知识点记录/" class="article-tag-list-link color3">设计知识点记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/design/building-basic-task-for-photoshop/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1348,26 +1337,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1381,6 +1350,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,19 +1457,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1497,6 +1486,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">经典代码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分析</a>
               </li>
             
             <div class="clearfix"></div>

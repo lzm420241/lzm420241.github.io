@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-30T08:00:22.000Z</updated>
+  <updated>2018-07-30T08:50:31.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript经典代码</title>
+    <link href="https://lzm420241.github.io/2018/07/30/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
+    <id>https://lzm420241.github.io/2018/07/30/javascript/分析经典代码-1/</id>
+    <published>2018-07-30T08:37:32.000Z</published>
+    <updated>2018-07-30T08:50:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.考察知识点</p>
+<ul>
+<li>this使用</li>
+<li>原型及原型链</li>
+<li>普通函数及构造函数</li>
+</ul>
+<ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.代码分析</p>
+<ul>
+<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
+<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
+<li><p>注释之前改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释之后改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.考察知识点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;this使用&lt;/li&gt;
+&lt;li&gt;原型及原型链&lt;/li&gt;
+&lt;li&gt;普通函数及构造函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;题目： 注释代码之前及之后的打印信息&lt;figure cl
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="经典代码" scheme="https://lzm420241.github.io/tags/%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="分析" scheme="https://lzm420241.github.io/tags/%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>微信小程序开发总结</title>
@@ -1086,45 +1145,6 @@
       <category term="css" scheme="https://lzm420241.github.io/tags/css/"/>
     
       <category term="css layout" scheme="https://lzm420241.github.io/tags/css-layout/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MVVM模式及与MVP和MVC的区别</title>
-    <link href="https://lzm420241.github.io/2017/05/22/javascript/javascript-1/"/>
-    <id>https://lzm420241.github.io/2017/05/22/javascript/javascript-1/</id>
-    <published>2017-05-22T14:43:58.000Z</published>
-    <updated>2018-04-23T06:02:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="三种模式的思想"><a href="#三种模式的思想" class="headerlink" title="三种模式的思想"></a>三种模式的思想</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ol>
-<li>View 传送指令到 Controller</li>
-<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
-<li>Model 将新的数据发送到 View，用户得到反馈</li>
-</ol>
-<h4 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h4><ol>
-<li>各部分之间的通信，都是双向的。</li>
-<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
-<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
-</ol>
-<h4 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h4><ol>
-<li>将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致</li>
-<li>唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel</li>
-</ol>
-<h4 id="三者之间的逻辑图"><a href="#三者之间的逻辑图" class="headerlink" title="三者之间的逻辑图"></a>三者之间的逻辑图</h4><p><img src="http://okzxxeq9y.bkt.clouddn.com/mvc_mvp_mvvm.jpg" alt="Alt text"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;三种模式的思想&quot;&gt;&lt;a href=&quot;#三种模式的思想&quot; class=&quot;headerlink&quot; title=&quot;三种模式的思想&quot;&gt;&lt;/a&gt;三种模式的思想&lt;/h3&gt;&lt;h4 id=&quot;MVC&quot;&gt;&lt;a href=&quot;#MVC&quot; class=&quot;headerlink&quot; title=
-    
-    </summary>
-    
-      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
-    
-      <category term="架构" scheme="https://lzm420241.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   

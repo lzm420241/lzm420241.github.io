@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lzm420241.github.io">
-  <title>Category: 算法 | 前端那点事</title>
+  <title>javascript经典代码 | 前端那点事</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="前端那点事">
-<meta property="og:url" content="https://lzm420241.github.io/categories/算法/index.html">
+  <meta name="description" content="1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // this.a =">
+<meta name="keywords" content="javascript,经典代码,分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript经典代码">
+<meta property="og:url" content="https://lzm420241.github.io/2018/07/30/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
+<meta property="og:description" content="1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // this.a =">
+<meta property="og:updated_time" content="2018-07-30T08:50:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端那点事">
+<meta name="twitter:title" content="javascript经典代码">
+<meta name="twitter:description" content="1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // this.a =">
   
     <link rel="alternative" href="/atom.xml" title="前端那点事" type="application/atom+xml">
   
@@ -189,76 +194,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-javascript/分析经典代码-1" class="article article-type-post " itemscope itemprop="blogPost">
   
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/algorithm/algorithm-1/" class="archive-article-date">
-  	<time datetime="2017-05-22T14:40:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/algorithm/algorithm-1/">堆栈存储区别及常用算法总结</a>
+    <h1 class="article-title" itemprop="name">
+      javascript经典代码
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2018/07/30/javascript/分析经典代码-1/" class="archive-article-date">
+  	<time datetime="2018-07-30T08:37:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <div id="toc" class="article-toc">
           
+          <hr/>
+        </div>
+        
+        <p>1.考察知识点</p>
+<ul>
+<li>this使用</li>
+<li>原型及原型链</li>
+<li>普通函数及构造函数</li>
+</ul>
+<ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.代码分析</p>
+<ul>
+<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
+<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
+<li><p>注释之前改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释之后改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack heap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DP DFS BFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经典代码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分析</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://lzm420241.github.io/2018/07/30/javascript/分析经典代码-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/07/30/javascript/小程序学习总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微信小程序开发总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
 
           </div>
         </div>
@@ -280,10 +384,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,

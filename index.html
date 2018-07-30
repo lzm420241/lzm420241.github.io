@@ -191,6 +191,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/分析经典代码-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/javascript/分析经典代码-1/">javascript经典代码</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/javascript/分析经典代码-1/" class="archive-article-date">
+  	<time datetime="2018-07-30T08:37:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>1.考察知识点</p>
+<ul>
+<li>this使用</li>
+<li>原型及原型链</li>
+<li>普通函数及构造函数</li>
+</ul>
+<ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.代码分析</p>
+<ul>
+<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
+<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
+<li><p>注释之前改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释之后改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经典代码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/javascript/分析经典代码-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/小程序学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1263,104 +1362,6 @@
 
 
   
-    <article id="backend-php入门/php数组" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/18/php入门/php数组/">php数组</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/18/php入门/php数组/" class="archive-article-date">
-  	<time datetime="2018-07-17T16:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="php数组基本使用"><a href="#php数组基本使用" class="headerlink" title="php数组基本使用"></a>php数组基本使用</h3><ul>
-<li>array函数： 创建数组<ol>
-<li>数值数组：带有数值数组ID键的数组 – 遍历采用for</li>
-<li>关联数组：带有指定的键的数组，每个键关联一个值 – 遍历采用foreach</li>
-<li>多维数组：包含一个或多个数组的数组</li>
-</ol>
-</li>
-<li>count函数：返回数组的长度</li>
-<li>sort函数：对数组进行升序排序</li>
-<li>rsort函数：对数组进行降序排序</li>
-<li>asort函数： 根据关联数组的值，对数组进行升序排列</li>
-<li>ksort函数： 根据关联数组的键，对数组进行升序排列</li>
-<li>arsort函数：根据关联数组的值，对数组进行降序排列</li>
-<li>krsort函数： 根据关联数组的键，对数组进行降序排列</li>
-<li>sizeof：count() 的别名</li>
-<li>array_count_values： 用于统计数组中所有值出现的次数</li>
-<li>shuffle： 把数组中的元素按随机顺序重新排列</li>
-<li>array_reverse： 将原数组中的元素顺序翻转，创建新的数组并返回</li>
-<li>array_walk：对数组中的每个成员应用用户函数</li>
-<li>each： 返回数组中当前的键／值对</li>
-<li>extract：从数组中将变量导入到当前的符号表</li>
-</ul>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/18/php入门/php数组/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1466,26 +1467,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1499,6 +1480,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,19 +1587,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1615,6 +1616,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">经典代码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分析</a>
               </li>
             
             <div class="clearfix"></div>
