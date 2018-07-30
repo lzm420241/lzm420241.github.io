@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-28T08:41:16.000Z</updated>
+  <updated>2018-07-30T08:00:22.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信小程序开发总结</title>
+    <link href="https://lzm420241.github.io/2018/07/30/javascript/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>https://lzm420241.github.io/2018/07/30/javascript/小程序学习总结/</id>
+    <published>2018-07-30T01:12:32.000Z</published>
+    <updated>2018-07-30T08:00:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.<strong>环境问题</strong></p>
+<ul>
+<li>在 iOS 上，小程序的 javascript 代码是运行在 JavaScriptCore 中，是由 WKWebView 来渲染的，环境有 iOS8、iOS9、iOS10</li>
+<li>在 Android 上，小程序的 javascript 代码是通过 X5 JSCore来解析，是由 X5 基于 Mobile Chrome 53/57 内核来渲染的</li>
+<li>在 开发工具上， 小程序的 javascript 代码是运行在 nwjs 中，是由 Chrome Webview 来渲染的</li>
+</ul>
+<p>三者大部分环境一样，但是还有些区别：</p>
+<ul>
+<li>ES6 语法支持不一致，<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/details.html#es6-api-%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5" target="_blank" rel="external">详情</a></li>
+<li>wxss 渲染表现不一致 尽管可以通过开启样式补全来规避大部分的问题 <a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/project.html#%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE" target="_blank" rel="external">详情</a>，还是建议开发者需要在 iOS 和 Android 上分别检查小程序的真实表现。</li>
+</ul>
+<p>2.<strong>注册小程序</strong></p>
+<ul>
+<li>App 函数注册一个小程序，接收一个object参数，其指定小程序的生命周期函数等</li>
+<li>onLaunch  初始化，只会触发一次onLaunch</li>
+<li>onShow    小程序启动，后台进入前台展示</li>
+<li>onHide    小程序从前台进入后台</li>
+<li>onError   当小程序发生脚本错误，或者api调用失败时，会触发onError并带上错误信息</li>
+<li>onPageNotFound 页面不存在时</li>
+<li>其他      通过this访问</li>
+</ul>
+<p>3.<strong>页面生命周期</strong></p>
+<ul>
+<li>data      页面的初始数据</li>
+<li>onLoad    监听页面加载</li>
+<li>onReady   监听页面初次渲染完成</li>
+<li>onShow    监听页面显示</li>
+<li>onHide    监听页面隐藏</li>
+<li>onUnload  监听页面卸载</li>
+<li>onPullDownRefresh     页面相关事件处理函数-监听用户下拉动作</li>
+<li>onReachBottom         页面上拉触底事件的处理函数</li>
+<li>onShareAppMessage     用户点击右上角转发</li>
+<li>onPageScroll          页面滚动触发事件的处理函数</li>
+<li>onTabItemTap          当前是tab页时，点击tab时触发</li>
+<li>其他                  可以添加任意函数或者数据到object参数中，在页面中通过this可以访问</li>
+</ul>
+<p>4.<strong>路由</strong></p>
+<ul>
+<li>初始化 — 小程序打开的第一个页面 onLoad,onShow</li>
+<li>打开新页面  — 调用 API wx.navigateTo 或使用组件 \<navigator open-type="navigateTo" \=""></navigator></li>
+<li>页面重定向  — 调用 API wx.redirectTo 或使用组件\<navigator open-type="redirectTo" \=""></navigator></li>
+<li>页面返回  — 调用 API wx.navigateBack 或使用组件\<navigator open-type="navigateBack" \="">或用户按左上角返回按钮</navigator></li>
+<li>Tab切换  — 调用 API wx.switchTab 或使用组件 \<navigator open-type="switchTab" \=""> 或用户切换 Tab</navigator></li>
+<li>重启动  — 调用 API wx.reLaunch 或使用组件 \<navigator open-type="reLaunch" \=""></navigator></li>
+<li>路由前页面 — onUnload | onHide </li>
+<li>路由后页面 — onLoad | onShow</li>
+</ul>
+<p>5.<strong>模块化</strong></p>
+<ul>
+<li>module.exports | exports</li>
+<li>require — require暂不支持绝对路径</li>
+</ul>
+<p>6.<strong>API文档</strong></p>
+<ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/api/" target="_blank" rel="external">参考文档</a></li>
+</ul>
+<p>7.<strong>项目架构</strong></p>
+<ul>
+<li>WXML – 框架模版</li>
+<li><p>WXS  – 小程序一套脚本语言，结合 WXML，注意：</p>
+<ul>
+<li>wxs 不依赖于运行时的基础库版本，可以在所有版本的小程序中运行。</li>
+<li>wxs 与 javascript 是不同的语言，有自己的语法，并不和 javascript 一致。</li>
+<li>wxs 的运行环境和其他 javascript 代码是隔离的，wxs 中不能调用其他 javascript 文件中定义的函数，也不能调用小程序提供的API。</li>
+<li>wxs 函数不能作为组件的事件回调。</li>
+<li>由于运行环境的差异，在 iOS 设备上小程序内的 wxs 会比 javascript 代码快 2 ~ 20 倍。在 android 设备上二者运行效率无差异。</li>
+</ul>
+</li>
+<li><p>WXSS是一套样式语言，用于描述 WXML 的组件样式</p>
+<ul>
+<li>rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素</li>
+<li>开发微信小程序时设计师可以用 iPhone6 作为视觉稿的标准</li>
+<li>样式导入：使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束。</li>
+<li>内联样式：框架组件上支持使用 style、class 属性来控制组件的样式</li>
+</ul>
+</li>
+</ul>
+<p>8.<strong>基础组件</strong></p>
+<ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/" target="_blank" rel="external">基础组件</a></li>
+</ul>
+<p>9.<strong>自定义组件</strong></p>
+<ul>
+<li>自定义组件拥有自己的 wxml 模版和 wxss 样式</li>
+<li>Component构造器</li>
+<li>组件通信 – 事件机制</li>
+<li>behaviors 是用于组件间代码共享的特性，类似于一些编程语言中的“mixins”或“traits”。</li>
+<li>组件间关系 – relations</li>
+<li>抽象节点可以指定一个默认组件，当具体组件未被指定时，将创建默认组件的实例</li>
+</ul>
+<p>9.<strong>开发插件</strong></p>
+<ul>
+<li>插件的开发和使用自小程序基础库版本 1.9.6 开始支持</li>
+</ul>
+<p>10.<strong>分包加载</strong></p>
+<ul>
+<li>在小程序启动时，默认会下载主包并启动主包内页面，如果用户需要打开分包内某个页面，客户端会把对应分包下载下来，下载完成后再进行展示</li>
+<li><p>小程序分包大小有以下限制：</p>
+<ul>
+<li>小程序分包大小有以下限制：</li>
+<li>单个分包/主包大小不能超过 2M</li>
+</ul>
+</li>
+<li><p>打包原则</p>
+<ul>
+<li>声明 subPackages 后，将按 subPackages 配置路径进行打包，subPackages 配置路径外的目录将被打包到 app（主包） 中</li>
+<li>app（主包）也可以有自己的 pages（即最外层的 pages 字段）</li>
+<li>subPackage 的根目录不能是另外一个 subPackage 内的子目录</li>
+<li>首页的 TAB 页面必须在 app（主包）内</li>
+</ul>
+</li>
+</ul>
+<p>10.<strong>多线程</strong></p>
+<ul>
+<li>一些异步处理的任务，可以放置于 Worker 中运行，待运行结束后，再把结果返回到小程序主线程。Worker 运行于一个单独的全局上下文与线程中，不能直接调用主线程的方法。 Worker 与主线程之间的数据传输，双方使用 Worker.postMessage() 来发送数据，Worker.onMessage() 来接收数据，传输的数据并不是直接共享，而是被复制的。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.&lt;strong&gt;环境问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 iOS 上，小程序的 javascript 代码是运行在 JavaScriptCore 中，是由 WKWebView 来渲染的，环境有 iOS8、iOS9、iOS10&lt;/li&gt;
+&lt;li&gt;在 And
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="微信小程序" scheme="https://lzm420241.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>重构-改善既有代码设计总结</title>
@@ -980,46 +1125,6 @@
       <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
     
       <category term="架构" scheme="https://lzm420241.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>堆栈存储区别及常用算法总结</title>
-    <link href="https://lzm420241.github.io/2017/05/22/algorithm/algorithm-1/"/>
-    <id>https://lzm420241.github.io/2017/05/22/algorithm/algorithm-1/</id>
-    <published>2017-05-22T14:40:47.000Z</published>
-    <updated>2018-04-23T06:03:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="堆栈之间的区别"><a href="#堆栈之间的区别" class="headerlink" title="堆栈之间的区别"></a>堆栈之间的区别</h3><ol>
-<li>栈区（stack）由编译器自动分配释放，存放函数的参数值，局部变量的值等 其操作方式类似于数据结构中的栈</li>
-<li>堆区（heap） 一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收 注意它与数据结构中的堆是两回事，分配方式倒是类似于链表</li>
-<li>申请后系统的响应: 只要栈的剩余空间大于所申·请空间，系统将为程序提供内存，否则将报异常提示栈溢出;首先应该知道操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时,会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序，另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样，代码中的delete语句才能正确的释放本内存空间。另外，由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中</li>
-<li>申请大小的限制 : 栈获得的空间较小,堆获得的空间比较灵活，也比较大</li>
-<li>申请效率的比较: 栈由系统自动分配，速度较快,但程序员是无法控制的;堆是由new分配的内存，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便;</li>
-<li>堆和栈中的存储内容 : 在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数;一般是在堆的头部用一个字节存放堆的大小。堆中的具体内容由程序员安排;</li>
-<li>存取效率的比较: 在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快</li>
-</ol>
-<h3 id="DP算法-Dynamic-programming"><a href="#DP算法-Dynamic-programming" class="headerlink" title="DP算法(Dynamic programming)"></a>DP算法(Dynamic programming)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.动态规划的本质，是对问题状态的定义和状态转移方程的定义</div><div class="line">2.将问题发展到各个阶段时所处于的各种客观情况用不同的状态,而且状态的选择要满足无后效性,即对后面的状态无任何影响</div><div class="line">3.上述状态定义好之后，状态和状态之间的关系式，就叫做状态转移方程</div><div class="line">4.典型例子: 01背包问题,装配线调度</div></pre></td></tr></table></figure>
-<h3 id="DFS算法-Depth-First-Search"><a href="#DFS算法-Depth-First-Search" class="headerlink" title="DFS算法(Depth-First-Search)"></a>DFS算法(Depth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">深度优先搜索在搜索过程中访问某个顶点后，需要递归地访问此顶点的所有未访问过的相邻顶点。</div><div class="line">初始条件下所有节点为白色，选择一个作为起始顶点，按照如下步骤遍历：</div><div class="line">a. 选择起始顶点涂成灰色，表示还未访问</div><div class="line">b. 从该顶点的邻接顶点中选择一个，继续这个过程（即再寻找邻接结点的邻接结点），一直深入下去，直到一个顶点没有邻接结点了，涂黑它，表示访问过了</div><div class="line">c. 回溯到这个涂黑顶点的上一层顶点，再找这个上一层顶点的其余邻接结点，继续如上操作，如果所有邻接结点往下都访问过了，就把自己涂黑，再回溯到更上一层。</div><div class="line">d. 上一层继续做如上操作，知道所有顶点都访问过。</div><div class="line"></div><div class="line">核心是通过栈的方式实现</div></pre></td></tr></table></figure>
-<h3 id="BFS算法-Breadth-First-Search"><a href="#BFS算法-Breadth-First-Search" class="headerlink" title="BFS算法(Breadth-First-Search)"></a>BFS算法(Breadth-First-Search)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">广度优先搜索在进一步遍历图中顶点之前，先访问当前顶点的所有邻接结点。</div><div class="line">a .首先选择一个顶点作为起始结点，并将其染成灰色，其余结点为白色。</div><div class="line">b. 将起始结点放入队列中。</div><div class="line">c. 从队列首部选出一个顶点，并找出所有与之邻接的结点，将找到的邻接结点放入队列尾部，将已访问过结点涂成黑色，没访问过的结点是白色。如果顶点的颜色是灰色，表示已经发现并且放入了队列，如果顶点的颜色是白色，表示还没有发现</div><div class="line">d. 按照同样的方法处理队列中的下一个结点。</div><div class="line">基本就是出队的顶点变成黑色，在队列里的是灰色，还没入队的是白色</div><div class="line"></div><div class="line">核心是通过队列的方式实现</div></pre></td></tr></table></figure>
-<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并</div></pre></td></tr></table></figure>
-<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索算法）</div></pre></td></tr></table></figure>
-<h3 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索</div></pre></td></tr></table></figure>
-<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;堆栈之间的区别&quot;&gt;&lt;a href=&quot;#堆栈之间的区别&quot; class=&quot;headerlink&quot; title=&quot;堆栈之间的区别&quot;&gt;&lt;/a&gt;堆栈之间的区别&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;栈区（stack）由编译器自动分配释放，存放函数的参数值，局部变量的值等 其操作方式类似
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lzm420241.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="stack heap" scheme="https://lzm420241.github.io/tags/stack-heap/"/>
-    
-      <category term="DP DFS BFS" scheme="https://lzm420241.github.io/tags/DP-DFS-BFS/"/>
     
   </entry>
   
