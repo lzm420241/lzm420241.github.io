@@ -191,6 +191,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/css-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/javascript/css-1/">CSS 常见布局总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/javascript/css-1/" class="archive-article-date">
+  	<time datetime="2017-05-22T14:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="三栏式布局"><a href="#三栏式布局" class="headerlink" title="三栏式布局"></a>三栏式布局</h3><h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想:通过margin-left和margin-right来将left和right两栏移到center这一栏中,然后利用position:static的方式来左右平移实现三栏式布局</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span>#header<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"center"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#center<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"left"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"right"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer"</span>&gt;</span>#footer<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">min-width</span>: <span class="number">550px</span>;      <span class="comment">/* 2x LC width + RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#container</span> &#123;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">200px</span>;   <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">padding-right</span>: <span class="number">150px</span>;  <span class="comment">/* RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#container</span> <span class="selector-class">.column</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#center</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#e9e9e9</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#left</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;          <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">right</span>: <span class="number">200px</span>;          <span class="comment">/* LC width */</span></div><div class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#right</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;          <span class="comment">/* RC width */</span></div><div class="line">  <span class="attribute">margin-right</span>: -<span class="number">150px</span>;  <span class="comment">/* RC width */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#footer</span> &#123;</div><div class="line">  <span class="attribute">clear</span>: both;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#header</span>, </div><div class="line"><span class="selector-id">#footer</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#c9c9c9</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*** IE6 Fix ***/</span></div><div class="line">* <span class="selector-tag">html</span> <span class="selector-id">#left</span> &#123;</div><div class="line">  <span class="attribute">left</span>: <span class="number">150px</span>;           <span class="comment">/* RC width */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 将center的div设置width100%,然后内置div利用margin-left和margin-right撑开空间供sub和extra使用,同时内置div和sub,extra刚好布满三栏</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>header<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-inner"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">h4</span>&gt;</span>main<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sub"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>sub<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"extra"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>extra<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>footer<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">        <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">        <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-tag">body</span> &#123;</div><div class="line">        <span class="attribute">min-width</span>: <span class="number">700px</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.header</span>,</div><div class="line">    <span class="selector-class">.footer</span> &#123;</div><div class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</div><div class="line">        <span class="attribute">background</span>: <span class="number">#aaa</span>;</div><div class="line">        <span class="attribute">text-align</span>: center;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.sub</span>,</div><div class="line">    <span class="selector-class">.main</span>,</div><div class="line">    <span class="selector-class">.extra</span> &#123;</div><div class="line">        <span class="attribute">float</span>: left;</div><div class="line">        <span class="attribute">min-height</span>: <span class="number">130px</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.sub</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">        <span class="attribute">background</span>: red;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.extra</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">220px</span>;</div><div class="line">        <span class="attribute">width</span>: <span class="number">220px</span>;</div><div class="line">        <span class="attribute">background</span>: blue;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.main</span> &#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.main-inner</span> &#123;</div><div class="line">        <span class="attribute">margin-left</span>: <span class="number">200px</span>;</div><div class="line">        <span class="attribute">margin-right</span>: <span class="number">220px</span>;</div><div class="line">        <span class="attribute">min-height</span>: <span class="number">130px</span>;</div><div class="line">        <span class="attribute">background</span>: green;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="selector-class">.footer</span> &#123;</div><div class="line">        <span class="attribute">clear</span>: both;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="浮动布局"><a href="#浮动布局" class="headerlink" title="浮动布局"></a>浮动布局</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想: 利用<span class="built_in">float</span>的方式将left和right的div撑上,然后设置center的div margin-left和margin-right来实现三栏布局</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"left"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"right"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"center"</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span>#center<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#left</span>&#123;</div><div class="line">	<span class="attribute">float</span>: left;</div><div class="line">	<span class="attribute">background-color</span>: green;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.column</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#right</span>&#123;</div><div class="line">	<span class="attribute">float</span>: right;</div><div class="line">	<span class="attribute">background-color</span>: red;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: yellow;</div><div class="line">	<span class="attribute">margin</span>: auto <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h3><h4 id="已知高度宽度元素的水平垂直居中"><a href="#已知高度宽度元素的水平垂直居中" class="headerlink" title="已知高度宽度元素的水平垂直居中"></a>已知高度宽度元素的水平垂直居中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(一): 绝对定位与负边距实现</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">margin</span>:-<span class="number">50px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(二): 绝对定位与margin</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">margin</span>:auto;</div><div class="line">    <span class="attribute">top</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="未知高度和宽度元素的水平垂直居中"><a href="#未知高度和宽度元素的水平垂直居中" class="headerlink" title="未知高度和宽度元素的水平垂直居中"></a>未知高度和宽度元素的水平垂直居中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(一): 当要被居中的元素是inline或者inline-block元素可以巧妙的将父级容器设置为display:table-cell，配合text-align:center和vertical-align:middle即可以实现水平垂直居中</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:table-cell;</div><div class="line">    <span class="attribute">text-align</span>:center;</div><div class="line">    <span class="attribute">vertical-align</span>:middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(二): 利用Css3的transform，可以轻松的在未知元素的高宽的情况下实现元素的垂直居中</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">核心思想(三): 使用flex布局，无需绝对定位等改变布局的操作，可以轻松实现元素的水平垂直居中</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:flex;</div><div class="line">    <span class="attribute">justify-content</span>:center;</div><div class="line">    <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#center</span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">css layout</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/javascript/css-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/javascript-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1055,183 +1145,6 @@
 
 
   
-    <article id="post-javascript/javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/javascript/javascript/">你不知道javascript（上卷）知识点总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/17/javascript/javascript/" class="archive-article-date">
-  	<time datetime="2017-05-17T11:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ol>
-<li>编译的三步骤:分词／词法分析，解析／语法分析，代码生成</li>
-<li>javascript编译器工作过程:1.在当前作用域中声明一个变量（如果之前没有声明）；2.在运行时引擎会在作用域中查找该变量，如果能够找到变量就会对它赋值</li>
-<li>编译器查找变量的方法是通过LHS查询和RHS查询，当变量出现在赋值操作的左侧时执行LHS查询，当赋值出现在右侧时进行的是RHS查询</li>
-<li>当一个块或函数嵌套在另一个块或函数时，就发生了作用域的嵌套，因此，在当前作用域中无法找到某个变量时，引擎会在外层作用域中查找，直到找到该变量，或抵达最外层作用域停止</li>
-<li>在非严格模式下，如果通过RHS查询无法查询到变量，但是通过LHS查询时如果不存在这个变量会自动声明这个变量，在严格模式下两者查询模式都是不行的 </li>
-</ol>
-<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ol>
-<li>作用域共有两种工作模型:1.词法作用域；2.动态作用域</li>
-<li>词法作用域就是定义在词法阶段的作用域</li>
-<li><p>欺骗词法的两种机制(非常影响性能):<br>1.eval函数可以接受一个字符串为参数，并将其中的内容视为好像在书写时就存在于程序中这个位置的代码，严格模式的声明是无法修改所在的作用域    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>)</span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str);  <span class="comment">//欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a, b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">//1,3</span></div></pre></td></tr></table></figure>
-<p>2.with关键字通常被当作重复引用同一个对象中的多个属性的快捷方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">c</span>: <span class="number">3</span></div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">2</span>;</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.c = <span class="number">4</span>;</div><div class="line"><span class="comment">//简单的快捷方式</span></div><div class="line"><span class="keyword">with</span>(obj)&#123;</div><div class="line">    a = <span class="number">3</span>;</div><div class="line">    b = <span class="number">4</span>;</div><div class="line">    c = <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" class="headerlink" title="函数作用域和块作用域"></a>函数作用域和块作用域</h4><ol>
-<li>函数会被当作函数表达式而不是一个标准的函数声明来处理</li>
-<li>width，try／catch中的catch都是块作用域中例子</li>
-</ol>
-<h4 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h4><ol>
-<li>包含变量和函数在内的所有声明都会在任何代码被执行前首先被处理</li>
-<li>只有声明本身会被提升，而赋值或其他运行逻辑会留在原地。如果提升该拜年了代码的顺序，会造成严重的破坏</li>
-<li>函数声明会被提升，但是函数表达式却不会被提升</li>
-<li>函数会首先被提升，然后才是变量</li>
-<li>代码执行会经过两个阶段任务:1.编译阶段的人物；2.执行阶段任务</li>
-</ol>
-<h4 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h4><ol>
-<li>无论通过任何手段将内部函数传递到所在的词法作用域以外，他都会持有对原始定义作用域的引用，无论在何处执行这个函数都是使用闭包</li>
-<li>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包</li>
-</ol>
-<h4 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h4><ol>
-<li>词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定的，词法作用域关注函数在何处声明，动态作用域关注函数从何处调用</li>
-</ol>
-<h3 id="this和对象原型"><a href="#this和对象原型" class="headerlink" title="this和对象原型"></a>this和对象原型</h3><h4 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h4><ol>
-<li>arguments.callee目前唯一一种从匿名函数对象内部引用自身的方法</li>
-<li>this是在运行时调用的，并不是在编写时绑定的。这个记录会包含函数在哪里被调用，函数的调用方法，传入参数等信息。this就是记录的其中一个属性，会在函数执行的过程中用到</li>
-<li>this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用</li>
-</ol>
-<h4 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h4><ol>
-<li>调用位置:函数在代码中被调用的位置，而不是声明的位置</li>
-<li>查看绑定规则:1.默认绑定；2.隐式绑定；3.显式绑定（call和apply）；4.new绑定</li>
-<li>四种绑定的优先级:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定</li>
-<li>将null和undefined通过call或apply传入函数实际等价于默认绑定</li>
-<li>软绑定➡如果给默认绑定指定一个全局对象和undefined以外的值，那就可以和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力</li>
-<li></li>
-</ol>
-<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ol>
-<li>对象可以通过声明形式和构造形式定义</li>
-<li>六种类型:string，number，boolean，null，undefined，object</li>
-<li>对象子类型:String，Number，Boolean，Object，Function，Array，Date，RegExp，Error</li>
-<li>在对象中属性名永远都是字符串，如果使用了string以外的值，那么它首先会转化为字符串</li>
-<li>函数和方法本质是等价的，唯一不同的是方法里面使用的this会隐式指向对象</li>
-<li>浅复制即对值的引用，深复制会复制其相关联的元素</li>
-<li>object.assign实现浅复制</li>
-<li><p>通过object.defineProperty来添加一个新属性或者修改一个已有的属性，并对特性进行设置     </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObj = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(myObj, <span class="string">"a"</span>, &#123;</div><div class="line">    <span class="attr">value</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>禁用扩展 Object.preventExtensions</p>
-</li>
-<li>密封 Object.seal 不可重新配置也不可删除任何现有属性</li>
-<li>冻结 Object.freeze 对象上最高级别的不可用性</li>
-<li>Object.hasOwnProperty检查属性是否存在对象中</li>
-<li>Object.propertyIsEnumerable检查给定属性名是否直接存在于对象中，Object.keys返回可枚举属性的数组，Object.getOwnPropertyNames 返回一个数组，包含所有属性</li>
-<li>forEach遍历数组的所有值，并忽略回调函数的返回值</li>
-<li>every（）和some（）中特殊的返回值类似for里面的break</li>
-<li>for…of..会寻找内置或者自定义的@@iterator对象并调用它的next（）方法来遍历数据值</li>
-</ol>
-<h4 id="混合对象“类”"><a href="#混合对象“类”" class="headerlink" title="混合对象“类”"></a>混合对象“类”</h4><ol>
-<li>面向类的设计模式：实例化，继承，多台</li>
-<li>多态是说父类的通用行为可以被子类更特殊的行为重写</li>
-<li><p>类实例由一个特殊的方法构造，成为构造函数，这个方法的任务就是初始化实例需要的所有信息  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
-</li>
-<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
-</li>
-<li>模拟类的复制：显示和隐式</li>
-<li><p>显示混入实现类似于extend </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params"> sourceObj, targetObj</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> sourceObj)&#123;</div><div class="line">        <span class="keyword">if</span>(!(key <span class="keyword">in</span> targetObj))&#123;</div><div class="line">            targetObj[key] = sourceObj[key];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Vehicle = &#123;</div><div class="line">    <span class="attr">engine</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">ignition</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Turning on my engine"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.ignition();</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Steering and moving forward"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Car = mixin(Vehicle, &#123;</div><div class="line">    <span class="attr">wheels</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">drive</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        Vehicle.drive.call(<span class="keyword">this</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Rolling on all"</span> + <span class="keyword">this</span>.wheels + <span class="string">"whells"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>隐式混入    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoolGuy</span> </span>&#123;</div><div class="line">    specialTrick = nothing;</div><div class="line">    CoolGuy(trick) &#123;</div><div class="line">        specialTrick = trick;</div><div class="line">    &#125;</div><div class="line">    showOff()&#123;</div><div class="line">        output(<span class="string">"Here's my trick: "</span>, specialTrick)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Joe = <span class="keyword">new</span> CoolGuy(<span class="string">"jumping rope"</span>);</div><div class="line">Joe.showOff();</div></pre></td></tr></table></figure>
-</li>
-<li><p>javascript本身不提供多重继承，但是可以通过各种办法来实现多重继承</p>
-</li>
-<li>模拟类的复制：显示和隐式</li>
-<li><p>显示混入实现类似于extend </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Something = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.greeting = <span class="string">"hello, world"</span>;</div><div class="line">        <span class="keyword">this</span>.count = <span class="keyword">this</span>.count?<span class="keyword">this</span>.count+<span class="number">1</span>:<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Something.cool();</div><div class="line">Something.greeting;</div><div class="line">Something.count;</div><div class="line"><span class="keyword">var</span> Another = &#123;</div><div class="line">    <span class="attr">cool</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        Something.cool.call(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Another.cool();</div><div class="line">Another.greeting;</div><div class="line">Another.count;</div></pre></td></tr></table></figure>
-</li>
-<li><p>类意味着复制</p>
-</li>
-</ol>
-<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><ol>
-<li>javascript中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用</li>
-<li>所有的普通[[prototype]]链都会指向内置的object.prototype</li>
-<li>所有的函数类默认都会拥有一个名为prototype的公有并且不可枚举的属性，它指向另一个对象</li>
-<li>javascript不能创建一个类的多个实例，只能创建多个对象，他们关联到同一个对象</li>
-<li>new会劫持所有普通函数并且用构造对象的形式来调用它</li>
-</ol>
-<h4 id="行为委托"><a href="#行为委托" class="headerlink" title="行为委托"></a>行为委托</h4><ol>
-<li>如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在关联的对象上进行查找，如果后者还是没找到则会继续查找他的prototype，这一系列对象的链接称为“原型链”</li>
-<li>委托行为意味着某些对象在找不到属性或者方法引用时会把这个请求委托给另一个对象</li>
-<li>无法在两个或者两个以上相互为多的对象之间创建循环委托</li>
-<li>Object.create()方法使用指定的原型对象和其属性创建了一个新的对象</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">你不知道的javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/javascript/javascript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1337,6 +1250,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1361,10 +1278,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
               </li>
              
@@ -1374,6 +1287,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,7 +1310,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">语法树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1401,11 +1326,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1417,15 +1338,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">语法树</a>
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,14 +1370,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -1470,6 +1379,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
               </li>
              
               <li class="article-tag-list-item">
