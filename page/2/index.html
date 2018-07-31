@@ -191,6 +191,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="backend-php入门/php字符串操作与正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/php入门/php字符串操作与正则表达式/">php字符串操作与正则表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/18/php入门/php字符串操作与正则表达式/" class="archive-article-date">
+  	<time datetime="2018-07-18T14:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="php字符串及正则基本使用"><a href="#php字符串及正则基本使用" class="headerlink" title="php字符串及正则基本使用"></a>php字符串及正则基本使用</h3><ul>
+<li>isset() 检查用户是否已经填写了所有要求的表单域</li>
+<li>bool mail(string to, string subject, string message, string [additional_headers [, string additional_parameters]]) 允许您从脚本中直接发电子邮件</li>
+<li>chop(string, charlist) 移除字符串右端的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
+<li>ltrim(string, charlist) 移除字符串左侧的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
+<li>trim(string, charlist) 移除字符串两侧的空白字符或其他预定义字符 - charlist可选，如果为空，则移除下列所有字符：”\0”,”\t”,”\t”,”\x0B”,”\r”,” “ </li>
+<li>nl2br(string, xhtml) 在字符串中的每个新行（\n）之前插入 HTML 换行符（&lt;br&gt; 或 &lt;br /&gt;）- xhtml可选,布尔值，表示是否使用兼容 XHTML 换行</li>
+<li>printf(format,arg1,arg2,arg++) 输出格式化的字符串 - 规定字符串以及如何格式化其中的变量</li>
+<li>sprintf(format,arg1,arg2,arg++) 把格式化的字符串写入变量中</li>
+<li>addslashes(string) 返回在预定义字符之前添加反斜杠的字符串 - 默认地，PHP 对所有的 GET、POST 和 COOKIE 数据自动运行 addslashes()。所以您不应对已转义过的字符串使用 addslashes()</li>
+<li>stripslashes(string) 删除由 addslashes() 函数添加的反斜杠 - 该函数可用于清理从数据库中或者从 HTML 表单中取回的数据</li>
+<li>explode(separator,string,limit) – 把字符串打散为数组 -  separator-规定哪里进行分割字符串 string-分割的字符串 limit-大于0，返回包含最多limit个元素的数组，等于0，返回包含一个元素的数组，小于0 返回包含除了最后的-limit个元素以外的所有元素的数组</li>
+<li>implode(separator,array) 数组元素组合为字符串</li>
+<li>join(separator,array) – 返回由数组元素组合成的字符串，join() 函数是 implode() 函数的别名</li>
+<li>strtok(string,split) – 把字符串分割为更小的字符串（标记）</li>
+<li>substr(string,start,length) – 返回字符串的一部分</li>
+<li>strcmp(string1,string2) – 比较两个字符串（区分大小写）</li>
+<li>strcasecmp(string1,string2) – 比较两个字符串（不区分大小写）</li>
+<li>strnatcmp(string1,string2) – 使用”自然”算法来比较两个字符串（区分大小写）</li>
+<li>strlen(string) – 返回字符串的长度</li>
+<li>strstr(string,search,before_search) –before_search 可选，默认为false，如果为true，它将返回search参数第一次出现之前的字符串部分 – 搜索字符串在另一字符串中的第一次出现 – 该函数对大小写敏感</li>
+<li>stristr(string,search,before_search) – 搜索字符串在另一字符串中的第一次出现 – 该函数是不区分大小写的</li>
+<li>strchr – strstr的别名</li>
+<li>strrchr(string,char) –  查找字符串在另一个字符串中最后一次出现的位置，并返回从该位置到字符串结尾的所有字符</li>
+<li>strpos(string,find,start) – 函数查找字符串在另一字符串中第一次出现的位置 – 函数对大小写敏感</li>
+<li>strrpos(string,find,start) – 查找字符串在另一字符串中最后一次出现的位置 – 对大小写敏感</li>
+<li>str_replace(find,replace,string,count)  – 以其他字符替换字符串中的一些字符（区分大小写）</li>
+<li>substr_replace(string,replacement,start,length) – 把字符串的一部分替换为另一个字符串</li>
+<li>php支持两种风格的正则表达式语法：POSIX和Perl</li>
+<li>POSIX中含有ereg, eregi, ereg_replace, eregi_replace</li>
+<li>int ereg(string pattern, string originalstring, [array regs]) – 指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的</li>
+<li>int eregi(string pattern, string string, [array regs]) – 在一个字符串搜索指定的模式的字符串,搜索不区分大小写</li>
+<li>string ereg_replace (string pattern, string replacement, string originalstring) – 搜索字符串指定的模式和如果发现模式则取代和替换</li>
+<li>string eregi_replace (string pattern, string replacement, string originalstring) – 像函数ereg_replace(),除了搜索模式字符串是不区分大小写的</li>
+<li>如何使用php向邮箱发邮件 — 通过mail方法自动使用脚本</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/18/php入门/php字符串操作与正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/vue生命周期详解及响应状态原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1070,79 +1182,6 @@
 
 
   
-    <article id="post-javascript/javascript-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/javascript/javascript-2/">javascript提升之道</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/javascript/javascript-2/" class="archive-article-date">
-  	<time datetime="2017-05-22T15:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="不同等级的前端工程师如何解决问题"><a href="#不同等级的前端工程师如何解决问题" class="headerlink" title="不同等级的前端工程师如何解决问题"></a>不同等级的前端工程师如何解决问题</h3><h4 id="初级前端工程师"><a href="#初级前端工程师" class="headerlink" title="初级前端工程师"></a>初级前端工程师</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.了解问题，通过google或者baidu查找到答案，然后直接将代码copy到页面中，运行发现问题，直ls接push git</div><div class="line">2.</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/javascript/javascript-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1248,10 +1287,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1276,6 +1311,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
               </li>
              
@@ -1288,15 +1327,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">经典代码</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,23 +1347,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">语法树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,11 +1367,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">异常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">语法树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,7 +1415,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,14 +1432,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
               </li>
              
               <li class="article-tag-list-item">
