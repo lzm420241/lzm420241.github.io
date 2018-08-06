@@ -353,8 +353,8 @@
 <li><p>缺乏静态资源完整性校验</p>
 <ul>
 <li>很多前端资源会在存放在CDN中，如果攻击者劫持了CDN，然后对CDN进行污染，那么我们前端应用拿到就是有问题的js脚本或stylesheet文件，使得攻击者可以肆意篡改我们前端的页面</li>
-<li><font color="red">如何防御：</font>使用浏览器提供的SRI（Subresource Integrity）功能，Subresource指在HTML中通过\<script\>和\<link\>元素所指定的资源文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=“https://example.js” integrity=“sha384-eivAQsRgJIi2KsTdSnfoEGIRTo25NCAqjNJNZalV63WKX3Y51adIzLT4So1pk5tX”&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-</link\></script\></li>
+<li><font color="red">如何防御：</font>使用浏览器提供的SRI（Subresource Integrity）功能，Subresource指在HTML中通过script和link元素所指定的资源文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=“https://example.js” integrity=“sha384-eivAQsRgJIi2KsTdSnfoEGIRTo25NCAqjNJNZalV63WKX3Y51adIzLT4So1pk5tX”&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>浏览器处理这个script元素时，会检查对应的js脚本文件的完整性，看其是否和script元素中integrity属性制定SRI值一致，如果不匹配，浏览器会中指对这个js脚本的处理</p>
 </li>
@@ -364,8 +364,51 @@
 </li>
 </ul>
 </li>
-<li>参考链接<br><br><a href="https://insights.thoughtworks.cn/eight-security-problems-in-front-end/?f=tt&amp;hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">8大安全问题（上）</a><br><br><a href="https://insights.thoughtworks.cn/eight-security-problems-in-front-end-2/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">8大安全问题（下）</a><br><br><a href="https://juejin.im/entry/588051511b69e60058c6e75e" target="_blank" rel="external">浅谈 CSRF 攻击方式</a><br><br><a href="https://segmentfault.com/a/1190000012496422" target="_blank" rel="external">web前端攻击技术与防范——XSS、CSRF、网络劫持、控制台注入、钓鱼</a><h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3></li>
+<li>参考链接<ul>
+<li><a href="https://insights.thoughtworks.cn/eight-security-problems-in-front-end/?f=tt&amp;hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">8大安全问题（上）</a></li>
+<li><a href="https://insights.thoughtworks.cn/eight-security-problems-in-front-end-2/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">8大安全问题（下）</a></li>
+<li><a href="https://juejin.im/entry/588051511b69e60058c6e75e" target="_blank" rel="external">浅谈 CSRF 攻击方式</a></li>
+<li><a href="https://segmentfault.com/a/1190000012496422" target="_blank" rel="external">web前端攻击技术与防范——XSS、CSRF、网络劫持、控制台注入、钓鱼</a></li>
 </ul>
+</li>
+</ul>
+<h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3><p>1.<strong>无模块化（第一阶段）</strong></p>
+<ul>
+<li>简单通过script引入各种js文件</li>
+<li>优点：相比于一个js文件，这种多个js文件实现最简单的模块化思想是更优的</li>
+<li>缺点：1.污染全局作用域；2.依赖成本高，维护成本大；3.依赖不明显</li>
+</ul>
+<p>2.<strong>CommonJs规范（第二阶段）</strong></p>
+<ol>
+<li>定义模块：根据CommonJS规范，一个单独的文件就是一个模块，每个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为global对象的属性</li>
+<li>模块输出： 模块只有一个出口，module.exports对象，我们需要把模块输出的内容放入该对象</li>
+<li>加载模块：使用require方法，读取一个文件并执行，返回文件内部的module.exports对象</li>
+<li>问题：require是<font color="red">同步的</font>，模块系统需要同步读取模块文件内容，并编译执行以得到模块接口。在服务端，文件都是保存在硬盘上，所以同步加载没有问题，但是对于浏览器，需要将文件从服务端请求过来，那么同步加载就不适用了。所以，CommonJs是不适用浏览器端的<br><font color="red">解决思路:</font>1.开发一个服务端组件，对模块代码作静态分析，将模块与他的依赖列表一起返回给浏览器；2.用一套标准模版来封装模块定义，但对于模块应怎么定义和加载产生分歧。</li>
+</ol>
+<p>3.<strong>AMD（Asynchronous Module Definition）规范（第三阶段）</strong></p>
+<ol>
+<li>AMD规范则是非同步加载模块，允许指定回调函数，因此浏览端一般采用AMD规范，而AMD规范的代表就是require.js了</li>
+<li><p>AMD标准中，定义了下面两个API：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. require([module], callback)</div><div class="line">2. define(id, [depends], callback)</div></pre></td></tr></table></figure>
+<p>即通过define来定义一个模块，然后适用require来加载一个模块，并且，require还支持CommonJs模块的导出方式</p>
+</li>
+<li>在适用require.js的时候，我们必须提前加载所有的依赖，然后才可以适用，而不是需要时再加载</li>
+<li>优点：1.适合在浏览器环境中异步加载模块；2.可以并行加载多个模块</li>
+<li>缺点：提高开发成本，并且不能按需加载，而是必须提前加载所有依赖</li>
+<li>结论：1.AMD推崇依赖前置；2.AMD对加载的模块是提前读取并加载</li>
+</ol>
+<p>4.<strong>CMD（Common Module Definition）规范（第四阶段）</strong></p>
+<ol>
+<li>CMD更像是AMD和common.js的升级版，结合了两者优点，通过按需加载的方式，而不是在模块开始就加载所有的依赖，其代表为sea.js</li>
+<li>优点：1，同样实现了浏览器端的模块化加载；2.可以按需加载，依赖就近</li>
+<li>缺点：依赖SPM打包，模块的加载逻辑偏重</li>
+<li>结论：1.CMD推崇就近依赖；2.CMD对加载的模块是提前读取并不加载，而是在需要时加载</li>
+</ol>
+<p>5.<strong>ES6模块化（第五阶段）</strong></p>
+<ol>
+<li>在ES6中，我们可以使用 import 关键字引入模块，通过 exprot 关键字导出模块</li>
+<li>ES6目前无法在浏览器中执行，所以，我们只能通过babel将不被支持的import编译为当前受到广泛支持的 require</li>
+</ol>
 <h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
 <li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
 </ul>
@@ -1531,14 +1574,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1547,7 +1582,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1560,14 +1611,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1667,19 +1710,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
