@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            //">
-<meta property="og:updated_time" content="2018-08-06T02:46:26.000Z">
+<meta property="og:updated_time" content="2018-08-06T06:27:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            //">
@@ -217,7 +217,7 @@
       
         
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li></ol>
           <hr/>
         </div>
         
@@ -285,10 +285,97 @@
 <li>border-box – border-box指的是，元素的width等于元素内容宽度+左右padding值+左右border值</li>
 <li>inherit</li>
 </ul>
-<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h3 id="前端安全的理解及web系统安全"><a href="#前端安全的理解及web系统安全" class="headerlink" title="前端安全的理解及web系统安全"></a>前端安全的理解及web系统安全</h3><h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3><h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><ul>
+<li>传统方案采用基于盒状模型，依赖display+position+float实现</li>
+<li>w3c提出一种新的方案 - flex，可以简便，完整，响应式实现各种页面布局，意为“弹性布局”，<font color="red">注意：设置Flex布局之后，子元素的float，clear和vertical-align属性将失效</font></li>
+<li><p>设定任何容器为flex布局</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex; /* Safari */</div><div class="line">    display: inline-flex; /* 行内元素 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>容器默认存在两根轴：水平的主轴，垂直的交叉轴，主轴的开始位置叫main start，结束的位置叫做main end，交叉轴的开始位置叫cross start，结束位置叫cross end</p>
+</li>
+<li>项目默认沿主轴排列，单个项目占据的主轴空间叫main size，占据的交叉轴空间叫cross size</li>
+<li><p>容器的属性</p>
+<ul>
+<li>flex-direction - 决定主轴的方向 - row | row-reverse | column | column-reverse</li>
+<li>flex-wrap - 一条轴线排不下，如何换行 - nowrap | wrap | wrap-reverse</li>
+<li>flex-flow - flex-direction和flex-wrap的简写</li>
+<li>justify-content - 主轴的对齐方式 - flex-start | flex-end | center | space-between | space-around</li>
+<li>align-items - 交叉轴如何对其 - flex-start | flex-end | center | baseline | stretch</li>
+<li>align-content - 多根轴线的对齐方式 - flex-start | flex-end | center | space-between | space-around | stretch</li>
+</ul>
+</li>
+<li><p>子类目的属性</p>
+<ul>
+<li>order - 定义项目的排序顺序。数值越小，排列越靠前 - <integer></integer></li>
+<li>flex-grow - 项目的放大比例，即使存在剩余空间也不放大 - <number></number></li>
+<li>flex-shrink - 项目的缩小比例，默认为1，空间不足，项目将缩小 - <number></number></li>
+<li>flex-basis - 在分配多余空间之前，项目占据主轴空间</li>
+<li>flex - flex-grow，flex-shrink，flex-basis的简写</li>
+<li>align-self - 属性允许单个项目与其他项目不一样的对其方式，可覆盖align-items属性，默认为auto，表示继承父元素的align-items，如果没有父元素，则等同与strentch - auto | flex-start | flex-end | center | baseline | stretch</li>
+</ul>
+</li>
+</ul>
+<h3 id="前端安全的理解及web系统安全"><a href="#前端安全的理解及web系统安全" class="headerlink" title="前端安全的理解及web系统安全"></a>前端安全的理解及web系统安全</h3><ul>
+<li><p>八大前端安全问题</p>
+<ul>
+<li>XSS<ul>
+<li>cross-site scriptting-跨站脚本攻击，其本质在于，浏览器错误地将攻击者提供的用户输入数据当作javacsript脚本执行了</li>
+<li>按照恶意输入的脚本是否在在应用中存在，XSS划分为“存储型XSS”和“反射型XSS”，如果按照是否和服务端交互，可以分为“Server Side XSS”和“DOM based XSS”</li>
+<li>攻击者利用XSS漏洞来窃取用户身份信息在内的各种敏感信息</li>
+<li><font color="red">如何防御：</font>1.对数据进行严格的输入编码，使得攻击者提供的数据不在被浏览器认为是脚本而被误执行，如、\<script\>编码为\&lt;script\&gt;，而这段被浏览器认为只是普通的字符串，还有url编码，css编码，html属性编码，json编码；2，CSP HTTP Header，输入验证，开启浏览器XSS防御</script\></li>
+</ul>
+</li>
+<li>iframe带来的风险<ul>
+<li>前端用到第三方提供的页面组件，通常会以iframe的方式引入，典型例子是第三方提供广告，天气预报</li>
+<li>iframe里面运行javascript脚本，flash插件，弹出框破坏前端用户体验，如果iframe里面域名过期被攻击者强注，iframe里面内容被替换掉，从而利用用户浏览器中的安全漏洞下载安装木马</li>
+<li><font color="red">如何防御：</font>1.在html5中，iframe有个sandbox的安全属性，可以对iframe进行各种限制，充分实现“最小权限”原则，另外sandbox提供丰富的配置参数</li>
+</ul>
+</li>
+<li>点击劫持<ul>
+<li>攻击者精心构造一个诱导用户点击的内容，比如web小游戏，将我们的的页面放入iframe中，利用z-index等将iframe叠加到游戏的垂直方向正上方，将其设置100%透明度，肉眼看到是游戏，但是实际点击的却是iframe中我的页面，如果只是关注微博账号，还可以接受，如果是重要文件记录，危害就很大了</li>
+<li><font color="red">如何防御：</font>1.使用X-Frame-Options：DENY这个HTTP Header来明确告知浏览器，不要把当前HTTP响应中的内容在HTML Frame中显示出来，<a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet" target="_blank" rel="external">详情参考</a></li>
+</ul>
+</li>
+<li>错误的内容推断<ul>
+<li>如果用户在上传图片的过程中，将javascript脚本上传上去，然后在展示过程中展示当前脚本，然后脚本执行了，攻击也就成功了</li>
+<li><font color="red">如何防御：</font>通过设置X-Content-Type-Options这个HTTP Header明确禁止浏览器去推断响应类型</li>
+</ul>
+</li>
+<li>不安全的第三方依赖包<ul>
+<li>第三方依赖包存在漏洞</li>
+<li><font color="red">如何防御：</font>1.手动检查；2.采用自动化工具，如NSP（node security platform），Snyk等等</li>
+</ul>
+</li>
+<li><p>用了https也可能掉坑</p>
+<ul>
+<li>利用SSL Stripping，强制让https降级回HTTP，从而继续进行中间人攻击</li>
+<li><font color="red">如何防御：</font>解决这个安全问题办法是使用HSTS（http strict transport security），他通过下面这个HTTP Header以及一个预加载的清单，来告知浏览器在和网站进行通信的时候强制使用https，而不是通过铭文的http<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">trict-Transport-Security: max-age=&lt;seconds&gt;; includeSubDomains; preload</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>本地存储数据泄漏</p>
+<ul>
+<li>很多安全信息存储在本地，如果招到XSS攻击，纳闷本地信息都会被泄漏，最好不要将安全信息存储在浏览器</li>
+</ul>
+</li>
+<li><p>缺乏静态资源完整性校验</p>
+<ul>
+<li>很多前端资源会在存放在CDN中，如果攻击者劫持了CDN，然后对CDN进行污染，那么我们前端应用拿到就是有问题的js脚本或stylesheet文件，使得攻击者可以肆意篡改我们前端的页面<br><font color="red">如何防御：</font>使用浏览器提供的SRI（Subresource Integrity）功能，Subresource指在HTML中通过\<script>和\<link>元素所指定的资源文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=“https://example.js” integrity=“sha384-eivAQsRgJIi2KsTdSnfoEGIRTo25NCAqjNJNZalV63WKX3Y51adIzLT4So1pk5tX”&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>浏览器处理这个script元素时，会检查对应的js脚本文件的完整性，看其是否和script元素中integrity属性制定SRI值一致，如果不匹配，浏览器会中指对这个js脚本的处理</p>
+</li>
+<li><p>CSRF（Cross-site request forgery） 跨站请求伪造，攻击者盗用用户的身份信息，并以用户的名义进行发送恶意的请求等，例如发邮件，盗取账号等非法手段</p>
+</li>
+<li><p>经典案例：eslint被黑客入侵，在3.7.2版本中用户安装时，恶意代码会自动执行，访问某个网站会把用户的.npmrc文件的内容发送给黑客自己，而在.npmrc文件中包含发布到npm的访问令牌</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3><h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
 <li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
 </ul>
-<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3>
+<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3></script></li></ul></li></ul></li></ul>
       
     </div>
     <div class="article-info article-info-index">
@@ -542,6 +629,34 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
@@ -598,10 +713,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
@@ -619,30 +730,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">改善代码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
