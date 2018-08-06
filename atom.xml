@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-07-31T01:27:13.000Z</updated>
+  <updated>2018-08-06T02:32:10.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -14,6 +14,203 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript经典代码</title>
+    <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
+    <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
+    <published>2018-08-06T02:23:32.000Z</published>
+    <updated>2018-08-06T02:32:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
+<ul>
+<li>this使用</li>
+<li>原型及原型链</li>
+<li>普通函数及构造函数</li>
+</ul>
+<ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.代码分析</p>
+<ul>
+<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
+<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
+<li><p>注释之前改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释之后改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Javascript实现继承的方式"><a href="#Javascript实现继承的方式" class="headerlink" title="Javascript实现继承的方式"></a>Javascript实现继承的方式</h3><ul>
+<li>类式继承</li>
+<li>构造函数继承</li>
+<li>组合继承</li>
+<li>寄生组合式继承</li>
+<li>extends继承</li>
+</ul>
+<ol>
+<li><p>类式继承：通过prototype将父类的对象赋值到子类中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Animal</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Dog</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'dog'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line">var dog = new Dog();</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
+<p>缺点：一，引用父类值会受到影响；二，无法为不同实例初始化；本质仍为父类属性为公有属性，只要修改，所有子类都会收到影响</p>
+<ol>
+<li>构造函数继承：通过apply，更改函数的作用域<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dog = new Dog();</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>优势：避免类式继承的缺陷，缺陷：无法获取父类的原型方法</p>
+<ol>
+<li>组合继承：本质将类式继承和构造函数组合在一起</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+<p>缺点：两次调用父类的构造函数</p>
+<ol>
+<li>寄生组合式继承：在组合继承的基础上减少一次多余的调用父类的构造函数<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = Object.create(Animal.prototype);</div><div class="line">Dog.prototype.constructor = Dog;</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>本地不是将实例直接赋值给Dog.prototype，而是使用Object.create()进行一次浅拷贝，将父类原型方法拷贝后赋值给Dog.prototype，注意：赋值给Dog.prototype，其constructor属性也被重写，需要fix掉</p>
+<ol>
+<li>extends继承： 采用es6中Class和extends特性，Class创建类，extends实现继承<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    greet(sound) &#123;</div><div class="line">        console.log(sound);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog extends Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        super(color);</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">let</span> dog = new Dog(<span class="string">'blank'</span>);</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象</p>
+</li>
+</ol>
+<h3 id="CSS-实现元素垂直居中"><a href="#CSS-实现元素垂直居中" class="headerlink" title="CSS 实现元素垂直居中"></a>CSS 实现元素垂直居中</h3><ol>
+<li><p>不知道自己高度和父容器高度的情况下，用绝对定位</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line">childElement &#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    height: xxx;</div><div class="line">&#125;</div><div class="line"></div><div class="line">childElement &#123;</div><div class="line">    position: relative;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Flex布局</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="盒模型和box-sizing"><a href="#盒模型和box-sizing" class="headerlink" title="盒模型和box-sizing"></a>盒模型和box-sizing</h3><p>盒模型</p>
+<ul>
+<li>每个块级元素可以看作一个盒子，他有content，padding，border，margin</li>
+<li>content就是能装的东西，padding理解为防止盒子东西被摔坏放的塑料之类的东西</li>
+<li>margin盒子之间的间隙</li>
+<li>注：通过javascript获取的宽度和高度是盒子模型的content大小</li>
+<li>IE5.5及以下的宽度和高度是指：content+padding+border</li>
+</ul>
+<p>box-sizing</p>
+<ul>
+<li>content-box – 其中content-box指的是，元素的width属性值等于该元素内容的宽度，不加上padding和border，实际上能盛多大的东西它就是多大</li>
+<li>border-box – border-box指的是，元素的width等于元素内容宽度+左右padding值+左右border值</li>
+<li>inherit</li>
+</ul>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h3 id="前端安全的理解及web系统安全"><a href="#前端安全的理解及web系统安全" class="headerlink" title="前端安全的理解及web系统安全"></a>前端安全的理解及web系统安全</h3><h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3><h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
+<li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
+</ul>
+<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;this知识点考察&quot;&gt;&lt;a href=&quot;#this知识点考察&quot; class=&quot;headerlink&quot; title=&quot;this知识点考察&quot;&gt;&lt;/a&gt;this知识点考察&lt;/h3&gt;&lt;p&gt;1.考察知识点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;this使用&lt;/li&gt;
+&lt;li&gt;原型及
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="经典代码" scheme="https://lzm420241.github.io/tags/%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="分析" scheme="https://lzm420241.github.io/tags/%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>游戏生活</title>
+    <link href="https://lzm420241.github.io/2018/08/04/life/%E6%B8%B8%E6%88%8F%E4%B8%8E%E7%94%9F%E6%B4%BB/"/>
+    <id>https://lzm420241.github.io/2018/08/04/life/游戏与生活/</id>
+    <published>2018-08-04T03:02:25.000Z</published>
+    <updated>2018-08-06T02:34:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.<strong>熟练清楚基础知识（必备）</strong></p>
+<ul>
+<li>熟练可以清楚知道自己为啥有问题，问题出在哪里，如何解决这种问题，所以如何基础知识不具备，那么等价于每次fight都是无任何经验总结，也就是无法提升自己的能力</li>
+<li>了解里面有哪些基础知识：例如vs游戏中，有角色，技能，经济，装备，那么其中的基础知识就是：每个角色有哪些技能，优缺点，如何发展经济，如何应对不同的角色买装备等。在其他学习某些技术时，首先需要明白其基础。</li>
+<li>在掌握基础的知识之后，或许你已经属于钻石或星耀的段位，此时你遇到的队友可能也了解基础知识，那么如何在fight中取得胜利呢？那么需要你掌控细节，每个细节处理好，你才能在战斗中取得胜利。那么何为细节：例如何时打团，何时去发展经济。如何骗取对方的技能，每个英雄如何应战，技能的cd时间等。</li>
+<li>学会哪些东西能够会取胜 – 例如英雄都有优缺点，但是有些英雄缺点少，较强势，一般在对战中能占领很大优势，那么可以优先用这种英雄上分，这种可以提升学习的效率，而不是各种英雄玩一下，学会掌握哪些知识对整个模块有优势，那么专心学这一个模块，并利用自己对这个模块的理解，实现一个高质量，高效率的项目</li>
+<li>熟练化 — 在意识和技术水平平等的情况下，那么需要把一个或几个英雄玩的熟练，利用自己对英雄的理解来面对对手的英雄。如果两者都很熟练，那么需要利用细节来处理了</li>
+<li>心态问题 —  如果你总抱着能1打5，1打4这种想法，那么你可能会在战斗中更容易取得胜利，你没法保证队友都很强大，如果你没有想去1打5，1打4，那么四个队友有两个坑，或三个坑，那么你可能心态就爆炸了，那你你已经进入坑的行列，这局对战基本输了。学技术亦是如此。如果和团队合作，你需要清楚整个项目的过程，你要掌控整个项目的逻辑，思考哪些地方存在安全隐患，如何去避免这种问题。一定要有全局官。（记住：这点是基于前面三个点来看问题的，如果前面三个点都没处理好，那么也就没必要做第四点了）</li>
+</ul>
+<p>2.<strong>学会让队友相信你</strong></p>
+<ul>
+<li>展示自己的能力，给队友在开始时候的自信</li>
+</ul>
+<p>3.<strong>如何将游戏的经验应用到前端开发方面</strong></p>
+<ul>
+<li>基础一：基础的js特性，css原理，html原理都需要知道。（必须知道）</li>
+<li>基础二：浏览器如何利用这三个技术展示页面</li>
+<li>基础三：熟悉打包工具是如何打包这三个技术的</li>
+<li>基础四：如果有框架，框架如何渲染一个页面的</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.&lt;strong&gt;熟练清楚基础知识（必备）&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;熟练可以清楚知道自己为啥有问题，问题出在哪里，如何解决这种问题，所以如何基础知识不具备，那么等价于每次fight都是无任何经验总结，也就是无法提升自己的能力&lt;/li&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="https://lzm420241.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="游戏" scheme="https://lzm420241.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="学习" scheme="https://lzm420241.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="生活" scheme="https://lzm420241.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>同构与直出</title>
+    <link href="https://lzm420241.github.io/2018/08/01/javascript/%E5%90%8C%E6%9E%84%E4%B8%8E%E7%9B%B4%E5%87%BA/"/>
+    <id>https://lzm420241.github.io/2018/08/01/javascript/同构与直出/</id>
+    <published>2018-08-01T02:57:32.000Z</published>
+    <updated>2018-08-01T03:19:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>问题</strong><br>1.如果采用同构写法，那么模块注入的规范不统一，node端采用CMD模块规范，而客户端采用是ES6模块规范，如何达到两端代码共用？？</p>
+<ol>
+<li>两边都采用CMD模块规范开发</li>
+<li>采用webpack打包，将所有模块采用ES6模块规范，然后通过webpack打包成原生js</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;&lt;br&gt;1.如果采用同构写法，那么模块注入的规范不统一，node端采用CMD模块规范，而客户端采用是ES6模块规范，如何达到两端代码共用？？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;两边都采用CMD模块规范开发&lt;/li&gt;
+&lt;li&gt;采用webpack打
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="性能" scheme="https://lzm420241.github.io/tags/%E6%80%A7%E8%83%BD/"/>
+    
+      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>前端性能与异常上报</title>
@@ -70,65 +267,6 @@
       <category term="架构" scheme="https://lzm420241.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
     
       <category term="react" scheme="https://lzm420241.github.io/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript经典代码</title>
-    <link href="https://lzm420241.github.io/2018/07/30/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
-    <id>https://lzm420241.github.io/2018/07/30/javascript/分析经典代码-1/</id>
-    <published>2018-07-30T08:37:32.000Z</published>
-    <updated>2018-07-30T08:50:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.考察知识点</p>
-<ul>
-<li>this使用</li>
-<li>原型及原型链</li>
-<li>普通函数及构造函数</li>
-</ul>
-<ol>
-<li>代码</li>
-</ol>
-<ul>
-<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>3.代码分析</p>
-<ul>
-<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
-<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
-<li><p>注释之前改装 – 代码运行后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
-</li>
-<li><p>注释之后改装 – 代码运行后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.考察知识点&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;this使用&lt;/li&gt;
-&lt;li&gt;原型及原型链&lt;/li&gt;
-&lt;li&gt;普通函数及构造函数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;代码&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;题目： 注释代码之前及之后的打印信息&lt;figure cl
-    
-    </summary>
-    
-      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
-    
-      <category term="经典代码" scheme="https://lzm420241.github.io/tags/%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="分析" scheme="https://lzm420241.github.io/tags/%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -271,9 +409,9 @@
     
       <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
     
-      <category term="微信小程序" scheme="https://lzm420241.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
       <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="微信小程序" scheme="https://lzm420241.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
@@ -1081,61 +1219,6 @@
     
     
       <category term="svn" scheme="https://lzm420241.github.io/tags/svn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>未来6个月的规划</title>
-    <link href="https://lzm420241.github.io/2018/04/23/life/2/"/>
-    <id>https://lzm420241.github.io/2018/04/23/life/2/</id>
-    <published>2018-04-23T07:53:25.000Z</published>
-    <updated>2018-04-23T11:40:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="2018-Q2-Q3总体规划"><a href="#2018-Q2-Q3总体规划" class="headerlink" title="2018 Q2-Q3总体规划"></a>2018 Q2-Q3总体规划</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.用户极致体验</div><div class="line">	要求：</div><div class="line">		1.[页面的流畅性](http://ask.dcloud.net.cn/article/25)</div><div class="line">		2.页面的美观度</div><div class="line">		3.页面的加载性能</div><div class="line">2.前端工具化及工程化</div><div class="line">	发展：</div><div class="line">		1.原始阶段：在原始api方面扩充，将会催生大量的tools</div><div class="line">		2.发展阶段：随着做的东西复杂化，这些需要更多的组织，引入大量设计模式，此时会催生出大量的frameworks</div><div class="line">		3.工程化阶段：随着团队的扩充，就会进入工程化的阶段，各类mvc，mvp，mvvm等设计，可视化开发，自动化测试，团队协作系统等。</div><div class="line">	标准：根据模块化、组件化、规范化、自动化四个来思考，软件工程化关注的是性能、稳定性、可用性、可维护性等方面，一切以这些为目标的工作都是<span class="string">"前端工程化"</span></div><div class="line">	目标：以尽可能快的速度实现可信赖的产品。尽可能短的时间包括开发速度、部署速度与重构速度，而可信赖又在于产品的可测试性、可变性以及Bug的重现与定位</div><div class="line">3.横向发展</div><div class="line">	了解业务发展 -- 了解一些后端的设计</div><div class="line">	了解页面设计原理 --- UI</div><div class="line">	人工智能 -- 前端应用</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;2018-Q2-Q3总体规划&quot;&gt;&lt;a href=&quot;#2018-Q2-Q3总体规划&quot; class=&quot;headerlink&quot; title=&quot;2018 Q2-Q3总体规划&quot;&gt;&lt;/a&gt;2018 Q2-Q3总体规划&lt;/h3&gt;&lt;h4 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot;
-    
-    </summary>
-    
-      <category term="生活" scheme="https://lzm420241.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="规划" scheme="https://lzm420241.github.io/tags/%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何避免感冒及如何处理感冒问题</title>
-    <link href="https://lzm420241.github.io/2018/04/23/life/1/"/>
-    <id>https://lzm420241.github.io/2018/04/23/life/1/</id>
-    <published>2018-04-23T06:13:25.000Z</published>
-    <updated>2018-04-23T06:47:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="如何预防感冒"><a href="#如何预防感冒" class="headerlink" title="如何预防感冒"></a>如何预防感冒</h3><h4 id="感冒的定义"><a href="#感冒的定义" class="headerlink" title="感冒的定义"></a>感冒的定义</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">伤风，又称普通感冒（common cold），医学上还称为急性上呼吸道感染或急性鼻咽炎，是一种上呼吸道的病毒性感染，主要原发于鼻腔，但也可能进犯喉咙以及鼻窦。症状一般于暴露病原后两天内开始出现，包含咳嗽、喉咙痛、流鼻水、打喷嚏、头痛、发烧等。大部分症状通常在七到十天内会缓解，但某些症状可能会持续三个星期以上。有其他健康问题者患感冒时可能会并发肺炎</div></pre></td></tr></table></figure>
-<h4 id="如何预防"><a href="#如何预防" class="headerlink" title="如何预防"></a>如何预防</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.勤洗手</div><div class="line">2.勤通风</div><div class="line">3.增强体质</div><div class="line">4.流感疫苗</div></pre></td></tr></table></figure>
-<h3 id="如何处理感冒问题"><a href="#如何处理感冒问题" class="headerlink" title="如何处理感冒问题"></a>如何处理感冒问题</h3><h4 id="感冒类型"><a href="#感冒类型" class="headerlink" title="感冒类型"></a>感冒类型</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.风寒型感冒：病人除了有鼻塞、喷嚏、咳嗽、头痛等一般症状外，还有畏寒、低热、无汗、流清涕、吐稀薄白色痰等特点。这种感冒与病人感受风寒有关。治疗应以辛温解表为原则。病人可选用伤风感冒冲剂、感冒清热冲剂、九味羌活丸、通宣理肺丸、午时茶颗粒等药物治疗。若病人兼有内热便秘的症状，可服用防风通圣丸治疗。风寒型感冒病人忌用桑菊感冒片、银翘解毒片、羚翘解毒片、复方感冒片等药物。</div><div class="line">2.风热型感冒：病人除了有鼻塞、流涕、咳嗽、头痛等感冒的一般症状外，还有发热重、痰液粘稠呈黄色等特点。治疗应以辛凉解表为原则。病人可选用感冒退热冲剂、板蓝根冲剂、银翘解毒丸、羚羊解毒丸等药物治疗。风热型感冒病人忌用九味羌活丸、理肺丸等药物。</div><div class="line">3.暑湿型感冒：病人表现为畏寒、发热、口淡无味、头痛、头胀、腹痛、腹泻等症状。此类型感冒多发生在夏季。治疗应以清暑、祛湿、解表为主。病人可选用藿香正气水、银翘解毒丸等药物治疗。如果病人胃肠道症状较重，不宜选用保和丸、山楂丸、香砂养胃丸等药物。</div><div class="line">4.时行感冒：病人的症状与风热感冒的症状相似。但时行感冒病人较风热感冒病人的症状重。病人可表现为突然畏寒、高热、头痛、怕冷、寒战、头痛剧烈、全身酸痛、疲乏无力、鼻塞、流涕、干咳、胸痛、恶心、食欲不振，婴幼儿或老年人可能并发肺炎或心力衰竭等症状。治疗应以清热解毒、疏风透表为主</div></pre></td></tr></table></figure>
-<h4 id="感冒过程"><a href="#感冒过程" class="headerlink" title="感冒过程"></a>感冒过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.初始症状是头晕，浑身无力，全身酸痛等。</div><div class="line">2.以上症状持续几天之后开始喉咙发炎，头痛加重。。。</div><div class="line">3.由发炎引起其他地方发炎，且一些症状加重，流鼻涕，咳嗽等。</div><div class="line">4.病情严重</div></pre></td></tr></table></figure>
-<h4 id="感冒可采取一些的药物"><a href="#感冒可采取一些的药物" class="headerlink" title="感冒可采取一些的药物"></a>感冒可采取一些的药物</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.发烧、头痛。这时候就需要解热镇痛成分——对乙酰氨基酚、阿司匹林、双氯芬酸</div><div class="line">2.鼻塞，为什么会鼻塞呢？主要是鼻腔充血，我们需要一些减轻鼻腔充血的药物，比如——伪麻黄碱</div></pre></td></tr></table></figure>
-<h4 id="感冒一些经验"><a href="#感冒一些经验" class="headerlink" title="感冒一些经验"></a>感冒一些经验</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.感冒时初始症状无法抑制时，感冒会有一个上升期，且感冒不断加重</div><div class="line">2.当感冒到达一个高峰期时，此时一些感冒药能够起到一个很大作用</div><div class="line">3.如果有发烧，切记需要吃退烧药</div><div class="line">4.尽量不要打抗生素，对身体危害太大</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;如何预防感冒&quot;&gt;&lt;a href=&quot;#如何预防感冒&quot; class=&quot;headerlink&quot; title=&quot;如何预防感冒&quot;&gt;&lt;/a&gt;如何预防感冒&lt;/h3&gt;&lt;h4 id=&quot;感冒的定义&quot;&gt;&lt;a href=&quot;#感冒的定义&quot; class=&quot;headerlink&quot; title=
-    
-    </summary>
-    
-      <category term="生活" scheme="https://lzm420241.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感冒" scheme="https://lzm420241.github.io/tags/%E6%84%9F%E5%86%92/"/>
-    
-      <category term="预防" scheme="https://lzm420241.github.io/tags/%E9%A2%84%E9%98%B2/"/>
     
   </entry>
   

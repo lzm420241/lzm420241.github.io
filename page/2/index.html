@@ -191,6 +191,190 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="backend-php入门/perl风格正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/19/php入门/perl风格正则表达式/">perl风格正则表达式规则及原理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/19/php入门/perl风格正则表达式/" class="archive-article-date">
+  	<time datetime="2018-07-19T01:24:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a>适用情况</h3><ol>
+<li>php</li>
+<li>javascript</li>
+</ol>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="追踪字符串查找过程"><a href="#追踪字符串查找过程" class="headerlink" title="追踪字符串查找过程"></a>追踪字符串查找过程</h3>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">回溯算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/19/php入门/perl风格正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="backend-php入门/php代码重用与函数编写" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/php入门/php代码重用与函数编写/">php代码重用与函数编写</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/18/php入门/php代码重用与函数编写/" class="archive-article-date">
+  	<time datetime="2018-07-18T14:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">代码重用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">函数编写</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/18/php入门/php代码重用与函数编写/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="backend-php入门/php字符串操作与正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1031,157 +1215,6 @@
 
 
   
-    <article id="post-life/2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/life/2/">未来6个月的规划</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/23/life/2/" class="archive-article-date">
-  	<time datetime="2018-04-23T07:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="2018-Q2-Q3总体规划"><a href="#2018-Q2-Q3总体规划" class="headerlink" title="2018 Q2-Q3总体规划"></a>2018 Q2-Q3总体规划</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">1.用户极致体验</div><div class="line">	要求：</div><div class="line">		1.[页面的流畅性](http://ask.dcloud.net.cn/article/25)</div><div class="line">		2.页面的美观度</div><div class="line">		3.页面的加载性能</div><div class="line">2.前端工具化及工程化</div><div class="line">	发展：</div><div class="line">		1.原始阶段：在原始api方面扩充，将会催生大量的tools</div><div class="line">		2.发展阶段：随着做的东西复杂化，这些需要更多的组织，引入大量设计模式，此时会催生出大量的frameworks</div><div class="line">		3.工程化阶段：随着团队的扩充，就会进入工程化的阶段，各类mvc，mvp，mvvm等设计，可视化开发，自动化测试，团队协作系统等。</div><div class="line">	标准：根据模块化、组件化、规范化、自动化四个来思考，软件工程化关注的是性能、稳定性、可用性、可维护性等方面，一切以这些为目标的工作都是<span class="string">"前端工程化"</span></div><div class="line">	目标：以尽可能快的速度实现可信赖的产品。尽可能短的时间包括开发速度、部署速度与重构速度，而可信赖又在于产品的可测试性、可变性以及Bug的重现与定位</div><div class="line">3.横向发展</div><div class="line">	了解业务发展 -- 了解一些后端的设计</div><div class="line">	了解页面设计原理 --- UI</div><div class="line">	人工智能 -- 前端应用</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/life/2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-life/1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/life/1/">如何避免感冒及如何处理感冒问题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/23/life/1/" class="archive-article-date">
-  	<time datetime="2018-04-23T06:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="如何预防感冒"><a href="#如何预防感冒" class="headerlink" title="如何预防感冒"></a>如何预防感冒</h3><h4 id="感冒的定义"><a href="#感冒的定义" class="headerlink" title="感冒的定义"></a>感冒的定义</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">伤风，又称普通感冒（common cold），医学上还称为急性上呼吸道感染或急性鼻咽炎，是一种上呼吸道的病毒性感染，主要原发于鼻腔，但也可能进犯喉咙以及鼻窦。症状一般于暴露病原后两天内开始出现，包含咳嗽、喉咙痛、流鼻水、打喷嚏、头痛、发烧等。大部分症状通常在七到十天内会缓解，但某些症状可能会持续三个星期以上。有其他健康问题者患感冒时可能会并发肺炎</div></pre></td></tr></table></figure>
-<h4 id="如何预防"><a href="#如何预防" class="headerlink" title="如何预防"></a>如何预防</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.勤洗手</div><div class="line">2.勤通风</div><div class="line">3.增强体质</div><div class="line">4.流感疫苗</div></pre></td></tr></table></figure>
-<h3 id="如何处理感冒问题"><a href="#如何处理感冒问题" class="headerlink" title="如何处理感冒问题"></a>如何处理感冒问题</h3><h4 id="感冒类型"><a href="#感冒类型" class="headerlink" title="感冒类型"></a>感冒类型</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.风寒型感冒：病人除了有鼻塞、喷嚏、咳嗽、头痛等一般症状外，还有畏寒、低热、无汗、流清涕、吐稀薄白色痰等特点。这种感冒与病人感受风寒有关。治疗应以辛温解表为原则。病人可选用伤风感冒冲剂、感冒清热冲剂、九味羌活丸、通宣理肺丸、午时茶颗粒等药物治疗。若病人兼有内热便秘的症状，可服用防风通圣丸治疗。风寒型感冒病人忌用桑菊感冒片、银翘解毒片、羚翘解毒片、复方感冒片等药物。</div><div class="line">2.风热型感冒：病人除了有鼻塞、流涕、咳嗽、头痛等感冒的一般症状外，还有发热重、痰液粘稠呈黄色等特点。治疗应以辛凉解表为原则。病人可选用感冒退热冲剂、板蓝根冲剂、银翘解毒丸、羚羊解毒丸等药物治疗。风热型感冒病人忌用九味羌活丸、理肺丸等药物。</div><div class="line">3.暑湿型感冒：病人表现为畏寒、发热、口淡无味、头痛、头胀、腹痛、腹泻等症状。此类型感冒多发生在夏季。治疗应以清暑、祛湿、解表为主。病人可选用藿香正气水、银翘解毒丸等药物治疗。如果病人胃肠道症状较重，不宜选用保和丸、山楂丸、香砂养胃丸等药物。</div><div class="line">4.时行感冒：病人的症状与风热感冒的症状相似。但时行感冒病人较风热感冒病人的症状重。病人可表现为突然畏寒、高热、头痛、怕冷、寒战、头痛剧烈、全身酸痛、疲乏无力、鼻塞、流涕、干咳、胸痛、恶心、食欲不振，婴幼儿或老年人可能并发肺炎或心力衰竭等症状。治疗应以清热解毒、疏风透表为主</div></pre></td></tr></table></figure>
-<h4 id="感冒过程"><a href="#感冒过程" class="headerlink" title="感冒过程"></a>感冒过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.初始症状是头晕，浑身无力，全身酸痛等。</div><div class="line">2.以上症状持续几天之后开始喉咙发炎，头痛加重。。。</div><div class="line">3.由发炎引起其他地方发炎，且一些症状加重，流鼻涕，咳嗽等。</div><div class="line">4.病情严重</div></pre></td></tr></table></figure>
-<h4 id="感冒可采取一些的药物"><a href="#感冒可采取一些的药物" class="headerlink" title="感冒可采取一些的药物"></a>感冒可采取一些的药物</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.发烧、头痛。这时候就需要解热镇痛成分——对乙酰氨基酚、阿司匹林、双氯芬酸</div><div class="line">2.鼻塞，为什么会鼻塞呢？主要是鼻腔充血，我们需要一些减轻鼻腔充血的药物，比如——伪麻黄碱</div></pre></td></tr></table></figure>
-<h4 id="感冒一些经验"><a href="#感冒一些经验" class="headerlink" title="感冒一些经验"></a>感冒一些经验</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.感冒时初始症状无法抑制时，感冒会有一个上升期，且感冒不断加重</div><div class="line">2.当感冒到达一个高峰期时，此时一些感冒药能够起到一个很大作用</div><div class="line">3.如果有发烧，切记需要吃退烧药</div><div class="line">4.尽量不要打抗生素，对身体危害太大</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">感冒</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">预防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/life/1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1303,14 +1336,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1319,7 +1344,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1335,7 +1364,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1344,6 +1373,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1356,18 +1389,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1391,7 +1412,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,11 +1440,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1427,19 +1456,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1456,6 +1489,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>

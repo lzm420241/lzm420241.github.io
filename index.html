@@ -191,6 +191,344 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/分析经典代码-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/javascript/分析经典代码-1/">javascript经典代码</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/06/javascript/分析经典代码-1/" class="archive-article-date">
+  	<time datetime="2018-08-06T02:23:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
+<ul>
+<li>this使用</li>
+<li>原型及原型链</li>
+<li>普通函数及构造函数</li>
+</ul>
+<ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.代码分析</p>
+<ul>
+<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
+<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
+<li><p>注释之前改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释之后改装 – 代码运行后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Javascript实现继承的方式"><a href="#Javascript实现继承的方式" class="headerlink" title="Javascript实现继承的方式"></a>Javascript实现继承的方式</h3><ul>
+<li>类式继承</li>
+<li>构造函数继承</li>
+<li>组合继承</li>
+<li>寄生组合式继承</li>
+<li>extends继承</li>
+</ul>
+<ol>
+<li><p>类式继承：通过prototype将父类的对象赋值到子类中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Animal</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Dog</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'dog'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line">var dog = new Dog();</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
+<p>缺点：一，引用父类值会受到影响；二，无法为不同实例初始化；本质仍为父类属性为公有属性，只要修改，所有子类都会收到影响</p>
+<ol>
+<li>构造函数继承：通过apply，更改函数的作用域<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dog = new Dog();</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>优势：避免类式继承的缺陷，缺陷：无法获取父类的原型方法</p>
+<ol>
+<li>组合继承：本质将类式继承和构造函数组合在一起</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+<p>缺点：两次调用父类的构造函数</p>
+<ol>
+<li>寄生组合式继承：在组合继承的基础上减少一次多余的调用父类的构造函数<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = Object.create(Animal.prototype);</div><div class="line">Dog.prototype.constructor = Dog;</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>本地不是将实例直接赋值给Dog.prototype，而是使用Object.create()进行一次浅拷贝，将父类原型方法拷贝后赋值给Dog.prototype，注意：赋值给Dog.prototype，其constructor属性也被重写，需要fix掉</p>
+<ol>
+<li>extends继承： 采用es6中Class和extends特性，Class创建类，extends实现继承<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    greet(sound) &#123;</div><div class="line">        console.log(sound);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog extends Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        super(color);</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">let</span> dog = new Dog(<span class="string">'blank'</span>);</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象</p>
+</li>
+</ol>
+<h3 id="CSS-实现元素垂直居中"><a href="#CSS-实现元素垂直居中" class="headerlink" title="CSS 实现元素垂直居中"></a>CSS 实现元素垂直居中</h3><ol>
+<li><p>不知道自己高度和父容器高度的情况下，用绝对定位</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line">childElement &#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    height: xxx;</div><div class="line">&#125;</div><div class="line"></div><div class="line">childElement &#123;</div><div class="line">    position: relative;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Flex布局</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="盒模型和box-sizing"><a href="#盒模型和box-sizing" class="headerlink" title="盒模型和box-sizing"></a>盒模型和box-sizing</h3><p>盒模型</p>
+<ul>
+<li>每个块级元素可以看作一个盒子，他有content，padding，border，margin</li>
+<li>content就是能装的东西，padding理解为防止盒子东西被摔坏放的塑料之类的东西</li>
+<li>margin盒子之间的间隙</li>
+<li>注：通过javascript获取的宽度和高度是盒子模型的content大小</li>
+<li>IE5.5及以下的宽度和高度是指：content+padding+border</li>
+</ul>
+<p>box-sizing</p>
+<ul>
+<li>content-box – 其中content-box指的是，元素的width属性值等于该元素内容的宽度，不加上padding和border，实际上能盛多大的东西它就是多大</li>
+<li>border-box – border-box指的是，元素的width等于元素内容宽度+左右padding值+左右border值</li>
+<li>inherit</li>
+</ul>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h3 id="前端安全的理解及web系统安全"><a href="#前端安全的理解及web系统安全" class="headerlink" title="前端安全的理解及web系统安全"></a>前端安全的理解及web系统安全</h3><h3 id="AMD，CMD，ES6模块化特点及区别"><a href="#AMD，CMD，ES6模块化特点及区别" class="headerlink" title="AMD，CMD，ES6模块化特点及区别"></a>AMD，CMD，ES6模块化特点及区别</h3><h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
+<li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
+</ul>
+<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经典代码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/06/javascript/分析经典代码-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-life/游戏与生活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/04/life/游戏与生活/">游戏生活</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/04/life/游戏与生活/" class="archive-article-date">
+  	<time datetime="2018-08-04T03:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>1.<strong>熟练清楚基础知识（必备）</strong></p>
+<ul>
+<li>熟练可以清楚知道自己为啥有问题，问题出在哪里，如何解决这种问题，所以如何基础知识不具备，那么等价于每次fight都是无任何经验总结，也就是无法提升自己的能力</li>
+<li>了解里面有哪些基础知识：例如vs游戏中，有角色，技能，经济，装备，那么其中的基础知识就是：每个角色有哪些技能，优缺点，如何发展经济，如何应对不同的角色买装备等。在其他学习某些技术时，首先需要明白其基础。</li>
+<li>在掌握基础的知识之后，或许你已经属于钻石或星耀的段位，此时你遇到的队友可能也了解基础知识，那么如何在fight中取得胜利呢？那么需要你掌控细节，每个细节处理好，你才能在战斗中取得胜利。那么何为细节：例如何时打团，何时去发展经济。如何骗取对方的技能，每个英雄如何应战，技能的cd时间等。</li>
+<li>学会哪些东西能够会取胜 – 例如英雄都有优缺点，但是有些英雄缺点少，较强势，一般在对战中能占领很大优势，那么可以优先用这种英雄上分，这种可以提升学习的效率，而不是各种英雄玩一下，学会掌握哪些知识对整个模块有优势，那么专心学这一个模块，并利用自己对这个模块的理解，实现一个高质量，高效率的项目</li>
+<li>熟练化 — 在意识和技术水平平等的情况下，那么需要把一个或几个英雄玩的熟练，利用自己对英雄的理解来面对对手的英雄。如果两者都很熟练，那么需要利用细节来处理了</li>
+<li>心态问题 —  如果你总抱着能1打5，1打4这种想法，那么你可能会在战斗中更容易取得胜利，你没法保证队友都很强大，如果你没有想去1打5，1打4，那么四个队友有两个坑，或三个坑，那么你可能心态就爆炸了，那你你已经进入坑的行列，这局对战基本输了。学技术亦是如此。如果和团队合作，你需要清楚整个项目的过程，你要掌控整个项目的逻辑，思考哪些地方存在安全隐患，如何去避免这种问题。一定要有全局官。（记住：这点是基于前面三个点来看问题的，如果前面三个点都没处理好，那么也就没必要做第四点了）</li>
+</ul>
+<p>2.<strong>学会让队友相信你</strong></p>
+<ul>
+<li>展示自己的能力，给队友在开始时候的自信</li>
+</ul>
+<p>3.<strong>如何将游戏的经验应用到前端开发方面</strong></p>
+<ul>
+<li>基础一：基础的js特性，css原理，html原理都需要知道。（必须知道）</li>
+<li>基础二：浏览器如何利用这三个技术展示页面</li>
+<li>基础三：熟悉打包工具是如何打包这三个技术的</li>
+<li>基础四：如果有框架，框架如何渲染一个页面的</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游戏</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/生活/" class="article-tag-list-link color3">生活</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/04/life/游戏与生活/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article id="post-javascript/同构与直出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/javascript/同构与直出/">同构与直出</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/01/javascript/同构与直出/" class="archive-article-date">
+  	<time datetime="2018-08-01T02:57:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><strong>问题</strong><br>1.如果采用同构写法，那么模块注入的规范不统一，node端采用CMD模块规范，而客户端采用是ES6模块规范，如何达到两端代码共用？？</p>
+<ol>
+<li>两边都采用CMD模块规范开发</li>
+<li>采用webpack打包，将所有模块采用ES6模块规范，然后通过webpack打包成原生js</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">性能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/01/javascript/同构与直出/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/前端性能与异常上报" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -337,105 +675,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/30/javascript/搭建react项目/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/分析经典代码-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/javascript/分析经典代码-1/">javascript经典代码</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/javascript/分析经典代码-1/" class="archive-article-date">
-  	<time datetime="2018-07-30T08:37:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p>1.考察知识点</p>
-<ul>
-<li>this使用</li>
-<li>原型及原型链</li>
-<li>普通函数及构造函数</li>
-</ul>
-<ol>
-<li>代码</li>
-</ol>
-<ul>
-<li>题目： 注释代码之前及之后的打印信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">this.a = 20;</div><div class="line">var <span class="built_in">test</span> = &#123;</div><div class="line">    a: 40,</div><div class="line">    init: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">            // this.a = 60;</div><div class="line">            console.log(this.a);</div><div class="line">        &#125;</div><div class="line">        go.prototype.a = 50;</div><div class="line">        <span class="built_in">return</span> go;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p = test.init();</div><div class="line">p();</div><div class="line">new p();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>3.代码分析</p>
-<ul>
-<li>首先了解this – this是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用</li>
-<li>关注一点：this是在运行时生成的，而不是编译时生成</li>
-<li><p>注释之前改装 – 代码运行后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为undefined</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为50</div></pre></td></tr></table></figure>
-</li>
-<li><p>注释之后改装 – 代码运行后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var p = test.init();</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">此时打印信息为60</div><div class="line"></div><div class="line">new p()</div><div class="line">转化为：</div><div class="line">var p = <span class="keyword">function</span> <span class="function"><span class="title">go</span></span>() &#123;</div><div class="line">    this.a = 60</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line">go.prototype.a = 50;</div><div class="line">new p()</div><div class="line">此时打印信息为60</div></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经典代码</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/javascript/分析经典代码-1/">展开全文 >></a>
         </p>
       
 
@@ -602,11 +841,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
         		</li>
       		
 		</ul>
@@ -1100,190 +1339,6 @@
 
 
   
-    <article id="backend-php入门/perl风格正则表达式" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/php入门/perl风格正则表达式/">perl风格正则表达式规则及原理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/19/php入门/perl风格正则表达式/" class="archive-article-date">
-  	<time datetime="2018-07-19T01:24:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a>适用情况</h3><ol>
-<li>php</li>
-<li>javascript</li>
-</ol>
-<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="追踪字符串查找过程"><a href="#追踪字符串查找过程" class="headerlink" title="追踪字符串查找过程"></a>追踪字符串查找过程</h3>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">回溯算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/19/php入门/perl风格正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="backend-php入门/php代码重用与函数编写" class="article article-type-backend  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/18/php入门/php代码重用与函数编写/">php代码重用与函数编写</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/18/php入门/php代码重用与函数编写/" class="archive-article-date">
-  	<time datetime="2018-07-18T14:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
-<li>重用更加轻松编写一致性，可靠性，可维护性</li>
-<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
-<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
-<li>require_once 同一文件只会包含一次</li>
-<li>include_once 同一文件只会包含一次</li>
-<li>auto_prepend_file 在页面顶部加载文件</li>
-<li>auto_append_file 在页面底部加载文件</li>
-<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
-<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
-</ul>
-<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
-<li>函数名不区分大小写</li>
-<li>PHP不支持重载</li>
-<li>PHP作用域<ol>
-<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
-<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
-<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
-<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
-<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
-<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
-</ol>
-</li>
-<li>PHP命名空间，类名可以通过三种方式引用<ol>
-<li>非限定名称，或不包含前缀的类名称</li>
-<li>限定名称,或包含前缀的名称</li>
-<li>完全限定名称，或包含了全局前缀操作符的名称</li>
-</ol>
-</li>
-<li>函数的声明是采用function的方式</li>
-<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
-</ul>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">代码重用</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">函数编写</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端/" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/18/php入门/php代码重用与函数编写/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1405,14 +1460,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1421,7 +1468,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,7 +1488,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,6 +1497,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,18 +1513,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,7 +1536,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,11 +1564,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1529,19 +1580,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,6 +1613,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>
