@@ -242,45 +242,27 @@
 <li>构造函数继承</li>
 <li>组合继承</li>
 <li>寄生组合式继承</li>
-<li>extends继承</li>
-</ul>
-<ol>
-<li><p>类式继承：通过prototype将父类的对象赋值到子类中</p>
+<li><p>extends继承</p>
+<p>1.<strong>类式继承：通过prototype将父类的对象赋值到子类中</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Animal</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Dog</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'dog'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line">var dog = new Dog();</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
 <p>缺点：一，引用父类值会受到影响；二，无法为不同实例初始化；本质仍为父类属性为公有属性，只要修改，所有子类都会收到影响</p>
-<ol>
-<li>构造函数继承：通过apply，更改函数的作用域<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dog = new Dog();</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>2.<strong>构造函数继承：通过apply，更改函数的作用域</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'dog'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dog = new Dog();</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line">console.log(dog.type);</div></pre></td></tr></table></figure>
 <p>优势：避免类式继承的缺陷，缺陷：无法获取父类的原型方法</p>
-<ol>
-<li>组合继承：本质将类式继承和构造函数组合在一起</li>
-</ol>
+<p>3.<strong>组合继承：本质将类式继承和构造函数组合在一起</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = new Animal();</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
 <p>缺点：两次调用父类的构造函数</p>
-<ol>
-<li>寄生组合式继承：在组合继承的基础上减少一次多余的调用父类的构造函数<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = Object.create(Animal.prototype);</div><div class="line">Dog.prototype.constructor = Dog;</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>4.<strong>寄生组合式继承：在组合继承的基础上减少一次多余的调用父类的构造函数</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Animal(color) &#123;</div><div class="line">    this.name = <span class="string">'animal'</span>;</div><div class="line">    this.type = [<span class="string">'pig'</span>, <span class="string">'cat'</span>];</div><div class="line">    this.color = color;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.greet = <span class="keyword">function</span>(sound) &#123;</div><div class="line">    console.log(sound);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Dog(color) &#123;</div><div class="line">    Animal.apply(this, arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Dog.prototype = Object.create(Animal.prototype);</div><div class="line">Dog.prototype.constructor = Dog;</div><div class="line"></div><div class="line">var dog = new Dog(<span class="string">'white'</span>);</div><div class="line">dog.type.push(<span class="string">'dog'</span>);</div><div class="line"></div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
 <p>本地不是将实例直接赋值给Dog.prototype，而是使用Object.create()进行一次浅拷贝，将父类原型方法拷贝后赋值给Dog.prototype，注意：赋值给Dog.prototype，其constructor属性也被重写，需要fix掉</p>
-<ol>
-<li>extends继承： 采用es6中Class和extends特性，Class创建类，extends实现继承<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    greet(sound) &#123;</div><div class="line">        console.log(sound);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog extends Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        super(color);</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">let</span> dog = new Dog(<span class="string">'blank'</span>);</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>5.<strong>extends继承： 采用es6中Class和extends特性，Class创建类，extends实现继承</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    greet(sound) &#123;</div><div class="line">        console.log(sound);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog extends Animal &#123;</div><div class="line">    constructor(color) &#123;</div><div class="line">        super(color);</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">let</span> dog = new Dog(<span class="string">'blank'</span>);</div><div class="line">dog.greet(<span class="string">'wangwang'</span>);</div><div class="line">console.log(dog.color);</div></pre></td></tr></table></figure>
 <p>注意：子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象</p>
 </li>
-</ol>
-<h3 id="CSS-实现元素垂直居中"><a href="#CSS-实现元素垂直居中" class="headerlink" title="CSS 实现元素垂直居中"></a>CSS 实现元素垂直居中</h3><ol>
-<li><p>不知道自己高度和父容器高度的情况下，用绝对定位</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line">childElement &#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    height: xxx;</div><div class="line">&#125;</div><div class="line"></div><div class="line">childElement &#123;</div><div class="line">    position: relative;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Flex布局</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
+</ul>
+<h3 id="CSS-实现元素垂直居中"><a href="#CSS-实现元素垂直居中" class="headerlink" title="CSS 实现元素垂直居中"></a>CSS 实现元素垂直居中</h3><p>1.<strong>不知道自己高度和父容器高度的情况下，用绝对定位</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line">childElement &#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.<strong>若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    height: xxx;</div><div class="line">&#125;</div><div class="line"></div><div class="line">childElement &#123;</div><div class="line">    position: relative;</div><div class="line">    top: 50%;</div><div class="line">    transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.<strong>Flex布局</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parentElement &#123;</div><div class="line">    display: flex;</div><div class="line">    display: -webkit-flex;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="盒模型和box-sizing"><a href="#盒模型和box-sizing" class="headerlink" title="盒模型和box-sizing"></a>盒模型和box-sizing</h3><p>盒模型</p>
 <ul>
 <li>每个块级元素可以看作一个盒子，他有content，padding，border，margin</li>
@@ -1460,6 +1442,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -1468,11 +1458,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1485,10 +1471,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,19 +1518,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1564,7 +1542,27 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1580,23 +1578,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1613,18 +1607,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>
