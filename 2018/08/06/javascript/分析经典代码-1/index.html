@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            //">
-<meta property="og:updated_time" content="2018-08-06T06:36:49.000Z">
+<meta property="og:updated_time" content="2018-08-06T06:37:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数   代码   题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            //">
@@ -360,7 +360,8 @@
 </li>
 <li><p>缺乏静态资源完整性校验</p>
 <ul>
-<li>很多前端资源会在存放在CDN中，如果攻击者劫持了CDN，然后对CDN进行污染，那么我们前端应用拿到就是有问题的js脚本或stylesheet文件，使得攻击者可以肆意篡改我们前端的页面<br><font color="red">如何防御：</font>使用浏览器提供的SRI（Subresource Integrity）功能，Subresource指在HTML中通过\<script\>和\<link\>元素所指定的资源文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=“https://example.js” integrity=“sha384-eivAQsRgJIi2KsTdSnfoEGIRTo25NCAqjNJNZalV63WKX3Y51adIzLT4So1pk5tX”&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<li>很多前端资源会在存放在CDN中，如果攻击者劫持了CDN，然后对CDN进行污染，那么我们前端应用拿到就是有问题的js脚本或stylesheet文件，使得攻击者可以肆意篡改我们前端的页面</li>
+<li><font color="red">如何防御：</font>使用浏览器提供的SRI（Subresource Integrity）功能，Subresource指在HTML中通过\<script\>和\<link\>元素所指定的资源文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=“https://example.js” integrity=“sha384-eivAQsRgJIi2KsTdSnfoEGIRTo25NCAqjNJNZalV63WKX3Y51adIzLT4So1pk5tX”&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
 </link\></script\></li>
 </ul>
 <p>浏览器处理这个script元素时，会检查对应的js脚本文件的完整性，看其是否和script元素中integrity属性制定SRI值一致，如果不匹配，浏览器会中指对这个js脚本的处理</p>
@@ -746,19 +747,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
