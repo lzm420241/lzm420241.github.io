@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-08-06T07:42:08.000Z</updated>
+  <updated>2018-08-06T10:21:11.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
     <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
     <published>2018-08-06T02:23:32.000Z</published>
-    <updated>2018-08-06T07:42:08.000Z</updated>
+    <updated>2018-08-06T10:21:11.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
 <ul>
@@ -218,7 +218,92 @@
 <li>在ES6中，我们可以使用 import 关键字引入模块，通过 exprot 关键字导出模块</li>
 <li>ES6目前无法在浏览器中执行，所以，我们只能通过babel将不被支持的import编译为当前受到广泛支持的 require</li>
 </ol>
-<h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3><h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3><h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
+<p>6.<strong>参考文章</strong></p>
+<ol>
+<li><a href="https://www.cnblogs.com/zhuzhenwei918/p/7426904.html" target="_blank" rel="external">JavaScript模块化 — Commonjs、AMD、CMD、es6 modules</a></li>
+<li><a href="https://www.zhihu.com/question/20351507/answer/14859415" target="_blank" rel="external">AMD 和 CMD 的区别有哪些？</a><h3 id="angular和vue双向绑定原理"><a href="#angular和vue双向绑定原理" class="headerlink" title="angular和vue双向绑定原理"></a>angular和vue双向绑定原理</h3></li>
+</ol>
+<ul>
+<li>angular数据绑定<ul>
+<li>angular采用“脏值检测”的方式，数据发生变更，对于所有数据和视图的绑定关系进一步检测，识别是否有数据发生改变，有变化进行处理，可能进一步引发其他数据的改变，所以这个过程会循环几次，如果手动对viewModel的数据进行变更，为确保变更同步到视图，需要手动触发一次“脏检测”</li>
+</ul>
+</li>
+<li><p>Vue数据绑定</p>
+<ul>
+<li>Vue采用es5提供的Object.defineProperty方法，监控对数据的操作，从而可以自动触发数据同步，并且，由于在不同的数据上触发同步，可以精确的将变更发送给绑定的视图，而不是对所有的数据都执行一次检测；如果当前有watcher（对数据的观察者，watcher会负责将获取的新数据发送给视图），那将该watcher绑定到当前的数据上（dep.depend,dep关联当前数据和所有的watcher的依赖关系），是一个检查并记录依赖的过程。而对数据进行赋值时，如果数据发生改变，则通知watcher，这样即便手动改变数据，框架也能自动将数据同步到视图</li>
+</ul>
+</li>
+<li><p>React数据绑定</p>
+<ul>
+<li>无双向绑定</li>
+</ul>
+</li>
+</ul>
+<h3 id="边固定，右边自适应css布局；宽自适应，高为宽的2倍"><a href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍" class="headerlink" title="边固定，右边自适应css布局；宽自适应，高为宽的2倍"></a>边固定，右边自适应css布局；宽自适应，高为宽的2倍</h3><ul>
+<li><p>边固定，右边自适应css布局</p>
+<ul>
+<li><p>浮动布局</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">      // html</div><div class="line">      &lt;div id=<span class="string">"left"</span>&gt;Left sidebar&lt;/div&gt;</div><div class="line">&lt;div id=<span class="string">"content"</span>&gt;Main Content&lt;/div&gt;</div><div class="line">      // css</div><div class="line">      * &#123;</div><div class="line">          margin: 0;</div><div class="line">          padding: 0;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">#left &#123;</span></div><div class="line">          <span class="built_in">float</span>: left;</div><div class="line">          width: 220px;</div><div class="line">          background-color: green;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">#content &#123;</span></div><div class="line">          background-color: orange;</div><div class="line">          margin-left: 220px;/*==等于左边栏宽度==*/</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>浮动+负边距实现</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// html</div><div class="line">&lt;div id=<span class="string">"left"</span>&gt;</div><div class="line">    Left Sidebar</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div id=<span class="string">"content"</span>&gt;</div><div class="line">    &lt;div id=<span class="string">"contentInner"</span>&gt;</div><div class="line">        Main Content</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css</div><div class="line">* &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line"><span class="comment">#left &#123;</span></div><div class="line">    background-color: green;</div><div class="line">    <span class="built_in">float</span>: left;</div><div class="line">    width: 220px;</div><div class="line">    margin-right: -100%;</div><div class="line">&#125;</div><div class="line"><span class="comment">#content &#123;</span></div><div class="line">    <span class="built_in">float</span>: left;</div><div class="line">    width: 100%;</div><div class="line">&#125;</div><div class="line"><span class="comment">#contentInner &#123;</span></div><div class="line">    margin-left: 220px;/*==等于左边栏宽度值==*/</div><div class="line">    background-color: orange;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>宽自适应，高为宽的2倍</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    <span class="built_in">float</span>: left;</div><div class="line">    margin: 10px 5%;</div><div class="line">    padding-bottom: 200%;</div><div class="line">    width: 100%;</div><div class="line">    height: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解释：一个元素的padding，如果值是一个百分比，那么这个百分比是相对于其父元素的宽度而言的，即使对于padding-bottom和padding-top也是如此；在计算overflow时，是将元素的内容区域即width／height对应的区域和padding区域一起计算的，换句话说，即使overflow设置为hidden，“溢出”到padding的区域内容也会正常显示，结论：我们可以使用padding-bottom来代替height来实现高度和宽度成比例效果</p>
+</li>
+</ul>
+<h3 id="for-in-和for-of区别"><a href="#for-in-和for-of区别" class="headerlink" title="for in 和for of区别"></a>for in 和for of区别</h3><ul>
+<li>推荐循环属性采用for in，循环数组采用for of</li>
+<li>for in 循环出的是key，for of 循环出来的是value</li>
+<li>注意：for of是es6引入的新特性，修复了es5的for in 不足</li>
+<li>for of不能循环普通的对象，需要通过object.keys搭配使用</li>
+<li>for in 循环数组时除了遍历数组的元素以外，还会遍历自定义属性</li>
+<li>for of只会遍历数组的value，所以不能循环普通对象</li>
+</ul>
+<h3 id="BFC和IFC"><a href="#BFC和IFC" class="headerlink" title="BFC和IFC"></a>BFC和IFC</h3><ul>
+<li>首先理解两个概念：Box和FC；其中一个页面由很多个Box组成的，元素的类型和display属性决定了这个Box的类型，不同类型的Box，会参与不同的Formatting Context；Block level 的box会参与BFC，比如display值为block，list-item，table元素；Inline level的box会参与形成IFC，比如display值为inline，inline-table，inline-block的元素；FC（Formatting Context）定义页面中的一块渲染区域，并且有一套渲染规则，它决定其子元素将如何定位，以及和其他元素的关系和相互作用，常见的FC包含BFC和IFC</li>
+<li>IFC布局规则：在行内格式化上下文中，boxes一个接一个地水平排列，起点时包含块的顶部。水平方向上margin，border和padding在框之间得以保留。框在垂直方向上可以以不同的方式对齐，他们的顶部或底部对齐，或根据其中文字的基线对齐。包含那些框的长方形区域，会形成一行，叫做行框</li>
+<li>BFC规则<ol>
+<li>内部的box会在垂直方向，一个接一个地放置</li>
+<li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</li>
+<li>每个元素的左外边缘（margin-left），与包含快的左边（contain box left）相接触（对于从左往右的格式化，否则相反）。即使存在浮动也是如此，除非这个元素自己形成一个新的BFC</li>
+<li>BFC的区域不会与float box重叠</li>
+<li>BFC就是页面上一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦是如此。</li>
+<li>计算BFC的高度时，浮动元素也会参与计算</li>
+</ol>
+</li>
+<li>如何形成一个BFC<ol>
+<li>根元素或其他包含他的元素</li>
+<li>浮动（元素的float 不是 none）</li>
+<li>绝对定位的元素（元素具有postion为absolute或fixed）</li>
+<li>非块级元素具有display: inline-block,table-cell,table-caption, flex, inline-flex</li>
+<li>快级元素具有overflow，且值不是visible</li>
+<li>问题：inline-block是一个inline-level元素，参与形成IFC，但是能创建BFC - inline-block内部是一个BFC，但它本身可以和其他inline元素一起形成IFC</li>
+</ol>
+</li>
+<li><p>BFC用处</p>
+<ol>
+<li>清除浮动<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"wrap"</span>&gt;</div><div class="line">  &lt;section&gt;1&lt;/section&gt;</div><div class="line">  &lt;section&gt;2&lt;/section&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">.wrap &#123;</div><div class="line">  border: 2px solid yellow;</div><div class="line">  width: 250px;</div><div class="line">&#125;</div><div class="line">section &#123;</div><div class="line">  background-color: pink;</div><div class="line">  <span class="built_in">float</span>: left;</div><div class="line">  width: 100px;</div><div class="line">  height: 100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由于子元素是浮动，受浮动影响，边框为黄色的父元素高度塌陷了，解决方案：为父元素添加overflow: hidden，使其成为BFC，根据BFC规则，计算高度会计算float的元素高度，达到清除浮动影响的效果</p>
+<ol>
+<li>布局：自适应两栏布局</li>
+<li>防止垂直margin合并</li>
+</ol>
+</li>
+<li>参考文档<ul>
+<li><a href="https://www.w3.org/TR/CSS2/visuren.html#inline-formatting" target="_blank" rel="external">Inline formatting contexts</a></li>
+<li><a href="https://www.w3.org/TR/CSS2/visuren.html#block-formatting" target="_blank" rel="external">Block formatting contexts</a></li>
+<li><a href="https://www.w3ctech.com/topic/865" target="_blank" rel="external">BFC 神奇背后的原理</a></li>
+<li><a href="https://www.nowcoder.com/ta/review-frontend/review?page=68" target="_blank" rel="external">谈谈你对BFC与IFC的理解</a><h3 id="异步几种方式"><a href="#异步几种方式" class="headerlink" title="异步几种方式"></a>异步几种方式</h3></li>
+</ul>
+</li>
+</ul>
+<h3 id="JS深拷贝，优雅实现"><a href="#JS深拷贝，优雅实现" class="headerlink" title="JS深拷贝，优雅实现"></a>JS深拷贝，优雅实现</h3><h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
 <li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
 </ul>
 <h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3>]]></content>
