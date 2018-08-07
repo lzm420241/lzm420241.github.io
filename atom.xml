@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-08-07T08:54:07.000Z</updated>
+  <updated>2018-08-07T10:13:24.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
     <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
     <published>2018-08-06T02:23:32.000Z</published>
-    <updated>2018-08-07T08:54:07.000Z</updated>
+    <updated>2018-08-07T10:13:24.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
 <ul>
@@ -462,6 +462,7 @@
 <li><a href="https://segmentfault.com/a/1190000004358316" target="_blank" rel="external">移动端适配方案(下)</a></li>
 <li><a href="http://html-js.com/article/MobileWeb" target="_blank" rel="external">MobileWeb 适配总结</a></li>
 <li><a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external">使用Flexible实现手淘H5页面的终端适配</a></li>
+<li><a href="https://juejin.im/entry/59e70320f265da431c6f6514" target="_blank" rel="external">前端移动端适配总结</a></li>
 </ul>
 </li>
 </ul>
@@ -471,7 +472,10 @@
 </li>
 <li><p>函数去抖就是对于一定时间段的连续的函数调用，只让其执行一次</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> debounce(fn, interval = 300) &#123;</div><div class="line">    <span class="built_in">let</span> timeout = null;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = <span class="built_in">set</span>Timeout(() =&gt; &#123;</div><div class="line">            fn.apply(this, arguments);</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3></li>
+<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
+<li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
+</ul>
+</li>
 </ul>
 ]]></content>
     
@@ -570,11 +574,11 @@
       <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     
     
-      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
     
       <category term="性能" scheme="https://lzm420241.github.io/tags/%E6%80%A7%E8%83%BD/"/>
+    
+      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -773,11 +777,11 @@
       <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     
     
-      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
     
       <category term="微信小程序" scheme="https://lzm420241.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
