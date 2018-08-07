@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-08-07T01:48:20.000Z</updated>
+  <updated>2018-08-07T03:37:15.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
     <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
     <published>2018-08-06T02:23:32.000Z</published>
-    <updated>2018-08-07T01:48:20.000Z</updated>
+    <updated>2018-08-07T03:37:15.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
 <ul>
@@ -338,11 +338,90 @@
 </ul>
 </li>
 </ul>
-<h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">function</span> <span class="built_in">bind</span> (that) &#123;</div><div class="line">        var target = this</div><div class="line">        var <span class="built_in">bind</span>Args = Array.prototype.slice.call(arguments, 1)</div><div class="line"></div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">bound</span></span> () &#123;</div><div class="line">            var callArgs = Array.prototype.slice.call(arguments)</div><div class="line">            <span class="keyword">if</span> (this instanceof bound) &#123;</div><div class="line">            <span class="built_in">return</span> target.apply(this, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">return</span> target.apply(that, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">  // 实现继承，让bound函数生成的实例通过原型链能追溯到target函数</div><div class="line">  // 即 实例可以获取/调用target.prototype上的属性/方法</div><div class="line">  var Empty = <span class="function"><span class="title">function</span></span> () &#123;&#125;</div><div class="line">    Empty.prototype = target.prototype</div><div class="line">    bound.prototype = new Empty()  </div><div class="line">    // 这里如果不加入Empty，直接bound.prototype = target.prototype的话</div><div class="line">    // 改变bound.prototype则会影响到target.prototype，原型继承基本都会加入这么一个中间对象做屏障</div><div class="line">    <span class="built_in">return</span> bound</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3><h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
-<li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
+<h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">bind</span> (that) &#123;</div><div class="line">    var target = this</div><div class="line">    var <span class="built_in">bind</span>Args = Array.prototype.slice.call(arguments, 1)</div><div class="line"></div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">bound</span></span> () &#123;</div><div class="line">        var callArgs = Array.prototype.slice.call(arguments)</div><div class="line">        <span class="keyword">if</span> (this instanceof bound) &#123;</div><div class="line">        <span class="built_in">return</span> target.apply(this, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">return</span> target.apply(that, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 实现继承，让bound函数生成的实例通过原型链能追溯到target函数</div><div class="line">    // 即 实例可以获取/调用target.prototype上的属性/方法</div><div class="line">    var Empty = <span class="function"><span class="title">function</span></span> () &#123;&#125;</div><div class="line">        Empty.prototype = target.prototype</div><div class="line">        bound.prototype = new Empty()  </div><div class="line">        // 这里如果不加入Empty，直接bound.prototype = target.prototype的话</div><div class="line">        // 改变bound.prototype则会影响到target.prototype，原型继承基本都会加入这么一个中间对象做屏障</div><div class="line">        <span class="built_in">return</span> bound</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><ul>
+<li>根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的</li>
+<li>根据HTTP规范，POST表示可能修改变服务器上的资源的请求</li>
+<li>表面看问题：<ul>
+<li>URL不存在参数上限的问题，HTTP协议规范没有对URL长度进行限制，这个限制是特定的浏览器及服务器对它的限制</li>
+<li>POST是没有大小限制的，HTTP协议规范也没有进行大小限制<h3 id="手写select组件"><a href="#手写select组件" class="headerlink" title="手写select组件"></a>手写select组件</h3>思路：一个列表+一个输入框+一个按钮，列表添加点击事件，在输入框中显示</li>
 </ul>
-<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3><h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3><h3 id="gulp和webpack的区别"><a href="#gulp和webpack的区别" class="headerlink" title="gulp和webpack的区别"></a>gulp和webpack的区别</h3><h3 id="vue里数组更改为何能触发值更新"><a href="#vue里数组更改为何能触发值更新" class="headerlink" title="vue里数组更改为何能触发值更新"></a>vue里数组更改为何能触发值更新</h3>]]></content>
+</li>
+</ul>
+<h3 id="模版-–-字符串如何解析成模版，特别是带逻辑这块"><a href="#模版-–-字符串如何解析成模版，特别是带逻辑这块" class="headerlink" title="模版 – 字符串如何解析成模版，特别是带逻辑这块"></a>模版 – 字符串如何解析成模版，特别是带逻辑这块</h3><ul>
+<li>eval或new Function，前端避免xss攻击，需手动去除不合法字符串</li>
+<li>模板引擎大都由 5 部分组成：语法、解析、编译、缓存、渲染</li>
+<li><a href="https://github.com/PaulGuo/Juicer/" target="_blank" rel="external">juicer</a>原理：<ol>
+<li>对模板代码进行语法分析</li>
+<li>分析后生成原生的Javascript代码字符串</li>
+<li>将生成的代码转为可重用的Function (Compiled Template)</li>
+</ol>
+</li>
+<li><a href="http://nuysoft.com/bak/templating.html" target="_blank" rel="external">前端模板引擎</a></li>
+<li><p><a href="http://taobaofed.org/blog/2012/04/23/juicer-template/" target="_blank" rel="external">Juicer – 一个 JavaScript 模板引擎的实现和优化</a></p>
+<h3 id="手写setTimeout模拟setInterval"><a href="#手写setTimeout模拟setInterval" class="headerlink" title="手写setTimeout模拟setInterval"></a>手写setTimeout模拟setInterval</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//使用<span class="built_in">set</span>Timeout也可以产生<span class="built_in">set</span>Interval的效果</div><div class="line">var i=0;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">intv</span></span>()&#123;</div><div class="line">    <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        console.log(i++);</div><div class="line">        intv()</div><div class="line">    &#125;,1000)</div><div class="line">&#125;</div><div class="line">intv()</div></pre></td></tr></table></figure>
+</li>
+<li><p>intv 在函数执行完成之后的一秒再执行下一个函数</p>
+</li>
+<li>setInterval表示函数执行的间隔为1s<h3 id="组件：封装性，扩展性，事件通信"><a href="#组件：封装性，扩展性，事件通信" class="headerlink" title="组件：封装性，扩展性，事件通信"></a>组件：封装性，扩展性，事件通信</h3></li>
+</ul>
+<h3 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h3><ul>
+<li>let，const， const对于引用类型只是指针不变</li>
+<li>解构赋值，左边一个结构，右边一个种结构，左右一一对应</li>
+<li>正则表达式</li>
+<li>字符串扩展：处理Unicode方法，遍历接口，模版字符串</li>
+<li>数值扩展 - isFinite，isNaN</li>
+<li>数组扩展 - Array.of </li>
+<li>函数扩展 - function test(x = ‘hello’){}</li>
+<li>对象扩展 - Object.is</li>
+<li>Symbol - 声明不重复不想等的变量，保证唯一性</li>
+<li>set，map</li>
+<li>Proxy和reflect</li>
+<li>class，extends</li>
+<li>promise</li>
+<li>iterator和for..of..</li>
+<li>Generator</li>
+<li>async &amp; await</li>
+<li>Decorator 一个函数，修改类行为，扩展类的功能</li>
+<li>模块化 - import，export</li>
+</ul>
+<h3 id="网络安全协议-http／ssl"><a href="#网络安全协议-http／ssl" class="headerlink" title="网络安全协议 http／ssl"></a>网络安全协议 http／ssl</h3><h3 id="gulp和webpack的区别"><a href="#gulp和webpack的区别" class="headerlink" title="gulp和webpack的区别"></a>gulp和webpack的区别</h3><ul>
+<li>gulp简单来说就是一个Task Runner，其强调的是前端开发的工作流程，我们可以通过配置一系列的task，定义task处理的事务（例如文件压缩合并、雪碧图、启动server、版本控制等），然后定义执行顺序，来让gulp执行这些task，从而构建项目的整个前端开发流程。</li>
+<li>webpack简单来说就是一个 Module Bundle，其是一个前端模块化方案，更侧重模块打包，我们可以把开发中的所有资源（图片、js文件、css文件等）都看成模块，通过loader（加载器）和plugins（插件）对资源进行处理，打包成符合生产环境部署的前端资源</li>
+<li>gulp应该与grunt比较，而webpack应该与browserify</li>
+<li>gulp与webpack上是互补的，还是可替换的，取决于你项目的需求</li>
+<li>webpack打包之后的内容是什么？<ul>
+<li>首先 webpack 将所有模块(可以简单理解成文件)包裹于一个函数中，并传入默认参数，这里有三个文件再加上一个入口模块一共四个模块，将它们放入一个数组中，取名为 modules，并通过数组的下标来作为 moduleId</li>
+<li>将 modules 传入一个自执行函数中，自执行函数中包含一个 installedModules 已经加载过的模块和一个模块加载函数，最后加载入口模块并返回</li>
+<li><strong>webpack_require</strong> 模块加载，先判断 installedModules 是否已加载，加载过了就直接返回 exports 数据，没有加载过该模块就通过 modules[moduleId].call(module.exports, module, module.exports, <strong>webpack_require</strong>) 执行模块并且将 module.exports 给返回</li>
+<li>注意<ul>
+<li>每个模块 webpack 只会加载一次,所以重复加载的模块只会执行一次，加载过的模块会放到 installedModules，下次需要需要该模块的值就直接从里面拿了</li>
+<li>模块的 id 直接通过数组下标去一一对应的，这样能保证简单且唯一，通过其它方式比如文件名或文件路径的方式就比较麻烦，因为文件名可能出现重名，不唯一，文件路径则会增大文件体积，并且将路径暴露给前端，不够安全</li>
+<li>modules[moduleId].call(module.exports, module, module.exports, <strong>webpack_require</strong>) 保证了模块加载时 this 的指向 module.exports 并且传入默认参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="vue里数组更改为何能触发值更新"><a href="#vue里数组更改为何能触发值更新" class="headerlink" title="vue里数组更改为何能触发值更新"></a>vue里数组更改为何能触发值更新</h3><ul>
+<li>在Vue中的数组数据，调用上面的那些方法，都是事先实现的同名方法，然后再通过apply调用原生方法，再添加监听器，触发更新等后续操作</li>
+<li>源码解析<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">// 获取原生Array中提供的所有方法</div><div class="line">var arrayProto = Array.prototype;</div><div class="line"></div><div class="line">// 将原生提供的方法创建一个新的对象，以免修改原生的方法，造成全局污染</div><div class="line">var arrayMethods = Object.create(arrayProto); </div><div class="line"></div><div class="line">// 将要实现的几个变异方法</div><div class="line">var methodsToPatch = [</div><div class="line">    <span class="string">'push'</span>,</div><div class="line">    <span class="string">'pop'</span>,</div><div class="line">    <span class="string">'shift'</span>,</div><div class="line">    <span class="string">'unshift'</span>,</div><div class="line">    <span class="string">'splice'</span>,</div><div class="line">    <span class="string">'sort'</span>,</div><div class="line">    <span class="string">'reverse'</span></div><div class="line">];</div><div class="line"></div><div class="line">/**</div><div class="line">* Intercept mutating methods and emit events</div><div class="line">* 截取这些方法，然后实现相应的操作</div><div class="line">*/</div><div class="line">methodsToPatch.forEach(<span class="keyword">function</span> (method) &#123;</div><div class="line">    // cache original method</div><div class="line">    var original = arrayProto[method]; // 缓存原始方法</div><div class="line"></div><div class="line">    // def即Object.defineProperty的包装函数</div><div class="line">    def(arrayMethods, method, <span class="keyword">function</span> <span class="function"><span class="title">mutator</span></span> () &#123;</div><div class="line">        var args = [], len = arguments.length;</div><div class="line">        <span class="keyword">while</span> ( len-- ) args[ len ] = arguments[ len ];</div><div class="line">        </div><div class="line">        var result = original.apply(this, args); // 调用原始方法完成对数组的更新</div><div class="line">        var ob = this.__ob__;</div><div class="line">        var inserted; // 存储要修改的数据</div><div class="line">        switch (method) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'push'</span>:</div><div class="line">        <span class="keyword">case</span> <span class="string">'unshift'</span>:</div><div class="line">            inserted = args;</div><div class="line">            <span class="built_in">break</span></div><div class="line">        <span class="keyword">case</span> <span class="string">'splice'</span>:</div><div class="line">            inserted = args.slice(2);</div><div class="line">            <span class="built_in">break</span></div><div class="line">        &#125;</div><div class="line">        console.log( args, inserted );</div><div class="line">        <span class="keyword">if</span> (inserted) &#123; ob.observeArray(inserted); &#125; // 如果有修改的数据，则添加observer监听器</div><div class="line">        // notify change</div><div class="line">        ob.dep.notify(); // 触发更新</div><div class="line">        <span class="built_in">return</span> result</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">/**</div><div class="line">* Observe a list of Array items.</div><div class="line">* 对数组中的每项添加监听器</div><div class="line">*/</div><div class="line">Observer.prototype.observeArray = <span class="keyword">function</span> observeArray (items) &#123;</div><div class="line"><span class="keyword">for</span> (var i = 0, l = items.length; i &lt; l; i++) &#123;</div><div class="line">    observe(items[i]);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><ul>
+<li><p>es6方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const <span class="built_in">set</span> = new <span class="built_in">set</span>([1, 2, 3, 5, 5])</div><div class="line">[...set]</div></pre></td></tr></table></figure>
+</li>
+<li><p>filter</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var array = [1, 2, 1, 1, <span class="string">'1'</span>];</div><div class="line"></div><div class="line"><span class="keyword">function</span> unique(array) &#123;</div><div class="line">    <span class="built_in">return</span> array.concat().sort().filter(<span class="keyword">function</span>(item, index, array)&#123;</div><div class="line">        <span class="built_in">return</span> !index || item !== array[index - 1]</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(unique(array));</div></pre></td></tr></table></figure>
+</li>
+<li><p>indexof</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var array = [1, 1, <span class="string">'1'</span>];</div><div class="line"></div><div class="line"><span class="keyword">function</span> unique(array) &#123;</div><div class="line">    var res = [];</div><div class="line">    <span class="keyword">for</span> (var i = 0, len = array.length; i &lt; len; i++) &#123;</div><div class="line">        var current = array[i];</div><div class="line">        <span class="keyword">if</span> (res.indexOf(current) === -1) &#123;</div><div class="line">            res.push(current)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(unique(array));</div></pre></td></tr></table></figure>
+</li>
+<li><p>双层循环</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var array = [1, 1, <span class="string">'1'</span>, <span class="string">'1'</span>];</div><div class="line"></div><div class="line"><span class="keyword">function</span> unique(array) &#123;</div><div class="line">    // res用来存储结果</div><div class="line">    var res = [];</div><div class="line">    <span class="keyword">for</span> (var i = 0, arrayLen = array.length; i &lt; arrayLen; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (var j = 0, resLen = res.length; j &lt; resLen; j++ ) &#123;</div><div class="line">            <span class="keyword">if</span> (array[i] === res[j]) &#123;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // 如果array[i]是唯一的，那么执行完循环，j等于resLen</div><div class="line">        <span class="keyword">if</span> (j === resLen) &#123;</div><div class="line">            res.push(array[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> res;</div><div class="line">&#125;</div><div class="line">console.log(unique(array)); // [1, <span class="string">"1"</span>]</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
