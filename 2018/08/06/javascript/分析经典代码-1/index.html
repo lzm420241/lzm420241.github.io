@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
-<meta property="og:updated_time" content="2018-08-07T08:13:12.000Z">
+<meta property="og:updated_time" content="2018-08-07T08:54:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
@@ -217,7 +217,7 @@
       
         
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节流和防抖"><span class="toc-text">节流和防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端笔试面试简答题汇总"><span class="toc-text">前端笔试面试简答题汇总</span></a></li></ol>
           <hr/>
         </div>
         
@@ -664,6 +664,14 @@
 </ul>
 </li>
 </ul>
+<h3 id="节流和防抖"><a href="#节流和防抖" class="headerlink" title="节流和防抖"></a>节流和防抖</h3><ul>
+<li><p>函数节流的核心是，让一个函数不要执行得太频繁，减少一些过快的调用来节流。代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> throttle(fn, interval = 300) &#123;</div><div class="line">    <span class="built_in">let</span> canRun = <span class="literal">true</span>;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="keyword">if</span> (!canRun) <span class="built_in">return</span>;</div><div class="line">        canRun = <span class="literal">false</span>;</div><div class="line">        <span class="built_in">set</span>Timeout(() =&gt; &#123;</div><div class="line">            fn.apply(this, arguments);</div><div class="line">            canRun = <span class="literal">true</span>;</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数去抖就是对于一定时间段的连续的函数调用，只让其执行一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> debounce(fn, interval = 300) &#123;</div><div class="line">    <span class="built_in">let</span> timeout = null;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = <span class="built_in">set</span>Timeout(() =&gt; &#123;</div><div class="line">            fn.apply(this, arguments);</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3></li>
+</ul>
 
       
     </div>
@@ -882,6 +890,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -898,6 +914,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
               </li>
              
@@ -906,15 +926,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -930,6 +954,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -942,15 +978,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -974,10 +1010,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
@@ -995,30 +1027,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">改善代码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
