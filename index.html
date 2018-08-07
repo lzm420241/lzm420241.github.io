@@ -533,7 +533,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var a = &#123;</div><div class="line">    <span class="string">"left"</span>: &#123;key: <span class="string">'value'</span>&#125;,</div><div class="line">    <span class="string">'test'</span>: <span class="string">'hello'</span></div><div class="line">&#125;</div><div class="line">a[<span class="string">"right"</span>] = a[<span class="string">"left"</span>];</div><div class="line">// 这种方式会得到2份内部节点，而不是2个引用相同的副本</div><div class="line">a[<span class="string">"rigth"</span>] = a;</div><div class="line">// 这种方式会导致无限递归，导致堆栈溢出, a.right无限引用a导致无限循环</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">bind</span> (that) &#123;</div><div class="line">    var target = this</div><div class="line">    var <span class="built_in">bind</span>Args = Array.prototype.slice.call(arguments, 1)</div><div class="line"></div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">bound</span></span> () &#123;</div><div class="line">        var callArgs = Array.prototype.slice.call(arguments)</div><div class="line">        <span class="keyword">if</span> (this instanceof bound) &#123;</div><div class="line">        <span class="built_in">return</span> target.apply(this, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">return</span> target.apply(that, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 实现继承，让bound函数生成的实例通过原型链能追溯到target函数</div><div class="line">    // 即 实例可以获取/调用target.prototype上的属性/方法</div><div class="line">    var Empty = <span class="function"><span class="title">function</span></span> () &#123;&#125;</div><div class="line">        Empty.prototype = target.prototype</div><div class="line">        bound.prototype = new Empty()  </div><div class="line">        // 这里如果不加入Empty，直接bound.prototype = target.prototype的话</div><div class="line">        // 改变bound.prototype则会影响到target.prototype，原型继承基本都会加入这么一个中间对象做屏障</div><div class="line">        <span class="built_in">return</span> bound</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="自己实现bind函数"><a href="#自己实现bind函数" class="headerlink" title="自己实现bind函数"></a>自己实现bind函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">bind</span> (that) &#123;</div><div class="line">    var target = this</div><div class="line">    var <span class="built_in">bind</span>Args = Array.prototype.slice.call(arguments, 1)</div><div class="line"></div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">bound</span></span> () &#123;</div><div class="line">        var callArgs = Array.prototype.slice.call(arguments)</div><div class="line">        <span class="keyword">if</span> (this instanceof bound) &#123;</div><div class="line">           <span class="built_in">return</span> target.apply(this, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="built_in">return</span> target.apply(that, callArgs.concat(<span class="built_in">bind</span>Args))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 实现继承，让bound函数生成的实例通过原型链能追溯到target函数</div><div class="line">    // 即 实例可以获取/调用target.prototype上的属性/方法</div><div class="line">    var Empty = <span class="function"><span class="title">function</span></span> () &#123;&#125;</div><div class="line">        Empty.prototype = target.prototype</div><div class="line">        bound.prototype = new Empty()  </div><div class="line">        // 这里如果不加入Empty，直接bound.prototype = target.prototype的话</div><div class="line">        // 改变bound.prototype则会影响到target.prototype，原型继承基本都会加入这么一个中间对象做屏障</div><div class="line">        <span class="built_in">return</span> bound</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="get和post区别及post安全问题"><a href="#get和post区别及post安全问题" class="headerlink" title="get和post区别及post安全问题"></a>get和post区别及post安全问题</h3><ul>
 <li>根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的</li>
 <li>根据HTTP规范，POST表示可能修改变服务器上的资源的请求</li>
@@ -619,6 +619,9 @@
 <li><p>源码解析</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">// 获取原生Array中提供的所有方法</div><div class="line">var arrayProto = Array.prototype;</div><div class="line"></div><div class="line">// 将原生提供的方法创建一个新的对象，以免修改原生的方法，造成全局污染</div><div class="line">var arrayMethods = Object.create(arrayProto); </div><div class="line"></div><div class="line">// 将要实现的几个变异方法</div><div class="line">var methodsToPatch = [</div><div class="line">    <span class="string">'push'</span>,</div><div class="line">    <span class="string">'pop'</span>,</div><div class="line">    <span class="string">'shift'</span>,</div><div class="line">    <span class="string">'unshift'</span>,</div><div class="line">    <span class="string">'splice'</span>,</div><div class="line">    <span class="string">'sort'</span>,</div><div class="line">    <span class="string">'reverse'</span></div><div class="line">];</div><div class="line"></div><div class="line">/**</div><div class="line">* Intercept mutating methods and emit events</div><div class="line">* 截取这些方法，然后实现相应的操作</div><div class="line">*/</div><div class="line">methodsToPatch.forEach(<span class="keyword">function</span> (method) &#123;</div><div class="line">    // cache original method</div><div class="line">    var original = arrayProto[method]; // 缓存原始方法</div><div class="line"></div><div class="line">    // def即Object.defineProperty的包装函数</div><div class="line">    def(arrayMethods, method, <span class="keyword">function</span> <span class="function"><span class="title">mutator</span></span> () &#123;</div><div class="line">        var args = [], len = arguments.length;</div><div class="line">        <span class="keyword">while</span> ( len-- ) args[ len ] = arguments[ len ];</div><div class="line">        var result = original.apply(this, args); // 调用原始方法完成对数组的更新</div><div class="line">        var ob = this.__ob__;</div><div class="line">        var inserted; // 存储要修改的数据</div><div class="line">        switch (method) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'push'</span>:</div><div class="line">        <span class="keyword">case</span> <span class="string">'unshift'</span>:</div><div class="line">            inserted = args;</div><div class="line">            <span class="built_in">break</span></div><div class="line">        <span class="keyword">case</span> <span class="string">'splice'</span>:</div><div class="line">            inserted = args.slice(2);</div><div class="line">            <span class="built_in">break</span></div><div class="line">        &#125;</div><div class="line">        console.log( args, inserted );</div><div class="line">        <span class="keyword">if</span> (inserted) &#123; ob.observeArray(inserted); &#125; // 如果有修改的数据，则添加observer监听器</div><div class="line">        // notify change</div><div class="line">        ob.dep.notify(); // 触发更新</div><div class="line">        <span class="built_in">return</span> result</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">/**</div><div class="line">* Observe a list of Array items.</div><div class="line">* 对数组中的每项添加监听器</div><div class="line">*/</div><div class="line">Observer.prototype.observeArray = <span class="keyword">function</span> observeArray (items) &#123;</div><div class="line"><span class="keyword">for</span> (var i = 0, l = items.length; i &lt; l; i++) &#123;</div><div class="line">    observe(items[i]);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
+<li><p>参考链接：<a href="https://segmentfault.com/a/1190000004384515" target="_blank" rel="external"><br>vue 源码分析之如何实现 observer 和 watcher
+</a></p>
+</li>
 </ul>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><ul>
 <li><p>es6方式</p>
@@ -632,6 +635,25 @@
 </li>
 <li><p>双层循环</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var array = [1, 1, <span class="string">'1'</span>, <span class="string">'1'</span>];</div><div class="line"></div><div class="line"><span class="keyword">function</span> unique(array) &#123;</div><div class="line">    // res用来存储结果</div><div class="line">    var res = [];</div><div class="line">    <span class="keyword">for</span> (var i = 0, arrayLen = array.length; i &lt; arrayLen; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (var j = 0, resLen = res.length; j &lt; resLen; j++ ) &#123;</div><div class="line">            <span class="keyword">if</span> (array[i] === res[j]) &#123;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // 如果array[i]是唯一的，那么执行完循环，j等于resLen</div><div class="line">        <span class="keyword">if</span> (j === resLen) &#123;</div><div class="line">            res.push(array[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> res;</div><div class="line">&#125;</div><div class="line">console.log(unique(array)); // [1, <span class="string">"1"</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="移动端适配"><a href="#移动端适配" class="headerlink" title="移动端适配"></a>移动端适配</h3><ul>
+<li><p>flexible解决方案：</p>
+<ol>
+<li>引入meta</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"</span>&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>动态计算font-size + rem的单位</li>
+</ol>
+</li>
+<li><p>参考：</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000004336869" target="_blank" rel="external">移动端适配方案(上)</a></li>
+<li><a href="https://segmentfault.com/a/1190000004358316" target="_blank" rel="external">移动端适配方案(下)</a></li>
+<li><a href="http://html-js.com/article/MobileWeb" target="_blank" rel="external">MobileWeb 适配总结</a></li>
+<li><a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external">使用Flexible实现手淘H5页面的终端适配</a></li>
+</ul>
 </li>
 </ul>
 
@@ -1518,6 +1540,82 @@
 
 
   
+    <article id="post-javascript/jquery源码入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/javascript/jquery源码入门（一）/">jquery整体架构</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/20/javascript/jquery源码入门（一）/" class="archive-article-date">
+  	<time datetime="2018-07-20T00:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/20/javascript/jquery源码入门（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/前端页面渲染与性能优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1586,82 +1684,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/20/javascript/前端页面渲染与性能优化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/jquery源码入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/javascript/jquery源码入门（一）/">jquery整体架构</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/20/javascript/jquery源码入门（一）/" class="archive-article-date">
-  	<time datetime="2018-07-20T00:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/20/javascript/jquery源码入门（一）/">展开全文 >></a>
         </p>
       
 
@@ -1816,27 +1838,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1848,7 +1850,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">css layout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1876,15 +1898,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1897,6 +1915,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">改善代码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1917,14 +1947,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
