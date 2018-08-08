@@ -669,13 +669,19 @@
 <li><p>脏检查机制</p>
 </li>
 <li><p>前端数据劫持</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">&lt;input q-value=<span class="string">"value"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"input"</span>&gt;</div><div class="line">&lt;div q-text=<span class="string">"value"</span> id=<span class="string">"el"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var elems = [document.getElementById(<span class="string">'el'</span>), document.getElementById(<span class="string">'input'</span>)];</div><div class="line">    var data = &#123;</div><div class="line">        value: <span class="string">'hello!'</span></div><div class="line">    &#125;;</div><div class="line">    var <span class="built_in">command</span> = &#123;</div><div class="line">        text: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.innerHTML = str;</div><div class="line">        &#125;,</div><div class="line">        value: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.setAttribute(<span class="string">'value'</span>, str);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    var scan = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        /**</div><div class="line">        * 扫描带指令的节点属性</div><div class="line">        */</div><div class="line">        <span class="keyword">for</span> (var i = 0, len = elems.length; i &lt; len; i++) &#123;</div><div class="line">            var elem = elems[i];</div><div class="line">            elem.command = [];</div><div class="line">            <span class="keyword">for</span> (var j = 0, len1 = elem.attributes.length; j &lt; len1; j++) &#123;</div><div class="line">                var attr = elem.attributes[j];</div><div class="line">                <span class="keyword">if</span> (attr.nodeName.indexOf(<span class="string">'q-'</span>) &gt;= 0) &#123;</div><div class="line">                    /**</div><div class="line">                    * 调用属性指令</div><div class="line">                    */</div><div class="line">                    <span class="built_in">command</span>[attr.nodeName.slice(2)].call(elem, data[attr.nodeValue]);</div><div class="line">                    elem.command.push(attr.nodeName.slice(2));</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var bValue;</div><div class="line">    /**</div><div class="line">    * 定义属性设置劫持</div><div class="line">    */</div><div class="line">    var defineGetAndSet = <span class="keyword">function</span>(obj, propName) &#123;</div><div class="line">        try &#123;</div><div class="line">            Object.defineProperty(obj, propName, &#123;</div><div class="line"></div><div class="line">                get: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">                    <span class="built_in">return</span> bValue;</div><div class="line">                &#125;,</div><div class="line">                <span class="built_in">set</span>: <span class="keyword">function</span>(newValue) &#123;</div><div class="line">                    bValue = newValue;</div><div class="line">                    scan();</div><div class="line">                &#125;,</div><div class="line"></div><div class="line">                enumerable: <span class="literal">true</span>,</div><div class="line">                configurable: <span class="literal">true</span></div><div class="line">            &#125;);</div><div class="line">        &#125; catch (error) &#123;</div><div class="line">            console.log(<span class="string">"browser not supported."</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 初始化数据</div><div class="line">    */</div><div class="line">    scan();</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 可以理解为做数据劫持监听</div><div class="line">    */</div><div class="line">    defineGetAndSet(data, <span class="string">'value'</span>);</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 数据绑定监听</div><div class="line">    */</div><div class="line">    <span class="keyword">if</span>(document.addEventListener)&#123;</div><div class="line">        elems[1].addEventListener(<span class="string">'keyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        elems[1].attachEvent(<span class="string">'onkeyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        data.value = <span class="string">'fuck'</span>;</div><div class="line">    &#125;, 2000)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">&lt;input q-value=<span class="string">"value"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"input"</span>&gt;</div><div class="line">&lt;div q-text=<span class="string">"value"</span> id=<span class="string">"el"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var elems = [document.getElementById(<span class="string">'el'</span>), document.getElementById(<span class="string">'input'</span>)];</div><div class="line">    var data = &#123;</div><div class="line">        value: <span class="string">'hello!'</span></div><div class="line">    &#125;;</div><div class="line">    var <span class="built_in">command</span> = &#123;</div><div class="line">        text: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.innerHTML = str;</div><div class="line">        &#125;,</div><div class="line">        value: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.setAttribute(<span class="string">'value'</span>, str);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    var scan = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        /**</div><div class="line">        * 扫描带指令的节点属性</div><div class="line">        */</div><div class="line">        <span class="keyword">for</span> (var i = 0, len = elems.length; i &lt; len; i++) &#123;</div><div class="line">            var elem = elems[i];</div><div class="line">            <span class="keyword">for</span> (var j = 0, len1 = elem.attributes.length; j &lt; len1; j++) &#123;</div><div class="line">                var attr = elem.attributes[j];</div><div class="line">                <span class="keyword">if</span> (attr.nodeName.indexOf(<span class="string">'q-'</span>) &gt;= 0) &#123;</div><div class="line">                    /**</div><div class="line">                    * 调用属性指令</div><div class="line">                    */</div><div class="line">                    <span class="built_in">command</span>[attr.nodeName.slice(2)].call(elem, data[attr.nodeValue]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var bValue;</div><div class="line">    /**</div><div class="line">    * 定义属性设置劫持</div><div class="line">    */</div><div class="line">    var defineGetAndSet = <span class="keyword">function</span>(obj, propName) &#123;</div><div class="line">        try &#123;</div><div class="line">            Object.defineProperty(obj, propName, &#123;</div><div class="line"></div><div class="line">                get: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">                    <span class="built_in">return</span> bValue;</div><div class="line">                &#125;,</div><div class="line">                <span class="built_in">set</span>: <span class="keyword">function</span>(newValue) &#123;</div><div class="line">                    bValue = newValue;</div><div class="line">                    scan();</div><div class="line">                &#125;,</div><div class="line"></div><div class="line">                enumerable: <span class="literal">true</span>,</div><div class="line">                configurable: <span class="literal">true</span></div><div class="line">            &#125;);</div><div class="line">        &#125; catch (error) &#123;</div><div class="line">            console.log(<span class="string">"browser not supported."</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 初始化数据</div><div class="line">    */</div><div class="line">    scan();</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 可以理解为做数据劫持监听</div><div class="line">    */</div><div class="line">    defineGetAndSet(data, <span class="string">'value'</span>);</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 数据绑定监听</div><div class="line">    */</div><div class="line">    <span class="keyword">if</span>(document.addEventListener)&#123;</div><div class="line">        elems[1].addEventListener(<span class="string">'keyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        elems[1].attachEvent(<span class="string">'onkeyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        data.value = <span class="string">'fuck'</span>;</div><div class="line">    &#125;, 2000)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>简易写法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;&#125;;</div><div class="line">Object.defineProperty(obj,<span class="string">'hello'</span>,&#123;</div><div class="line">    <span class="built_in">set</span>:<span class="keyword">function</span>(val)&#123;</div><div class="line">        document.getElementById(<span class="string">'bb'</span>).innerHTML = val;</div><div class="line">        document.getElementById(<span class="string">'aa'</span>).value = val;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">document.getElementById(<span class="string">'aa'</span>).onkeyup = <span class="keyword">function</span>(e)&#123;</div><div class="line">    obj.hello = e.target.value;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var elems = [document.getElementById(<span class="string">'el'</span>), document.getElementById(<span class="string">'input'</span>)];</div><div class="line">var obj = &#123;&#125;;</div><div class="line">    Object.defineProperty(obj, <span class="string">'hello'</span>, &#123;</div><div class="line">    <span class="built_in">set</span>: <span class="keyword">function</span>(val) &#123;</div><div class="line">        elems[0].innerHTML = val;</div><div class="line">        elems[1].setAttribute(<span class="string">'value'</span>, val);</div><div class="line">    &#125;</div><div class="line">    &#125;)</div><div class="line">    elems[1].onkeyup = <span class="keyword">function</span>(e) &#123;</div><div class="line">        obj.hello = e.target.value;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>参考文档：</p>
+<ul>
+<li><a href="https://github.com/DMQ/mvvm" target="_blank" rel="external">剖析Vue实现原理 - 如何实现双向绑定mvvm</a></li>
+<li><a href="http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html" target="_blank" rel="external">设计模式之观察者模式</a></li>
+</ul>
+<h3 id="Virtual-DOM原理"><a href="#Virtual-DOM原理" class="headerlink" title="Virtual DOM原理"></a>Virtual DOM原理</h3><h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
 <li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
 </li>
@@ -1564,6 +1570,82 @@
 
 
   
+    <article id="post-javascript/jquery源码入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/javascript/jquery源码入门（一）/">jquery整体架构</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/20/javascript/jquery源码入门（一）/" class="archive-article-date">
+  	<time datetime="2018-07-20T00:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/20/javascript/jquery源码入门（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
     <article id="post-javascript/前端页面渲染与性能优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -1632,82 +1714,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/20/javascript/前端页面渲染与性能优化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-  
-    <article id="post-javascript/jquery源码入门（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/javascript/jquery源码入门（一）/">jquery整体架构</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/20/javascript/jquery源码入门（一）/" class="archive-article-date">
-  	<time datetime="2018-07-20T00:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识点总结/" class="article-tag-list-link color3">前端知识点总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/20/javascript/jquery源码入门（一）/">展开全文 >></a>
         </p>
       
 
@@ -1826,14 +1832,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -1851,6 +1849,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1886,10 +1892,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
@@ -1898,7 +1900,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">异常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1914,23 +1928,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">异常</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1954,15 +1956,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1983,6 +1977,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
