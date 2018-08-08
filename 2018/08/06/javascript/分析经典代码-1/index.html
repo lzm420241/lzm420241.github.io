@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
-<meta property="og:updated_time" content="2018-08-08T06:29:46.000Z">
+<meta property="og:updated_time" content="2018-08-08T09:12:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
@@ -697,10 +697,42 @@
 <li><a href="https://github.com/DMQ/mvvm" target="_blank" rel="external">剖析Vue实现原理 - 如何实现双向绑定mvvm</a></li>
 <li><a href="http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html" target="_blank" rel="external">设计模式之观察者模式</a></li>
 </ul>
-<h3 id="Virtual-DOM原理"><a href="#Virtual-DOM原理" class="headerlink" title="Virtual DOM原理"></a>Virtual DOM原理</h3><h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
-<li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
+</li>
+</ul>
+<h3 id="Virtual-DOM原理"><a href="#Virtual-DOM原理" class="headerlink" title="Virtual DOM原理"></a>Virtual DOM原理</h3><ul>
+<li>思想：我们可以采取用JavaScript的方法来模拟DOM树，用新渲染的对象树去和旧的树进行对比，记录下变化的变化，然后应用到真实的DOM树上，这样我们只需要更改与原来视图不同的地方，而不需要全部重新渲染一次。这就是virtual-DOM的优势</li>
+<li><p>实现步骤</p>
+<ol>
+<li>用JS对象模拟DOM树</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">// element file</div><div class="line"><span class="keyword">function</span> Element (tagName, props, children) &#123;</div><div class="line">    this.tagName = tagName</div><div class="line">    this.props = props</div><div class="line">    this.children = children</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = <span class="keyword">function</span> (tagName, props, children) &#123;</div><div class="line">    <span class="built_in">return</span> new Element(tagName, props, children)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var el = require(<span class="string">'./element'</span>)</div><div class="line"></div><div class="line">var ul = el(<span class="string">'ul'</span>, &#123;id: <span class="string">'list'</span>&#125;, [</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 1'</span>]),</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 2'</span>]),</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 3'</span>])</div><div class="line">])</div><div class="line"></div><div class="line">// 构建一个真正的DOM树</div><div class="line">Element.prototype.render = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    var el = document.createElement(this.tagName) // 根据tagName构建</div><div class="line">    var props = this.props</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (var propName <span class="keyword">in</span> props) &#123; // 设置节点的DOM属性</div><div class="line">        var propValue = props[propName]</div><div class="line">        el.setAttribute(propName, propValue)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var children = this.children || []</div><div class="line"></div><div class="line">    children.forEach(<span class="keyword">function</span> (child) &#123;</div><div class="line">        var childEl = (child instanceof Element)</div><div class="line">        ? child.render() // 如果子节点也是虚拟DOM，递归构建DOM节点</div><div class="line">        : document.createTextNode(child) // 如果字符串，只构建文本节点</div><div class="line">        el.appendChild(childEl)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    <span class="built_in">return</span> el</div><div class="line">&#125;</div><div class="line"></div><div class="line">var ulRoot = ul.render()</div><div class="line">document.body.appendChild(ulRoot)</div></pre></td></tr></table></figure>
+<ol>
+<li><p>比较两颗虚拟DOM树的差异</p>
+<ul>
+<li>对新旧两棵树进行深度遍历，给每一个节点进行标记。然后在新旧两棵树的对比中，将不同的地方记录下来</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// diff 算法，对比两棵树</div><div class="line"><span class="keyword">function</span> diff(oldTree, newTree) &#123;</div><div class="line">    var index = 0   // 当前节点的标志</div><div class="line">    var patches = &#123;&#125; // 记录每个节点差异的地方</div><div class="line">    dfsWalk(oldTree, newTree, index, patches)</div><div class="line">    <span class="built_in">return</span> patches</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> dfsWalk(oldNode, newNode, index, patches) &#123;</div><div class="line">    // 对比newNode和oldNode的差异地方进行记录</div><div class="line">    patches[index] = [...]</div><div class="line"></div><div class="line">    diffChildren(oldNode.children, newNode.children, index, patches)</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> diffChildren(oldChildren, newChildren, index, patches) &#123;</div><div class="line">    <span class="built_in">let</span> leftNode = null</div><div class="line">    var currentNodeIndex = index</div><div class="line">    oldChildren.forEach((child, i) =&gt; &#123;</div><div class="line">        var newChild = newChildren[i]</div><div class="line">        currentNodeIndex =  (leftNode &amp;&amp; leftNode.count) // 计算节点的标记</div><div class="line">                ? currentNodeIndex + leftNode.count + 1</div><div class="line">                : currentNodeIndex + 1</div><div class="line">        dfsWalk(child, newChild, currentNodeIndex, patches) // 遍历子节点</div><div class="line">        leftNode = child</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>把差异应用到真正的DOM树上</p>
+<ul>
+<li>patches 对象进行对比，找到其中差异，然后应用到DOM操作中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> patch(node, patches) &#123;</div><div class="line">    var walker = &#123;index: 0&#125; // 记录当前节点的标志</div><div class="line">    dfsWalk(node, walker, patches)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> dfsWalk(node, walker, patches) &#123;</div><div class="line">    var currentPatches = patches[walker.index] // 这是当前节点的差异</div><div class="line"></div><div class="line">    var len = node.childNodes</div><div class="line">        ? node.childNodes.length</div><div class="line">        : 0</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (var i = 0; i &lt; len; i++) &#123; // 深度遍历子节点</div><div class="line">        var child = node.childNodes[i]</div><div class="line">        walker.index++</div><div class="line">        dfsWalk(child, walker, patches)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (currentPatches) &#123;</div><div class="line">        applyPatches(node, currentPatches) // 对当前节点进行DOM操作</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 将差异的部分应用到DOM中</div><div class="line"><span class="keyword">function</span> applyPatches(node, currentPatches) &#123;</div><div class="line">    currentPatches.forEach((currentPatch) =&gt; &#123;</div><div class="line">        switch (currentPatch.type) &#123;</div><div class="line">            <span class="keyword">case</span> REPLACE:</div><div class="line">                var newNode = (typeof currentPatch.node === <span class="string">'string'</span>)</div><div class="line">                    ? document.createTextNode(currentPatch.node)</div><div class="line">                    : currentPatch.node.render()</div><div class="line">                node.parentNode.replaceChild(newNode, node)</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> REORDER:</div><div class="line">                reorderChldren(node, currentPatch.moves)</div><div class="line">                <span class="built_in">break</span></div><div class="line">            <span class="keyword">case</span> PROPS:</div><div class="line">                <span class="built_in">set</span>Props(node, currentPatch.props)</div><div class="line">                <span class="built_in">break</span></div><div class="line">            <span class="keyword">case</span> TEXT:</div><div class="line">                <span class="keyword">if</span> (node.textContent) &#123;</div><div class="line">                    node.textContent = currentPatch.content</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    node.nodeValue = currentPatch.content</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">break</span></div><div class="line">            default:</div><div class="line">                throw new Error(<span class="string">'Unknown patch type '</span> + currentPatch.type)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>参考文档：<ul>
+<li><a href="https://juejin.im/post/5a21621af265da4304066c8d" target="_blank" rel="external">virtual-dom原理与简单实现</a></li>
+<li><a href="https://github.com/y8n/blog/issues/5" target="_blank" rel="external">理解 Virtual DOM</a></li>
+<li><a href="https://github.com/livoras/blog/issues/13" target="_blank" rel="external">深度剖析：如何实现一个 Virtual DOM 算法</a></li>
+<li><a href="https://github.com/livoras/list-diff" target="_blank" rel="external">Diff two lists in O(n)</a></li>
 </ul>
 </li>
+</ul>
+<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
+<li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
 
       
@@ -952,6 +984,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
@@ -961,10 +997,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -980,15 +1012,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,15 +1068,27 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感冒</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1065,18 +1109,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">

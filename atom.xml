@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-08-08T06:29:46.000Z</updated>
+  <updated>2018-08-08T09:12:06.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
     <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
     <published>2018-08-06T02:23:32.000Z</published>
-    <updated>2018-08-08T06:29:46.000Z</updated>
+    <updated>2018-08-08T09:12:06.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
 <ul>
@@ -498,10 +498,42 @@
 <li><a href="https://github.com/DMQ/mvvm" target="_blank" rel="external">剖析Vue实现原理 - 如何实现双向绑定mvvm</a></li>
 <li><a href="http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html" target="_blank" rel="external">设计模式之观察者模式</a></li>
 </ul>
-<h3 id="Virtual-DOM原理"><a href="#Virtual-DOM原理" class="headerlink" title="Virtual DOM原理"></a>Virtual DOM原理</h3><h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
-<li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
+</li>
+</ul>
+<h3 id="Virtual-DOM原理"><a href="#Virtual-DOM原理" class="headerlink" title="Virtual DOM原理"></a>Virtual DOM原理</h3><ul>
+<li>思想：我们可以采取用JavaScript的方法来模拟DOM树，用新渲染的对象树去和旧的树进行对比，记录下变化的变化，然后应用到真实的DOM树上，这样我们只需要更改与原来视图不同的地方，而不需要全部重新渲染一次。这就是virtual-DOM的优势</li>
+<li><p>实现步骤</p>
+<ol>
+<li>用JS对象模拟DOM树</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">// element file</div><div class="line"><span class="keyword">function</span> Element (tagName, props, children) &#123;</div><div class="line">    this.tagName = tagName</div><div class="line">    this.props = props</div><div class="line">    this.children = children</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = <span class="keyword">function</span> (tagName, props, children) &#123;</div><div class="line">    <span class="built_in">return</span> new Element(tagName, props, children)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var el = require(<span class="string">'./element'</span>)</div><div class="line"></div><div class="line">var ul = el(<span class="string">'ul'</span>, &#123;id: <span class="string">'list'</span>&#125;, [</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 1'</span>]),</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 2'</span>]),</div><div class="line">    el(<span class="string">'li'</span>, &#123;class: <span class="string">'item'</span>&#125;, [<span class="string">'Item 3'</span>])</div><div class="line">])</div><div class="line"></div><div class="line">// 构建一个真正的DOM树</div><div class="line">Element.prototype.render = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    var el = document.createElement(this.tagName) // 根据tagName构建</div><div class="line">    var props = this.props</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (var propName <span class="keyword">in</span> props) &#123; // 设置节点的DOM属性</div><div class="line">        var propValue = props[propName]</div><div class="line">        el.setAttribute(propName, propValue)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var children = this.children || []</div><div class="line"></div><div class="line">    children.forEach(<span class="keyword">function</span> (child) &#123;</div><div class="line">        var childEl = (child instanceof Element)</div><div class="line">        ? child.render() // 如果子节点也是虚拟DOM，递归构建DOM节点</div><div class="line">        : document.createTextNode(child) // 如果字符串，只构建文本节点</div><div class="line">        el.appendChild(childEl)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    <span class="built_in">return</span> el</div><div class="line">&#125;</div><div class="line"></div><div class="line">var ulRoot = ul.render()</div><div class="line">document.body.appendChild(ulRoot)</div></pre></td></tr></table></figure>
+<ol>
+<li><p>比较两颗虚拟DOM树的差异</p>
+<ul>
+<li>对新旧两棵树进行深度遍历，给每一个节点进行标记。然后在新旧两棵树的对比中，将不同的地方记录下来</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// diff 算法，对比两棵树</div><div class="line"><span class="keyword">function</span> diff(oldTree, newTree) &#123;</div><div class="line">    var index = 0   // 当前节点的标志</div><div class="line">    var patches = &#123;&#125; // 记录每个节点差异的地方</div><div class="line">    dfsWalk(oldTree, newTree, index, patches)</div><div class="line">    <span class="built_in">return</span> patches</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> dfsWalk(oldNode, newNode, index, patches) &#123;</div><div class="line">    // 对比newNode和oldNode的差异地方进行记录</div><div class="line">    patches[index] = [...]</div><div class="line"></div><div class="line">    diffChildren(oldNode.children, newNode.children, index, patches)</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> diffChildren(oldChildren, newChildren, index, patches) &#123;</div><div class="line">    <span class="built_in">let</span> leftNode = null</div><div class="line">    var currentNodeIndex = index</div><div class="line">    oldChildren.forEach((child, i) =&gt; &#123;</div><div class="line">        var newChild = newChildren[i]</div><div class="line">        currentNodeIndex =  (leftNode &amp;&amp; leftNode.count) // 计算节点的标记</div><div class="line">                ? currentNodeIndex + leftNode.count + 1</div><div class="line">                : currentNodeIndex + 1</div><div class="line">        dfsWalk(child, newChild, currentNodeIndex, patches) // 遍历子节点</div><div class="line">        leftNode = child</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>把差异应用到真正的DOM树上</p>
+<ul>
+<li>patches 对象进行对比，找到其中差异，然后应用到DOM操作中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> patch(node, patches) &#123;</div><div class="line">    var walker = &#123;index: 0&#125; // 记录当前节点的标志</div><div class="line">    dfsWalk(node, walker, patches)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> dfsWalk(node, walker, patches) &#123;</div><div class="line">    var currentPatches = patches[walker.index] // 这是当前节点的差异</div><div class="line"></div><div class="line">    var len = node.childNodes</div><div class="line">        ? node.childNodes.length</div><div class="line">        : 0</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (var i = 0; i &lt; len; i++) &#123; // 深度遍历子节点</div><div class="line">        var child = node.childNodes[i]</div><div class="line">        walker.index++</div><div class="line">        dfsWalk(child, walker, patches)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (currentPatches) &#123;</div><div class="line">        applyPatches(node, currentPatches) // 对当前节点进行DOM操作</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 将差异的部分应用到DOM中</div><div class="line"><span class="keyword">function</span> applyPatches(node, currentPatches) &#123;</div><div class="line">    currentPatches.forEach((currentPatch) =&gt; &#123;</div><div class="line">        switch (currentPatch.type) &#123;</div><div class="line">            <span class="keyword">case</span> REPLACE:</div><div class="line">                var newNode = (typeof currentPatch.node === <span class="string">'string'</span>)</div><div class="line">                    ? document.createTextNode(currentPatch.node)</div><div class="line">                    : currentPatch.node.render()</div><div class="line">                node.parentNode.replaceChild(newNode, node)</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> REORDER:</div><div class="line">                reorderChldren(node, currentPatch.moves)</div><div class="line">                <span class="built_in">break</span></div><div class="line">            <span class="keyword">case</span> PROPS:</div><div class="line">                <span class="built_in">set</span>Props(node, currentPatch.props)</div><div class="line">                <span class="built_in">break</span></div><div class="line">            <span class="keyword">case</span> TEXT:</div><div class="line">                <span class="keyword">if</span> (node.textContent) &#123;</div><div class="line">                    node.textContent = currentPatch.content</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    node.nodeValue = currentPatch.content</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">break</span></div><div class="line">            default:</div><div class="line">                throw new Error(<span class="string">'Unknown patch type '</span> + currentPatch.type)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>参考文档：<ul>
+<li><a href="https://juejin.im/post/5a21621af265da4304066c8d" target="_blank" rel="external">virtual-dom原理与简单实现</a></li>
+<li><a href="https://github.com/y8n/blog/issues/5" target="_blank" rel="external">理解 Virtual DOM</a></li>
+<li><a href="https://github.com/livoras/blog/issues/13" target="_blank" rel="external">深度剖析：如何实现一个 Virtual DOM 算法</a></li>
+<li><a href="https://github.com/livoras/list-diff" target="_blank" rel="external">Diff two lists in O(n)</a></li>
 </ul>
 </li>
+</ul>
+<h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
+<li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
 ]]></content>
     
@@ -1107,66 +1139,6 @@
   </entry>
   
   <entry>
-    <title>php代码重用与函数编写</title>
-    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
-    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
-    <published>2018-07-18T14:42:08.000Z</published>
-    <updated>2018-07-20T00:52:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
-<li>重用更加轻松编写一致性，可靠性，可维护性</li>
-<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
-<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
-<li>require_once 同一文件只会包含一次</li>
-<li>include_once 同一文件只会包含一次</li>
-<li>auto_prepend_file 在页面顶部加载文件</li>
-<li>auto_append_file 在页面底部加载文件</li>
-<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
-<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
-</ul>
-<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
-<li>函数名不区分大小写</li>
-<li>PHP不支持重载</li>
-<li>PHP作用域<ol>
-<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
-<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
-<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
-<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
-<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
-<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
-</ol>
-</li>
-<li>PHP命名空间，类名可以通过三种方式引用<ol>
-<li>非限定名称，或不包含前缀的类名称</li>
-<li>限定名称,或包含前缀的名称</li>
-<li>完全限定名称，或包含了全局前缀操作符的名称</li>
-</ol>
-</li>
-<li>函数的声明是采用function的方式</li>
-<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
-&lt;li&gt;require函数 require 生成一个致命错误
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
-    
-      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
-    
-      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
-    
-  </entry>
-  
-  <entry>
     <title>php字符串操作与正则表达式</title>
     <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>https://lzm420241.github.io/2018/07/18/php入门/php字符串操作与正则表达式/</id>
@@ -1226,6 +1198,66 @@
       <category term="apache" scheme="https://lzm420241.github.io/tags/apache/"/>
     
       <category term="mysql" scheme="https://lzm420241.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php代码重用与函数编写</title>
+    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
+    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
+    <published>2018-07-18T14:42:08.000Z</published>
+    <updated>2018-07-20T00:52:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
+&lt;li&gt;require函数 require 生成一个致命错误
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
+    
+      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
+    
+      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
