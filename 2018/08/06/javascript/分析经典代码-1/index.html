@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
-<meta property="og:updated_time" content="2018-08-07T10:13:24.000Z">
+<meta property="og:updated_time" content="2018-08-08T01:30:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
@@ -217,7 +217,7 @@
       
         
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节流和防抖"><span class="toc-text">节流和防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端笔试面试简答题汇总"><span class="toc-text">前端笔试面试简答题汇总</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节流和防抖"><span class="toc-text">节流和防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原生实现数据双向绑定"><span class="toc-text">原生实现数据双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端笔试面试简答题汇总"><span class="toc-text">前端笔试面试简答题汇总</span></a></li></ol>
           <hr/>
         </div>
         
@@ -671,6 +671,18 @@
 </li>
 <li><p>函数去抖就是对于一定时间段的连续的函数调用，只让其执行一次</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> debounce(fn, interval = 300) &#123;</div><div class="line">    <span class="built_in">let</span> timeout = null;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = <span class="built_in">set</span>Timeout(() =&gt; &#123;</div><div class="line">            fn.apply(this, arguments);</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="原生实现数据双向绑定"><a href="#原生实现数据双向绑定" class="headerlink" title="原生实现数据双向绑定"></a><a href="https://blog.csdn.net/victoryzn/article/details/79861656" target="_blank" rel="external">原生实现数据双向绑定</a></h3><ul>
+<li><p>脏检查机制</p>
+</li>
+<li><p>前端数据劫持</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">&lt;input q-value=<span class="string">"value"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"input"</span>&gt;</div><div class="line">&lt;div q-text=<span class="string">"value"</span> id=<span class="string">"el"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var elems = [document.getElementById(<span class="string">'el'</span>), document.getElementById(<span class="string">'input'</span>)];</div><div class="line">    var data = &#123;</div><div class="line">        value: <span class="string">'hello!'</span></div><div class="line">    &#125;;</div><div class="line">    var <span class="built_in">command</span> = &#123;</div><div class="line">        text: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.innerHTML = str;</div><div class="line">        &#125;,</div><div class="line">        value: <span class="keyword">function</span>(str) &#123;</div><div class="line">            this.setAttribute(<span class="string">'value'</span>, str);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    var scan = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        /**</div><div class="line">        * 扫描带指令的节点属性</div><div class="line">        */</div><div class="line">        <span class="keyword">for</span> (var i = 0, len = elems.length; i &lt; len; i++) &#123;</div><div class="line">            var elem = elems[i];</div><div class="line">            elem.command = [];</div><div class="line">            <span class="keyword">for</span> (var j = 0, len1 = elem.attributes.length; j &lt; len1; j++) &#123;</div><div class="line">                var attr = elem.attributes[j];</div><div class="line">                <span class="keyword">if</span> (attr.nodeName.indexOf(<span class="string">'q-'</span>) &gt;= 0) &#123;</div><div class="line">                    /**</div><div class="line">                    * 调用属性指令</div><div class="line">                    */</div><div class="line">                    <span class="built_in">command</span>[attr.nodeName.slice(2)].call(elem, data[attr.nodeValue]);</div><div class="line">                    elem.command.push(attr.nodeName.slice(2));</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var bValue;</div><div class="line">    /**</div><div class="line">    * 定义属性设置劫持</div><div class="line">    */</div><div class="line">    var defineGetAndSet = <span class="keyword">function</span>(obj, propName) &#123;</div><div class="line">        try &#123;</div><div class="line">            Object.defineProperty(obj, propName, &#123;</div><div class="line"></div><div class="line">                get: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">                    <span class="built_in">return</span> bValue;</div><div class="line">                &#125;,</div><div class="line">                <span class="built_in">set</span>: <span class="keyword">function</span>(newValue) &#123;</div><div class="line">                    bValue = newValue;</div><div class="line">                    scan();</div><div class="line">                &#125;,</div><div class="line"></div><div class="line">                enumerable: <span class="literal">true</span>,</div><div class="line">                configurable: <span class="literal">true</span></div><div class="line">            &#125;);</div><div class="line">        &#125; catch (error) &#123;</div><div class="line">            console.log(<span class="string">"browser not supported."</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 初始化数据</div><div class="line">    */</div><div class="line">    scan();</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 可以理解为做数据劫持监听</div><div class="line">    */</div><div class="line">    defineGetAndSet(data, <span class="string">'value'</span>);</div><div class="line"></div><div class="line">    /**</div><div class="line">    * 数据绑定监听</div><div class="line">    */</div><div class="line">    <span class="keyword">if</span>(document.addEventListener)&#123;</div><div class="line">        elems[1].addEventListener(<span class="string">'keyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        elems[1].attachEvent(<span class="string">'onkeyup'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            data.value = e.target.value;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        data.value = <span class="string">'fuck'</span>;</div><div class="line">    &#125;, 2000)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>简易写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;&#125;;</div><div class="line">Object.defineProperty(obj,<span class="string">'hello'</span>,&#123;</div><div class="line">    <span class="built_in">set</span>:<span class="keyword">function</span>(val)&#123;</div><div class="line">        document.getElementById(<span class="string">'bb'</span>).innerHTML = val;</div><div class="line">        document.getElementById(<span class="string">'aa'</span>).value = val;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">document.getElementById(<span class="string">'aa'</span>).onkeyup = <span class="keyword">function</span>(e)&#123;</div><div class="line">    obj.hello = e.target.value;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
 <li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
@@ -918,10 +930,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">design</a>
               </li>
              
@@ -930,11 +938,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -954,6 +962,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">你不知道的javascript</a>
               </li>
              
@@ -970,14 +982,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">异常</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
@@ -986,15 +990,27 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">异常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1018,7 +1034,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,18 +1063,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
