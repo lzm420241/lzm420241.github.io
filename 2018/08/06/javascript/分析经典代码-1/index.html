@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/index.html">
 <meta property="og:site_name" content="前端那点事">
 <meta property="og:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
-<meta property="og:updated_time" content="2018-08-08T09:12:06.000Z">
+<meta property="og:updated_time" content="2018-08-09T04:18:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript经典代码">
 <meta name="twitter:description" content="this知识点考察1.考察知识点  this使用 原型及原型链 普通函数及构造函数  2.代码  题目： 注释代码之前及之后的打印信息123456789101112131415this.a = 20;var test = &amp;#123;    a: 40,    init: function() &amp;#123;        function go() &amp;#123;            // t">
@@ -217,7 +217,7 @@
       
         
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节流和防抖"><span class="toc-text">节流和防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原生实现数据双向绑定"><span class="toc-text">原生实现数据双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-DOM原理"><span class="toc-text">Virtual DOM原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端笔试面试简答题汇总"><span class="toc-text">前端笔试面试简答题汇总</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#this知识点考察"><span class="toc-text">this知识点考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript实现继承的方式"><span class="toc-text">Javascript实现继承的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-实现元素垂直居中"><span class="toc-text">CSS 实现元素垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型和box-sizing"><span class="toc-text">盒模型和box-sizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex布局"><span class="toc-text">flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端安全的理解及web系统安全"><span class="toc-text">前端安全的理解及web系统安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMD，CMD，ES6模块化特点及区别"><span class="toc-text">AMD，CMD，ES6模块化特点及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular和vue双向绑定原理"><span class="toc-text">angular和vue双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边固定，右边自适应css布局；宽自适应，高为宽的2倍"><span class="toc-text">边固定，右边自适应css布局；宽自适应，高为宽的2倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-和for-of区别"><span class="toc-text">for in 和for of区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC和IFC"><span class="toc-text">BFC和IFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步几种方式"><span class="toc-text">异步几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS深拷贝，优雅实现"><span class="toc-text">JS深拷贝，优雅实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己实现bind函数"><span class="toc-text">自己实现bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别及post安全问题"><span class="toc-text">get和post区别及post安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写select组件"><span class="toc-text">手写select组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版-–-字符串如何解析成模版，特别是带逻辑这块"><span class="toc-text">模版 – 字符串如何解析成模版，特别是带逻辑这块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手写setTimeout模拟setInterval"><span class="toc-text">手写setTimeout模拟setInterval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件：封装性，扩展性，事件通信"><span class="toc-text">组件：封装性，扩展性，事件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6语法"><span class="toc-text">ES6语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络安全协议-http／ssl"><span class="toc-text">网络安全协议 http／ssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp和webpack的区别"><span class="toc-text">gulp和webpack的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue里数组更改为何能触发值更新"><span class="toc-text">vue里数组更改为何能触发值更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端适配"><span class="toc-text">移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节流和防抖"><span class="toc-text">节流和防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原生实现数据双向绑定"><span class="toc-text">原生实现数据双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-DOM原理"><span class="toc-text">Virtual DOM原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰者模式和订阅-发布模式"><span class="toc-text">装饰者模式和订阅-发布模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端笔试面试简答题汇总"><span class="toc-text">前端笔试面试简答题汇总</span></a></li></ol>
           <hr/>
         </div>
         
@@ -721,16 +721,32 @@
 </li>
 </ol>
 </li>
-</ul>
+<li><p>优势</p>
 <ul>
-<li>参考文档：<ul>
+<li>减少了同一时间内的页面多处内容修改所触发的浏览器reflow和repaint的次数，可能把多个不同的DOM操作集中减少到了几次甚至一次，优化了触发浏览器reflow和repaint的次数</li>
+<li>Vue.js实现了一个queue队列，在下一个tick的时候会统一执行queue中Watcher的run，其本质利用了一个event loop机制，将一些值更新都处理完成之后，才调用Watcher run执行后续操作</li>
+</ul>
+</li>
+<li><p>参考文档：</p>
+<ul>
 <li><a href="https://juejin.im/post/5a21621af265da4304066c8d" target="_blank" rel="external">virtual-dom原理与简单实现</a></li>
 <li><a href="https://github.com/y8n/blog/issues/5" target="_blank" rel="external">理解 Virtual DOM</a></li>
 <li><a href="https://github.com/livoras/blog/issues/13" target="_blank" rel="external">深度剖析：如何实现一个 Virtual DOM 算法</a></li>
 <li><a href="https://github.com/livoras/list-diff" target="_blank" rel="external">Diff two lists in O(n)</a></li>
+<li><a href="https://segmentfault.com/a/1190000010090659" target="_blank" rel="external">virtual-dom(Vue实现)简析</a></li>
+<li><a href="https://github.com/youngwind/blog/issues/88" target="_blank" rel="external">批处理更新DOM</a></li>
+<li><a href="https://juejin.im/post/59c7b25a5188257a125d7a98" target="_blank" rel="external">从Vue.js源码看异步更新DOM策略及nextTick</a></li>
 </ul>
 </li>
 </ul>
+<h3 id="装饰者模式和订阅-发布模式"><a href="#装饰者模式和订阅-发布模式" class="headerlink" title="装饰者模式和订阅-发布模式"></a>装饰者模式和订阅-发布模式</h3><ul>
+<li>装饰者模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">// 污染原型</div><div class="line"></div><div class="line">Function.prototype.before = <span class="keyword">function</span>(beforeFunc) &#123;</div><div class="line">    var that = this;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        beforeFunc.apply(this, arguments);</div><div class="line">        <span class="built_in">return</span> that.apply(this, arguments);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Function.prototype.after = <span class="keyword">function</span>(afterFunc) &#123;</div><div class="line">    var that = this;</div><div class="line">    console.log(<span class="string">'that: '</span>, that);</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ret = that.apply(this, arguments);</div><div class="line">            afterFunc.apply(this,  arguments);</div><div class="line">            <span class="built_in">return</span> ret;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 无污染原型</div><div class="line"></div><div class="line">var before = <span class="keyword">function</span>(originFunc, beforeFunc) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        beforeFunc.apply(this, arguments);</div><div class="line">        <span class="built_in">return</span> originFunc.apply(this, arguments);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var after = <span class="keyword">function</span>(originFunc, afterFunc) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ret = originFunc.apply(this, arguments);</div><div class="line">            afterFunc.apply(this, arguments);</div><div class="line">            <span class="built_in">return</span> ret;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var foobar = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x, y, z);</div><div class="line">&#125;</div><div class="line">var foo = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x/10, y/10, z/10);</div><div class="line">&#125;</div><div class="line">var bar = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x*10, y*10, z*10);</div><div class="line">&#125;</div><div class="line">foobar = foobar.before(foo).after(bar);</div><div class="line">foobar(1, 2, 3);</div><div class="line">before(foobar, foo)(1, 2, 3);</div><div class="line">after(foobar, bar)(1, 2, 3);</div></pre></td></tr></table></figure>
+<ul>
+<li>订阅-发布模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">var Event = (<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    var list = &#123;&#125;,</div><div class="line">        listen,</div><div class="line">        trigger,</div><div class="line">        remove;</div><div class="line">        listen = <span class="keyword">function</span>(key, fn) &#123;</div><div class="line">            <span class="keyword">if</span>(!list[key])&#123;</div><div class="line">                list[key] = [];</div><div class="line">            &#125;</div><div class="line">            list[key].push(fn);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        trigger = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">            var key = Array.prototype.shift.call(arguments);</div><div class="line">            var msg = list[key];</div><div class="line">            console.log(<span class="string">'msg: '</span>, msg);</div><div class="line">            <span class="keyword">if</span>(!msg || msg.length === 0) &#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(var i = 0; i &lt; msg.length; i++) &#123;</div><div class="line">                msg[i].apply(this, arguments);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        remove = <span class="keyword">function</span>(key, fn) &#123;</div><div class="line">            var msg = list[key];</div><div class="line">            <span class="keyword">if</span>(!msg) &#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(!fn) &#123;</div><div class="line">                delete list[key];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">for</span>(var i = 0; i &lt; msg; i++) &#123;</div><div class="line">                    <span class="keyword">if</span>(fn === msg[i]) &#123;</div><div class="line">                        msg.splice(i, 1);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> &#123;</div><div class="line">            listen: listen,</div><div class="line">            trigger: trigger,</div><div class="line">            remove: remove</div><div class="line">        &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log(<span class="string">'event: '</span>, Event);</div><div class="line"></div><div class="line">var <span class="built_in">log</span>Event = <span class="keyword">function</span>(data)&#123;</div><div class="line">    console.log(<span class="string">'这是一个发布订阅模式: data: '</span>, data);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Event.listen(<span class="string">'log'</span>, <span class="built_in">log</span>Event);</div><div class="line">Event.trigger(<span class="string">'log'</span>, <span class="string">'hello, world'</span>);</div><div class="line">Event.remove(<span class="string">'log'</span>, <span class="built_in">log</span>Event);</div></pre></td></tr></table></figure>
 <h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
 <li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
@@ -952,6 +968,22 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
              
@@ -968,26 +1000,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stack heap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DP DFS BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">photoshop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
@@ -997,6 +1009,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,14 +1044,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">异常</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
@@ -1044,7 +1052,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">异常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,7 +1064,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,15 +1096,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感冒</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">预防</a>
+                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,18 +1125,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">回溯算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码重用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数编写</a>
               </li>
              
               <li class="article-tag-list-item">

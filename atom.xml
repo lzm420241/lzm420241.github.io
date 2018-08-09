@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lzm420241.github.io/"/>
-  <updated>2018-08-08T09:12:06.000Z</updated>
+  <updated>2018-08-09T04:18:34.000Z</updated>
   <id>https://lzm420241.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lzm420241.github.io/2018/08/06/javascript/%08%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E4%BB%A3%E7%A0%81-1/"/>
     <id>https://lzm420241.github.io/2018/08/06/javascript/分析经典代码-1/</id>
     <published>2018-08-06T02:23:32.000Z</published>
-    <updated>2018-08-08T09:12:06.000Z</updated>
+    <updated>2018-08-09T04:18:34.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="this知识点考察"><a href="#this知识点考察" class="headerlink" title="this知识点考察"></a>this知识点考察</h3><p>1.考察知识点</p>
 <ul>
@@ -522,16 +522,32 @@
 </li>
 </ol>
 </li>
-</ul>
+<li><p>优势</p>
 <ul>
-<li>参考文档：<ul>
+<li>减少了同一时间内的页面多处内容修改所触发的浏览器reflow和repaint的次数，可能把多个不同的DOM操作集中减少到了几次甚至一次，优化了触发浏览器reflow和repaint的次数</li>
+<li>Vue.js实现了一个queue队列，在下一个tick的时候会统一执行queue中Watcher的run，其本质利用了一个event loop机制，将一些值更新都处理完成之后，才调用Watcher run执行后续操作</li>
+</ul>
+</li>
+<li><p>参考文档：</p>
+<ul>
 <li><a href="https://juejin.im/post/5a21621af265da4304066c8d" target="_blank" rel="external">virtual-dom原理与简单实现</a></li>
 <li><a href="https://github.com/y8n/blog/issues/5" target="_blank" rel="external">理解 Virtual DOM</a></li>
 <li><a href="https://github.com/livoras/blog/issues/13" target="_blank" rel="external">深度剖析：如何实现一个 Virtual DOM 算法</a></li>
 <li><a href="https://github.com/livoras/list-diff" target="_blank" rel="external">Diff two lists in O(n)</a></li>
+<li><a href="https://segmentfault.com/a/1190000010090659" target="_blank" rel="external">virtual-dom(Vue实现)简析</a></li>
+<li><a href="https://github.com/youngwind/blog/issues/88" target="_blank" rel="external">批处理更新DOM</a></li>
+<li><a href="https://juejin.im/post/59c7b25a5188257a125d7a98" target="_blank" rel="external">从Vue.js源码看异步更新DOM策略及nextTick</a></li>
 </ul>
 </li>
 </ul>
+<h3 id="装饰者模式和订阅-发布模式"><a href="#装饰者模式和订阅-发布模式" class="headerlink" title="装饰者模式和订阅-发布模式"></a>装饰者模式和订阅-发布模式</h3><ul>
+<li>装饰者模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">// 污染原型</div><div class="line"></div><div class="line">Function.prototype.before = <span class="keyword">function</span>(beforeFunc) &#123;</div><div class="line">    var that = this;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        beforeFunc.apply(this, arguments);</div><div class="line">        <span class="built_in">return</span> that.apply(this, arguments);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Function.prototype.after = <span class="keyword">function</span>(afterFunc) &#123;</div><div class="line">    var that = this;</div><div class="line">    console.log(<span class="string">'that: '</span>, that);</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ret = that.apply(this, arguments);</div><div class="line">            afterFunc.apply(this,  arguments);</div><div class="line">            <span class="built_in">return</span> ret;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 无污染原型</div><div class="line"></div><div class="line">var before = <span class="keyword">function</span>(originFunc, beforeFunc) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        beforeFunc.apply(this, arguments);</div><div class="line">        <span class="built_in">return</span> originFunc.apply(this, arguments);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var after = <span class="keyword">function</span>(originFunc, afterFunc) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ret = originFunc.apply(this, arguments);</div><div class="line">            afterFunc.apply(this, arguments);</div><div class="line">            <span class="built_in">return</span> ret;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var foobar = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x, y, z);</div><div class="line">&#125;</div><div class="line">var foo = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x/10, y/10, z/10);</div><div class="line">&#125;</div><div class="line">var bar = <span class="keyword">function</span>(x, y, z)&#123;</div><div class="line">    console.log(x*10, y*10, z*10);</div><div class="line">&#125;</div><div class="line">foobar = foobar.before(foo).after(bar);</div><div class="line">foobar(1, 2, 3);</div><div class="line">before(foobar, foo)(1, 2, 3);</div><div class="line">after(foobar, bar)(1, 2, 3);</div></pre></td></tr></table></figure>
+<ul>
+<li>订阅-发布模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">var Event = (<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    var list = &#123;&#125;,</div><div class="line">        listen,</div><div class="line">        trigger,</div><div class="line">        remove;</div><div class="line">        listen = <span class="keyword">function</span>(key, fn) &#123;</div><div class="line">            <span class="keyword">if</span>(!list[key])&#123;</div><div class="line">                list[key] = [];</div><div class="line">            &#125;</div><div class="line">            list[key].push(fn);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        trigger = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">            var key = Array.prototype.shift.call(arguments);</div><div class="line">            var msg = list[key];</div><div class="line">            console.log(<span class="string">'msg: '</span>, msg);</div><div class="line">            <span class="keyword">if</span>(!msg || msg.length === 0) &#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(var i = 0; i &lt; msg.length; i++) &#123;</div><div class="line">                msg[i].apply(this, arguments);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        remove = <span class="keyword">function</span>(key, fn) &#123;</div><div class="line">            var msg = list[key];</div><div class="line">            <span class="keyword">if</span>(!msg) &#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(!fn) &#123;</div><div class="line">                delete list[key];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">for</span>(var i = 0; i &lt; msg; i++) &#123;</div><div class="line">                    <span class="keyword">if</span>(fn === msg[i]) &#123;</div><div class="line">                        msg.splice(i, 1);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> &#123;</div><div class="line">            listen: listen,</div><div class="line">            trigger: trigger,</div><div class="line">            remove: remove</div><div class="line">        &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log(<span class="string">'event: '</span>, Event);</div><div class="line"></div><div class="line">var <span class="built_in">log</span>Event = <span class="keyword">function</span>(data)&#123;</div><div class="line">    console.log(<span class="string">'这是一个发布订阅模式: data: '</span>, data);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Event.listen(<span class="string">'log'</span>, <span class="built_in">log</span>Event);</div><div class="line">Event.trigger(<span class="string">'log'</span>, <span class="string">'hello, world'</span>);</div><div class="line">Event.remove(<span class="string">'log'</span>, <span class="built_in">log</span>Event);</div></pre></td></tr></table></figure>
 <h3 id="前端笔试面试简答题汇总"><a href="#前端笔试面试简答题汇总" class="headerlink" title="前端笔试面试简答题汇总"></a><a href="https://huruji.github.io/FE-Interview/#/" target="_blank" rel="external">前端笔试面试简答题汇总</a></h3><ul>
 <li><a href="https://www.yanshuo.me/u/17927/hot" target="_blank" rel="external">前端汇总</a></li>
 </ul>
@@ -837,9 +853,9 @@
     
       <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
     
-      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="微信小程序" scheme="https://lzm420241.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="前端" scheme="https://lzm420241.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1051,32 +1067,6 @@
   </entry>
   
   <entry>
-    <title>jquery整体架构</title>
-    <link href="https://lzm420241.github.io/2018/07/20/javascript/jquery%E6%BA%90%E7%A0%81%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://lzm420241.github.io/2018/07/20/javascript/jquery源码入门（一）/</id>
-    <published>2018-07-20T00:38:32.000Z</published>
-    <updated>2018-07-20T01:01:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基本架构图&quot;&gt;&lt;a href=&quot;#基本架构图&quot; class=&quot;headerlink&quot; title=&quot;基本架构图&quot;&gt;&lt;/a&gt;基本架构图&lt;/h3&gt;&lt;h3 id=&quot;中心设计解析&quot;&gt;&lt;a href=&quot;#中心设计解析&quot; class=&quot;headerlink&quot; title=&quot;中
-    
-    </summary>
-    
-      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
-    
-      <category term="jquery" scheme="https://lzm420241.github.io/tags/jquery/"/>
-    
-      <category term="源码" scheme="https://lzm420241.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
     <title>web页面渲染与性能优化总结</title>
     <link href="https://lzm420241.github.io/2018/07/20/javascript/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>https://lzm420241.github.io/2018/07/20/javascript/前端页面渲染与性能优化/</id>
@@ -1103,6 +1093,32 @@
       <category term="渲染" scheme="https://lzm420241.github.io/tags/%E6%B8%B2%E6%9F%93/"/>
     
       <category term="语法树" scheme="https://lzm420241.github.io/tags/%E8%AF%AD%E6%B3%95%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jquery整体架构</title>
+    <link href="https://lzm420241.github.io/2018/07/20/javascript/jquery%E6%BA%90%E7%A0%81%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://lzm420241.github.io/2018/07/20/javascript/jquery源码入门（一）/</id>
+    <published>2018-07-20T00:38:32.000Z</published>
+    <updated>2018-07-20T01:01:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h3><h3 id="中心设计解析"><a href="#中心设计解析" class="headerlink" title="中心设计解析"></a>中心设计解析</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基本架构图&quot;&gt;&lt;a href=&quot;#基本架构图&quot; class=&quot;headerlink&quot; title=&quot;基本架构图&quot;&gt;&lt;/a&gt;基本架构图&lt;/h3&gt;&lt;h3 id=&quot;中心设计解析&quot;&gt;&lt;a href=&quot;#中心设计解析&quot; class=&quot;headerlink&quot; title=&quot;中
+    
+    </summary>
+    
+      <category term="前端知识点总结" scheme="https://lzm420241.github.io/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="javascript" scheme="https://lzm420241.github.io/tags/javascript/"/>
+    
+      <category term="jquery" scheme="https://lzm420241.github.io/tags/jquery/"/>
+    
+      <category term="源码" scheme="https://lzm420241.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
@@ -1135,6 +1151,66 @@
       <category term="正则" scheme="https://lzm420241.github.io/tags/%E6%AD%A3%E5%88%99/"/>
     
       <category term="回溯算法" scheme="https://lzm420241.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php代码重用与函数编写</title>
+    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
+    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
+    <published>2018-07-18T14:42:08.000Z</published>
+    <updated>2018-07-20T00:52:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
+<li>重用更加轻松编写一致性，可靠性，可维护性</li>
+<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
+<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
+<li>require_once 同一文件只会包含一次</li>
+<li>include_once 同一文件只会包含一次</li>
+<li>auto_prepend_file 在页面顶部加载文件</li>
+<li>auto_append_file 在页面底部加载文件</li>
+<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
+<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
+</ul>
+<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
+<li>函数名不区分大小写</li>
+<li>PHP不支持重载</li>
+<li>PHP作用域<ol>
+<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
+<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
+<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
+<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
+<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
+<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
+</ol>
+</li>
+<li>PHP命名空间，类名可以通过三种方式引用<ol>
+<li>非限定名称，或不包含前缀的类名称</li>
+<li>限定名称,或包含前缀的名称</li>
+<li>完全限定名称，或包含了全局前缀操作符的名称</li>
+</ol>
+</li>
+<li>函数的声明是采用function的方式</li>
+<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
+&lt;li&gt;require函数 require 生成一个致命错误
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
+    
+      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
+    
+      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
@@ -1198,66 +1274,6 @@
       <category term="apache" scheme="https://lzm420241.github.io/tags/apache/"/>
     
       <category term="mysql" scheme="https://lzm420241.github.io/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php代码重用与函数编写</title>
-    <link href="https://lzm420241.github.io/2018/07/18/php%E5%85%A5%E9%97%A8/php%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E4%B8%8E%08%E5%87%BD%E6%95%B0%08%E7%BC%96%E5%86%99/"/>
-    <id>https://lzm420241.github.io/2018/07/18/php入门/php代码重用与函数编写/</id>
-    <published>2018-07-18T14:42:08.000Z</published>
-    <updated>2018-07-20T00:52:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="代码重用"><a href="#代码重用" class="headerlink" title="代码重用"></a>代码重用</h3><ul>
-<li>重用更加轻松编写一致性，可靠性，可维护性</li>
-<li>require函数 require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行</li>
-<li>include函数 include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行，</li>
-<li>require_once 同一文件只会包含一次</li>
-<li>include_once 同一文件只会包含一次</li>
-<li>auto_prepend_file 在页面顶部加载文件</li>
-<li>auto_append_file 在页面底部加载文件</li>
-<li>auto_prepend_file和auto_append_file 使用这种方法可以不需要改动任何页面，当需要修改顶部或底部require文件时，只需要修改auto_prepend_file与auto_append_file的值即可</li>
-<li>phpinfo函数：在 PHP 文件里面写这个函数才可以看到，主要用于查看当期 PHP 部署的信息</li>
-</ul>
-<h3 id="函数编写"><a href="#函数编写" class="headerlink" title="函数编写"></a>函数编写</h3><ul>
-<li>函数名不区分大小写</li>
-<li>PHP不支持重载</li>
-<li>PHP作用域<ol>
-<li>在函数内部声明的变量作用域是从声明它们的那条语句开始到函数函数末尾，这叫做函数的作用域，这些变量称为局部变量</li>
-<li>在函数外部声明的变量作用域是从声明它们的那条语句开始文件末尾，而不是函数内部，这叫全局作用域，这些变量称为全局变量</li>
-<li>特殊的超级全局变量在函数内部和外部都是可见的</li>
-<li>使用require和include并不影响作用域。如果这两个语句用于函数内部，函数作用域适用，如果他不在函数内部，全局作用域适用</li>
-<li>关键字“global”可以用来手动指定一个在函数中定义或使用的变量具有全局作用域</li>
-<li>通过调用unset可以手动删除变量，如果变量删除，他就不在参数所指定的作用域中</li>
-</ol>
-</li>
-<li>PHP命名空间，类名可以通过三种方式引用<ol>
-<li>非限定名称，或不包含前缀的类名称</li>
-<li>限定名称,或包含前缀的名称</li>
-<li>完全限定名称，或包含了全局前缀操作符的名称</li>
-</ol>
-</li>
-<li>函数的声明是采用function的方式</li>
-<li>函数的参数可以采用值传递和引用，其值传递可以直接使用变量，引用可以采用&amp;变量的方式</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;代码重用&quot;&gt;&lt;a href=&quot;#代码重用&quot; class=&quot;headerlink&quot; title=&quot;代码重用&quot;&gt;&lt;/a&gt;代码重用&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;重用更加轻松编写一致性，可靠性，可维护性&lt;/li&gt;
-&lt;li&gt;require函数 require 生成一个致命错误
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lzm420241.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="php" scheme="https://lzm420241.github.io/tags/php/"/>
-    
-      <category term="代码重用" scheme="https://lzm420241.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/"/>
-    
-      <category term="函数编写" scheme="https://lzm420241.github.io/tags/%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99/"/>
     
   </entry>
   
